@@ -44,6 +44,7 @@ public class Game extends Application{
         Scene scene=new Scene(root,800,600);
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.setTitle("A Whole New World Game");
         stage.show();
     }
     //After the program
