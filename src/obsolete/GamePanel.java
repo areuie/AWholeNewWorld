@@ -1,4 +1,7 @@
-import javax.swing.*;
+/**
+ * Obsolete -- not used anymore
+ */
+/*import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel {
@@ -17,4 +20,4 @@ public class GamePanel extends JPanel {
         //better rendering performance
         this.setDoubleBuffered(true);
     }
-}
+} */

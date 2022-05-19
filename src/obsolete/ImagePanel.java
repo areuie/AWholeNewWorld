@@ -1,4 +1,7 @@
-import java.awt.Dimension;
+/**
+ * Obsolete -- not used anymore
+ */
+/*import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -28,4 +31,4 @@ class ImagePanel extends JPanel {
         g.drawImage(img, 0, 0, 800, 600,this);
     }
 
-}
+} */
