@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class SceneMenu extends JFrame{
     JButton bPlay, bExit;
     SceneMenu() {
-        ImageIcon logo = new ImageIcon("/Users/Alisa/Documents/GitHub/AWholeNewWorld/src/img/mallowicon.png");
+        ImageIcon logo = new ImageIcon("src/img/mallowicon.png");
         this.setIconImage(logo.getImage());
 
         this.setLayout(new GridBagLayout());
@@ -17,7 +17,7 @@ public class SceneMenu extends JFrame{
         //this.add(panel);
 
         JLabel contentPane = new JLabel();
-        contentPane.setIcon(new ImageIcon("/Users/Alisa/Documents/GitHub/AWholeNewWorld/src/img/bg.png"));
+        contentPane.setIcon(new ImageIcon("src/img/bg.png"));
         contentPane.setLayout( new BorderLayout() );
         this.setContentPane(contentPane);
 
@@ -27,8 +27,8 @@ public class SceneMenu extends JFrame{
         bPlay.addActionListener(e -> new SceneMenu());
         bExit.addActionListener(e -> new SceneMenu());
 
-        bPlay.setIcon(new ImageIcon("/Users/Alisa/Documents/GitHub/AWholeNewWorld/src/img/bPlay.png"));
-        bExit.setIcon(new ImageIcon("/Users/Alisa/Documents/GitHub/AWholeNewWorld/src/img/bExit.png"));
+        bPlay.setIcon(new ImageIcon("src/img/bPlay.png"));
+        bExit.setIcon(new ImageIcon("src/img/bExit.png"));
 
         bPlay.setBounds(100, 200, 256, 80);
         bExit.setBounds(100, 350, 256, 80);
