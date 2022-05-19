@@ -1,26 +1,20 @@
-import javax.imageio.ImageIO;
+import obsolete.BackgroundPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 public class SceneWorld  extends JPanel implements ActionListener {
 
-    SceneWorld() {
+    SceneWorld() throws IOException {
         setLayout(new BorderLayout());
-        BackgroundPane bg = new BackgroundPane();
+        BackgroundPanel bg = new BackgroundPanel();
         bg.setLayout(new GridBagLayout());
         add(bg);
 
-        try {
-            BufferedImage bgimg = ImageIO.read(new File("src/img/bg.png"));
-            bg.setBackgroundImage(bgimg);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+
     }
 
     @Override

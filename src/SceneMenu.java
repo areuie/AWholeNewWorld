@@ -7,43 +7,31 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SceneMenu extends JPanel implements ActionListener {
-    JButton bPlay, bExit;
+public class SceneMenu extends JPanel{
+    private BufferedImage bg;
+
     SceneMenu() {
-        setLayout(new BorderLayout());
-        BackgroundPane bg = new BackgroundPane();
-        bg.setLayout(new GridBagLayout());
-        add(bg);
-
         try {
-            BufferedImage bgimg = ImageIO.read(new File("src/img/bg.png"));
-            bg.setBackgroundImage(bgimg);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        bPlay = new JButton("");
-        bExit = new JButton("");
-
-        bPlay.addActionListener(e -> Game.gameState = 2); //play
-        bExit.addActionListener(e -> Game.gameState = 4); //exit
-
-        bPlay.setIcon(new ImageIcon("src/img/bPlay.png"));
-        bExit.setIcon(new ImageIcon("src/img/bExit.png"));
-
-        bPlay.setBorder(BorderFactory.createEmptyBorder());
-        bExit.setBorder(BorderFactory.createEmptyBorder());
-
-        bPlay.setContentAreaFilled(false);
-        bExit.setContentAreaFilled(false);
-
-        bg.add(bPlay);
-        bg.add(bExit);
+            bg = ImageIO.read(new File("src/img/bg.png"));
+        } catch (IOException ex) { ex.printStackTrace(); }
     }
 
+    @Override
+    public Dimension getPreferredSize() { return new Dimension(800, 600); }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (bg != null) {
+            int x = (getWidth() - bg.getWidth()) / 2;
+            int y = (getHeight() - bg.getHeight()) / 2;
+            g.drawImage(bg, x, y, this);
+        }
+        g.drawRect(120,384,272, 80);
+        g.drawRect(408,384,272, 80);
+
+        g.drawRect(120,480,272, 80);
+        g.drawRect(408,480,272, 80);
 
     }
 }

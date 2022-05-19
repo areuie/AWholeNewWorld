@@ -1,3 +1,5 @@
+package obsolete;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -8,15 +10,7 @@ public class BackgroundPane extends JPanel {
 
     @Override
     public Dimension getPreferredSize() {
-        BufferedImage img = getBackgroundImage();
-
-        Dimension size = super.getPreferredSize();
-        if (img != null) {
-            size.width = Math.max(size.width, img.getWidth());
-            size.height = Math.max(size.height, img.getHeight());
-        }
-
-        return size;
+        return new Dimension(800, 600);
     }
 
     public BufferedImage getBackgroundImage() {
