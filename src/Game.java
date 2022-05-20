@@ -13,7 +13,7 @@ public class Game {
     public static JPanel screen;
     /** Stores the graphics on the screen */
     public static Graphics2D graphics;
-    public static int gameState = 2;
+    public static int gameState = 1;
 
     Game() {
         frame = new JFrame();
@@ -51,9 +51,12 @@ public class Game {
                 screen = langGame;
                 gameState = 0;
 
-            } else if (gameState == 3) { //high scores
+            } else if(gameState == 3) {
+                new Instructions();
 
-            } else if (gameState == 4) { //exit
+            } else if (gameState == 4) { //high scores
+
+            } else if (gameState == 5) { //exit
                 System.exit(0);
             }
         }
