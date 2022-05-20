@@ -13,7 +13,7 @@ public class Game {
     public static JPanel screen;
     /** Stores the graphics on the screen */
     public static Graphics2D graphics;
-    public static int gameState = 1;
+    public static int gameState = 2;
 
     Game() {
         frame = new JFrame();
@@ -43,6 +43,14 @@ public class Game {
                 gameState = 0;
 
             } else if (gameState == 2) { //play
+                SceneLanguageClassGame langGame = new SceneLanguageClassGame();
+                frame.add(langGame);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+
+                screen = langGame;
+                gameState = 0;
 
             } else if (gameState == 3) { //high scores
 
