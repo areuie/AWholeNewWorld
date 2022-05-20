@@ -26,11 +26,10 @@ public class Game {
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-
-        loop();
     }
-    void loop() {
 
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(Game::initializeFrame);
         while(true) {
             if(gameState == 1) { //menu
                 SceneMenu menu = new SceneMenu();
@@ -58,6 +57,19 @@ public class Game {
                 System.exit(0);
             }
         }
+    }
+
+    private static void initializeFrame() {
+        frame = new JFrame();
+
+        ImageIcon logo = new ImageIcon("src/img/mallowicon.png");
+        frame.setIconImage(logo.getImage());
+        frame.setLayout(new GridBagLayout());
+        frame.setTitle("A Whole New World");
+        frame.setSize(800, 600);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
     }
 
 }

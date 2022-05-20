@@ -5,11 +5,15 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SceneLanguageClassGame extends JPanel {
+public class SceneLanguageClassGame extends JPanel implements KeyListener, ActionListener {
 
     private BufferedImage bg;
     String[] sentences = {"CAN YOU TRANSLATE THIS SENTENCE?"};
@@ -104,4 +108,23 @@ public class SceneLanguageClassGame extends JPanel {
         }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
 }
