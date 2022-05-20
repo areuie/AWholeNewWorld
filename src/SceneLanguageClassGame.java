@@ -16,7 +16,7 @@ import java.io.IOException;
 public class SceneLanguageClassGame extends JPanel {
 
     private BufferedImage bg;
-    String[] sentences = {"CAN YOU TRANSLATE THIS SENTENCE"};
+    String[] sentences = {"CAN YOU TRANSLATE THIS SENTENCE?"};
     char[] cypher;
 
     static int x, y;
