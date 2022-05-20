@@ -30,9 +30,18 @@ public class Game {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Game::initializeFrame);
+        SceneMenu menu = new SceneMenu();
+        frame.add(menu);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
+        screen = menu;
+
         while(true) {
             if(gameState == 1) { //menu
-                SceneMenu menu = new SceneMenu();
+                frame.remove(screen);
+                menu = new SceneMenu();
                 frame.add(menu);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
@@ -42,6 +51,7 @@ public class Game {
                 gameState = 0;
 
             } else if (gameState == 2) { //play
+                frame.remove(screen);
                 SceneLanguageClassGame langGame = new SceneLanguageClassGame();
                 frame.add(langGame);
                 frame.pack();
