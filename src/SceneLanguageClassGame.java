@@ -13,11 +13,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SceneLanguageClassGame extends JPanel implements KeyListener, ActionListener {
+public class SceneLanguageClassGame extends JPanel {
 
     private BufferedImage bg;
-    String[] sentences = {"CAN YOU TRANSLATE THIS SENTENCE?"};
+    String[] sentences = {"CAN YOU TRANSLATE THIS SENTENCE"};
     char[] cypher;
+
+    static int x, y;
 
     SceneLanguageClassGame() {
         try {
@@ -92,7 +94,7 @@ public class SceneLanguageClassGame extends JPanel implements KeyListener, Actio
 
             xCoord = (220 + xi * 25);
             if (sentences[0].charAt(i) == ' ') {
-                if ((220 + (split[idx].length() + i) * 25 + 10) > 400){
+                if ((220 + (split[idx].length() + i) * 25 + 10) > 600){
                     newLine += 100;
                     xi = 0;
                     xi--;
@@ -108,23 +110,4 @@ public class SceneLanguageClassGame extends JPanel implements KeyListener, Actio
         }
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
 }

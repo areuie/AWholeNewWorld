@@ -16,16 +16,6 @@ public class Game {
     public static int gameState = 1;
 
     Game() {
-        frame = new JFrame();
-
-        ImageIcon logo = new ImageIcon("src/img/mallowicon.png");
-        frame.setIconImage(logo.getImage());
-        frame.setLayout(new GridBagLayout());
-        frame.setTitle("A Whole New World");
-        frame.setSize(800, 600);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
     }
 
     public static void main(String[] args) {
