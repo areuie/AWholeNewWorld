@@ -1,6 +1,12 @@
 /**
- * Alisa: 2h (+5h Research)
+ * This Game class is the driver class for the game
+ *
+ * <p>
+ * Alisa: 2h (+4h Research)
  * Added game loop, setup menu
+ * </p>
+ *
+ * @author Alisa Wu
  */
 
 import javax.swing.*;

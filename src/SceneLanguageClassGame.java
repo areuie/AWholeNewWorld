@@ -12,16 +12,20 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.EnumMap;
+import java.util.Map;
+
 
 public class SceneLanguageClassGame extends JPanel {
 
     private BufferedImage bg;
     String[] sentences = {"CAN YOU TRANSLATE THIS SENTENCE?"};
     char[] cypher;
+    static Map<Direction, Boolean> dirMap = new EnumMap<>(Direction.class);
 
     static int x, y;
 
-    SceneLanguageClassGame() {
+    public SceneLanguageClassGame() {
         try {
             bg = ImageIO.read(new File("src/img/beigeBackground.png"));
         } catch (IOException ex) { ex.printStackTrace(); }
@@ -40,29 +44,39 @@ public class SceneLanguageClassGame extends JPanel {
             System.out.println(i);
         }
 
-//        getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released SPACE"), "next_state");
-//        getActionMap().put("next_state", new AbstractAction() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                if (question == false)
-//                    count++;
-//                repaint();
-//            }
-//        });
-//        addMouseListener (new MouseAdapter() {
-//            public void mousePressed(MouseEvent e) {
-//                if (e.getX() > 485 && e.getX() < 625 && e.getY() > 440 && e.getY() < 578) {
-//                    repaint();
-//                    yes = true;
-//                }
-//                else if (e.getX() > 695 && e.getX() < 835 && e.getY() > 440 && e.getY() < 578) {
-//                    repaint();
-//                    no = true;
-//                }
-//            }
-//        });
+        InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
+        ActionMap am = getActionMap();
 
+
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_1, 0, false), "pressed");
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_1, 0, true), "released");
+
+
+        am.put("pressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Pressed");
+            }
+        });
+
+        am.put("released", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("released");
+            }
+        });
+
+        setFocusable(true);
+        requestFocusInWindow();
     }
+
+    void setKeyBind(InputMap inputMap, ActionMap actionMap, int keyCode, Direction dir) {
+        KeyStroke press = KeyStroke.getKeyStroke(keyCode, 0, false);
+        KeyStroke released = KeyStroke.getKeyStroke(keyCode, 0, true);
+
+        Action pressAction = new PressedAction(dir, true);
+    }
+
 
     @Override
     public Dimension getPreferredSize() {
@@ -94,7 +108,7 @@ public class SceneLanguageClassGame extends JPanel {
 
             xCoord = (220 + xi * 25);
             if (sentences[0].charAt(i) == ' ') {
-                if ((220 + (split[idx].length() + i) * 25 + 10) > 600){
+                if ((220 + (split[idx].length() + i) * 25 + 10) > 500){
                     newLine += 100;
                     xi = 0;
                     xi--;

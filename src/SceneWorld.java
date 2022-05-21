@@ -1,3 +1,7 @@
+/**
+ * This class is a
+ */
+
 import obsolete.BackgroundPanel;
 
 import javax.swing.*;
