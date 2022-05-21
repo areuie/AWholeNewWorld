@@ -23,7 +23,7 @@ public class SceneLanguageClassGame extends JPanel {
 
     SceneLanguageClassGame() {
         try {
-            bg = ImageIO.read(new File("src/img/beigeBackground.png"));
+            bg = ImageIO.read(new File("src/img/Images/Desk.png"));
         } catch (IOException ex) { ex.printStackTrace(); }
 
         cypher = new char[26];
