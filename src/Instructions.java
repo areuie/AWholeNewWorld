@@ -1,5 +1,17 @@
 /**
- * This class
+ * This class is the screen for the instructions.
+ *
+ * <p>
+ *     Version 1 - 30 min
+ *     Added background image
+ *     - Lois
+ * </p>
+ * @author Alisa Wu, Mona Afshar, Lois Zan
+ * @version 05.20.22
+ *
+ * <h2>Course Info:</h2>
+ * ICS4U0
+ * Mrs. Krasteva
  */
 
 

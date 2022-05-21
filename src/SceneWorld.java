@@ -1,5 +1,20 @@
 /**
- * This class is a
+ * This class is the screen for the long screen for the character.
+ *
+ * <p>
+ * Version 1 - 2h
+ * Designed background
+ * - Lois
+ *
+ * </p>
+ *
+ * @author Alisa Wu, Mona Afshar, Lois Zan
+ * @version 05.20.22
+ *
+ * <h2> Course Info:</h2>
+ * ICS4U0
+ * Mrs. Krasteva
+ *
  */
 
 import obsolete.BackgroundPanel;

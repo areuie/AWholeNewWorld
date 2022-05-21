@@ -1,3 +1,21 @@
+/**
+ * The SceneLanguageClass is the screen for the language class.
+ *
+ * <p>
+ * Version 1 - 3h
+ * Added BufferedImage, created dialogue image, added graphics to screen
+ * - Mona
+ * </p>
+ *
+ * @author Alisa Wu, Mona Afshar, Lois Zan
+ * @version 05.20.22
+ *
+ * <h2> Course Info:</h2>
+ * ICS4U0
+ * Mrs. Krasteva
+ *
+ */
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +30,9 @@ public class SceneLanguageClass extends JPanel{
     private BufferedImage teacher;
     private BufferedImage speech;
 
+    /**
+     * Constructor, initializes graphics
+     */
     SceneLanguageClass() {
         try {
             bg = ImageIO.read(new File("src/img/Images/TeacherBG.png"));

@@ -1,12 +1,31 @@
 /**
- * This Game class is the driver class for the game
+ * The Game class is the driver class for the game
  *
  * <p>
- * Alisa: 2h (+4h Research)
- * Added game loop, setup menu
+ * Version 1 - 4h (+4h Research)
+ * Added variables to store the JFrame and JPanel, and the state of the game
+ * Setup game state conditions
+ * Added initialize frame
+ * - Alisa
+ *
+ * Version 2 - 2h
+ * Changed Scene from SceneLanguageClassGame to SceneLanguageClass to test
+ * Connected instructions screen
+ * - Mona
+ *
+ * Version 3 - 2h
+ * Fixed a bug with multiple screens showing up at once
+ * - Lois
+ *
  * </p>
  *
- * @author Alisa Wu
+ * @author Alisa Wu, Mona Afshar, Lois Zan
+ * @version 05.20.22
+ *
+ * <h2> Course Info:</h2>
+ * ICS4U0
+ * Mrs. Krasteva
+ *
  */
 
 import javax.swing.*;
@@ -15,15 +34,18 @@ import java.awt.*;
 public class Game {
     /** This variable is the main window of the game */
     public static JFrame frame;
-    /** Current Screen */
+    /** This variable stores the current screen*/
     public static JPanel screen;
-    /** Stores the graphics on the screen */
-    public static Graphics2D graphics;
+    /** This variable stores the game state */
     public static int gameState = 1;
 
     Game() {
     }
 
+    /**
+     * This method is the main method to start the game. It controls the screens of the game.
+     * @param args
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Game::initializeFrame);
         SceneMenu menu = new SceneMenu();
@@ -68,6 +90,9 @@ public class Game {
         }
     }
 
+    /**
+     * This method initializes the settings of the frame/window of the game.
+     */
     private static void initializeFrame() {
         frame = new JFrame();
 
