@@ -46,6 +46,7 @@ public class SceneLanguageClassGame extends JPanel {
     static Map<Direction, Boolean> dirMap = new EnumMap<>(Direction.class);
 
     static int x = 215, y = 55;
+    static int idx = 0;
 
     /**
      * Constructor, creates a random cypher, checks keyboard input, initializes graphics
@@ -83,8 +84,15 @@ public class SceneLanguageClassGame extends JPanel {
         am.put("left", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("left");
-                x -= 25;
+                System.out.println("left " + idx);
+                if (idx - 1 >= 0) {
+                    idx--;
+                    x -= 25;
+                    if (idx - 1 >= 0 && sentences[0].charAt(idx) == ' ') {
+                        idx--;
+                        x -= 25;
+                    }
+                }
                 repaint();
             }
         });
@@ -92,22 +100,21 @@ public class SceneLanguageClassGame extends JPanel {
         am.put("right", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("right");
-                x += 25;
+                System.out.println("right " + idx);
+                if (idx + 1 < sentences[0].length()) {
+                    idx++;
+                    x += 25;
+                    if (idx + 1 < sentences[0].length() && sentences[0].charAt(idx) == ' ') {
+                        idx++;
+                        x += 25;
+                    }
+                }
                 repaint();
             }
         });
 
         setFocusable(true);
         requestFocusInWindow();
-    }
-
-
-    void setKeyBind(InputMap inputMap, ActionMap actionMap, int keyCode, Direction dir) {
-        KeyStroke press = KeyStroke.getKeyStroke(keyCode, 0, false);
-        KeyStroke released = KeyStroke.getKeyStroke(keyCode, 0, true);
-
-        Action pressAction = new PressedAction(dir, true);
     }
 
 
