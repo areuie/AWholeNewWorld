@@ -41,12 +41,13 @@ import java.util.Map;
 public class SceneLanguageClassGame extends JPanel {
 
     private BufferedImage bg;
-    String[] sentences = {"CAN YOU TRANSLATE THIS SENTENCE?"};
     char[] cypher;
     static Map<Direction, Boolean> dirMap = new EnumMap<>(Direction.class);
 
     static int x = 215, y = 55;
     static int idx = 0;
+    static String[] sentences = {"CAN YOU TRANSLATE THIS SENTENCE?"};
+    static int[] newLine = new int[sentences[0].split(" ").length];
 
     /**
      * Constructor, creates a random cypher, checks keyboard input, initializes graphics
@@ -69,6 +70,8 @@ public class SceneLanguageClassGame extends JPanel {
         for (char i: cypher) {
             System.out.println(i);
         }
+
+        findNewLine();
 
         InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
         ActionMap am = getActionMap();
@@ -117,6 +120,25 @@ public class SceneLanguageClassGame extends JPanel {
         requestFocusInWindow();
     }
 
+    /**
+     * This method finds the indexes of characters that start in a new line
+     */
+    void findNewLine() {
+
+        int xC, yC = 0;
+        int pixelCount = 0;
+        int idxCount = 0;
+        String[] split = sentences[0].split(" ");
+        for (int i = 0; i < split.length; i++) {
+            idxCount += split[i].length();
+            if (220 + split[i].length() * 25 > 450) {
+
+            } else pixelCount = 0;
+            for (int j = 0; j < split[i].length(); j++) {
+
+            }
+        }
+    }
 
     @Override
     public Dimension getPreferredSize() {
@@ -124,7 +146,7 @@ public class SceneLanguageClassGame extends JPanel {
     }
 
     /**
-     * Paints graphics on the screen.
+     * This method paints graphics on the screen.
      * @param g Graphic
      */
     @Override
