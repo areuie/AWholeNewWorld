@@ -70,13 +70,14 @@ public class Game {
 
             } else if (gameState == 2) { //play
                 frame.remove(screen);
-                SceneLanguageClassGame langGame = new SceneLanguageClassGame();
-                frame.add(langGame);
+
+                SceneLanguageClassGame classroom = new SceneLanguageClassGame();
+                frame.add(classroom);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
 
-                screen = langGame;
+                screen = classroom;
                 gameState = 0;
 
             } else if(gameState == 3) {
