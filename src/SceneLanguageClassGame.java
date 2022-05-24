@@ -31,9 +31,6 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -48,14 +45,14 @@ public class SceneLanguageClassGame extends JPanel {
     char[] cypher;
     static Map<Direction, Boolean> dirMap = new EnumMap<>(Direction.class);
 
-    static int x, y;
+    static int x = 215, y = 55;
 
     /**
      * Constructor, creates a random cypher, checks keyboard input, initializes graphics
      */
     public SceneLanguageClassGame() {
         try {
-            bg = ImageIO.read(new File("src/img/Images/Desk.png"));
+            bg = ImageIO.read(new File("src/img/Desk.png"));
         } catch (IOException ex) { ex.printStackTrace(); }
 
         cypher = new char[26];
@@ -75,22 +72,29 @@ public class SceneLanguageClassGame extends JPanel {
         InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
         ActionMap am = getActionMap();
 
+        im.put(KeyStroke.getKeyStroke("A"), "left");
+        im.put(KeyStroke.getKeyStroke("D"), "right");
+        im.put(KeyStroke.getKeyStroke("space"), "right");
 
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_1, 0, false), "pressed");
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_1, 0, true), "released");
+        im.put(KeyStroke.getKeyStroke("LEFT"), "left");
+        im.put(KeyStroke.getKeyStroke("RIGHT"), "right");
 
 
-        am.put("pressed", new AbstractAction() {
+        am.put("left", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Pressed");
+                System.out.println("left");
+                x -= 25;
+                repaint();
             }
         });
 
-        am.put("released", new AbstractAction() {
+        am.put("right", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("released");
+                System.out.println("right");
+                x += 25;
+                repaint();
             }
         });
 
@@ -126,23 +130,27 @@ public class SceneLanguageClassGame extends JPanel {
             g.drawImage(bg, x, y, this);
         }
 
-        //paper
-        g.setColor(Color.white);
-        g.fillRect(200, 10, 400, 580);
-
         g.setColor(Color.black);
         g.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
         int idx = 0;
         int newLine = 0;
-        int xCoord = 0;
+        int xCoord;
 
         for (int i = 0, xi = 0; i < sentences[0].length() - 1; i++, xi++) { //prints the sentence
             String[] split = sentences[0].split(" ");
 
             xCoord = (220 + xi * 25);
+            if (x < 215)  {
+                x = 215;
+                y -= 100;
+            }
             if (sentences[0].charAt(i) == ' ') {
-                if ((220 + (split[idx].length() + i) * 25 + 10) > 500){ //if the word exceeds the paper, go to next line
+                if ((220 + (split[idx].length() + i) * 25 + 10) > 450){ //if the word exceeds the paper, go to next line
+                    if (x > 450)  {
+                        x = 215;
+                        y += 100;
+                    }
                     newLine += 100;
                     xi = 0;
                     xi--;
@@ -156,6 +164,9 @@ public class SceneLanguageClassGame extends JPanel {
                 g.drawString((String.valueOf(cypher[(int)(sentences[0].charAt(i) - 'A')])), xCoord, 110 + newLine);
             }
         }
+
+        g.setColor(new Color(161, 200, 240, 60));
+        g.fillRoundRect(x, y, 25, 55, 10, 10);
     }
 
 }

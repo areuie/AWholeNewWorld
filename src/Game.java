@@ -70,7 +70,7 @@ public class Game {
 
             } else if (gameState == 2) { //play
                 frame.remove(screen);
-                SceneLanguageClass langGame = new SceneLanguageClass();
+                SceneLanguageClassGame langGame = new SceneLanguageClassGame();
                 frame.add(langGame);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
