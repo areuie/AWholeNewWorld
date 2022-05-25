@@ -52,23 +52,23 @@ public class SceneMenu extends JPanel {
                 if (e.getX() > 120 && e.getX() < 390 && e.getY() > 380 && e.getY() < 460)//if they press play button they are taken to the next game
                 {
                     repaint();
-                    Game.gameState = 2;
+                    Game.gameState = 5;
                     System.out.println("PLAY");
 
                 } else if (e.getX() > 408 && e.getX() < 680 && e.getY() > 380 && e.getY() < 460)//if they press instructions button they are taken to that page
                 {
                     repaint();
-                    Game.gameState = 3;
+                    Game.gameState = 2;
                     System.out.println("INSTRUCTIONS");
                 } else if (e.getX() > 120 && e.getX() < 390 && e.getY() > 480 && e.getY() < 560)//if they press instructions button they are taken to that page
                 {
                     repaint();
-                    Game.gameState = 4;
+                    Game.gameState = 3;
                     System.out.println("HIGHSCORES");
                 } else if (e.getX() > 408 && e.getX() < 680 && e.getY() > 480 && e.getY() < 560)//if they press instructions button they are taken to that page
                 {
                     repaint();
-                    Game.gameState = 5;
+                    Game.gameState = 4;
                     System.out.println("EXIT");
                 }
             }

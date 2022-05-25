@@ -68,10 +68,18 @@ public class Game {
                 screen = menu;
                 gameState = 0;
 
-            } else if (gameState == 2) { //play
+            } else if(gameState == 2) { //Instructions
+                new Instructions();
+
+            } else if (gameState == 3) { //high scores
+
+            } else if (gameState == 4) { //exit
+                System.exit(0);
+
+            } else if (gameState == 5) { //language classroom
                 frame.remove(screen);
 
-                SceneLanguageClassGame classroom = new SceneLanguageClassGame();
+                SceneLanguageClass classroom = new SceneLanguageClass();
                 frame.add(classroom);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
@@ -80,14 +88,19 @@ public class Game {
                 screen = classroom;
                 gameState = 0;
 
-            } else if(gameState == 3) {
-                new Instructions();
+            } else if (gameState == 6) { //language game
+                frame.remove(screen);
 
-            } else if (gameState == 4) { //high scores
+                SceneLanguageClassGame langtest = new SceneLanguageClassGame();
+                frame.add(langtest);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
 
-            } else if (gameState == 5) { //exit
-                System.exit(0);
+                screen = langtest;
+                gameState = 0;
             }
+
         }
     }
 

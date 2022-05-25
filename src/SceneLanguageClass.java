@@ -7,8 +7,14 @@
  * - Mona
  * </p>
  *
+ *  <p>
+ *  Version 2 - 5h
+ *  Added interactive conversation where user presses space to continue reading
+ *  - Mona
+ *  </p>
+ *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 05.20.22
+ * @version 05.24.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -18,15 +24,16 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class SceneLanguageClass extends JPanel {
     private BufferedImage bg;
     private BufferedImage teacher;
-    static String[] sentences = {"Hello Everybody!", "Welcome to Language Class!", "Today we will be doing this!"};
+    int count = 0;
+    static String[] sentences = {"Hello Everybody!", "Welcome to Language Class!", "Today we will be learning the language ", "of this country!", "In this country they are very secretive," , "so they communicate in cypher.", "Let's take a test to ensure you ", "are ready to communicate with others:"};
 
 
     /**
@@ -43,12 +50,22 @@ public class SceneLanguageClass extends JPanel {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
+        getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "next");
+        getActionMap().put("next", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                count++;
+                repaint();
+            }
+        });
     }
 
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(800, 600);
     }
+
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -67,15 +84,16 @@ public class SceneLanguageClass extends JPanel {
         g.setColor(Color.black);
         g.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
-        int xcord=300;
-        int ycord=470;
-        //for( int x=0; x<sentences.length; x++) {
+        int xcord = 300;
+        int ycord = 470;
 
+        if (count < sentences.length) {
             g.setColor(Color.black);
-            g.drawString(sentences[0], xcord, ycord);
-            g.drawString(sentences[0 + 1], xcord, ycord+40);
-        //}
+            g.drawString(sentences[count], xcord, ycord);
+            g.drawString(sentences[count + 1], xcord, ycord + 40);
+            count++;
+        } else if (count == sentences.length) {
+            Game.gameState =6;
+        }
     }
-
 }
-
