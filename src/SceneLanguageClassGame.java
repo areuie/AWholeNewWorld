@@ -16,6 +16,9 @@
  * Graphics layout on PaintComponent
  * - Lois
  *
+ * Version 4 - 4h
+ * Fixing bugs (took a long time surprisingly)
+ * - Alisa
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
@@ -46,8 +49,9 @@ public class SceneLanguageClassGame extends JPanel {
 
     static int x = 215, y = 55;
     static int idx = 0;
-    static String[] sentences = {"CAN YOU TRANSLATE THIS SENTENCE?"};
-    static int[] newLine = new int[sentences[0].split(" ").length];
+    static char dir = ' ';
+    static String[] sentences = {"CAN YOU@TRANSLATE@THIS@SENTENCE?"};
+    static String guess = "";
 
     /**
      * Constructor, creates a random cypher, checks keyboard input, initializes graphics
@@ -71,14 +75,13 @@ public class SceneLanguageClassGame extends JPanel {
             System.out.println(i);
         }
 
-        findNewLine();
 
         InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
         ActionMap am = getActionMap();
 
         im.put(KeyStroke.getKeyStroke("A"), "left");
         im.put(KeyStroke.getKeyStroke("D"), "right");
-        im.put(KeyStroke.getKeyStroke("space"), "right");
+        im.put(KeyStroke.getKeyStroke("SPACE"), "edit");
 
         im.put(KeyStroke.getKeyStroke("LEFT"), "left");
         im.put(KeyStroke.getKeyStroke("RIGHT"), "right");
@@ -87,15 +90,20 @@ public class SceneLanguageClassGame extends JPanel {
         am.put("left", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("left " + idx);
                 if (idx - 1 >= 0) {
                     idx--;
                     x -= 25;
+                    System.out.println("i tried wuts the idx?" + idx);
                     if (idx - 1 >= 0 && sentences[0].charAt(idx) == ' ') {
                         idx--;
                         x -= 25;
                     }
+
+                    System.out.println("k." + idx);
                 }
+
+                System.out.println("left " + idx);
+                dir = 'l';
                 repaint();
             }
         });
@@ -103,8 +111,7 @@ public class SceneLanguageClassGame extends JPanel {
         am.put("right", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("right " + idx);
-                if (idx + 1 < sentences[0].length()) {
+                if (idx + 1 < sentences[0].length() - 1) {
                     idx++;
                     x += 25;
                     if (idx + 1 < sentences[0].length() && sentences[0].charAt(idx) == ' ') {
@@ -112,7 +119,16 @@ public class SceneLanguageClassGame extends JPanel {
                         x += 25;
                     }
                 }
+                System.out.println("right " + idx);
+                dir = 'r';
                 repaint();
+            }
+        });
+
+        am.put("edit", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //implement add any key
             }
         });
 
@@ -120,24 +136,28 @@ public class SceneLanguageClassGame extends JPanel {
         requestFocusInWindow();
     }
 
-    /**
-     * This method finds the indexes of characters that start in a new line
-     */
-    void findNewLine() {
+//    /**
+//     * This method finds the indexes of characters that start in a new line
+//     */
+//    void findNewLine() {
+//        int idxCount = 0;
+//        int count = 0;
+//        String[] split = sentences[0].split(" ");
+//        for (int i = 0; i < split.length; i++) {
+//            idxCount += split[i].length() - 1;
+//            if (i - 1 >= 0) idxCount++;
+//            if (220 + idxCount * 25 > 450) {
+//                newLine[count] = idxCount;
+//                count++;
+//            }
+//        }
+//    }
 
-        int xC, yC = 0;
-        int pixelCount = 0;
-        int idxCount = 0;
-        String[] split = sentences[0].split(" ");
-        for (int i = 0; i < split.length; i++) {
-            idxCount += split[i].length();
-            if (220 + split[i].length() * 25 > 450) {
-
-            } else pixelCount = 0;
-            for (int j = 0; j < split[i].length(); j++) {
-
-            }
+    int previousLine(String str) {
+        for (int i = str.length() - 1; i >= 0; i--) {
+            if (str.charAt(i) == '@') return i + 1;
         }
+        return 0;
     }
 
     @Override
@@ -162,35 +182,40 @@ public class SceneLanguageClassGame extends JPanel {
         g.setColor(Color.black);
         g.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
-        int idx = 0;
         int newLine = 0;
         int xCoord;
 
         for (int i = 0, xi = 0; i < sentences[0].length() - 1; i++, xi++) { //prints the sentence
-            String[] split = sentences[0].split(" ");
 
-            xCoord = (220 + xi * 25);
-            if (x < 215)  {
-                x = 215;
-                y -= 100;
-            }
-            if (sentences[0].charAt(i) == ' ') {
-                if ((220 + (split[idx].length() + i) * 25 + 10) > 450){ //if the word exceeds the paper, go to next line
-                    if (x > 450)  {
+            xCoord = 220 + xi * 25;
+            if (sentences[0].charAt(i) == '@') {
+                System.out.println(sentences[0].charAt(idx) );
+                if (sentences[0].charAt(idx) == '@') {
+                    //if (x > sentences[0].substring(0, i).length() * 25) {
+                    if (dir == 'r' ) {
                         x = 215;
                         y += 100;
+                        idx++;
+                    } else if (dir == 'l' ) {
+                        x = 215;
+                        y -= 100;
+                        System.out.println("f" + previousLine(sentences[0].substring(0, idx)));
+                        idx = previousLine(sentences[0].substring(0, idx));
                     }
-                    newLine += 100;
-                    xi = 0;
-                    xi--;
+                    //}
+
+
                 }
-                idx++;
+                xi = -1;
+                newLine += 100;
+            } else if (sentences[0].charAt(i) == ' '){
+
             } else { //prints out character and line
                 g.setColor(Color.black);
                 g.drawString(sentences[0].substring(i, i+1), xCoord, 80 + newLine);
                 g.drawLine(xCoord, 85  + newLine, xCoord + 20, 85  + newLine);
                 g.setColor(Color.gray);
-                g.drawString((String.valueOf(cypher[(int)(sentences[0].charAt(i) - 'A')])), xCoord, 110 + newLine);
+                if ((sentences[0].charAt(i) - 'A') >= 'A' || (sentences[0].charAt(i) - 'A') <= 'Z') g.drawString((String.valueOf(cypher[(int)(sentences[0].charAt(i) - 'A')])), xCoord, 110 + newLine);
             }
         }
 
