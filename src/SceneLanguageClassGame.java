@@ -34,6 +34,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -51,7 +53,9 @@ public class SceneLanguageClassGame extends JPanel {
     static int idx = 0;
     static char dir = ' ';
     static String[] sentences = {"CAN YOU@TRANSLATE@THIS@SENTENCE?"};
+    static char[] userGuess = new char[sentences[0].length()];
     static String guess = "";
+    static boolean editing = false;
 
     /**
      * Constructor, creates a random cypher, checks keyboard input, initializes graphics
@@ -75,6 +79,7 @@ public class SceneLanguageClassGame extends JPanel {
             System.out.println(i);
         }
 
+        randomizeGivenChars();
 
         InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
         ActionMap am = getActionMap();
@@ -90,50 +95,78 @@ public class SceneLanguageClassGame extends JPanel {
         am.put("left", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (idx - 1 >= 0) {
-                    idx--;
-                    x -= 25;
-                    System.out.println("i tried wuts the idx?" + idx);
-                    if (idx - 1 >= 0 && sentences[0].charAt(idx) == ' ') {
+                if (!editing) {
+                    if (idx - 1 >= 0) {
                         idx--;
                         x -= 25;
+                        System.out.println("i tried wuts the idx?" + idx);
+                        if (idx - 1 >= 0 && sentences[0].charAt(idx) == ' ') {
+                            idx--;
+                            x -= 25;
+                        }
+
+                        System.out.println("k." + idx);
                     }
 
-                    System.out.println("k." + idx);
+                    System.out.println("left " + idx);
+                    dir = 'l';
+                    repaint();
                 }
-
-                System.out.println("left " + idx);
-                dir = 'l';
-                repaint();
             }
         });
 
         am.put("right", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (idx + 1 < sentences[0].length() - 1) {
-                    idx++;
-                    x += 25;
-                    if (idx + 1 < sentences[0].length() && sentences[0].charAt(idx) == ' ') {
+                if (!editing) {
+                    if (idx + 1 < sentences[0].length() - 1) {
                         idx++;
                         x += 25;
+                        if (idx + 1 < sentences[0].length() && sentences[0].charAt(idx) == ' ') {
+                            idx++;
+                            x += 25;
+                        }
                     }
+                    System.out.println("right " + idx);
+                    dir = 'r';
+                    repaint();
                 }
-                System.out.println("right " + idx);
-                dir = 'r';
-                repaint();
             }
         });
 
         am.put("edit", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //implement add any key
+                editing = true;
+                
             }
         });
 
         setFocusable(true);
         requestFocusInWindow();
+    }
+
+    private void randomizeGivenChars() {
+        for (int i = 0; i < sentences[0].length(); i++) {
+            int random = (int) (Math.random() * 100);
+
+            if (i == 0 || i == sentences[0].length() || i > 1 && (sentences[0].charAt(i - 1) == '@' || sentences[0].charAt(i - 1) == ' ')) {
+                userGuess[i] = sentences[0].charAt(i);
+            } else if (i < sentences[0].length() - 1 && (sentences[0].charAt(i + 1) == '@' || sentences[0].charAt(i + 1) == ' ')) {
+                userGuess[i] = sentences[0].charAt(i);
+            } else if (sentences[0].charAt(i) == '@') {
+                userGuess[i] = '@';
+            } else if (sentences[0].charAt(i) == ' ') {
+                userGuess[i] = ' ';
+            } else if (sentences[0].charAt(i) == '.') {
+                userGuess[i] = '.';
+            } else if (sentences[0].charAt(i) == '?') {
+                userGuess[i] = '?';
+            }
+            else if (random > 50) {
+                userGuess[i] = sentences[0].charAt(i);
+            } else userGuess[i] = ' ';
+        }
     }
 
 //    /**
@@ -212,7 +245,7 @@ public class SceneLanguageClassGame extends JPanel {
 
             } else { //prints out character and line
                 g.setColor(Color.black);
-                g.drawString(sentences[0].substring(i, i+1), xCoord, 80 + newLine);
+                g.drawString(Character.toString(userGuess[i]), xCoord, 80 + newLine);
                 g.drawLine(xCoord, 85  + newLine, xCoord + 20, 85  + newLine);
                 g.setColor(Color.gray);
                 if ((sentences[0].charAt(i) - 'A') >= 'A' || (sentences[0].charAt(i) - 'A') <= 'Z') g.drawString((String.valueOf(cypher[(int)(sentences[0].charAt(i) - 'A')])), xCoord, 110 + newLine);
