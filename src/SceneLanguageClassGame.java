@@ -138,7 +138,7 @@ public class SceneLanguageClassGame extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 editing = true;
-                
+
             }
         });
 
