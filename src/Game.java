@@ -36,7 +36,7 @@ public class Game {
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
-    public static int gameState = 1;
+    public static int gameState = 6;
 
     Game() {
     }
