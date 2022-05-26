@@ -7,12 +7,12 @@
  * Setup game state conditions
  * Added initialize frame
  * - Alisa
- *
+ * <p>
  * Version 2 - 2h
  * Changed Scene from SceneLanguageClassGame to SceneLanguageClass to test
  * Connected instructions screen
  * - Mona
- *
+ * <p>
  * Version 3 - 2h
  * Fixed a bug with multiple screens showing up at once
  * - Lois
@@ -25,7 +25,6 @@
  * <h2> Course Info:</h2>
  * ICS4U0
  * Mrs. Krasteva
- *
  */
 
 import javax.swing.*;
@@ -56,8 +55,8 @@ public class Game {
 
         screen = menu;
 
-        while(true) {
-            if(gameState == 1) { //menu
+        while (true) {
+            if (gameState == 1) { //menu
                 frame.remove(screen);
                 menu = new SceneMenu();
                 frame.add(menu);
@@ -68,7 +67,7 @@ public class Game {
                 screen = menu;
                 gameState = 0;
 
-            } else if(gameState == 2) { //Instructions
+            } else if (gameState == 2) { //Instructions
                 new Instructions();
 
             } else if (gameState == 3) { //high scores
@@ -79,7 +78,8 @@ public class Game {
             } else if (gameState == 5) { //language classroom
                 frame.remove(screen);
 
-                SceneLanguageClass classroom = new SceneLanguageClass();
+                PostOffice classroom = new PostOffice();
+                //SceneLanguageClass classroom = new SceneLanguageClass();
                 frame.add(classroom);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
@@ -98,6 +98,17 @@ public class Game {
                 frame.setVisible(true);
 
                 screen = langtest;
+                gameState = 0;
+            } else if (gameState == 6) { //language game
+                frame.remove(screen);
+
+                PostOffice office = new PostOffice();
+                frame.add(office);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+
+                screen = office;
                 gameState = 0;
             }
 
