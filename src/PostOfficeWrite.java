@@ -51,6 +51,8 @@ public class PostOfficeWrite extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.setFont(Game.font.deriveFont(28f));
+
         if (bg != null) {
             int x = (getWidth() - bg.getWidth()) / 2;
             int y = (getHeight() - bg.getHeight()) / 2;
@@ -68,7 +70,6 @@ public class PostOfficeWrite extends JPanel {
 
         next.fillRoundRect(335, 500, 150, 60, 25, 25);
         g.setColor(Color.black);
-        g.setFont(new Font("Tahoma", Font.PLAIN, 30));
         g.drawString("NEXT", 375, 540);
 
         if(nextButton==0){
@@ -78,24 +79,24 @@ public class PostOfficeWrite extends JPanel {
             paintComponent(g);
             LetterOptions(g);
         }
+        Game.showMoney(g);
     }
 
     public void FamilyLetter(Graphics g){
         g.setColor(Color.black);
-        g.setFont(new Font("Tahoma", Font.PLAIN, 30));
         g.drawString("From: Your Family", 290, 90);
 
-        g.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        g.drawString("I know it might be difficult right now", 250, 170);
-        g.drawString("living in this new environment, but ", 250, 200);
-        g.drawString("always remember to save your ", 250, 230);
-        g.drawString("money and don’t over spend on", 250, 260);
-        g.drawString("unessesary items. Make sure to ", 250, 290);
-        g.drawString("make valuable connections in the ", 250, 320);
-        g.drawString("workplace, so you can make more ", 250, 350);
-        g.drawString("money in the future. ", 250, 380);
-        g.drawString("Sincerely", 250, 430);
-        g.drawString("-Your loved ones", 250, 460);
+        int x = 240;
+        g.drawString("I know it might be difficult right now", x, 170);
+        g.drawString("living in this new environment, but ", x, 200);
+        g.drawString("always remember to save your ", x, 230);
+        g.drawString("money and don’t over spend on", x, 260);
+        g.drawString("unessesary items. Make sure to ", x, 290);
+        g.drawString("make valuable connections in the ", x, 320);
+        g.drawString("workplace, so you can make more ", x, 350);
+        g.drawString("money in the future. ", x, 380);
+        g.drawString("Sincerely", x, 430);
+        g.drawString("-Your loved ones", x, 460);
     }
     public void LetterOptions(Graphics g){
         Graphics2D buttons = (Graphics2D) g;

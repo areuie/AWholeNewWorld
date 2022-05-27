@@ -69,8 +69,10 @@ public class PostOffice extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        Image back = bg.getScaledInstance(800, 600, Image.SCALE_DEFAULT);
         super.paintComponent(g);
+        g.setFont(Game.font.deriveFont(30f));
+        Image back = bg.getScaledInstance(800, 600, Image.SCALE_DEFAULT);
+
         if (bg != null) {
             int x = (getWidth() - bg.getWidth()) / 2;
             int y = (getHeight() - bg.getHeight()) / 2;
@@ -82,7 +84,6 @@ public class PostOffice extends JPanel {
         }
 
         g.setColor(Color.black);
-        g.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
         int xcord = 230;
         int ycord = 480;
@@ -96,5 +97,6 @@ public class PostOffice extends JPanel {
             Game.gameState =8;
             count++;
         }
+        Game.showMoney(g);
     }
 }

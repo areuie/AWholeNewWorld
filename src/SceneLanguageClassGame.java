@@ -20,7 +20,7 @@
  * Fixing bugs (took a long time surprisingly)
  * - Alisa
  *
- * Version 5 - 2h
+ * Version 5 - 2.5h
  * Added alphabet input (a,b,c)
  * Finished cypher game
  * - Alisa
@@ -60,7 +60,6 @@ public class SceneLanguageClassGame extends JPanel {
     static String[] sentences = {"CAN YOU@TRANSLATE@THIS@SENTENCE?"};
     static char[] userGuess = new char[sentences[0].length()];
     static char letter = ' ';
-    static boolean editing = false;
 
     /**
      * Constructor, creates a random cypher, checks keyboard input, initializes graphics
@@ -88,8 +87,6 @@ public class SceneLanguageClassGame extends JPanel {
 
         InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
         ActionMap am = getActionMap();
-
-        im.put(KeyStroke.getKeyStroke("SPACE"), "edit");
 
         im.put(KeyStroke.getKeyStroke("LEFT"), "left");
         im.put(KeyStroke.getKeyStroke("RIGHT"), "right");
@@ -125,50 +122,38 @@ public class SceneLanguageClassGame extends JPanel {
         am.put("left", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {;
-                if (!editing) {
-                    if (idx - 1 >= 0) {
+                if (idx - 1 >= 0) {
+                    idx--;
+                    x -= 25;
+                    System.out.println("i tried wuts the idx?" + idx);
+                    if (idx - 1 >= 0 && sentences[0].charAt(idx) == ' ') {
                         idx--;
                         x -= 25;
-                        System.out.println("i tried wuts the idx?" + idx);
-                        if (idx - 1 >= 0 && sentences[0].charAt(idx) == ' ') {
-                            idx--;
-                            x -= 25;
-                        }
-
-                        System.out.println("k." + idx);
                     }
 
-                    System.out.println("left " + idx);
-                    dir = 'l';
-                    repaint();
+                    System.out.println("k." + idx);
                 }
+
+                System.out.println("left " + idx);
+                dir = 'l';
+                repaint();
             }
         });
 
         am.put("right", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!editing) {
-                    if (idx + 1 < sentences[0].length() - 1) {
+                if (idx + 1 < sentences[0].length() - 1) {
+                    idx++;
+                    x += 25;
+                    if (idx + 1 < sentences[0].length() && sentences[0].charAt(idx) == ' ') {
                         idx++;
                         x += 25;
-                        if (idx + 1 < sentences[0].length() && sentences[0].charAt(idx) == ' ') {
-                            idx++;
-                            x += 25;
-                        }
                     }
-                    System.out.println("right " + idx);
-                    dir = 'r';
-                    repaint();
                 }
-            }
-        });
-
-        am.put("edit", new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                editing = true;
-
+                System.out.println("right " + idx);
+                dir = 'r';
+                repaint();
             }
         });
 
@@ -427,6 +412,7 @@ public class SceneLanguageClassGame extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.setFont(Game.font.deriveFont(28f));
 
         if (bg != null) { //prints background
             int x = (getWidth() - bg.getWidth()) / 2;
@@ -435,7 +421,6 @@ public class SceneLanguageClassGame extends JPanel {
         }
 
         g.setColor(Color.black);
-        g.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
         if (letter != ' ') userGuess[idx] = letter;
         letter = ' ';
@@ -479,6 +464,8 @@ public class SceneLanguageClassGame extends JPanel {
 
         g.setColor(new Color(161, 200, 240, 60));
         g.fillRoundRect(x, y, 25, 55, 10, 10);
+
+        Game.showMoney(g);
 
         checkCorrect();
     }
