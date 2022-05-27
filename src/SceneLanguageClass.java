@@ -69,7 +69,6 @@ public class SceneLanguageClass extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        Image back = bg.getScaledInstance(800, 600, Image.SCALE_DEFAULT);
         super.paintComponent(g);
         if (bg != null) {
             int x = (getWidth() - bg.getWidth()) / 2;
@@ -94,6 +93,7 @@ public class SceneLanguageClass extends JPanel {
             count++;
         } else if (count == sentences.length) {
             Game.gameState =6;
+            count++;
         }
     }
 }
