@@ -36,7 +36,7 @@ public class Game {
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
-    public static int gameState = 6;
+    public static int gameState = 1;
 
     Game() {
     }
@@ -78,8 +78,7 @@ public class Game {
             } else if (gameState == 5) { //language classroom
                 frame.remove(screen);
 
-                PostOffice classroom = new PostOffice();
-                //SceneLanguageClass classroom = new SceneLanguageClass();
+                SceneLanguageClass classroom = new SceneLanguageClass();
                 frame.add(classroom);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
@@ -99,7 +98,7 @@ public class Game {
 
                 screen = langtest;
                 gameState = 0;
-            } else if (gameState == 6) { //language game
+            } else if (gameState == 7) { //post office
                 frame.remove(screen);
 
                 PostOffice office = new PostOffice();

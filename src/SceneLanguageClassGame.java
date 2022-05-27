@@ -54,7 +54,7 @@ public class SceneLanguageClassGame extends JPanel {
     static char dir = ' ';
     static String[] sentences = {"CAN YOU@TRANSLATE@THIS@SENTENCE?"};
     static char[] userGuess = new char[sentences[0].length()];
-    static String guess = "";
+    static char letter = ' ';
     static boolean editing = false;
 
     /**
@@ -84,17 +84,42 @@ public class SceneLanguageClassGame extends JPanel {
         InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
         ActionMap am = getActionMap();
 
-        im.put(KeyStroke.getKeyStroke("A"), "left");
-        im.put(KeyStroke.getKeyStroke("D"), "right");
         im.put(KeyStroke.getKeyStroke("SPACE"), "edit");
 
         im.put(KeyStroke.getKeyStroke("LEFT"), "left");
         im.put(KeyStroke.getKeyStroke("RIGHT"), "right");
 
+        //keyb
+        im.put(KeyStroke.getKeyStroke("A"), "A");
+        im.put(KeyStroke.getKeyStroke("B"), "B");
+        im.put(KeyStroke.getKeyStroke("C"), "C");
+        im.put(KeyStroke.getKeyStroke("D"), "D");
+        im.put(KeyStroke.getKeyStroke("E"), "E");
+        im.put(KeyStroke.getKeyStroke("F"), "F");
+        im.put(KeyStroke.getKeyStroke("G"), "G");
+        im.put(KeyStroke.getKeyStroke("H"), "H");
+        im.put(KeyStroke.getKeyStroke("I"), "I");
+        im.put(KeyStroke.getKeyStroke("J"), "J");
+        im.put(KeyStroke.getKeyStroke("K"), "K");
+        im.put(KeyStroke.getKeyStroke("L"), "L");
+        im.put(KeyStroke.getKeyStroke("M"), "M");
+        im.put(KeyStroke.getKeyStroke("N"), "N");
+        im.put(KeyStroke.getKeyStroke("O"), "O");
+        im.put(KeyStroke.getKeyStroke("P"), "P");
+        im.put(KeyStroke.getKeyStroke("Q"), "Q");
+        im.put(KeyStroke.getKeyStroke("R"), "R");
+        im.put(KeyStroke.getKeyStroke("S"), "S");
+        im.put(KeyStroke.getKeyStroke("T"), "T");
+        im.put(KeyStroke.getKeyStroke("U"), "U");
+        im.put(KeyStroke.getKeyStroke("V"), "V");
+        im.put(KeyStroke.getKeyStroke("W"), "W");
+        im.put(KeyStroke.getKeyStroke("X"), "X");
+        im.put(KeyStroke.getKeyStroke("Y"), "Y");
+        im.put(KeyStroke.getKeyStroke("Z"), "Z");
 
         am.put("left", new AbstractAction() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) {;
                 if (!editing) {
                     if (idx - 1 >= 0) {
                         idx--;
@@ -142,8 +167,200 @@ public class SceneLanguageClassGame extends JPanel {
             }
         });
 
+        //hi!
+        am.put("A", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'A';
+                repaint();
+            }
+        });
+        am.put("B", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'B';
+                repaint();
+            }
+        });
+        am.put("C", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'C';
+                repaint();
+            }
+        });
+        am.put("D", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'D';
+                repaint();
+            }
+        });
+        am.put("E", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'E';
+                repaint();
+            }
+        });
+        am.put("F", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'F';
+                repaint();
+            }
+        });
+        am.put("G", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'G';
+                repaint();
+            }
+        });
+        am.put("H", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'H';
+                repaint();
+            }
+        });
+        am.put("I", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'I';
+                repaint();
+            }
+        });
+        am.put("J", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'J';
+                repaint();
+            }
+        });
+        am.put("K", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'K';
+                repaint();
+            }
+        });
+        am.put("L", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'L';
+                repaint();
+            }
+        });
+        am.put("M", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'M';
+                repaint();
+            }
+        });
+        am.put("N", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'N';
+                repaint();
+            }
+        });
+        am.put("O", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'O';
+                repaint();
+            }
+        });
+        am.put("P", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'P';
+                repaint();
+            }
+        });
+        am.put("Q", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'Q';
+                repaint();
+            }
+        });
+        am.put("R", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'R';
+                repaint();
+            }
+        });
+        am.put("S", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'S';
+                repaint();
+            }
+        });
+        am.put("T", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'T';
+                repaint();
+            }
+        });
+        am.put("U", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'U';
+                repaint();
+            }
+        });
+        am.put("V", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'V';
+                repaint();
+            }
+        });
+        am.put("W", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'W';
+                repaint();
+            }
+        });
+        am.put("X", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'X';
+                repaint();
+            }
+        });
+        am.put("Y", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'Y';
+                repaint();
+            }
+        });
+        am.put("Z", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                letter = 'Z';
+                repaint();
+            }
+        });
+
         setFocusable(true);
         requestFocusInWindow();
+    }
+
+    private void checkCorrect() {
+        boolean same = true;
+        for (int i = 0; i < sentences[0].length(); i++) {
+            if (sentences[0].charAt(i) != userGuess[i]) same = false;
+        }
+        if (same) Game.gameState = 7;
     }
 
     private void randomizeGivenChars() {
@@ -215,6 +432,9 @@ public class SceneLanguageClassGame extends JPanel {
         g.setColor(Color.black);
         g.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
+        if (letter != ' ') userGuess[idx] = letter;
+        letter = ' ';
+
         int newLine = 0;
         int xCoord;
 
@@ -254,6 +474,8 @@ public class SceneLanguageClassGame extends JPanel {
 
         g.setColor(new Color(161, 200, 240, 60));
         g.fillRoundRect(x, y, 25, 55, 10, 10);
+
+        checkCorrect();
     }
 
 }
