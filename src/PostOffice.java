@@ -41,7 +41,7 @@ public class PostOffice extends JPanel {
      */
     PostOffice() {
         try {
-            bg = ImageIO.read(new File("src/img/postOfficeBG.png"));
+            bg = ImageIO.read(new File("src/img/PostOfficeBGText.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -74,18 +74,18 @@ public class PostOffice extends JPanel {
         if (bg != null) {
             int x = (getWidth() - bg.getWidth()) / 2;
             int y = (getHeight() - bg.getHeight()) / 2;
-            g.drawImage(bg, x, y, this);
+            g.drawImage(back, 0, 0, this);
         }
         if (teacher != null) {
             Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
-            g.drawImage(teach, -50, 330, this);
+            g.drawImage(teach, -80, 320, this);
         }
 
         g.setColor(Color.black);
         g.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
-        int xcord = 300;
-        int ycord = 470;
+        int xcord = 230;
+        int ycord = 480;
 
         if (count < sentences.length) {
             g.setColor(Color.black);
@@ -93,7 +93,8 @@ public class PostOffice extends JPanel {
             g.drawString(sentences[count + 1], xcord, ycord + 40);
             count++;
         } else if (count == sentences.length) {
-            Game.gameState =6;
+            Game.gameState =8;
+            count++;
         }
     }
 }
