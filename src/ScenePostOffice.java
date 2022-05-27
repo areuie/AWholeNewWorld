@@ -29,7 +29,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class PostOffice extends JPanel {
+public class ScenePostOffice extends JPanel {
     private BufferedImage bg;
     private BufferedImage teacher;
     int count = 0;
@@ -39,7 +39,7 @@ public class PostOffice extends JPanel {
     /**
      * Constructor, initializes graphics
      */
-    PostOffice() {
+    ScenePostOffice() {
         try {
             bg = ImageIO.read(new File("src/img/PostOfficeBGText.png"));
         } catch (IOException ex) {

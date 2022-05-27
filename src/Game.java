@@ -120,7 +120,7 @@ public class Game {
 
                 frame.remove(screen);
 
-                PostOffice office = new PostOffice();
+                ScenePostOffice office = new ScenePostOffice();
                 frame.add(office);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
@@ -131,7 +131,7 @@ public class Game {
             } else if (gameState == 8) { //post office writing
                 frame.remove(screen);
 
-                PostOfficeWrite letter = new PostOfficeWrite();
+                ScenePostOfficeWrite letter = new ScenePostOfficeWrite();
                 frame.add(letter);
                 frame.pack();
                 frame.setLocationRelativeTo(null);

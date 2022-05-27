@@ -26,11 +26,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class PostOfficeWrite extends JPanel {
+public class ScenePostOfficeWrite extends JPanel {
     private BufferedImage bg;
     int nextButton=0;
 
-    PostOfficeWrite() {
+    ScenePostOfficeWrite() {
         try {
             bg = ImageIO.read(new File("src/img/letterWriting.png"));
         } catch (IOException ex) {
