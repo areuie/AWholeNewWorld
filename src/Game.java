@@ -37,7 +37,7 @@ public class Game {
     public static JPanel screen;
     /** This variable stores the game state */
 
-    public static int gameState = 1;
+    public static int gameState = 8;
 
     Game() {
     }
@@ -104,7 +104,7 @@ public class Game {
 
                 frame.remove(screen);
 
-                PostOffice office = new PostOffice();
+                ScenePostOffice office = new ScenePostOffice();
                 frame.add(office);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
@@ -115,7 +115,7 @@ public class Game {
             } else if (gameState == 8) { //post office writing
                 frame.remove(screen);
 
-                PostOfficeWrite letter = new PostOfficeWrite();
+                ScenePostOfficeWrite letter = new ScenePostOfficeWrite();
                 frame.add(letter);
                 frame.pack();
                 frame.setLocationRelativeTo(null);

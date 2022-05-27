@@ -26,11 +26,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class PostOfficeWrite extends JPanel {
+public class ScenePostOfficeWrite extends JPanel {
     private BufferedImage bg;
     int nextButton=0;
 
-    PostOfficeWrite() {
+    ScenePostOfficeWrite() {
         try {
             bg = ImageIO.read(new File("src/img/letterWriting.png"));
         } catch (IOException ex) {
@@ -43,6 +43,19 @@ public class PostOfficeWrite extends JPanel {
                 {
                     nextButton = 1;
                     System.out.println("yay");
+                    repaint();
+                }
+
+                if (e.getX() > 260 && e.getX() < 220 && e.getY() > 560 && e.getY() < 280 && nextButton==1)//if they press play button they are taken to the language class dialogue scene
+                {
+                    System.out.println("oh");
+                    repaint();
+                }
+
+                if (e.getX() > 335 && e.getX() < 500 && e.getY() > 485 && e.getY() < 560)//if they press play button they are taken to the language class dialogue scene
+                {
+                    System.out.println("lol");
+                    repaint();
                 }
             }
         });
@@ -51,11 +64,22 @@ public class PostOfficeWrite extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
         if (bg != null) {
             int x = (getWidth() - bg.getWidth()) / 2;
             int y = (getHeight() - bg.getHeight()) / 2;
             g.drawImage(bg, x, y, this);
         }
+
+            if (nextButton == 0) {
+                FamilyLetter(g);
+            } else if (nextButton == 1) {
+                LetterOptions(g);
+            }
+    }
+
+
+    public void FamilyLetter(Graphics g){
         Graphics2D next = (Graphics2D) g;
 
         next.setPaint(new Color(200, 90, 90));
@@ -71,21 +95,13 @@ public class PostOfficeWrite extends JPanel {
         g.setFont(new Font("Tahoma", Font.PLAIN, 30));
         g.drawString("NEXT", 375, 540);
 
-        if(nextButton==0){
-            FamilyLetter(g);
-        }
-        else if(nextButton==1){
-            paintComponent(g);
-            LetterOptions(g);
-        }
-    }
-
-    public void FamilyLetter(Graphics g){
         g.setColor(Color.black);
+
         g.setFont(new Font("Tahoma", Font.PLAIN, 30));
         g.drawString("From: Your Family", 290, 90);
 
         g.setFont(new Font("Tahoma", Font.PLAIN, 20));
+
         g.drawString("I know it might be difficult right now", 250, 170);
         g.drawString("living in this new environment, but ", 250, 200);
         g.drawString("always remember to save your ", 250, 230);
@@ -100,7 +116,7 @@ public class PostOfficeWrite extends JPanel {
     public void LetterOptions(Graphics g){
         Graphics2D buttons = (Graphics2D) g;
 
-        buttons.setPaint(new Color(200, 90, 90));
+        buttons.setPaint(new Color(150, 150, 150));
 
         RenderingHints button = new RenderingHints(
                 RenderingHints.KEY_ANTIALIASING,
@@ -108,7 +124,23 @@ public class PostOfficeWrite extends JPanel {
 
         buttons.setRenderingHints(button);
 
-        buttons.fillRoundRect(250, 20, 70, 60, 25, 25);
+
+        buttons.fillRoundRect(260, 220, 300, 60, 25, 25);
+        buttons.fillRoundRect(260, 340, 300, 60, 25, 25);
+        buttons.fillRoundRect(260, 460, 300, 60, 25, 25);
+
+        g.setColor(Color.black);
+
+        g.setFont(new Font("Tahoma", Font.PLAIN, 30));
+        g.drawString("To: Your Family", 300, 90);
+
+        g.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        g.drawString("Write about...", 250, 170);
+
+        g.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        g.drawString("The racist comment on the street", 280, 255);
+        g.drawString("The co-worker language barrier", 280, 375);
+        g.drawString("Financial Issues", 280, 495);
     }
     @Override
     public Dimension getPreferredSize() {
