@@ -19,6 +19,11 @@
  * Version 4 - 4h
  * Fixing bugs (took a long time surprisingly)
  * - Alisa
+ *
+ * Version 5 - 2h
+ * Added alphabet input (a,b,c)
+ * Finished cypher game
+ * - Alisa
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
