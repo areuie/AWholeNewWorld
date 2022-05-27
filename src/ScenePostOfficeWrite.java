@@ -64,6 +64,7 @@ public class ScenePostOfficeWrite extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.setFont(Game.font.deriveFont(28f));
 
         if (bg != null) {
             int x = (getWidth() - bg.getWidth()) / 2;
@@ -71,11 +72,12 @@ public class ScenePostOfficeWrite extends JPanel {
             g.drawImage(bg, x, y, this);
         }
 
-            if (nextButton == 0) {
-                FamilyLetter(g);
-            } else if (nextButton == 1) {
-                LetterOptions(g);
-            }
+        if (nextButton == 0) {
+            FamilyLetter(g);
+        } else if (nextButton == 1) {
+            LetterOptions(g);
+        }
+        Game.showMoney(g);
     }
 
 
@@ -90,29 +92,33 @@ public class ScenePostOfficeWrite extends JPanel {
 
         next.setRenderingHints(button);
 
-        next.fillRoundRect(335, 500, 150, 60, 25, 25);
-        g.setColor(Color.black);
-        g.setFont(new Font("Tahoma", Font.PLAIN, 30));
-        g.drawString("NEXT", 375, 540);
-
-        g.setColor(Color.black);
-
-        g.setFont(new Font("Tahoma", Font.PLAIN, 30));
         g.drawString("From: Your Family", 290, 90);
 
-        g.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        int x = 240;
+        g.drawString("I know it might be difficult right now", x, 170);
+        g.drawString("living in this new environment, but ", x, 200);
+        g.drawString("always remember to save your ", x, 230);
+        g.drawString("money and don’t over spend on", x, 260);
+        g.drawString("unessesary items. Make sure to ", x, 290);
+        g.drawString("make valuable connections in the ", x, 320);
+        g.drawString("workplace, so you can make more ", x, 350);
+        g.drawString("money in the future. ", x, 380);
+        g.drawString("Sincerely", x, 430);
+        g.drawString("-Your loved ones", x, 460);
 
-        g.drawString("I know it might be difficult right now", 250, 170);
-        g.drawString("living in this new environment, but ", 250, 200);
-        g.drawString("always remember to save your ", 250, 230);
-        g.drawString("money and don’t over spend on", 250, 260);
-        g.drawString("unessesary items. Make sure to ", 250, 290);
-        g.drawString("make valuable connections in the ", 250, 320);
-        g.drawString("workplace, so you can make more ", 250, 350);
-        g.drawString("money in the future. ", 250, 380);
-        g.drawString("Sincerely", 250, 430);
-        g.drawString("-Your loved ones", 250, 460);
+        next.fillRoundRect(335, 500, 150, 60, 25, 25);
+        g.setColor(Color.black);
+        g.drawString("NEXT", 375, 540);
+
+        if(nextButton==0){
+            repaint();
+        }
+        else if(nextButton==1){
+            paintComponent(g);
+        }
+
     }
+
     public void LetterOptions(Graphics g){
         Graphics2D buttons = (Graphics2D) g;
 
@@ -131,13 +137,11 @@ public class ScenePostOfficeWrite extends JPanel {
 
         g.setColor(Color.black);
 
-        g.setFont(new Font("Tahoma", Font.PLAIN, 30));
         g.drawString("To: Your Family", 300, 90);
 
         g.setFont(new Font("Tahoma", Font.PLAIN, 20));
         g.drawString("Write about...", 250, 170);
 
-        g.setFont(new Font("Tahoma", Font.PLAIN, 18));
         g.drawString("The racist comment on the street", 280, 255);
         g.drawString("The co-worker language barrier", 280, 375);
         g.drawString("Financial Issues", 280, 495);
