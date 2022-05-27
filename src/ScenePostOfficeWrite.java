@@ -43,6 +43,19 @@ public class ScenePostOfficeWrite extends JPanel {
                 {
                     nextButton = 1;
                     System.out.println("yay");
+                    repaint();
+                }
+
+                if (e.getX() > 260 && e.getX() < 220 && e.getY() > 560 && e.getY() < 280 && nextButton==1)//if they press play button they are taken to the language class dialogue scene
+                {
+                    System.out.println("oh");
+                    repaint();
+                }
+
+                if (e.getX() > 335 && e.getX() < 500 && e.getY() > 485 && e.getY() < 560)//if they press play button they are taken to the language class dialogue scene
+                {
+                    System.out.println("lol");
+                    repaint();
                 }
             }
         });
@@ -58,6 +71,17 @@ public class ScenePostOfficeWrite extends JPanel {
             int y = (getHeight() - bg.getHeight()) / 2;
             g.drawImage(bg, x, y, this);
         }
+
+        if (nextButton == 0) {
+            FamilyLetter(g);
+        } else if (nextButton == 1) {
+            LetterOptions(g);
+        }
+        Game.showMoney(g);
+    }
+
+
+    public void FamilyLetter(Graphics g){
         Graphics2D next = (Graphics2D) g;
 
         next.setPaint(new Color(200, 90, 90));
@@ -68,22 +92,6 @@ public class ScenePostOfficeWrite extends JPanel {
 
         next.setRenderingHints(button);
 
-        next.fillRoundRect(335, 500, 150, 60, 25, 25);
-        g.setColor(Color.black);
-        g.drawString("NEXT", 375, 540);
-
-        if(nextButton==0){
-            FamilyLetter(g);
-        }
-        else if(nextButton==1){
-            paintComponent(g);
-            LetterOptions(g);
-        }
-        Game.showMoney(g);
-    }
-
-    public void FamilyLetter(Graphics g){
-        g.setColor(Color.black);
         g.drawString("From: Your Family", 290, 90);
 
         int x = 240;
@@ -97,11 +105,24 @@ public class ScenePostOfficeWrite extends JPanel {
         g.drawString("money in the future. ", x, 380);
         g.drawString("Sincerely", x, 430);
         g.drawString("-Your loved ones", x, 460);
+
+        next.fillRoundRect(335, 500, 150, 60, 25, 25);
+        g.setColor(Color.black);
+        g.drawString("NEXT", 375, 540);
+
+        if(nextButton==0){
+            repaint();
+        }
+        else if(nextButton==1){
+            paintComponent(g);
+        }
+
     }
+
     public void LetterOptions(Graphics g){
         Graphics2D buttons = (Graphics2D) g;
 
-        buttons.setPaint(new Color(200, 90, 90));
+        buttons.setPaint(new Color(150, 150, 150));
 
         RenderingHints button = new RenderingHints(
                 RenderingHints.KEY_ANTIALIASING,
@@ -109,7 +130,22 @@ public class ScenePostOfficeWrite extends JPanel {
 
         buttons.setRenderingHints(button);
 
-        buttons.fillRoundRect(250, 20, 70, 60, 25, 25);
+
+        buttons.fillRoundRect(260, 220, 300, 60, 25, 25);
+        buttons.fillRoundRect(260, 340, 300, 60, 25, 25);
+        buttons.fillRoundRect(260, 460, 300, 60, 25, 25);
+
+        g.setColor(Color.black);
+
+        g.drawString("To: Your Family", 300, 90);
+
+        g.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        g.drawString("Write about...", 250, 170);
+
+        g.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        g.drawString("The racist comment on the street", 280, 255);
+        g.drawString("The co-worker language barrier", 280, 375);
+        g.drawString("Financial Issues", 280, 495);
     }
     @Override
     public Dimension getPreferredSize() {

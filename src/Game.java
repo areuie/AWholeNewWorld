@@ -39,7 +39,7 @@ public class Game {
     public static JPanel screen;
     /** This variable stores the game state */
 
-    public static int gameState = 5;
+    public static int gameState = 1;
     public static int money = 500;
 
     public static Font font;
@@ -53,7 +53,6 @@ public class Game {
             e.printStackTrace();
         }
     }
-
 
     Game() {
     }
