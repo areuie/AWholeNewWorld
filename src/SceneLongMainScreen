@@ -23,6 +23,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -33,8 +34,12 @@ import java.util.Map;
 
 
 public class SceneLongMainScreen extends JPanel{
+    private Image gif;
     private BufferedImage bg;
     ArrayList<String> dialogue = new ArrayList<String>();
+    int backgroundX = 0;
+    boolean isWalking = false;
+
 
     public SceneLongMainScreen(){
         try {
@@ -52,8 +57,45 @@ public class SceneLongMainScreen extends JPanel{
         super.paintComponent(g);
         if (bg != null) {
             Image background = bg.getScaledInstance(2400, 600, Image.SCALE_DEFAULT);
-            g.drawImage(background, 0, 0, this);
+            g.drawImage(background, backgroundX, 0, this);
         }
+
+        InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
+        ActionMap am = getActionMap();
+
+        im.put(KeyStroke.getKeyStroke("A"), "left");
+        im.put(KeyStroke.getKeyStroke("D"), "right");
+
+        im.put(KeyStroke.getKeyStroke("LEFT"), "left");
+        im.put(KeyStroke.getKeyStroke("RIGHT"), "right");
+
+
+        am.put("left", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("left " + backgroundX);
+                if (backgroundX + 1 <= 0) {
+                    backgroundX+=5;
+                    isWalking = true;
+                }
+                repaint();
+            }
+        });
+
+        am.put("right", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("right " + backgroundX);
+                if (backgroundX + 1 > -1595) {
+                    backgroundX-=5;
+                    isWalking = true;
+                }
+                repaint();
+            }
+        });
+        setFocusable(true);
+        requestFocusInWindow();
     }
+
 
 }
