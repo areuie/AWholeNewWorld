@@ -70,6 +70,8 @@ public class SceneLanguageClass extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.setFont(Game.font.deriveFont(28f));
+
         if (bg != null) {
             int x = (getWidth() - bg.getWidth()) / 2;
             int y = (getHeight() - bg.getHeight()) / 2;
@@ -81,7 +83,6 @@ public class SceneLanguageClass extends JPanel {
         }
 
         g.setColor(Color.black);
-        g.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
         int xcord = 300;
         int ycord = 470;
@@ -95,5 +96,6 @@ public class SceneLanguageClass extends JPanel {
             Game.gameState =6;
             count++;
         }
+        Game.showMoney(g);
     }
 }

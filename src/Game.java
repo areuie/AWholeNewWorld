@@ -29,6 +29,8 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 public class Game {
     /** This variable is the main window of the game */
@@ -37,7 +39,20 @@ public class Game {
     public static JPanel screen;
     /** This variable stores the game state */
 
-    public static int gameState = 8;
+    public static int gameState = 1;
+    public static int money = 500;
+
+    public static Font font;
+
+    static {
+        try {
+            font = Font.createFont(Font.TRUETYPE_FONT, new File("src/font/marumonica.ttf"));
+        } catch (FontFormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     Game() {
     }
@@ -126,6 +141,14 @@ public class Game {
             }
 
         }
+    }
+
+    public static void showMoney(Graphics g) {
+        g.setFont(Game.font.deriveFont(28f));
+        g.setColor(new Color(161, 200, 240, 90));
+        g.fillRoundRect(615, 20, 155, 50, 10, 10);
+        g.setColor(Color.black);
+        g.drawString("Funds: " + money, 625, 55);
     }
 
     /**
