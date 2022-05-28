@@ -41,7 +41,7 @@ import java.io.IOException;
 
 public class Game {
     /** This variable is the main window of the game */
-    public static JFrame frame;
+    public static JFrame frame = new JFrame();
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
@@ -50,6 +50,8 @@ public class Game {
     public static int money = 500;
     /** This variable is the font of the game*/
     public static Font font;
+    public static int familyHappiness;
+    public static int familyMoneyGiven;
 
     static {
         try {
