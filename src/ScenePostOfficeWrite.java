@@ -139,7 +139,6 @@ public class ScenePostOfficeWrite extends JPanel {
 
         g.drawString("To: Your Family", 300, 90);
 
-        g.setFont(new Font("Tahoma", Font.PLAIN, 20));
         g.drawString("Write about...", 250, 170);
 
         g.drawString("The racist comment on the street", 280, 255);
