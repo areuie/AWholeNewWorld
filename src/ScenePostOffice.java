@@ -1,5 +1,5 @@
 /**
- * The SceneLanguageClass is the screen for the language class.
+ * The ScenePostOffice is the screen for the post office
  *
  * <p>
  * Version 1 - 3h
@@ -30,9 +30,13 @@ import java.io.File;
 import java.io.IOException;
 
 public class ScenePostOffice extends JPanel {
+    /**Background image*/
     private BufferedImage bg;
-    private BufferedImage teacher;
+    /**image for the post office person*/
+    private BufferedImage person;
+    /**Counts the number of it runs through the if statements*/
     int count = 0;
+    /**Array for all the dialogue that should be printed on the screen*/
     static String[] sentences = {"Hello!", "I have received a letter from your family", "Here you go. You can read it then ", "write your own message to send back."};
 
 
@@ -46,7 +50,7 @@ public class ScenePostOffice extends JPanel {
             ex.printStackTrace();
         }
         try {
-            teacher = ImageIO.read(new File("src/img/pixil-layer-1.png"));
+            person = ImageIO.read(new File("src/img/pixil-layer-1.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -78,8 +82,8 @@ public class ScenePostOffice extends JPanel {
             int y = (getHeight() - bg.getHeight()) / 2;
             g.drawImage(back, 0, 0, this);
         }
-        if (teacher != null) {
-            Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+        if (person != null) {
+            Image teach = person.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
             g.drawImage(teach, -80, 320, this);
         }
 

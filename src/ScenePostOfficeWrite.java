@@ -6,10 +6,13 @@
  * Designed background and buttons
  * -Mona
  *
+ * Version 2 - 5h
+ * Created Game and buttons
+ * -Mona
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 05.20.22
+ * @version 05.27.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -27,9 +30,14 @@ import java.io.File;
 import java.io.IOException;
 
 public class ScenePostOfficeWrite extends JPanel {
+    /**Background Image*/
     private BufferedImage bg;
+    /**Button for how many times user has interacted*/
     int nextButton=0;
 
+    /**
+     * Constructor
+     */
     ScenePostOfficeWrite() {
         try {
             bg = ImageIO.read(new File("src/img/letterWriting.png"));
@@ -37,6 +45,9 @@ public class ScenePostOfficeWrite extends JPanel {
             ex.printStackTrace();
         }
 
+        /**
+         * This method checks if a user pressed the screen and which button it reacted with
+         */
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (e.getX() > 335 && e.getX() < 485 && e.getY() > 500 && e.getY() < 560 && nextButton==0)
@@ -64,6 +75,9 @@ public class ScenePostOfficeWrite extends JPanel {
         });
     }
 
+    /**
+     * This method creates the background and graphics
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -88,6 +102,9 @@ public class ScenePostOfficeWrite extends JPanel {
     }
 
 
+    /**
+     * This method writes the letter from the family
+     */
     public void FamilyLetter(Graphics g){
         Graphics2D next = (Graphics2D) g;
 
@@ -126,6 +143,9 @@ public class ScenePostOfficeWrite extends JPanel {
 
     }
 
+    /**
+     * This method gives the user buttons for 3 different options on the letter
+     */
     public void LetterOptions(Graphics g){
         Graphics2D buttons = (Graphics2D) g;
 
@@ -154,7 +174,9 @@ public class ScenePostOfficeWrite extends JPanel {
         g.drawString("Financial Issues", 280, 495);
     }
 
-
+    /**
+     * This method writes a letter based on the racist comment on the street
+     */
     public void RacistComment(Graphics g) {
         Graphics2D next = (Graphics2D) g;
 
