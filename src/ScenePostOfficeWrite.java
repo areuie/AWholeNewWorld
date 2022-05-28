@@ -14,7 +14,6 @@
  * <h2> Course Info:</h2>
  * ICS4U0
  * Mrs. Krasteva
- *
  */
 
 import javax.imageio.ImageIO;
@@ -28,7 +27,7 @@ import java.io.IOException;
 
 public class ScenePostOfficeWrite extends JPanel {
     private BufferedImage bg;
-    int nextButton=0;
+    int nextButton = 0;
 
     ScenePostOfficeWrite() {
         try {
@@ -39,22 +38,26 @@ public class ScenePostOfficeWrite extends JPanel {
 
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (e.getX() > 335 && e.getX() < 500 && e.getY() > 485 && e.getY() < 560)//if they press play button they are taken to the language class dialogue scene
+                if (e.getX() > 335 && e.getX() < 485 && e.getY() > 500 && e.getY() < 560 && nextButton==0)
                 {
                     nextButton = 1;
-                    System.out.println("yay");
                     repaint();
                 }
-
-                if (e.getX() > 260 && e.getX() < 220 && e.getY() > 560 && e.getY() < 280 && nextButton==1)//if they press play button they are taken to the language class dialogue scene
+                if (e.getX() > 260 && e.getX() < 560 && e.getY() > 220 && e.getY() < 280)
                 {
-                    System.out.println("oh");
+                    nextButton = 2;
                     repaint();
                 }
-
-                if (e.getX() > 335 && e.getX() < 500 && e.getY() > 485 && e.getY() < 560)//if they press play button they are taken to the language class dialogue scene
+                if (e.getX() > 260 && e.getX() < 560 && e.getY() > 340 && e.getY() < 420)
                 {
-                    System.out.println("lol");
+                    nextButton = 1;
+                    System.out.println("banana");
+                    repaint();
+                }
+                if (e.getX() > 260 && e.getX() < 560 && e.getY() > 460 && e.getY() < 540)
+                {
+                    nextButton = 1;
+                    System.out.println("banana");
                     repaint();
                 }
             }
@@ -71,15 +74,85 @@ public class ScenePostOfficeWrite extends JPanel {
             g.drawImage(bg, x, y, this);
         }
 
-            if (nextButton == 0) {
-                FamilyLetter(g);
-            } else if (nextButton == 1) {
-                LetterOptions(g);
-            }
+        if (nextButton == 0) {
+            FamilyLetter(g);
+        } else if (nextButton == 1) {
+            LetterOptions(g);
+        } else if(nextButton==2){
+            RacistComment(g);
+        } else if(nextButton==3){
+
+        }
     }
 
 
-    public void FamilyLetter(Graphics g){
+    public void RacistComment(Graphics g) {
+        Graphics2D next = (Graphics2D) g;
+
+        next.setPaint(new Color(200, 90, 90));
+
+        RenderingHints button = new RenderingHints(
+                RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+
+        next.setRenderingHints(button);
+
+        next.fillRoundRect(335, 500, 150, 60, 25, 25);
+        g.setColor(Color.black);
+        g.setFont(new Font("Tahoma", Font.PLAIN, 30));
+        g.drawString("NEXT", 375, 540);
+
+        g.setColor(Color.black);
+
+        g.setFont(new Font("Tahoma", Font.PLAIN, 30));
+        g.drawString("To: Your Family", 290, 90);
+
+        g.setFont(new Font("Tahoma", Font.PLAIN, 20));
+
+        g.drawString("Hey Family! I'm really enjoying myself ", 250, 170);
+        g.drawString("here, but a couple days ago, someone  ", 250, 200);
+        g.drawString("yelled a racist comment at me, when I ", 250, 230);
+        g.drawString("was on my way home from language ", 250, 260);
+        g.drawString("class. I was taken aback, because  ", 250, 290);
+        g.drawString("everyone has been so kind to me ", 250, 320);
+        g.drawString("since I've arrived here. Anyways, ", 250, 350);
+        g.drawString("hope you are doing well and I can't ", 250, 380);
+        g.drawString("wait to see you guys soon! ", 250, 410);
+        g.drawString("Sincerely", 250, 430);
+        g.drawString("-", 250, 460);
+    }
+
+    public void LetterOptions(Graphics g) {
+        Graphics2D buttons = (Graphics2D) g;
+
+        buttons.setPaint(new Color(150, 150, 150));
+
+        RenderingHints button = new RenderingHints(
+                RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+
+        buttons.setRenderingHints(button);
+
+
+        buttons.fillRoundRect(260, 220, 300, 60, 25, 25);
+        buttons.fillRoundRect(260, 340, 300, 60, 25, 25);
+        buttons.fillRoundRect(260, 460, 300, 60, 25, 25);
+
+        g.setColor(Color.black);
+
+        g.setFont(new Font("Tahoma", Font.PLAIN, 30));
+        g.drawString("To: Your Family", 300, 90);
+
+        g.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        g.drawString("Write about...", 250, 170);
+
+        g.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        g.drawString("The racist comment on the street", 280, 255);
+        g.drawString("The co-worker language barrier", 280, 375);
+        g.drawString("Financial Issues", 280, 495);
+    }
+
+    public void FamilyLetter(Graphics g) {
         Graphics2D next = (Graphics2D) g;
 
         next.setPaint(new Color(200, 90, 90));
@@ -113,35 +186,7 @@ public class ScenePostOfficeWrite extends JPanel {
         g.drawString("Sincerely", 250, 430);
         g.drawString("-Your loved ones", 250, 460);
     }
-    public void LetterOptions(Graphics g){
-        Graphics2D buttons = (Graphics2D) g;
 
-        buttons.setPaint(new Color(150, 150, 150));
-
-        RenderingHints button = new RenderingHints(
-                RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-
-        buttons.setRenderingHints(button);
-
-
-        buttons.fillRoundRect(260, 220, 300, 60, 25, 25);
-        buttons.fillRoundRect(260, 340, 300, 60, 25, 25);
-        buttons.fillRoundRect(260, 460, 300, 60, 25, 25);
-
-        g.setColor(Color.black);
-
-        g.setFont(new Font("Tahoma", Font.PLAIN, 30));
-        g.drawString("To: Your Family", 300, 90);
-
-        g.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        g.drawString("Write about...", 250, 170);
-
-        g.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        g.drawString("The racist comment on the street", 280, 255);
-        g.drawString("The co-worker language barrier", 280, 375);
-        g.drawString("Financial Issues", 280, 495);
-    }
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(800, 600);
