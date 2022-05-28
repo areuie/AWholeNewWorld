@@ -1,20 +1,18 @@
 /**
  * The ScenePostOffice is the screen for the post office
- *
+ * <h3> Draft 2 </h3>
  * <p>
  * Version 1 - 3h
  * Added BufferedImage, created dialogue image, added graphics to screen
  * - Mona
- * </p>
  *
- *  <p>
  *  Version 2 - 5h
  *  Added interactive conversation where user presses space to continue reading
  *  - Mona
- *  </p>
+ * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 05.24.22
+ * @version 05.27.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -30,13 +28,14 @@ import java.io.File;
 import java.io.IOException;
 
 public class ScenePostOffice extends JPanel {
-    /**Background image*/
+
+    /**This variable stores the background image*/
     private BufferedImage bg;
-    /**image for the post office person*/
+    /**This variable stores the image for the post office person*/
     private BufferedImage person;
-    /**Counts the number of it runs through the if statements*/
+    /**This variable counts the number of it runs through the if statements*/
     int count = 0;
-    /**Array for all the dialogue that should be printed on the screen*/
+    /**This variable stores the array for all the dialogue that should be printed on the screen*/
     static String[] sentences = {"Hello!", "I have received a letter from your family", "Here you go. You can read it then ", "write your own message to send back."};
 
 
@@ -65,12 +64,19 @@ public class ScenePostOffice extends JPanel {
         });
     }
 
+    /**
+     * This method determines the dimensions of the panel
+     * @return The dimensions of the panel
+     */
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(800, 600);
     }
 
-
+    /**
+     * This method paints the graphics of the panel
+     * @param g Graphics
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

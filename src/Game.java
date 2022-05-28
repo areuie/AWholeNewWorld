@@ -1,6 +1,7 @@
 /**
  * The Game class is the driver class for the game
  *
+ * <h3>Draft 1</h3>
  * <p>
  * Version 1 - 4h (+4h Research)
  * Added variables to store the JFrame and JPanel, and the state of the game
@@ -16,11 +17,17 @@
  * Version 3 - 2h
  * Fixed a bug with multiple screens showing up at once
  * - Lois
+ * </p>
  *
+ * <h3>Draft 2</h3>
+ * <p>
+ *     Version 4 - 30 min
+ *     Added game states
+ *     - Lois
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 05.20.22
+ * @version 05.27.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -38,10 +45,10 @@ public class Game {
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
-
     public static int gameState = 1;
+    /** This variable stores the amount of money the player has */
     public static int money = 500;
-
+    /** This variable is the font of the game*/
     public static Font font;
 
     static {
@@ -52,9 +59,6 @@ public class Game {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    Game() {
     }
 
     /**
@@ -143,6 +147,10 @@ public class Game {
         }
     }
 
+    /**
+     * This method paints the box indicator of the amount of money the player has
+     * @param g
+     */
     public static void showMoney(Graphics g) {
         g.setFont(Game.font.deriveFont(28f));
         g.setColor(new Color(161, 200, 240, 90));

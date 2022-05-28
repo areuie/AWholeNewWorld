@@ -1,6 +1,7 @@
 /**
  * The SceneLanguageClassGame class is the screen for the language class mini-game.
  *
+ * <h3>Draft 1</h3>
  * <p>
  * Version 1 - 5h
  * Added BufferedImage
@@ -15,19 +16,23 @@
  * Version 3 - 2h
  * Graphics layout on PaintComponent
  * - Lois
+ * </p>
  *
+ * <h3>Draft 2</h3>
+ * <p>
  * Version 4 - 4h
- * Fixing bugs (took a long time surprisingly)
+ * Fixing logical bugs and graphical bugs
  * - Alisa
  *
  * Version 5 - 2.5h
  * Added alphabet input (a,b,c)
  * Finished cypher game
+ * Changed font
  * - Alisa
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 05.20.22
+ * @version 05.27.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -50,15 +55,21 @@ import java.util.Map;
 
 public class SceneLanguageClassGame extends JPanel {
 
+    /** This variable is the background of the panel */
     private BufferedImage bg;
-    char[] cypher;
-    static Map<Direction, Boolean> dirMap = new EnumMap<>(Direction.class);
-
+    /** These variables control the x and y coordinates of the letter selector*/
     static int x = 215, y = 55;
+    /** This variable controls the index of the letter selected */
     static int idx = 0;
+    /** This variable controls the direction of where the letter selector is going towards (left/right/neither) */
     static char dir = ' ';
+    /** This variable stores the answer key for the sentence to be decyphered*/
     static String[] sentences = {"CAN YOU@TRANSLATE@THIS@SENTENCE?"};
+    /** This variable stores the random cypher of the string*/
+    char[] cypher;
+    /** This variable stores the letters that the player guesses */
     static char[] userGuess = new char[sentences[0].length()];
+    /** This variable stores the current letter that the player pressed */
     static char letter = ' ';
 
     /**
@@ -393,6 +404,11 @@ public class SceneLanguageClassGame extends JPanel {
 //        }
 //    }
 
+    /**
+     * This method checks where the index should be if the user goes back a line
+     * @param str
+     * @return New selected letter index
+     */
     int previousLine(String str) {
         for (int i = str.length() - 1; i >= 0; i--) {
             if (str.charAt(i) == '@') return i + 1;
@@ -400,6 +416,10 @@ public class SceneLanguageClassGame extends JPanel {
         return 0;
     }
 
+    /**
+     * This method determines the dimensions of the panel
+     * @return The dimensions of the panel
+     */
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(800, 600);
@@ -465,9 +485,9 @@ public class SceneLanguageClassGame extends JPanel {
         g.setColor(new Color(161, 200, 240, 60));
         g.fillRoundRect(x, y, 25, 55, 10, 10);
 
-        Game.showMoney(g);
+        Game.showMoney(g); //shows how much money the player has
 
-        checkCorrect();
+        checkCorrect(); //checks if the user guess is the same as the answer key
     }
 
 }

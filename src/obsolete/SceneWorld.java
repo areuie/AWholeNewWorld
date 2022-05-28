@@ -1,4 +1,4 @@
-/**
+package obsolete; /**
  * This class is the screen for the long screen for the character.
  *
  * <p>

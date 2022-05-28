@@ -1,12 +1,14 @@
 /**
  * The SceneLanguageClass is the screen for the language class.
  *
+ * <h3>Draft 1</h3>
  * <p>
  * Version 1 - 3h
  * Added BufferedImage, created dialogue image, added graphics to screen
  * - Mona
  * </p>
  *
+ * <h3>Draft 2</h3>
  *  <p>
  *  Version 2 - 5h
  *  Added interactive conversation where user presses space to continue reading
@@ -14,7 +16,7 @@
  *  </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 05.24.22
+ * @version 05.27.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -61,12 +63,19 @@ public class SceneLanguageClass extends JPanel {
         });
     }
 
+    /**
+     * This method determines the dimensions of the panel
+     * @return The dimensions of the panel
+     */
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(800, 600);
     }
 
-
+    /**
+     * This method paints the graphics of the panel
+     * @param g Graphics
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

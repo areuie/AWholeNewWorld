@@ -1,6 +1,7 @@
 /**
  * The PostOfficeWrite class is for writing a letter at the post office
  *
+ * <h2>Draft 2</h2>
  * <p>
  * Version 1 - 2h
  * Designed background and buttons
@@ -30,9 +31,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class ScenePostOfficeWrite extends JPanel {
-    /**Background Image*/
+
+    /**This variable stores the background Image*/
     private BufferedImage bg;
-    /**Button for how many times user has interacted*/
+    /**This variable stores the button for how many times user has interacted*/
     int nextButton=0;
 
     /**
@@ -46,7 +48,7 @@ public class ScenePostOfficeWrite extends JPanel {
         }
 
         /**
-         * This method checks if a user pressed the screen and which button it reacted with
+         * Checks if a user pressed the screen and which button it reacted with
          */
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
@@ -76,7 +78,8 @@ public class ScenePostOfficeWrite extends JPanel {
     }
 
     /**
-     * This method creates the background and graphics
+     * This method paints graphics on the screen.
+     * @param g Graphic
      */
     @Override
     protected void paintComponent(Graphics g) {
@@ -104,6 +107,7 @@ public class ScenePostOfficeWrite extends JPanel {
 
     /**
      * This method writes the letter from the family
+     * @param g Graphic
      */
     public void FamilyLetter(Graphics g){
         Graphics2D next = (Graphics2D) g;
@@ -145,6 +149,7 @@ public class ScenePostOfficeWrite extends JPanel {
 
     /**
      * This method gives the user buttons for 3 different options on the letter
+     * @param g Graphic
      */
     public void LetterOptions(Graphics g){
         Graphics2D buttons = (Graphics2D) g;
@@ -176,6 +181,7 @@ public class ScenePostOfficeWrite extends JPanel {
 
     /**
      * This method writes a letter based on the racist comment on the street
+     * @param g Graphic
      */
     public void RacistComment(Graphics g) {
         Graphics2D next = (Graphics2D) g;
@@ -213,6 +219,10 @@ public class ScenePostOfficeWrite extends JPanel {
         g.drawString("-", 250, 460);
     }
 
+    /**
+     * This method determines the dimensions of the panel
+     * @return The dimensions of the panel
+     */
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(800, 600);
