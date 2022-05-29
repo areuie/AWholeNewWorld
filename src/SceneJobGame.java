@@ -2,17 +2,22 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SceneJobGame extends JPanel{
+public class SceneJobGame extends JPanel implements ActionListener, Runnable{
     /** This variable stores the background */
     private BufferedImage bg;
     /** This variable stores the x coord of the background */
     int backgroundX = 0;
+    /** This variable stores the x coord of the background */
+    int backgroundX2 = -795;
     /** This variable checks if the player is walking or not */
     boolean isWalking = false;
+    /** This variable stores the image of the person*/
+    private BufferedImage person;
 
     /**
      * The constructor of the panel
@@ -20,6 +25,7 @@ public class SceneJobGame extends JPanel{
     public SceneJobGame(){
         try {
             bg = ImageIO.read(new File("src/img/workspaceSpan.png"));
+            person = ImageIO.read(new File("src/img/pixil-frame-Female.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -42,6 +48,7 @@ public class SceneJobGame extends JPanel{
         if (bg != null) {
             Image background = bg.getScaledInstance(1600, 600, Image.SCALE_DEFAULT);
             g.drawImage(background, backgroundX, 0, this);
+            //g.drawImage(background, backgroundX2, 0, this);
         }
 
         InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
@@ -76,5 +83,19 @@ public class SceneJobGame extends JPanel{
         });
         setFocusable(true);
         requestFocusInWindow();
+
+        Graphics2D g2d = (Graphics2D) g;
+        Image p = person.getScaledInstance(person.getWidth()*7, person.getHeight()*7, Image.SCALE_DEFAULT);
+        g2d.drawImage(p, 0, 350, null);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
+
+    @Override
+    public void run() {
+
     }
 }
