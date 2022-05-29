@@ -154,6 +154,18 @@ public class Game {
             } else if (gameState == 9) {
                 frame.remove(screen);
 
+                SceneInterviewDialogue interview = new SceneInterviewDialogue();
+                frame.add(interview);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+
+                screen = interview;
+                gameState = 0;
+            }
+            else if (gameState == 10) {
+                frame.remove(screen);
+
                 SceneJobGame jobGame = new SceneJobGame();
                 frame.add(jobGame);
                 frame.pack();
