@@ -1,37 +1,12 @@
-/**
- * The SceneLanguageClassGame class is the screen for the language class mini-game.
- * <h3> Draft 1 </h3>
- * <p>
- * Version 1 - 5h
- * Added BufferedImage
- * Created random cypher key derived from a string sentence
- * Text layout and logic
- * - Lois
- *
- * </p>
- *
- * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 05.27.22
- *
- * <h2> Course Info:</h2>
- * ICS4U0
- * Mrs. Krasteva
- *
- */
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.Map;
 
-public class SceneLongMainScreen extends JPanel{
+public class SceneJobGame extends JPanel{
     /** This variable stores the background */
     private BufferedImage bg;
     /** This variable stores the x coord of the background */
@@ -42,9 +17,9 @@ public class SceneLongMainScreen extends JPanel{
     /**
      * The constructor of the panel
      */
-    public SceneLongMainScreen(){
+    public SceneJobGame(){
         try {
-            bg = ImageIO.read(new File("src/img/BGTemp.png"));
+            bg = ImageIO.read(new File("src/img/workspaceSpan.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,7 +40,7 @@ public class SceneLongMainScreen extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (bg != null) {
-            Image background = bg.getScaledInstance(2400, 600, Image.SCALE_DEFAULT);
+            Image background = bg.getScaledInstance(1600, 600, Image.SCALE_DEFAULT);
             g.drawImage(background, backgroundX, 0, this);
         }
 
@@ -92,7 +67,7 @@ public class SceneLongMainScreen extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("right " + backgroundX);
-                if (backgroundX + 1 > -1595) {
+                if (backgroundX + 1 > -795) {
                     backgroundX-=5;
                     isWalking = true;
                 }
@@ -102,6 +77,4 @@ public class SceneLongMainScreen extends JPanel{
         setFocusable(true);
         requestFocusInWindow();
     }
-
-
 }

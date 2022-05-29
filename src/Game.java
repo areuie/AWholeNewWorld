@@ -26,6 +26,13 @@
  *     - Lois
  * </p>
  *
+ * <h3> Draft 3</h3>
+ * <p>
+ *     Version 5 - 30 min
+ *     Added variables storing the money given to family, and how happy the family is
+ *     - Alisa
+ * </p>
+ *
  * @author Alisa Wu, Mona Afshar, Lois Zan
  * @version 05.27.22
  *
@@ -45,7 +52,7 @@ public class Game {
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
-    public static int gameState = 1;
+    public static int gameState = 9;
     /** This variable stores the amount of money the player has */
     public static int money = 500;
     /** This variable is the font of the game*/
@@ -143,6 +150,17 @@ public class Game {
                 frame.setVisible(true);
 
                 screen = letter;
+                gameState = 0;
+            } else if (gameState == 9) {
+                frame.remove(screen);
+
+                SceneJobGame jobGame = new SceneJobGame();
+                frame.add(jobGame);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+
+                screen = jobGame;
                 gameState = 0;
             }
 

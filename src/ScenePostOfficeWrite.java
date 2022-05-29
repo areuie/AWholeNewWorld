@@ -1,7 +1,7 @@
 /**
  * The PostOfficeWrite class is for writing a letter at the post office
  *
- * <h2>Draft 2</h2>
+ * <h3>Draft 2</h3>
  * <p>
  * Version 1 - 2h
  * Designed background and buttons
@@ -10,6 +10,14 @@
  * Version 2 - 5h
  * Created Game and buttons
  * -Mona
+ * </p>
+ *
+ * <h3> Draft 3 </h3>
+ * <p>
+ *     Version 3 - 2h
+ *     Added feature to send money
+ *     Fixed font
+ *     - Alisa
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
