@@ -7,6 +7,10 @@
  * Created the conversation
  * - Mona
  *
+ * Version 2 - 2h
+ * Made the conversation interactive
+ * Completed the conversation
+ * - Mona
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
@@ -15,7 +19,6 @@
  * <h2> Course Info:</h2>
  * ICS4U0
  * Mrs. Krasteva
- *
  */
 
 import javax.imageio.ImageIO;
@@ -30,6 +33,9 @@ import java.io.IOException;
 public class SceneInterviewDialogue extends JPanel {
     /** This variable stores the background image*/
     private BufferedImage bg;
+    /** This variable stores person that is interviewing*/
+    private BufferedImage person;
+    String job = "none";
 
     /** The constructor of the screen */
     SceneInterviewDialogue() {
@@ -38,30 +44,26 @@ public class SceneInterviewDialogue extends JPanel {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        try {
+            person = ImageIO.read(new File("src/img/pixil-layer-0.png"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
         addMouseListener(new MouseAdapter() { //menu
             public void mousePressed(MouseEvent e) {
-                if (e.getX() > 120 && e.getX() < 390 && e.getY() > 380 && e.getY() < 460)//if they press play button they are taken to the language class dialogue scene
+                if (e.getX() > 350 && e.getX() < 650 && e.getY() > 300 && e.getY() < 350)//if they press play button they are taken to the language class dialogue scene
                 {
                     repaint();
-                    Game.gameState = 5;
-                    System.out.println("PLAY");
-
-                } else if (e.getX() > 408 && e.getX() < 680 && e.getY() > 380 && e.getY() < 460)//if they press instructions button they are taken to that page
+                    job = "Engineer";
+                } else if (e.getX() > 350 && e.getX() < 650 && e.getY() > 370 && e.getY() < 420)//if they press play button they are taken to the language class dialogue scene
                 {
                     repaint();
-                    Game.gameState = 2;
-                    System.out.println("INSTRUCTIONS");
-                } else if (e.getX() > 120 && e.getX() < 390 && e.getY() > 480 && e.getY() < 560)//if they press instructions button they are taken to that page
+                    job = "Teacher";
+                } else if (e.getX() > 350 && e.getX() < 650 && e.getY() > 440 && e.getY() < 490)//if they press play button they are taken to the language class dialogue scene
                 {
                     repaint();
-                    Game.gameState = 3;
-                    System.out.println("HIGHSCORES");
-                } else if (e.getX() > 408 && e.getX() < 680 && e.getY() > 480 && e.getY() < 560)//if they press instructions button they are taken to that page
-                {
-                    repaint();
-                    Game.gameState = 4;
-                    System.out.println("EXIT");
+                    job = "Receptionist";
                 }
             }
         });
@@ -79,6 +81,53 @@ public class SceneInterviewDialogue extends JPanel {
             int y = (getHeight() - bg.getHeight()) / 2;
             g.drawImage(bg, x, y, this);
         }
+        if (person != null) {
+            Image teach = person.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+            g.drawImage(teach, -50, 230, this);
+        }
+
+        Graphics2D buttons = (Graphics2D) g;
+
+        RenderingHints button = new RenderingHints(
+                RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+
+        buttons.setRenderingHints(button);
+
+        buttons.setPaint(new Color(59, 34, 1));
+        buttons.fillRect(0, 450, 800, 150);
+
+        buttons.setPaint(new Color(255, 255, 255));
+        buttons.fillRoundRect(335, 180, 330, 100, 25, 25);
+
+        buttons.setPaint(new Color(150, 150, 150));
+        buttons.fillRoundRect(350, 300, 300, 50, 25, 25);
+        buttons.fillRoundRect(350, 370, 300, 50, 25, 25);
+        buttons.fillRoundRect(350, 440, 300, 50, 25, 25);
+
+        g.setColor(Color.black);
+        g.setFont(Game.font.deriveFont(20f));
+        g.drawString("Engineer $100,000/year", 415, 330);
+        g.drawString("Supply Teacher $40,000/year", 390, 400);
+        g.drawString("Receptionist $15,000/year", 400, 470);
+
+        if (job.equals("none")) {
+            g.setFont(Game.font.deriveFont(30f));
+            g.drawString("What job would you like?", 360, 240);
+        } else if (job.equals("Engineer")) {
+            g.setFont(Game.font.deriveFont(25f));
+            g.drawString("Sorry! We cannot accept your ", 360, 210);
+            g.drawString("previous engineering degree.", 360, 240);
+            g.setFont(Game.font.deriveFont(15f));
+            g.drawString("Please select another option.", 360, 270);
+        } else if (job.equals("Teacher")) {
+            g.setFont(Game.font.deriveFont(25f));
+            g.drawString("Sorry! We cannot accept your ", 360, 210);
+            g.drawString("previous teaching experience.", 360, 240);
+            g.setFont(Game.font.deriveFont(15f));
+            g.drawString("Please select another option.", 360, 270);
+        } else if (job.equals("Receptionist"))
+            Game.gameState=10;
     }
 
     /**
