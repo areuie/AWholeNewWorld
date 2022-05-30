@@ -154,7 +154,7 @@ public class Game {
             } else if (gameState == 9) {
                 frame.remove(screen);
 
-                SceneInterviewDialogue interview = new SceneInterviewDialogue();
+                SceneLongMainScreen interview = new SceneLongMainScreen();
                 frame.add(interview);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
