@@ -175,16 +175,28 @@ public class Game {
                 screen = jobGame;
                 gameState = 0;
             }
+<<<<<<< Updated upstream
             else if (gameState == 11){
                 frame.remove(screen);
 
                 SceneLongMainScreen longScreen = new SceneLongMainScreen();
                 frame.add(longScreen);
+=======
+            else if (gameState == 11) {
+                frame.remove(screen);
+
+                SceneImmigrationOffice immigration = new SceneImmigrationOffice();
+                frame.add(immigration);
+>>>>>>> Stashed changes
                 frame.pack();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
 
+<<<<<<< Updated upstream
                 screen = longScreen;
+=======
+                screen = immigration;
+>>>>>>> Stashed changes
                 gameState = 0;
             }
 
