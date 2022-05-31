@@ -34,18 +34,35 @@ import java.util.Map;
 
 public class SceneLongMainScreen extends JPanel{
     /** This variable stores the background */
-    private BufferedImage bg, spriteStanding,spriteTest;
+    private BufferedImage bg, spriteStanding,spriteAni1,spriteAni2,spriteAni3,spriteAni4;
     /** This variable stores the x coord of the background */
-    int backgroundX = 0;
+    int backgroundX = 0, beforeBackgroundX = 0;
     /** This variable checks if the player is walking or not */
     boolean isWalking = false;
     int typeImage = 0;//0 is still, 1,2,3,4 are walking/motion
-    Timer timer = new Timer(1000, new ActionListener() {
+    Timer timer1 = new Timer(100, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            if (typeImage == 0) typeImage = 1;
-            else if (typeImage == 1) typeImage = 0;
-            System.out.println("hi");
-            repaint();
+
+                if(isWalking) {
+                    if (typeImage >4) typeImage = 1;
+                    System.out.println("type image: " + typeImage);
+                    repaint();
+                    typeImage++;
+                    System.out.println("Current X: " + backgroundX + " and before X: " + beforeBackgroundX);
+                }
+            if(beforeBackgroundX==backgroundX){
+                isWalking = false;
+                typeImage = 0;
+                System.out.println("!isWalking");
+            }
+        }
+    });
+
+    //Keep track of the time when user stays in place, when x is not changing.
+    Timer timer2 = new Timer(150, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            beforeBackgroundX = backgroundX;
         }
     });
 
@@ -56,36 +73,17 @@ public class SceneLongMainScreen extends JPanel{
         try {
             bg = ImageIO.read(new File("src/img/BGTemp.png"));
             spriteStanding = ImageIO.read(new File("src/img/pixil-frame-female.png"));
-            spriteTest = ImageIO.read(new File("src/img/pixil-frame-male.png"));
+            spriteAni1 = ImageIO.read(new File("src/img/pixil-frame-Female1.png"));
+            spriteAni2 = ImageIO.read(new File("src/img/pixil-frame-Female2.png"));
+            spriteAni3 = ImageIO.read(new File("src/img/pixil-frame-Female3.png"));
+            spriteAni4 = ImageIO.read(new File("src/img/pixil-frame-Female4.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        timer.start();
-    }
 
-    /**
-     * This method determines the dimensions of the panel
-     * @return The dimensions of the panel
-     */
-    @Override
-    public Dimension getPreferredSize() { return new Dimension(800, 600); }
-
-    /**
-     * This method paints graphics on the screen.
-     * @param g Graphic
-     */
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        if (bg != null) {
-            Image background = bg.getScaledInstance(2400, 600, Image.SCALE_DEFAULT);
-            g.drawImage(background, backgroundX, 0, this);
-        }
-        if(true){
-            Image standing = spriteStanding.getScaledInstance(spriteStanding.getWidth()*6, spriteStanding.getHeight()*6, Image.SCALE_DEFAULT); ;
-            if (typeImage == 0) standing = spriteStanding.getScaledInstance(spriteStanding.getWidth()*6, spriteStanding.getHeight()*6, Image.SCALE_DEFAULT);
-            else if (typeImage == 1) standing = spriteTest.getScaledInstance(spriteTest.getWidth()*6, spriteTest.getHeight()*6, Image.SCALE_DEFAULT);
-            g.drawImage(standing,10,360, this);
+        if (Game.gameState == 11) {
+            timer1.start();
+            timer2.start();
         }
 
         InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
@@ -93,7 +91,6 @@ public class SceneLongMainScreen extends JPanel{
 
         im.put(KeyStroke.getKeyStroke("LEFT"), "left");
         im.put(KeyStroke.getKeyStroke("RIGHT"), "right");
-
 
         am.put("left", new AbstractAction() {
             @Override
@@ -120,6 +117,35 @@ public class SceneLongMainScreen extends JPanel{
         });
         setFocusable(true);
         requestFocusInWindow();
+    }
+
+    /**
+     * This method determines the dimensions of the panel
+     * @return The dimensions of the panel
+     */
+    @Override
+    public Dimension getPreferredSize() { return new Dimension(800, 600); }
+
+    /**
+     * This method paints graphics on the screen.
+     * @param g Graphic
+     */
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (bg != null) {
+            Image background = bg.getScaledInstance(2400, 600, Image.SCALE_DEFAULT);
+            g.drawImage(background, backgroundX, 0, this);
+        }
+        if(true){
+            Image sprite = spriteStanding.getScaledInstance(spriteStanding.getWidth()*6, spriteStanding.getHeight()*6, Image.SCALE_DEFAULT); ;
+            if (typeImage == 0) sprite = spriteStanding.getScaledInstance(spriteStanding.getWidth()*6, spriteStanding.getHeight()*6, Image.SCALE_DEFAULT);
+            else if (typeImage == 1) sprite = spriteAni1.getScaledInstance(spriteAni1.getWidth()*6, spriteAni1.getHeight()*6, Image.SCALE_DEFAULT);
+            else if (typeImage == 2) sprite = spriteAni2.getScaledInstance(spriteAni2.getWidth()*6, spriteAni2.getHeight()*6, Image.SCALE_DEFAULT);
+            else if (typeImage == 3) sprite = spriteAni3.getScaledInstance(spriteAni3.getWidth()*6, spriteAni3.getHeight()*6, Image.SCALE_DEFAULT);
+            else if (typeImage == 4 || typeImage ==5) sprite = spriteAni4.getScaledInstance(spriteAni4.getWidth()*6, spriteAni4.getHeight()*6, Image.SCALE_DEFAULT);
+            g.drawImage(sprite,10,360, this);
+        }
     }
 
 
