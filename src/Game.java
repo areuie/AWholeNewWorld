@@ -60,6 +60,7 @@ public class Game {
     public static int familyHappiness;
     public static int familyMoneyGiven;
 
+
     static {
         try {
             font = Font.createFont(Font.TRUETYPE_FONT, new File("src/font/marumonica.ttf"));

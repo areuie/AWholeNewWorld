@@ -42,6 +42,8 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
     private int scrollerCounter1 = 1, scrollerCounter2 = 1;
     private char letter = ' ';
 
+    private int spriteImg = 1;
+
     private static String[] words = {
             "IMMIGRANT",
             "CITIZENSHIP",
@@ -80,13 +82,29 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
         }
     });
 
+    Timer timer3 = new Timer(500, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String path = "src/img/pixil-frame-Female" + spriteImg + ".png";
+            try {
+                person = ImageIO.read(new File(path));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            repaint();
+
+            if (spriteImg > 3) spriteImg = 1;
+            else spriteImg++;
+        }
+    });
+
     /**
      * The constructor of the panel
      */
     public SceneJobGame(){
         try {
             bg = ImageIO.read(new File("src/img/workspaceSpan.png"));
-            person = ImageIO.read(new File("src/img/pixil-frame-Female.png"));
+            person = ImageIO.read(new File("src/img/pixil-frame-Female1.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -96,6 +114,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
         if (Game.gameState == 10) {
             timer1.start();
             timer2.start();
+            timer3.start();
         }
 
         im.put(KeyStroke.getKeyStroke("A"), "A");
@@ -329,12 +348,10 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
         super.paintComponent(g);
         Image background = bg.getScaledInstance(1600, 600, Image.SCALE_DEFAULT);
 
-        System.out.println(letter);
-
         if (backgroundX < -3200) {
             backgroundX = 0;
         }
-
+        //System.out.println(backgroundX);
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(background, backgroundX, 0, this);
         g2d.drawImage(background, backgroundX + 1600, 0, this);
@@ -342,8 +359,10 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
         g2d.setFont(Game.font.deriveFont(28f));
 
         String word = "";
-        if (queue.peekFirst() != null) word = queue.peekFirst().getWord();
-        System.out.println(word);
+        if (queue.peekFirst() != null) {
+            word = queue.peekFirst().getWord();
+            System.out.println(word + " " + (queue.peekFirst().getX() + backgroundX));
+        }
 
         for (int i = 0; i < word.length(); i++) {
             g2d.drawString(String.valueOf(word.charAt(i)), queue.peekFirst().getX() + backgroundX + i * 15, queue.peekFirst().getY());

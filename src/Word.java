@@ -6,7 +6,7 @@ public class Word {
         this.word = word;
         this.x = (int) (Math.random() * 100) + 1200 - SceneJobGame.backgroundX;
         this.y = (int) (Math.random() * 150) + 350;
-        System.out.println("initalize " + x + " " + y);
+        System.out.println("initalize " + x + " " + y + " " + SceneJobGame.backgroundX);
     }
     public int getX() {
         return x;
