@@ -362,6 +362,8 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
 
         Image p = person.getScaledInstance(person.getWidth()*7, person.getHeight()*7, Image.SCALE_DEFAULT);
         g2d.drawImage(p, 0, 350, null);
+
+        Game.showMoney(g2d);
     }
 
     @Override
