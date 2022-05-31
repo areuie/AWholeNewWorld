@@ -154,7 +154,7 @@ public class Game {
             } else if (gameState == 9) {
                 frame.remove(screen);
 
-                SceneLongMainScreen interview = new SceneLongMainScreen();
+                SceneInterviewDialogue interview = new SceneInterviewDialogue();
                 frame.add(interview);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
@@ -166,7 +166,7 @@ public class Game {
             else if (gameState == 10) {
                 frame.remove(screen);
 
-                SceneInterviewDialogue jobGame = new SceneInterviewDialogue();
+                SceneJobGame jobGame = new SceneJobGame();
                 frame.add(jobGame);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
