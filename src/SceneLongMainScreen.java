@@ -43,13 +43,13 @@ public class SceneLongMainScreen extends JPanel{
     Timer timer1 = new Timer(100, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
 
-                if(isWalking) {
-                    if (typeImage >4) typeImage = 1;
-                    System.out.println("type image: " + typeImage);
-                    repaint();
-                    typeImage++;
-                    System.out.println("Current X: " + backgroundX + " and before X: " + beforeBackgroundX);
-                }
+            if(isWalking) {
+                if (typeImage >4) typeImage = 1;
+                System.out.println("type image: " + typeImage);
+                repaint();
+                typeImage++;
+                System.out.println("Current X: " + backgroundX + " and before X: " + beforeBackgroundX);
+            }
             if(beforeBackgroundX==backgroundX){
                 isWalking = false;
                 typeImage = 0;
