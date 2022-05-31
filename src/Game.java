@@ -154,7 +154,7 @@ public class Game {
             } else if (gameState == 9) {
                 frame.remove(screen);
 
-                SceneInterviewDialogue interview = new SceneInterviewDialogue();
+                SceneLongMainScreen interview = new SceneLongMainScreen();
                 frame.add(interview);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
@@ -166,7 +166,7 @@ public class Game {
             else if (gameState == 10) {
                 frame.remove(screen);
 
-                SceneJobGame jobGame = new SceneJobGame();
+                SceneInterviewDialogue jobGame = new SceneInterviewDialogue();
                 frame.add(jobGame);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
@@ -175,28 +175,16 @@ public class Game {
                 screen = jobGame;
                 gameState = 0;
             }
-<<<<<<< Updated upstream
-            else if (gameState == 11){
-                frame.remove(screen);
-
-                SceneLongMainScreen longScreen = new SceneLongMainScreen();
-                frame.add(longScreen);
-=======
             else if (gameState == 11) {
                 frame.remove(screen);
 
                 SceneImmigrationOffice immigration = new SceneImmigrationOffice();
                 frame.add(immigration);
->>>>>>> Stashed changes
                 frame.pack();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
 
-<<<<<<< Updated upstream
-                screen = longScreen;
-=======
                 screen = immigration;
->>>>>>> Stashed changes
                 gameState = 0;
             }
 
