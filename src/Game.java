@@ -166,7 +166,7 @@ public class Game {
             else if (gameState == 10) {
                 frame.remove(screen);
 
-                SceneJobGame jobGame = new SceneJobGame();
+                SceneInterviewDialogue jobGame = new SceneInterviewDialogue();
                 frame.add(jobGame);
                 frame.pack();
                 frame.setLocationRelativeTo(null);

@@ -32,7 +32,7 @@ import java.io.IOException;
 
 public class SceneInterviewDialogue extends JPanel {
     /** This variable stores the background image*/
-    private BufferedImage bg;
+    private Image bg;
     /** This variable stores person that is interviewing*/
     private BufferedImage person;
     String job = "none";
@@ -40,7 +40,7 @@ public class SceneInterviewDialogue extends JPanel {
     /** The constructor of the screen */
     SceneInterviewDialogue() {
         try {
-            bg = ImageIO.read(new File("src/img/interviewBG.png"));
+            bg = ImageIO.read(new File("src/img/WorkInteractBG.png")).getScaledInstance(800, 600, Image.SCALE_DEFAULT);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -77,9 +77,7 @@ public class SceneInterviewDialogue extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (bg != null) {
-            int x = (getWidth() - bg.getWidth()) / 2;
-            int y = (getHeight() - bg.getHeight()) / 2;
-            g.drawImage(bg, x, y, this);
+            g.drawImage(bg, 0, 0, this);
         }
         if (person != null) {
             Image teach = person.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
@@ -93,9 +91,6 @@ public class SceneInterviewDialogue extends JPanel {
                 RenderingHints.VALUE_ANTIALIAS_ON);
 
         buttons.setRenderingHints(button);
-
-        buttons.setPaint(new Color(59, 34, 1));
-        buttons.fillRect(0, 450, 800, 150);
 
         buttons.setPaint(new Color(255, 255, 255));
         buttons.fillRoundRect(335, 180, 330, 100, 25, 25);
