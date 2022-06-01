@@ -21,22 +21,26 @@ import java.io.IOException;
 public class SceneIntroPlane extends JPanel {
     private BufferedImage bg;
     private BufferedImage plane;
-    int count = 0, planeX = -100, planeY = 200;
+    int count = 0, planeX = -150, planeY = 50;
     boolean almostFinished = false;
     static String[] sentences = {"Welcome to your new country.", "We hope you'll find everyone wonderful.", "Remember to study English hard,", " make new friends, ", "and enjoy your stay to the fullest." , 
-    "We've already made accomodations for you ", "by giving you your first house! Though ", "the rent is still yours to pay.", "Another thing to keep in mind is your family.", "Don't fail here.", "They're counting on you."};
+    "You're lucky that you've made plans for yourself", "by giving renting your first house! Though ",
+    "the rent might prove a problem.", "Another thing to keep in mind is your family.", "Don't fail here.", "They're counting on you."};
 
-    Timer timer1 = new Timer(100, new ActionListener() {
+    Timer timer1 = new Timer(50, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             if(almostFinished) {
-                if (planeX<=800 || planeY >=0){
-                    planeX +=7;
-                    planeY +=2;
+                if (planeX<=821 || planeY >=0){
+                    planeX +=20;
+                    planeY -=4 ;
+                    System.out.println("Almost finished!");
                 }
             }else{
                 planeX +=2;
-                planeY +=1;
+                planeY -=1;
+                System.out.println("Moving..");
             }
+            repaint();
         }
     });
 
@@ -50,10 +54,12 @@ public class SceneIntroPlane extends JPanel {
             ex.printStackTrace();
         }
         try {
-            plane = ImageIO.read(new File("src/img/plane.png"));
+            plane = ImageIO.read(new File("src/img/airplane.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
+        timer1.start();
 
         getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "next");
         getActionMap().put("next", new AbstractAction() {
@@ -84,29 +90,30 @@ public class SceneIntroPlane extends JPanel {
         g.setFont(Game.font.deriveFont(25f));
 
         if (bg != null) {
-            int x = (getWidth() - bg.getWidth()) / 2;
-            int y = (getHeight() - bg.getHeight()) / 2;
-            g.drawImage(bg, x, y, this);
+            Image background = bg.getScaledInstance(800, 600, Image.SCALE_DEFAULT);
+            g.drawImage(background, 0, 0, this);
         }
         if (plane != null) {
-            Image airPlane = plane.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+            Image airPlane = plane.getScaledInstance(600, 600, Image.SCALE_DEFAULT);
             g.drawImage(airPlane, planeX, planeY, this);
         }
 
         g.setColor(Color.black);
 
-        int xcord = 300;
+        int xcord = 200;
         int ycord = 470;
 
         if (count < sentences.length) {
             g.setColor(Color.black);
             g.drawString(sentences[count], xcord, ycord);
-            g.drawString(sentences[count + 1], xcord, ycord + 40);
-            count++;
-        } else if (count == sentences.length) {
-            Game.gameState =11;
+            if(count == sentences.length - 2) almostFinished = true;
+        }
+        if (count >= sentences.length-1 && planeX>=800) {
+            Game.gameState =9;
             count++;
         }
+        System.out.println("Current count: " + count + " and current planeX: " + planeX + " Current lenght array is: " + sentences.length);
+
         Game.showMoney(g);
     }
 }
