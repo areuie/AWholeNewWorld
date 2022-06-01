@@ -52,7 +52,7 @@ public class Game {
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
-    public static int gameState = 11;
+    public static int gameState = 10;
     /** This variable stores the amount of money the player has */
     public static int money = 500;
     /** This variable is the font of the game*/
@@ -167,7 +167,7 @@ public class Game {
             else if (gameState == 10) {
                 frame.remove(screen);
 
-                SceneInterviewDialogue jobGame = new SceneInterviewDialogue();
+                SceneJobGame jobGame = new SceneJobGame();
                 frame.add(jobGame);
                 frame.pack();
                 frame.setLocationRelativeTo(null);

@@ -350,7 +350,11 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
 
         if (backgroundX < -3200) {
             backgroundX = 0;
+            for (Word i: queue) {
+                i.setX();
+            }
         }
+
         //System.out.println(backgroundX);
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(background, backgroundX, 0, this);
@@ -361,11 +365,11 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
         String word = "";
         if (queue.peekFirst() != null) {
             word = queue.peekFirst().getWord();
-            System.out.println(word + " " + (queue.peekFirst().getX() + backgroundX));
+            //System.out.println(word + " " + (queue.peekFirst().getX()));
         }
 
         for (int i = 0; i < word.length(); i++) {
-            g2d.drawString(String.valueOf(word.charAt(i)), queue.peekFirst().getX() + backgroundX + i * 15, queue.peekFirst().getY());
+            g2d.drawString(String.valueOf(word.charAt(i)), queue.peekFirst().getX()+ i * 15, queue.peekFirst().getY());
             if (queue.peekFirst().getX() + backgroundX + i * 15 < 0) Game.gameState = 1;
             if (i == 0 && letter == word.charAt(i)) {
                 queue.peekFirst().setWord(word.substring(i + 1));
@@ -375,7 +379,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
         }
         int counter = 0;
         for (Word i: queue) {
-            if (counter != 0) g2d.drawString(i.getWord(), i.getX() + backgroundX, i.getY());
+            if (counter != 0) g2d.drawString(i.getWord(), i.getX(), i.getY());
             counter++;
         }
 
