@@ -19,6 +19,13 @@
  *
  * </p>
  *
+ * <h3> Draft 4 </h3>
+ * <p>
+ *     Version 4 - 1.5h
+ *     Redrew main screen pixel art
+ *     - Alisa
+ * </p>
+ *
  * @author Alisa Wu, Mona Afshar, Lois Zan
  * @version 05.27.22
  *
@@ -44,7 +51,7 @@ public class SceneMenu extends JPanel {
     /** The constructor of the screen */
     SceneMenu() {
         try {
-            bg = ImageIO.read(new File("src/img/bg.png"));
+            bg = ImageIO.read(new File("src/img/bg2.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }

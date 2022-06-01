@@ -374,7 +374,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
 
         for (int i = 0; i < word.length(); i++) {
             g2d.drawString(String.valueOf(word.charAt(i)), queue.peekFirst().getX()+ i * 15, queue.peekFirst().getY());
-            if (queue.peekFirst().getX() + backgroundX + i * 15 < 0) Game.gameState = 1;
+            if (queue.peekFirst().getX() + i * 15 < 0) Game.gameState = 1;
             if (i == 0 && letter == word.charAt(i)) {
                 queue.peekFirst().setWord(word.substring(i + 1));
                 letter = ' ';
