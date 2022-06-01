@@ -31,7 +31,7 @@ public class SceneIntroPlane extends JPanel {
      */
     SceneIntroPlane() {
         try {
-            bg = ImageIO.read(new File("src/img/BGClouds.png"));
+            bg = ImageIO.read(new File("src/img/SkyBG.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
