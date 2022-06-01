@@ -8,6 +8,10 @@
  *     Added word queue
  *     Added typing game
  *     - Alisa
+ *
+ *     Version 2 - 2h
+ *     Fixed bug: Words disappearing when the screen crossed the screen loop
+ *     - Alisa
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
