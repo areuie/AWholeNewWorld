@@ -21,10 +21,24 @@ public class SceneIntroPlane extends JPanel {
     private BufferedImage bg;
     private BufferedImage plane;
     int count = 0, planeX = -100, planeY = 200;
+    boolean almostFinished = false;
     static String[] sentences = {"Welcome to your new country.", "We hope you'll find everyone wonderful.", "Remember to study English hard,", " make new friends, ", "and enjoy your stay to the fullest." , 
     "We've already made accomodations for you ", "by giving you your first house! Though "
     "the rent is still yours to pay.", "Another thing to keep in mind is your family.", "Don't fail here.", "They're counting on you."};
 
+    Timer timer1 = new Timer(100, new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            if(almostFinished) {
+                if (planeX<=800 || planeY >=0){
+                    planeX +=7;
+                    planeY +=2;
+                }
+            }else{
+                planeX +=2;
+                planeY +=1;
+            }
+        }
+    });
 
     /**
      * Constructor, initializes graphics
