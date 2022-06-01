@@ -42,7 +42,6 @@ public class SceneLongMainScreen extends JPanel{
     int typeImage = 0;//0 is still, 1,2,3,4 are walking/motion
     Timer timer1 = new Timer(100, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-
             if(isWalking) {
                 if (typeImage >4) typeImage = 1;
                 System.out.println("type image: " + typeImage);
@@ -80,8 +79,7 @@ public class SceneLongMainScreen extends JPanel{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        if (Game.gameState == 11) {
+        if (Game.gameState == 9) {
             timer1.start();
             timer2.start();
         }
@@ -99,6 +97,7 @@ public class SceneLongMainScreen extends JPanel{
                 if (backgroundX + 1 <= 0) {
                     backgroundX+=5;
                     isWalking = true;
+                    System.out.println("Iswalking");
                 }
                 repaint();
             }
@@ -111,6 +110,7 @@ public class SceneLongMainScreen extends JPanel{
                 if (backgroundX + 1 > -1595) {
                     backgroundX-=5;
                     isWalking = true;
+                    System.out.println("Iswalking");
                 }
                 repaint();
             }
@@ -147,6 +147,4 @@ public class SceneLongMainScreen extends JPanel{
             g.drawImage(sprite,10,360, this);
         }
     }
-
-
 }
