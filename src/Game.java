@@ -59,6 +59,7 @@ public class Game {
     public static Font font;
     public static int familyHappiness;
     public static int familyMoneyGiven;
+    public static String sponsoredFamily;
 
 
     static {

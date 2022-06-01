@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -23,8 +24,7 @@ public class SceneIntroPlane extends JPanel {
     int count = 0, planeX = -100, planeY = 200;
     boolean almostFinished = false;
     static String[] sentences = {"Welcome to your new country.", "We hope you'll find everyone wonderful.", "Remember to study English hard,", " make new friends, ", "and enjoy your stay to the fullest." , 
-    "We've already made accomodations for you ", "by giving you your first house! Though "
-    "the rent is still yours to pay.", "Another thing to keep in mind is your family.", "Don't fail here.", "They're counting on you."};
+    "We've already made accomodations for you ", "by giving you your first house! Though ", "the rent is still yours to pay.", "Another thing to keep in mind is your family.", "Don't fail here.", "They're counting on you."};
 
     Timer timer1 = new Timer(100, new ActionListener() {
         public void actionPerformed(ActionEvent e) {

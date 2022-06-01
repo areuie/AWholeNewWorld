@@ -6,7 +6,6 @@
  * Created the conversation
  * - Mona
  *
- *
  * @author Alisa Wu, Mona Afshar, Lois Zan
  * @version 05.31.22
  *
@@ -29,7 +28,7 @@ public class SceneImmigrationOffice extends JPanel {
     private Image bg;
     /** This variable stores person that is interviewing*/
     private BufferedImage person;
-    String job = "none";
+    int moneyDecreased;
 
     /** The constructor of the screen */
     SceneImmigrationOffice() {
@@ -46,18 +45,20 @@ public class SceneImmigrationOffice extends JPanel {
 
         addMouseListener(new MouseAdapter() { //menu
             public void mousePressed(MouseEvent e) {
-                if (e.getX() > 350 && e.getX() < 650 && e.getY() > 300 && e.getY() < 350)//if they press play button they are taken to the language class dialogue scene
+                if (e.getX() > 80 && e.getX() < 200 && e.getY() > 280 && e.getY() < 330)//if they press play button they are taken to the language class dialogue scene
                 {
-                    repaint();
-                    job = "Engineer";
-                } else if (e.getX() > 350 && e.getX() < 650 && e.getY() > 370 && e.getY() < 420)//if they press play button they are taken to the language class dialogue scene
+                    Game.money-=300;
+                    Game.sponsoredFamily="two kids";
+                    Game.gameState++;
+                } else if (e.getX() > 210 && e.getX() < 330 && e.getY() > 280 && e.getY() < 330)//if they press play button they are taken to the language class dialogue scene
                 {
-                    repaint();
-                    job = "Teacher";
-                } else if (e.getX() > 350 && e.getX() < 650 && e.getY() > 440 && e.getY() < 490)//if they press play button they are taken to the language class dialogue scene
+                    Game.money-=150;
+                    Game.sponsoredFamily="one kid";
+                    Game.gameState++;
+                } else if (e.getX() > 340 && e.getX() < 460 && e.getY() > 280 && e.getY() < 330)//if they press play button they are taken to the language class dialogue scene
                 {
-                    repaint();
-                    job = "Receptionist";
+                    Game.sponsoredFamily="nobody";
+                    Game.gameState++;
                 }
             }
         });
@@ -100,11 +101,13 @@ public class SceneImmigrationOffice extends JPanel {
         g.drawString("One child", 235, 310);
         g.drawString("No", 390, 310);
 
-        if (job.equals("none")) {
-            g.setFont(Game.font.deriveFont(22f));
-            g.drawString("You can sponsor a spouse, or a partner from ", 90, 180);
-            g.drawString("$1,080, or a child from $150. Would you like ", 90, 210);
-            g.drawString("to sponsor your two children?", 90, 240);
+        g.setFont(Game.font.deriveFont(22f));
+        g.drawString("You can sponsor a spouse, or a partner from ", 90, 180);
+        g.drawString("$1,080, or a child from $150. Would you like ", 90, 210);
+        g.drawString("to sponsor your two children?", 90, 240);
+
+        if(moneyDecreased==300){
+            Game.money-=moneyDecreased;
         }
     }
 
