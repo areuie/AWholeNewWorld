@@ -31,12 +31,13 @@ import java.io.IOException;
 public class SceneLongMainScreen extends JPanel{
     /** This variable stores the background */
     private BufferedImage bg, spriteStanding,spriteAni1,spriteAni2,spriteAni3,spriteAni4, bSchool, bWork, bPost, bImm;
-    private Building[] buildingList = new Building[4];
+    private Image[] buildingList = new Image[1];
     /** This variable stores the x coord of the background */
     int backgroundX = 0, beforeBackgroundX = 0;
     /** This variable checks if the player is walking or not */
     boolean isWalking = false;
     int typeImage = 0;//0 is still, 1,2,3,4 are walking/motion
+    int buildingDistBetween = 0;
     Timer timer1 = new Timer(100, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -69,8 +70,7 @@ public class SceneLongMainScreen extends JPanel{
             spriteAni2 = ImageIO.read(new File("src/img/pixil-frame-Female2.png"));
             spriteAni3 = ImageIO.read(new File("src/img/pixil-frame-Female3.png"));
             spriteAni4 = ImageIO.read(new File("src/img/pixil-frame-Female4.png"));
-
-//            bSchool = ImageIO.read(new File("src/img/pixil-frame-Female3.png"));
+            bSchool = ImageIO.read(new File("src/img/schoolBuilding.png"));
 //            bWork = ImageIO.read(new File("src/img/pixil-frame-Female3.png"));
 //            bPost = ImageIO.read(new File("src/img/pixil-frame-Female3.png"));
 //            bImm = ImageIO.read(new File("src/img/pixil-frame-Female3.png"));
@@ -82,24 +82,14 @@ public class SceneLongMainScreen extends JPanel{
             timer2.start();
         }
 
+        buildingList[0] = bSchool.getScaledInstance(700, 700, Image.SCALE_DEFAULT);;
+
+
+
         InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
         ActionMap am = getActionMap();
 
-        im.put(KeyStroke.getKeyStroke("LEFT"), "left");
         im.put(KeyStroke.getKeyStroke("RIGHT"), "right");
-
-        am.put("left", new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("left " + backgroundX);
-                if (backgroundX + 1 <= 0) {
-                    backgroundX+=5;
-                    isWalking = true;
-                    System.out.println("Iswalking");
-                }
-                repaint();
-            }
-        });
 
         am.put("right", new AbstractAction() {
             @Override
@@ -135,6 +125,12 @@ public class SceneLongMainScreen extends JPanel{
             Image background = bg.getScaledInstance(2400, 600, Image.SCALE_DEFAULT);
             g.drawImage(background, backgroundX, 0, this);
         }
+        for (int i = 0; i < buildingList.length; i++) {
+            if(buildingList[i] != null){
+                Image building = buildingList[i];
+                g.drawImage(building, 50 + backgroundX + buildingDistBetween, -15, this);
+            }
+        }
 
         Image sprite = spriteStanding.getScaledInstance(spriteStanding.getWidth()*6, spriteStanding.getHeight()*6, Image.SCALE_DEFAULT); ;
         if (typeImage == 0) sprite = spriteStanding.getScaledInstance(spriteStanding.getWidth()*6, spriteStanding.getHeight()*6, Image.SCALE_DEFAULT);
@@ -143,10 +139,6 @@ public class SceneLongMainScreen extends JPanel{
         else if (typeImage == 3) sprite = spriteAni3.getScaledInstance(spriteAni3.getWidth()*6, spriteAni3.getHeight()*6, Image.SCALE_DEFAULT);
         else if (typeImage == 4 || typeImage ==5) sprite = spriteAni4.getScaledInstance(spriteAni4.getWidth()*6, spriteAni4.getHeight()*6, Image.SCALE_DEFAULT);
 
-//        for (int i = 0; i < buildingList.length; i++) {
-//            g.drawImage(buildingList[i].getType(), buildingList[i].getX(), buildingList[i].getY(), this);
-//        }
-
-        g.drawImage(sprite,10,360, this);
+        g.drawImage(sprite,10,370, this);
     }
 }
