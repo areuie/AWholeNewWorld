@@ -73,7 +73,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
     Timer timer1 = new Timer(10, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            backgroundX -= 1;
+            backgroundX -= 3;
             repaint();
         }
     });

@@ -154,7 +154,7 @@ public class Game {
             } else if (gameState == 9) {
                 frame.remove(screen);
 
-                SceneLongMainScreen interview = new SceneLongMainScreen();
+                SceneInterviewDialogue interview = new SceneInterviewDialogue();
                 frame.add(interview);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
@@ -187,6 +187,17 @@ public class Game {
                 screen = immigration;
                 gameState = 0;
             } else if (gameState == 12) {
+                frame.remove(screen);
+
+                SceneLongMainScreen longScreen = new SceneLongMainScreen();
+                frame.add(longScreen);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+
+                screen = longScreen;
+                gameState = 0;
+            } else if (gameState == 13) {
                 frame.remove(screen);
 
                 SceneLeaderboard leaderboard = new SceneLeaderboard();

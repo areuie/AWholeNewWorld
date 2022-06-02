@@ -23,6 +23,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -36,18 +37,21 @@ public class SceneLongMainScreen extends JPanel{
     /** This variable checks if the player is walking or not */
     boolean isWalking = false;
     int typeImage = 0;//0 is still, 1,2,3,4 are walking/motion
-    Timer timer1 = new Timer(100, e -> {
-        if(isWalking) {
-            if (typeImage >4) typeImage = 1;
-            System.out.println("type image: " + typeImage);
-            repaint();
-            typeImage++;
-            System.out.println("Current X: " + backgroundX + " and before X: " + beforeBackgroundX);
-        }
-        if(beforeBackgroundX==backgroundX){
-            isWalking = false;
-            typeImage = 0;
-            System.out.println("!isWalking");
+    Timer timer1 = new Timer(100, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(isWalking) {
+                if (typeImage >4) typeImage = 1;
+                System.out.println("type image: " + typeImage);
+                repaint();
+                typeImage++;
+                System.out.println("Current X: " + backgroundX + " and before X: " + beforeBackgroundX);
+            }
+            if(beforeBackgroundX==backgroundX){
+                isWalking = false;
+                typeImage = 0;
+                System.out.println("!isWalking");
+            }
         }
     });
 
@@ -73,7 +77,7 @@ public class SceneLongMainScreen extends JPanel{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (Game.gameState == 9) {
+        if (Game.gameState == 12) {
             timer1.start();
             timer2.start();
         }
@@ -139,9 +143,9 @@ public class SceneLongMainScreen extends JPanel{
         else if (typeImage == 3) sprite = spriteAni3.getScaledInstance(spriteAni3.getWidth()*6, spriteAni3.getHeight()*6, Image.SCALE_DEFAULT);
         else if (typeImage == 4 || typeImage ==5) sprite = spriteAni4.getScaledInstance(spriteAni4.getWidth()*6, spriteAni4.getHeight()*6, Image.SCALE_DEFAULT);
 
-        for (int i = 0; i < buildingList.length; i++) {
-            g.drawImage(buildingList[i].getType(), buildingList[i].getX(), buildingList[i].getY(), this);
-        }
+//        for (int i = 0; i < buildingList.length; i++) {
+//            g.drawImage(buildingList[i].getType(), buildingList[i].getX(), buildingList[i].getY(), this);
+//        }
 
         g.drawImage(sprite,10,360, this);
     }
