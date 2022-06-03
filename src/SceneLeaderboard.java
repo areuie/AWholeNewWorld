@@ -1,15 +1,40 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.*;
 
 public class SceneLeaderboard extends JPanel {
     private static String[] playerName;
     private static int[] playerScore;
+    private BufferedImage bg;
 
     SceneLeaderboard() {
+        try {
+            bg = ImageIO.read(new File("src/img/leaderboard.png"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
         playerName = new String[10];
         playerScore = new int[10];
         openFile();
+
+        addMouseListener(new MouseAdapter() { //menu
+            public void mousePressed(MouseEvent e) {
+                if (e.getX() > 18 && e.getX() < 185 && e.getY() > 523 && e.getY() < 579)//if they press back button they are taken back to the main menu
+                {
+                    Game.gameState = 1;
+                    repaint();
+                } else if (e.getX() > 616 && e.getX() < 783 && e.getY() > 523 && e.getY() < 579)//if they press reset button they reset the leaderboard
+                {
+                    resetHighScores();
+                    repaint();
+                }
+            }
+        });
     }
 
     public void openFile ()  //opens class file
@@ -148,8 +173,18 @@ public class SceneLeaderboard extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        if (bg != null) {
+            g.drawImage(bg, 0, 0, this);
+        }
+        g.setColor(Color.white);
+        g.setFont(Game.font.deriveFont(40f));
+
+        g.drawString ("Leaderboard", 300, 115);
+        g.drawString ("Back", 60, 565);
+        g.drawString ("Clear", 660, 565);
+
         g.setColor(Color.black);
-        g.setFont(Game.font.deriveFont(30f));
+        g.setFont(Game.font.deriveFont(28f));
 
         int counter = 0;
         while (playerName [counter] != null && counter < 10) //displays all scores until last submission until 10
@@ -158,13 +193,9 @@ public class SceneLeaderboard extends JPanel {
             if (playerScore [counter] == -1) //all failed scores are -1
                 scoreText = "FAILED";
 
-            g.drawString (playerName[counter] + " " + scoreText, 100, 225 + counter * 40);
+            g.drawString (playerName[counter] + " " + scoreText, 220, 225 + counter * 40);
             counter++;
         }
-
-
-        g.drawString ("Press 1 to reset leaderboards", 100, 250 + counter * 40);
-        g.drawString ("Press space to go back to the menu", 100, 250 + (counter + 1) * 40);
 
     }
 
