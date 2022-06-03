@@ -52,14 +52,15 @@ public class Game {
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
-    public static int gameState = 12;
+    public static int gameState = 13;
     /** This variable stores the amount of money the player has */
     public static int money = 500;
     /** This variable is the font of the game*/
     public static Font font;
     public static int familyHappiness;
     public static int familyMoneyGiven;
-    public static String sponsoredFamily;
+    public static String sponsoredFamily="none";
+    public static int level;
 
     static {
         try {
@@ -101,7 +102,16 @@ public class Game {
                 new Instructions();
 
             } else if (gameState == 3) { //high scores
+                frame.remove(screen);
 
+                SceneLeaderboard leaderboard = new SceneLeaderboard();
+                frame.add(leaderboard);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+
+                screen = leaderboard;
+                gameState = 0;
             } else if (gameState == 4) { //exit
                 System.exit(0);
 
@@ -200,13 +210,13 @@ public class Game {
             } else if (gameState == 13) {
                 frame.remove(screen);
 
-                SceneLeaderboard leaderboard = new SceneLeaderboard();
-                frame.add(leaderboard);
+                LevelComplete longScreen = new LevelComplete();
+                frame.add(longScreen);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
 
-                screen = leaderboard;
+                screen = longScreen;
                 gameState = 0;
             }
 

@@ -28,12 +28,12 @@ public class SceneImmigrationOffice extends JPanel {
     private Image bg;
     /** This variable stores person that is interviewing*/
     private BufferedImage person;
-    int moneyDecreased;
+    int moneyNeeded;
 
     /** The constructor of the screen */
     SceneImmigrationOffice() {
         try {
-            bg = ImageIO.read(new File("src/img/interviewBG.png")).getScaledInstance(800, 600, Image.SCALE_DEFAULT);
+            bg = ImageIO.read(new File("src/img/immigrationOfficeBG.png")).getScaledInstance(800, 600, Image.SCALE_DEFAULT);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -47,18 +47,21 @@ public class SceneImmigrationOffice extends JPanel {
             public void mousePressed(MouseEvent e) {
                 if (e.getX() > 80 && e.getX() < 200 && e.getY() > 280 && e.getY() < 330)//if they press play button they are taken to the language class dialogue scene
                 {
-                    Game.money-=300;
+                    moneyNeeded=300;
                     Game.sponsoredFamily="two kids";
-                    Game.gameState++;
+                    repaint();
                 } else if (e.getX() > 210 && e.getX() < 330 && e.getY() > 280 && e.getY() < 330)//if they press play button they are taken to the language class dialogue scene
                 {
-                    Game.money-=150;
+                    moneyNeeded=150;
                     Game.sponsoredFamily="one kid";
-                    Game.gameState++;
-                } else if (e.getX() > 340 && e.getX() < 460 && e.getY() > 280 && e.getY() < 330)//if they press play button they are taken to the language class dialogue scene
+                    repaint();
+                } else if (e.getX() > 340 && e.getX() < 460 && e.getY() > 280 && e.getY() < 330 && moneyNeeded==0)//if they press play button they are taken to the language class dialogue scene
                 {
                     Game.sponsoredFamily="nobody";
-                    Game.gameState++;
+                    Game.gameState=12;
+                } else if (e.getX() > 340 && e.getX() < 460 && e.getY() > 280 && e.getY() < 330 && moneyNeeded!=0)//if they press play button they are taken to the language class dialogue scene
+                {
+                    Game.gameState=12;
                 }
             }
         });
@@ -91,24 +94,54 @@ public class SceneImmigrationOffice extends JPanel {
         buttons.fillRoundRect(70, 150, 400, 100, 25, 25);
 
         buttons.setPaint(new Color(220, 135, 135));
-        buttons.fillRoundRect(80, 280, 120, 50, 25, 25);
-        buttons.fillRoundRect(210, 280, 120, 50, 25, 25);
         buttons.fillRoundRect(340, 280, 120, 50, 25, 25);
 
-        g.setColor(Color.black);
-        g.setFont(Game.font.deriveFont(20f));
-        g.drawString("Yes", 120, 310);
-        g.drawString("One child", 235, 310);
-        g.drawString("No", 390, 310);
+        if(Game.sponsoredFamily.equals("none")){
+            buttons.setPaint(new Color(220, 135, 135));
+            buttons.fillRoundRect(80, 280, 120, 50, 25, 25);
+            buttons.fillRoundRect(210, 280, 120, 50, 25, 25);
 
-        g.setFont(Game.font.deriveFont(22f));
-        g.drawString("You can sponsor a spouse, or a partner from ", 90, 180);
-        g.drawString("$1,080, or a child from $150. Would you like ", 90, 210);
-        g.drawString("to sponsor your two children?", 90, 240);
+            g.setColor(Color.black);
+            g.setFont(Game.font.deriveFont(20f));
+            g.drawString("Yes", 120, 310);
+            g.drawString("One child", 235, 310);
+            g.drawString("No", 390, 310);
 
-        if(moneyDecreased==300){
-            Game.money-=moneyDecreased;
+            g.setFont(Game.font.deriveFont(22f));
+            g.drawString("You can sponsor a spouse, or a partner from ", 90, 180);
+            g.drawString("$1,080, or a child from $150. Would you like ", 90, 210);
+            g.drawString("to sponsor your two children?", 90, 240);
         }
+        else if(Game.sponsoredFamily.equals("two kids") && Game.money>moneyNeeded+100)
+        {
+            g.setFont(Game.font.deriveFont(22f));
+            g.setColor(Color.black);
+            g.drawString("Congratulations! Your request to sponsor ", 90, 180);
+            g.drawString("both of your children has been approved! ", 90, 210);
+            g.drawString("They are ready to travel here.", 90, 240);
+            Game.money-=300;
+            g.drawString("NEXT", 380, 310);
+        }
+        else if(Game.money<=moneyNeeded)
+        {
+            g.setFont(Game.font.deriveFont(22f));
+            g.setColor(Color.black);
+            g.drawString("Unfortunately your request to sponsor ", 90, 180);
+            g.drawString("has been denied due to insufficient", 90, 210);
+            g.drawString("money. Try again in 3 months.", 90, 240);
+            g.drawString("NEXT", 380, 310);
+        }
+        else if(Game.sponsoredFamily.equals("one kid") && Game.money>moneyNeeded+100)
+        {
+            g.setFont(Game.font.deriveFont(22f));
+            g.setColor(Color.black);
+            g.drawString("Congratulations! Your request to sponsor ", 90, 180);
+            g.drawString("one of your children has been approved! ", 90, 210);
+            g.drawString("They are ready to travel here.", 90, 240);
+            Game.money-=150;
+            g.drawString("NEXT", 380, 310);
+        }
+        Game.showMoney(g);
     }
 
     /**

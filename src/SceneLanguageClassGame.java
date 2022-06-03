@@ -357,7 +357,10 @@ public class SceneLanguageClassGame extends JPanel {
         for (int i = 0; i < sentences[0].length(); i++) {
             if (sentences[0].charAt(i) != userGuess[i]) same = false;
         }
-        if (same) Game.gameState = 7;
+        if (same) {
+            Game.gameState = 7;
+            Game.level++;
+        }
     }
 
     private void randomizeGivenChars() {
