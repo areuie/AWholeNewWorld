@@ -34,7 +34,7 @@
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 05.27.22
+ * @version 06.03.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -52,14 +52,18 @@ public class Game {
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
-    public static int gameState = 13;
+    public static int gameState = 1;
     /** This variable stores the amount of money the player has */
     public static int money = 500;
     /** This variable is the font of the game*/
     public static Font font;
+    /** This variable stores the family happiness */
     public static int familyHappiness;
+    /** This variable stores the amount of money given to family */
     public static int familyMoneyGiven;
+    /** This variable stores the family that is sponsored */
     public static String sponsoredFamily="none";
+    /** This variable stores the level of the game */
     public static int level;
 
     static {

@@ -19,7 +19,7 @@
  *
  * </p>
  *
- * <h3> Draft 4 </h3>
+ * <h3> Draft 3 </h3>
  * <p>
  *     Version 4 - 1.5h
  *     Redrew main screen pixel art
@@ -27,7 +27,7 @@
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 05.27.22
+ * @version 06.03.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0

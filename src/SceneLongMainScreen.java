@@ -10,8 +10,17 @@
  *
  * </p>
  *
+ * <h3> Draft 3 </h3>
+ * <p>
+ * Version 2 - 8h
+ * Added graphics (drew them)
+ * Added sprite animation
+ * - Lois
+ *
+ * </p>
+ *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 05.27.22
+ * @version 06.03.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -36,8 +45,11 @@ public class SceneLongMainScreen extends JPanel{
     int backgroundX = 0, beforeBackgroundX = 0;
     /** This variable checks if the player is walking or not */
     boolean isWalking = false;
+    /** This variable controls the images needed for the sprite walking animation */
     int typeImage = 0;//0 is still, 1,2,3,4 are walking/motion
+    /** This variable stores the distance between each building */
     int buildingDistBetween = 0;
+    /** This variable timer controls the sprite walking animation */
     Timer timer1 = new Timer(100, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -56,7 +68,7 @@ public class SceneLongMainScreen extends JPanel{
         }
     });
 
-    //Keep track of the time when user stays in place, when x is not changing.
+    /** This timer variable keeps track of the time when user stays in place, when x is not changing */
     Timer timer2 = new Timer(150, e -> beforeBackgroundX = backgroundX);
 
     /**
@@ -83,8 +95,6 @@ public class SceneLongMainScreen extends JPanel{
         }
 
         buildingList[0] = bSchool.getScaledInstance(700, 700, Image.SCALE_DEFAULT);;
-
-
 
         InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
         ActionMap am = getActionMap();

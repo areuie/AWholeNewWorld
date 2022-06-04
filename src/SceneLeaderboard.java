@@ -1,3 +1,23 @@
+/**
+ * The SceneLeaderboard is the screen that shows the scores of players
+ * <h3> Draft 3 </h3>
+ * <p>
+ * Version 1 - 3h
+ * Drew graphics
+ * Added file reader/writer
+ * Added arrays to store data
+ * - Alisa
+ * </p>
+ *
+ * @author Alisa Wu, Mona Afshar, Lois Zan
+ * @version 06.03.22
+ *
+ * <h2> Course Info:</h2>
+ * ICS4U0
+ * Mrs. Krasteva
+ *
+ */
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -7,10 +27,14 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 
 public class SceneLeaderboard extends JPanel {
+    /** This variable stores the player name data */
     private static String[] playerName;
+    /** This variable stores the player score data */
     private static int[] playerScore;
+    /** This variable stores the image of the background */
     private BufferedImage bg;
 
+    /** This is the class constructor*/
     SceneLeaderboard() {
         try {
             bg = ImageIO.read(new File("src/img/leaderboard.png"));
@@ -37,7 +61,8 @@ public class SceneLeaderboard extends JPanel {
         });
     }
 
-    public void openFile ()  //opens class file
+    /** This method opens the leaderboard file*/
+    public void openFile ()
     {
         BufferedReader input;
         boolean fileExists = false;
@@ -74,6 +99,12 @@ public class SceneLeaderboard extends JPanel {
         }
     }
 
+    /**
+     * This method adds entries to the leaderboard
+     *
+     * @param name Name of the player
+     * @param score Score of the player
+     */
     private void addLeaderboard (String name, long score)  //adds data to leaderboard
     {
         int i = 0;
@@ -89,7 +120,7 @@ public class SceneLeaderboard extends JPanel {
                 scoreAdded = true;
 
             }
-            else if (playerName [i] == null) //if score is not high enough and theres space in the leaderboard, it will fit the lowest avalible spot
+            else if (playerName [i] == null) //if score is not high enough and theres space in the leaderboard, it will fit the lowest available spot
             {
                 playerName [i] = name;
                 playerScore [i] = (int) score;
@@ -99,7 +130,11 @@ public class SceneLeaderboard extends JPanel {
         }
     }
 
-
+    /**
+     * This method moves the leaderboard down if there is a new score
+     *
+     * @param position Position of the score to be added
+     */
     private void moveLeaderboard (int position)  //moves leaderboard down to fit new score
     {
         String lastPlayerName = null;
@@ -128,7 +163,9 @@ public class SceneLeaderboard extends JPanel {
         }
     }
 
-
+    /**
+     * This method saves the leaderboard file
+     */
     private void saveFile ()  //saves leaderboard file
     {
         PrintWriter output;
@@ -148,13 +185,13 @@ public class SceneLeaderboard extends JPanel {
             output.close (); //saves
         }
 
-
         catch (IOException e)
-        {
-
-        }
+        { }
     }
 
+    /**
+     * This method resets the highscores
+     */
     private void resetHighScores ()  //resets high scores
     {
         for (int i = 0 ; i < 10 ; i++) //changes all player names to null/empty

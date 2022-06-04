@@ -1,6 +1,6 @@
 /**
  * The Level Complete class is the screen for everytime someone completes a level
- * <h3> Draft 1 </h3>
+ * <h3> Draft 3 </h3>
  * <p>
  * Version 1 - 2h
  * Designed background

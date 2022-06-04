@@ -1,6 +1,6 @@
 /**
  * The SceneJobGame class controls the scene to play the game for the job
- * <h3> Draft 4</h3>
+ * <h3> Draft 3</h3>
  * <p>
  *     Version 1 - 4h
  *     Added keyboard input
@@ -15,7 +15,7 @@
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 05.27.22
+ * @version 06.03.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -42,12 +42,11 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
     boolean isWalking = false;
     /** This variable stores the image of the person*/
     private BufferedImage person;
-    private int screenMove = 0;
-    private int scrollerCounter1 = 1, scrollerCounter2 = 1;
+    /** This variable stores the letter that the user pressed*/
     private char letter = ' ';
-
+    /** This variable stores the type of image of the sprite*/
     private int spriteImg = 1;
-
+    /** This variable stores the words going across the screen*/
     private static String[] words = {
             "IMMIGRANT",
             "CITIZENSHIP",
@@ -68,8 +67,9 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
             "STABILITY",
             "DISCRIMINATION"
     };
+    /** This variable stores the queue of words going across the screen */
     private static Deque<Word> queue = new LinkedList();
-
+    /** This is the timer that moves the background (auto-scroller) */
     Timer timer1 = new Timer(10, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -77,7 +77,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
             repaint();
         }
     });
-
+    /** This is the timer that keeps on adding new words to the queue */
     Timer timer2 = new Timer(2000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -85,7 +85,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
             repaint();
         }
     });
-
+    /** This is the timer that animates the moving sprite */
     Timer timer3 = new Timer(500, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -393,11 +393,13 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
         Game.showMoney(g2d);
     }
 
+    /** This method is the actionPerformed overriden method */
     @Override
     public void actionPerformed(ActionEvent e) {
 
     }
 
+    /** This method is the run overriden method */
     @Override
     public void run() {
 

@@ -1,8 +1,18 @@
 /**
  * The SceneIntroPlane is the screen for the introduction scene.
  *
+ * <h3> Draft 3</h3>
+ * <p>
+ *     Version 1 - 8h (Including drawing graphics)
+ *     Added keyboard input
+ *     Added timers
+ *     Added graphics
+ *     Drew graphics
+ *     - Lois
+ * </p>
+ *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 05.27.22
+ * @version 06.03.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0

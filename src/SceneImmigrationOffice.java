@@ -7,7 +7,7 @@
  * - Mona
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 05.31.22
+ * @version 06.03.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -28,6 +28,7 @@ public class SceneImmigrationOffice extends JPanel {
     private Image bg;
     /** This variable stores person that is interviewing*/
     private BufferedImage person;
+    /** This variable stores the money needed to pay for the sponsorship*/
     int moneyNeeded;
 
     /** The constructor of the screen */

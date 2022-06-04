@@ -1,5 +1,5 @@
 /**
- * The ScenInterviewDialogue class for the job interview
+ * The SceneInterviewDialogue class for the job interview
  * <h3> Draft 1 </h3>
  * <p>
  * Version 1 - 5h
@@ -14,7 +14,7 @@
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 05.29.22
+ * @version 06.03.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -35,6 +35,7 @@ public class SceneInterviewDialogue extends JPanel {
     private Image bg;
     /** This variable stores person that is interviewing*/
     private BufferedImage person;
+    /** This variable stores the type of job */
     String job = "none";
 
     /** The constructor of the screen */
