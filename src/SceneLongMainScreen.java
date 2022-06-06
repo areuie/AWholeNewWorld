@@ -39,8 +39,9 @@ import java.io.IOException;
 
 public class SceneLongMainScreen extends JPanel{
     /** This variable stores the background */
-    private BufferedImage bg, spriteStanding,spriteAni1,spriteAni2,spriteAni3,spriteAni4, bSchool, bWork, bPost, bImm;
-    private Image[] buildingList = new Image[1];
+    private BufferedImage bg, spriteStanding, spriteKidStanding, spriteAni1,spriteAni2,spriteAni3,spriteAni4;
+    private BufferedImage spriteKidAni1, spriteKidAni2, spriteKidAni3, spriteKidAni4, bSchool, bWork, bPost, bImm;
+    private Image[] buildingList = new Image[3];
     /** This variable stores the x coord of the background */
     int backgroundX = 0, beforeBackgroundX = 0;
     /** This variable checks if the player is walking or not */
@@ -77,14 +78,19 @@ public class SceneLongMainScreen extends JPanel{
     public SceneLongMainScreen(){
         try {
             bg = ImageIO.read(new File("src/img/BGTemp.png"));
-            spriteStanding = ImageIO.read(new File("src/img/pixil-frame-female.png"));
+            spriteStanding = ImageIO.read(new File("src/img/pixil-frame-Female.png"));
+            spriteKidStanding = ImageIO.read(new File("src/img/pixil-frame-Child.png"));
             spriteAni1 = ImageIO.read(new File("src/img/pixil-frame-Female1.png"));
             spriteAni2 = ImageIO.read(new File("src/img/pixil-frame-Female2.png"));
             spriteAni3 = ImageIO.read(new File("src/img/pixil-frame-Female3.png"));
             spriteAni4 = ImageIO.read(new File("src/img/pixil-frame-Female4.png"));
+            spriteKidAni1 = ImageIO.read(new File("src/img/pixil-frame-Child1.png"));
+            spriteKidAni2 = ImageIO.read(new File("src/img/pixil-frame-Child2.png"));
+            spriteKidAni3 = ImageIO.read(new File("src/img/pixil-frame-Child3.png"));
+            spriteKidAni4 = ImageIO.read(new File("src/img/pixil-frame-Child4.png"));
             bSchool = ImageIO.read(new File("src/img/schoolBuilding.png"));
-//            bWork = ImageIO.read(new File("src/img/pixil-frame-Female3.png"));
-//            bPost = ImageIO.read(new File("src/img/pixil-frame-Female3.png"));
+            bWork = ImageIO.read(new File("src/img/workBuilding.png"));
+            bPost = ImageIO.read(new File("src/img/postBuilding.png"));
 //            bImm = ImageIO.read(new File("src/img/pixil-frame-Female3.png"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -94,7 +100,9 @@ public class SceneLongMainScreen extends JPanel{
             timer2.start();
         }
 
-        buildingList[0] = bSchool.getScaledInstance(700, 700, Image.SCALE_DEFAULT);;
+        buildingList[0] = bSchool.getScaledInstance(700, 700, Image.SCALE_DEFAULT);
+        buildingList[1] = bWork.getScaledInstance(700, 700, Image.SCALE_DEFAULT);
+        buildingList[2] = bPost.getScaledInstance(700, 700, Image.SCALE_DEFAULT);
 
         InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
         ActionMap am = getActionMap();
@@ -135,20 +143,42 @@ public class SceneLongMainScreen extends JPanel{
             Image background = bg.getScaledInstance(2400, 600, Image.SCALE_DEFAULT);
             g.drawImage(background, backgroundX, 0, this);
         }
-        for (int i = 0; i < buildingList.length; i++) {
-            if(buildingList[i] != null){
-                Image building = buildingList[i];
-                g.drawImage(building, 50 + backgroundX + buildingDistBetween, -15, this);
-            }
+        if(buildingList[0] != null){
+            Image building = buildingList[0];
+            g.drawImage(building, 250 + backgroundX + buildingDistBetween, -25, this);
+        }
+        if(buildingList[1] != null){
+            Image building = buildingList[1];
+            g.drawImage(building, 850 + backgroundX + buildingDistBetween, -145, this);
+        }
+        if(buildingList[2] != null){
+            Image building = buildingList[2];
+            g.drawImage(building, 1500 + backgroundX + buildingDistBetween, -40, this);
         }
 
-        Image sprite = spriteStanding.getScaledInstance(spriteStanding.getWidth()*6, spriteStanding.getHeight()*6, Image.SCALE_DEFAULT); ;
-        if (typeImage == 0) sprite = spriteStanding.getScaledInstance(spriteStanding.getWidth()*6, spriteStanding.getHeight()*6, Image.SCALE_DEFAULT);
-        else if (typeImage == 1) sprite = spriteAni1.getScaledInstance(spriteAni1.getWidth()*6, spriteAni1.getHeight()*6, Image.SCALE_DEFAULT);
-        else if (typeImage == 2) sprite = spriteAni2.getScaledInstance(spriteAni2.getWidth()*6, spriteAni2.getHeight()*6, Image.SCALE_DEFAULT);
-        else if (typeImage == 3) sprite = spriteAni3.getScaledInstance(spriteAni3.getWidth()*6, spriteAni3.getHeight()*6, Image.SCALE_DEFAULT);
-        else if (typeImage == 4 || typeImage ==5) sprite = spriteAni4.getScaledInstance(spriteAni4.getWidth()*6, spriteAni4.getHeight()*6, Image.SCALE_DEFAULT);
-
-        g.drawImage(sprite,10,370, this);
+        Image spriteKid = spriteKidStanding.getScaledInstance(spriteKidStanding.getWidth()*6, spriteKidStanding.getHeight()*6, Image.SCALE_DEFAULT);
+        Image sprite = spriteStanding.getScaledInstance(spriteStanding.getWidth()*6, spriteStanding.getHeight()*6, Image.SCALE_DEFAULT);
+        if (typeImage == 0){
+            sprite = spriteStanding.getScaledInstance(spriteStanding.getWidth()*6, spriteStanding.getHeight()*6, Image.SCALE_DEFAULT);
+            spriteKid = spriteKidStanding.getScaledInstance(spriteKidStanding.getWidth()*6, spriteKidStanding.getHeight()*6, Image.SCALE_DEFAULT);
+        }
+        else if (typeImage == 1){
+            sprite = spriteAni1.getScaledInstance(spriteAni1.getWidth()*6, spriteAni1.getHeight()*6, Image.SCALE_DEFAULT);
+            spriteKid = spriteKidAni1.getScaledInstance(spriteKidAni1.getWidth()*6, spriteKidAni1.getHeight()*6, Image.SCALE_DEFAULT);
+        }
+        else if (typeImage == 2){
+            sprite = spriteAni2.getScaledInstance(spriteAni2.getWidth()*6, spriteAni2.getHeight()*6, Image.SCALE_DEFAULT);
+            spriteKid = spriteKidAni2.getScaledInstance(spriteKidAni2.getWidth()*6, spriteKidAni2.getHeight()*6, Image.SCALE_DEFAULT);
+        }
+        else if (typeImage == 3){
+            sprite = spriteAni3.getScaledInstance(spriteAni3.getWidth()*6, spriteAni3.getHeight()*6, Image.SCALE_DEFAULT);
+            spriteKid = spriteKidAni3.getScaledInstance(spriteKidAni3.getWidth()*6, spriteKidAni3.getHeight()*6, Image.SCALE_DEFAULT);
+        }
+        else if (typeImage == 4 || typeImage ==5){
+            sprite = spriteAni4.getScaledInstance(spriteAni4.getWidth()*6, spriteAni4.getHeight()*6, Image.SCALE_DEFAULT);
+            spriteKid = spriteKidAni4.getScaledInstance(spriteKidAni4.getWidth()*6, spriteKidAni4.getHeight()*6, Image.SCALE_DEFAULT);
+        }
+        g.drawImage(spriteKid,20,365, this);
+        g.drawImage(sprite,120,365, this);
     }
 }
