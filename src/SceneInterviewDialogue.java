@@ -123,7 +123,7 @@ public class SceneInterviewDialogue extends JPanel {
             g.setFont(Game.font.deriveFont(15f));
             g.drawString("Please select another option.", 360, 270);
         } else if (job.equals("Receptionist"))
-            Game.gameState=10;
+            Game.gameState=12;
     }
 
     /**

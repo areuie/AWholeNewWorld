@@ -40,7 +40,9 @@ public class LevelComplete extends JPanel {
             public void mousePressed(MouseEvent e) {
                 if (e.getX() > 300 && e.getX() < 500 && e.getY() > 300 && e.getY() < 350)//if they press play button they are taken to the language class dialogue scene
                 {
-                    Game.gameState=12;//whichever game state will indicate the map of building
+                    Game.level++;
+                    if (Game.level > 3) Game.gameState = 1;
+                    else Game.gameState=12;//whichever game state will indicate the map of building
                 }
             }
         });

@@ -64,7 +64,7 @@ public class Game {
     /** This variable stores the family that is sponsored */
     public static String sponsoredFamily="none";
     /** This variable stores the level of the game */
-    public static int level;
+    public static int level = 1;
 
     static {
         try {
@@ -146,7 +146,18 @@ public class Game {
             } else if (gameState == 7) { //post office
                 frame.remove(screen);
 
-                ScenePostOffice office = new ScenePostOffice();
+                ScenePostOffice office = new ScenePostOffice(1);
+                frame.add(office);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+
+                screen = office;
+                gameState = 0;
+            } else if (gameState == -7){
+                frame.remove(screen);
+
+                ScenePostOffice office = new ScenePostOffice(2);
                 frame.add(office);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
@@ -157,7 +168,18 @@ public class Game {
             } else if (gameState == 8) { //post office writing
                 frame.remove(screen);
 
-                ScenePostOfficeWrite letter = new ScenePostOfficeWrite();
+                ScenePostOfficeWrite letter = new ScenePostOfficeWrite(1);
+                frame.add(letter);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+
+                screen = letter;
+                gameState = 0;
+            } else if (gameState == -8) { //post office writing
+                frame.remove(screen);
+
+                ScenePostOfficeWrite letter = new ScenePostOfficeWrite(2);
                 frame.add(letter);
                 frame.pack();
                 frame.setLocationRelativeTo(null);

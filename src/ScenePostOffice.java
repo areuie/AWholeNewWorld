@@ -35,14 +35,18 @@ public class ScenePostOffice extends JPanel {
     private BufferedImage person;
     /**This variable counts the number of it runs through the if statements*/
     int count = 0;
+    String[] sentences;
+    int stage;
     /**This variable stores the array for all the dialogue that should be printed on the screen*/
-    static String[] sentences = {"Hello!", "I have received a letter from your family", "Here you go. You can read it then ", "write your own message to send back."};
+    static String[] sentences1 = {"Hello little one!", "Would you like to send a letter back", "to your family abroad?"};
+    /**This variable stores the array for all the dialogue that should be printed on the screen*/
+    static String[] sentences2 = {"Hello little one!", "I have received a letter from your family", "Here you go. You can read it then "};
 
 
     /**
      * Constructor, initializes graphics
      */
-    ScenePostOffice() {
+    ScenePostOffice(int stage) {
         try {
             bg = ImageIO.read(new File("src/img/PostOfficeBGText.png"));
         } catch (IOException ex) {
@@ -53,6 +57,11 @@ public class ScenePostOffice extends JPanel {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
+        this.stage = stage;
+
+        if (stage == 1) sentences = sentences1;
+        else if (stage == 2) sentences = sentences2;
 
         getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "next");
         getActionMap().put("next", new AbstractAction() {
@@ -84,12 +93,10 @@ public class ScenePostOffice extends JPanel {
         Image back = bg.getScaledInstance(800, 600, Image.SCALE_DEFAULT);
 
         if (bg != null) {
-            int x = (getWidth() - bg.getWidth()) / 2;
-            int y = (getHeight() - bg.getHeight()) / 2;
             g.drawImage(back, 0, 0, this);
         }
         if (person != null) {
-            Image teach = person.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+            Image teach = person.getScaledInstance(person.getWidth()*12, person.getHeight()*12, Image.SCALE_DEFAULT);
             g.drawImage(teach, -80, 320, this);
         }
 
@@ -101,10 +108,13 @@ public class ScenePostOffice extends JPanel {
         if (count < sentences.length) {
             g.setColor(Color.black);
             g.drawString(sentences[count], xcord, ycord);
-            g.drawString(sentences[count + 1], xcord, ycord + 40);
-            count++;
+            if (count + 1 < sentences.length && count != 0) {
+                g.drawString(sentences[count + 1], xcord, ycord + 40);
+                count++;
+            }
         } else if (count == sentences.length) {
-            Game.gameState =8;
+            if (stage == 1) Game.gameState = 8;
+            if (stage == 2) Game.gameState = -8;
             count++;
         }
         Game.showMoney(g);
