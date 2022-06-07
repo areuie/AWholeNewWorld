@@ -36,8 +36,43 @@ public class SceneLanguageClass extends JPanel {
     private BufferedImage teacher;
     int count = 0;
     static String[] sentences = {"Hello Everybody!", "Welcome to Language Class!", "Today we will be learning the language ", "of this country!", "In this country they are very secretive," , "so they communicate in cypher.", "Let's take a test to ensure you ", "are ready to communicate with others:"};
-
-
+    static String[] fact1 = {"Children, especially older ones, feel the responsibility",
+            "to become a 'translator' of sorts for their immigrant parents,",
+            "since their impressionable minds can learn the language more quickly,",
+            "and are exposed to the culture for a larger fraction of their lives.",
+            "As such, the child is at times shifted away from the role of the one being provided for,",
+            "forcing them to take responsibility for their parents earlier on",
+            "and also exposing them to adult struggles that other children are shielded from.",
+            "Children who feel imposed with this responsibility earlier on are at more risk of developing",
+            "anxiety, depression, eating disorders and succumbing to substance abuse."};
+    static String[] sol1 = {
+            "In order to prevent this from taking a toll on children, parents need to",
+            "learn to rely on themselves, while providing emotional support for their",
+            "children. Parents should also have regular talks with them,",
+            "affirming to them that they are safe to behave their age, while giving them",
+            "a sense of security."};
+    static String[] fact2 = {"Before they've become comfortable with their new country,",
+            "the closest thing a child has to their familiar environment is their immigrant parent.",
+            "When even this figure of comfort and trust is gone for long periods of time,",
+            "the child will feel a sense of loneliness.",
+            "Especially if they aren't able to quickly make friends."};
+    static String[] sol2 = {
+            "A good way to help the child overcome this loneliness is",
+            "to help them into the social environment of their new country.",
+            "What do kids their age play with?",
+            "What are the interests of the kids in this new country?",
+            "Introduce them to those."};
+    static String[] fact3 = {"Many immigrant children face this issue: they're too ‘foreign’ for their homeland,",
+            "but they're too 'exotic' in the country they've immigrated to.",
+            "Either way, they can't seem to fit in.",
+            "This manifests itself in low self-confidence, becoming less socially active,",
+            "and raised anxiety when in an environment where they feel they don't completely belong."};
+    static String[] sol3 = {
+            "The key to maintaining the child's connection to their culture,",
+            "while allowing them to integrate into their new environment,",
+            "is to maintain the existence of said culture in the child's daily life,",
+            "while not imposing it on them.",
+            "Teach them that there is no shame in enjoying their culture."};
     /**
      * Constructor, initializes graphics
      */
