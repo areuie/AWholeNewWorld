@@ -35,8 +35,22 @@ public class SceneLanguageClass extends JPanel {
     private BufferedImage bg;
     private BufferedImage teacher;
     int count = 0;
-    static String[] sentences = {"Hello Everybody!", "Welcome to Language Class!", "Today we will be learning the language ", "of this country!", "In this country they are very secretive," , "so they communicate in cypher.", "Let's take a test to ensure you ", "are ready to communicate with others:"};
-
+    static String[] sentences = {
+            "Hello Everybody!",
+            "Welcome to ESL (English as a Second Language).",
+            "Since many of you guys have just landed in this new",
+            "environment, we're going to be going over adversities",
+            "adversities that you may face as an child immigrant",
+            "so that you're prepared for when they arise.",
+            "There are 3 main topics",
+            "we'll be discussing in this class.",
+            "1. Preparing to carry the burden of being",
+            "the sole translator of the household",
+            "2. Loneliness due to certain factors",
+            "",
+            "3. Figuring out your place in cultural identity",
+            ""
+    };
 
     /**
      * Constructor, initializes graphics
@@ -79,7 +93,7 @@ public class SceneLanguageClass extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setFont(Game.font.deriveFont(28f));
+        g.setFont(Game.font.deriveFont(27f));
 
         if (bg != null) {
             Image background = bg.getScaledInstance(800, 600, Image.SCALE_DEFAULT);
@@ -87,12 +101,12 @@ public class SceneLanguageClass extends JPanel {
         }
         if (teacher != null) {
             Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
-            g.drawImage(teach, -50, 330, this);
+            g.drawImage(teach, -120, 330, this);
         }
 
         g.setColor(Color.black);
 
-        int xcord = 250;
+        int xcord = 160;
         int ycord = 470;
 
         if (count < sentences.length) {
