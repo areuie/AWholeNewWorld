@@ -47,7 +47,7 @@ public class SceneLongMainScreen extends JPanel{
             {
                     {0, 2},
                     {0, 1, 2},
-                    {1, 2, 3}
+                    {1, 3}
             };
     /** This variable stores the x coord of the background */
     static int backgroundX = 0, beforeBackgroundX = 0;
@@ -170,19 +170,31 @@ public class SceneLongMainScreen extends JPanel{
                         popupType = 3;
                     } else if (backgroundX == -1360) {
                         popupType = 4;
-                    } else if (backgroundX == -1460) {
+                    } else if (backgroundX == -1900) {
                         popupType = 5;
-                    } else if (backgroundX + 1 > -3000) {
+                    } else if (backgroundX + 1 < -2520) {
+                        backgroundX = 0;
+                        popupType = 0;
+                        Game.gameState = 13;
+                        isWalking = true;
+                        System.out.println("Iswalking");
+                    } else if (backgroundX + 1 > -2520) {
                         backgroundX -= 5;
                         isWalking = true;
                         System.out.println("Iswalking");
                     }
                 } else if (Game.level == 3) {
-                    if (backgroundX == -890) {
+                    if (backgroundX == -760) {
                         popupType = 6;
-                    } else if (backgroundX == -1360) {
-                        popupType = 2;
-                    } else if (backgroundX + 1 > -3000) {
+                    } else if (backgroundX == -1440) {
+                        popupType = 7;
+                    } else if (backgroundX + 1 < -2000) {
+                        backgroundX = 0;
+                        popupType = 0;
+                        Game.gameState = 13;
+                        isWalking = true;
+                        System.out.println("Iswalking");
+                    } else if (backgroundX + 1 > -2000) {
                         backgroundX -= 5;
                         isWalking = true;
                         System.out.println("Iswalking");
@@ -215,7 +227,7 @@ public class SceneLongMainScreen extends JPanel{
             g.drawImage(background, backgroundX + 2400, 0, this);
         }
 
-        for (int i = 0; i < levelBuildingList[0].length; i++) {
+        for (int i = 0; i < levelBuildingList[Game.level - 1].length; i++) {
             g.drawImage(buildingList[levelBuildingList[Game.level - 1][i]], backgroundX + buildingDistBetween * (i + 1), buildingYCoords[levelBuildingList[Game.level - 1][i]], this);
         }
 
