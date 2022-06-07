@@ -236,13 +236,24 @@ public class Game {
             } else if (gameState == 13) {
                 frame.remove(screen);
 
-                LevelComplete longScreen = new LevelComplete();
-                frame.add(longScreen);
+                LevelComplete complete = new LevelComplete();
+                frame.add(complete);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
 
-                screen = longScreen;
+                screen = complete;
+                gameState = 0;
+            } else if (gameState == 14) {
+                frame.remove(screen);
+
+                SceneEnding end = new SceneEnding();
+                frame.add(end);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+
+                screen = end;
                 gameState = 0;
             }
 
