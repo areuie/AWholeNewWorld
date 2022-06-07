@@ -41,7 +41,7 @@ import java.io.IOException;
 
 public class SceneLongMainScreen extends JPanel{
     /** This variable stores the background */
-    private BufferedImage bg, spriteStanding,spriteAni1,spriteAni2,spriteAni3,spriteAni4, spriteStandingC,spriteAni1C,spriteAni2C,spriteAni3C,spriteAni4C, bSchool, bWork, bPost, bImm;
+    private BufferedImage bg, spriteStanding,spriteAni1,spriteAni2,spriteAni3,spriteAni4, spriteKidStanding,spriteKidAni1, spriteKidAni2, spriteKidAni3, spriteKidAni4, bSchool, bWork, bPost, bImm;
     private Image[] buildingList = new Image[4];
     private int[][] levelBuildingList =
             {
@@ -95,11 +95,11 @@ public class SceneLongMainScreen extends JPanel{
             spriteAni3 = ImageIO.read(new File("src/img/pixil-frame-Female3.png"));
             spriteAni4 = ImageIO.read(new File("src/img/pixil-frame-Female4.png"));
 
-            spriteStandingC = ImageIO.read(new File("src/img/pixil-frame-female.png"));
-            spriteAni1C = ImageIO.read(new File("src/img/pixil-frame-Female1.png"));
-            spriteAni2C = ImageIO.read(new File("src/img/pixil-frame-Female2.png"));
-            spriteAni3C = ImageIO.read(new File("src/img/pixil-frame-Female3.png"));
-            spriteAni4C = ImageIO.read(new File("src/img/pixil-frame-Female4.png"));
+            spriteKidStanding = ImageIO.read(new File("src/img/pixil-frame-Child.png"));
+            spriteKidAni1 = ImageIO.read(new File("src/img/pixil-frame-Child1.png"));
+            spriteKidAni2 = ImageIO.read(new File("src/img/pixil-frame-Child2.png"));
+            spriteKidAni3 = ImageIO.read(new File("src/img/pixil-frame-Child3.png"));
+            spriteKidAni4 = ImageIO.read(new File("src/img/pixil-frame-Child4.png"));
 
             bSchool = ImageIO.read(new File("src/img/schoolBuilding.png"));
             bWork = ImageIO.read(new File("src/img/workBuilding.png"));
@@ -253,14 +253,30 @@ public class SceneLongMainScreen extends JPanel{
             g.drawImage(buildingList[levelBuildingList[Game.level - 1][i]], backgroundX + buildingDistBetween * (i + 1), buildingYCoords[levelBuildingList[Game.level - 1][i]], this);
         }
 
-        Image sprite = spriteStanding.getScaledInstance(spriteStanding.getWidth()*6, spriteStanding.getHeight()*6, Image.SCALE_DEFAULT); ;
-        if (typeImage == 0) sprite = spriteStanding.getScaledInstance(spriteStanding.getWidth()*6, spriteStanding.getHeight()*6, Image.SCALE_DEFAULT);
-        else if (typeImage == 1) sprite = spriteAni1.getScaledInstance(spriteAni1.getWidth()*6, spriteAni1.getHeight()*6, Image.SCALE_DEFAULT);
-        else if (typeImage == 2) sprite = spriteAni2.getScaledInstance(spriteAni2.getWidth()*6, spriteAni2.getHeight()*6, Image.SCALE_DEFAULT);
-        else if (typeImage == 3) sprite = spriteAni3.getScaledInstance(spriteAni3.getWidth()*6, spriteAni3.getHeight()*6, Image.SCALE_DEFAULT);
-        else if (typeImage == 4 || typeImage ==5) sprite = spriteAni4.getScaledInstance(spriteAni4.getWidth()*6, spriteAni4.getHeight()*6, Image.SCALE_DEFAULT);
-
-        g.drawImage(sprite,10,370, this);
+        Image spriteKid = spriteKidStanding.getScaledInstance(spriteKidStanding.getWidth()*6, spriteKidStanding.getHeight()*6, Image.SCALE_DEFAULT);
+        Image sprite = spriteStanding.getScaledInstance(spriteStanding.getWidth()*6, spriteStanding.getHeight()*6, Image.SCALE_DEFAULT);
+        if (typeImage == 0){
+            sprite = spriteStanding.getScaledInstance(spriteStanding.getWidth()*6, spriteStanding.getHeight()*6, Image.SCALE_DEFAULT);
+            spriteKid = spriteKidStanding.getScaledInstance(spriteKidStanding.getWidth()*6, spriteKidStanding.getHeight()*6, Image.SCALE_DEFAULT);
+        }
+        else if (typeImage == 1){
+            sprite = spriteAni1.getScaledInstance(spriteAni1.getWidth()*6, spriteAni1.getHeight()*6, Image.SCALE_DEFAULT);
+            spriteKid = spriteKidAni1.getScaledInstance(spriteKidAni1.getWidth()*6, spriteKidAni1.getHeight()*6, Image.SCALE_DEFAULT);
+        }
+        else if (typeImage == 2){
+            sprite = spriteAni2.getScaledInstance(spriteAni2.getWidth()*6, spriteAni2.getHeight()*6, Image.SCALE_DEFAULT);
+            spriteKid = spriteKidAni2.getScaledInstance(spriteKidAni2.getWidth()*6, spriteKidAni2.getHeight()*6, Image.SCALE_DEFAULT);
+        }
+        else if (typeImage == 3){
+            sprite = spriteAni3.getScaledInstance(spriteAni3.getWidth()*6, spriteAni3.getHeight()*6, Image.SCALE_DEFAULT);
+            spriteKid = spriteKidAni3.getScaledInstance(spriteKidAni3.getWidth()*6, spriteKidAni3.getHeight()*6, Image.SCALE_DEFAULT);
+        }
+        else if (typeImage == 4 || typeImage ==5){
+            sprite = spriteAni4.getScaledInstance(spriteAni4.getWidth()*6, spriteAni4.getHeight()*6, Image.SCALE_DEFAULT);
+            spriteKid = spriteKidAni4.getScaledInstance(spriteKidAni4.getWidth()*6, spriteKidAni4.getHeight()*6, Image.SCALE_DEFAULT);
+        }
+        g.drawImage(spriteKid,20,365, this);
+        g.drawImage(sprite,120,365, this);
 
         if (popupType == 1) {
             Graphics2D buttons = (Graphics2D) g;
