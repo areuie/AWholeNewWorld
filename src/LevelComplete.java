@@ -68,18 +68,25 @@ public class LevelComplete extends JPanel {
 
         buttons.setRenderingHints(button);
 
-        buttons.setPaint(new Color(96, 96, 96));
+        buttons.setPaint(new Color(96, 96, 96, 208));
         buttons.fillRoundRect(100, 40, 600, 520, 25, 25);
 
         g.setColor(Color.white);
         g.setFont(Game.font.deriveFont(70f));
-        g.drawString("LEVEL "+Game.level+" COMPLETE", 180, 250);
+        g.drawString("LEVEL "+(Game.level--)+" COMPLETE", 180, 250);
 
-        buttons.setPaint(new Color(100, 30, 50));
+        buttons.setPaint(new Color(98, 193, 199));
         buttons.fillRoundRect(300, 300, 200, 60, 25, 25);
         g.setColor(Color.white);
         g.setFont(Game.font.deriveFont(40f));
         g.drawString("CONTINUE", 330, 345);
+
+        g.setFont(Game.font.deriveFont(20f));
+        g.drawString("Note: In the completion of this level you noticed it was time to pay rent!", 140, 400);
+        g.drawString("Your money decreases by $100.", 270, 430);
+
+        Game.showMoney(g);
+        Game.money-=100;
     }
 
     /**
