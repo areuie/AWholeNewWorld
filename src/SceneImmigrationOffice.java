@@ -86,7 +86,7 @@ public class SceneImmigrationOffice extends JPanel {
                 {
                     next=1;
                     repaint();
-                } else if (e.getX() > 340 && e.getX() < 460 && e.getY() > 280 && e.getY() < 330 && next==1)//if they press play button they are taken to the language class dialogue scene
+                } else if (e.getX() > 700 && e.getX() < 790 && e.getY() > 500 && e.getY() < 550 && next==1)//if they press play button they are taken to the language class dialogue scene
                 {
                     System.exit(0);
                 }
@@ -206,14 +206,26 @@ public class SceneImmigrationOffice extends JPanel {
             g.drawString("Congratulations! You’ve brought over all children, and have applied ", 220, 430);
             g.drawString("for permanent residence. You don’t know what the future will bring,", 220, 460);
             g.drawString("but at least you and your family will face it together.", 220, 490);
+            buttons.fillRoundRect(700, 500, 90, 50, 25, 25);
+            g.setColor(Color.white);
+            g.setFont(Game.font.deriveFont(35f));
+            g.drawString("DONE", 715, 535);
         } else if(futureStatus==1){
             g.drawString("You’ve successfully been able to sponsor one of your children,", 220, 430);
             g.drawString("and for this, you are extremely grateful. Perhaps in the future,", 220, 460);
             g.drawString("you will be able to bring over more of your family.", 220, 490);
+            buttons.fillRoundRect(700, 500, 90, 50, 25, 25);
+            g.setColor(Color.white);
+            g.setFont(Game.font.deriveFont(35f));
+            g.drawString("DONE", 715, 535);
         } else if(futureStatus==0){
             g.drawString("Unfortunately you didn’t save enough money to be able to sponsor any ", 220, 430);
             g.drawString("of your family. You remain alone with one child in this foreign country.", 220, 460);
             g.drawString("Maybe in the future you will be able to bring over more of your family?", 220, 490);
+            buttons.fillRoundRect(700, 500, 90, 50, 25, 25);
+            g.setColor(Color.white);
+            g.setFont(Game.font.deriveFont(35f));
+            g.drawString("DONE", 715, 535);
         }
     }
 
