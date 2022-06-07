@@ -358,7 +358,7 @@ public class SceneLanguageClassGame extends JPanel {
             if (sentences[0].charAt(i) != userGuess[i]) same = false;
         }
         if (same) {
-            Game.gameState = 7;
+            Game.gameState = 12;
             Game.level++;
         }
     }

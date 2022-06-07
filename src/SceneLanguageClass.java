@@ -82,9 +82,8 @@ public class SceneLanguageClass extends JPanel {
         g.setFont(Game.font.deriveFont(28f));
 
         if (bg != null) {
-            int x = (getWidth() - bg.getWidth()) / 2;
-            int y = (getHeight() - bg.getHeight()) / 2;
-            g.drawImage(bg, x, y, this);
+            Image background = bg.getScaledInstance(800, 600, Image.SCALE_DEFAULT);
+            g.drawImage(background, 0, 0, this);
         }
         if (teacher != null) {
             Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
@@ -93,13 +92,15 @@ public class SceneLanguageClass extends JPanel {
 
         g.setColor(Color.black);
 
-        int xcord = 300;
+        int xcord = 250;
         int ycord = 470;
 
         if (count < sentences.length) {
             g.setColor(Color.black);
             g.drawString(sentences[count], xcord, ycord);
-            g.drawString(sentences[count + 1], xcord, ycord + 40);
+            if (count + 1 < sentences.length) {
+                g.drawString(sentences[count + 1], xcord, ycord + 40);
+            }
             count++;
         } else if (count == sentences.length) {
             Game.gameState =6;

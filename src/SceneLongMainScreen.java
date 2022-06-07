@@ -59,8 +59,6 @@ public class SceneLongMainScreen extends JPanel{
     int buildingDistBetween = 600;
     /** This variable stores the type of popup*/
     int popupType = 0; //0 is default, 1 is school, 2 is work, 3 is post office, 4 is immigration office
-    /** This variable stores whether the user pressed yes/no */
-    int userYesNo = 0; //0 is default, 1 is yes, 2 is no
     /** This variable stores the y coords of the buildings */
     int[] buildingYCoords = {-95, -230, -105, -230};
     /** This variable timer controls the sprite walking animation */
@@ -126,12 +124,36 @@ public class SceneLongMainScreen extends JPanel{
                     if (e.getX() > 250 && e.getX() < 550 && e.getY() > 300 && e.getY() < 350)//if they press yes they are taken to the scene
                     {
                         System.out.println("yess!");
-                        userYesNo = 1;
+                        backgroundX -= 5;
+                        timer1.stop();
+                        timer2.stop();
+                        switch (popupType) {
+                            case 1:
+                                Game.gameState = 5;
+                                break;
+                            case 2:
+                                Game.gameState = 8;
+                                break;
+                            case 3:
+                                Game.gameState = 6;
+                                break;
+                            case 4:
+                                Game.gameState = 9;
+                                break;
+                            case 5:
+                                Game.gameState = 7;
+                                break;
+                            case 6:
+                                Game.gameState = 10;
+                                break;
+                            case 7:
+                                Game.gameState = 11;
+                                break;
+                        }
                         repaint();
                     } else if (e.getX() > 250 && e.getX() < 550 && e.getY() > 370 && e.getY() < 420)//if they press no, they continue on
                     {
                         System.out.println("noo!");
-                        userYesNo = 2;
                         popupType = 0;
                         backgroundX -= 5;
                         repaint();
@@ -257,7 +279,7 @@ public class SceneLongMainScreen extends JPanel{
             buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
 
             g.setColor(Color.black);
-            g.setFont(Game.font.deriveFont(35f));
+            g.setFont(Game.font.deriveFont(30f));
             g.drawString("Would you like to", 285, 230);
             g.drawString("enter the writing class?", 285, 260);
             g.setFont(Game.font.deriveFont(25f));
@@ -280,7 +302,7 @@ public class SceneLongMainScreen extends JPanel{
             buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
 
             g.setColor(Color.black);
-            g.setFont(Game.font.deriveFont(35f));
+            g.setFont(Game.font.deriveFont(30f));
             g.drawString("Would you like to enter", 285, 230);
             g.drawString("the post office?", 285, 260);
             g.setFont(Game.font.deriveFont(25f));
@@ -303,7 +325,7 @@ public class SceneLongMainScreen extends JPanel{
             buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
 
             g.setColor(Color.black);
-            g.setFont(Game.font.deriveFont(35f));
+            g.setFont(Game.font.deriveFont(30f));
             g.drawString("Would you like to enter", 285, 230);
             g.drawString("the writing class test?", 285, 260);
             g.setFont(Game.font.deriveFont(25f));
@@ -326,7 +348,7 @@ public class SceneLongMainScreen extends JPanel{
             buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
 
             g.setColor(Color.black);
-            g.setFont(Game.font.deriveFont(35f));
+            g.setFont(Game.font.deriveFont(30f));
             g.drawString("Would you like to enter", 285, 230);
             g.drawString("the job interview?", 285, 260);
             g.setFont(Game.font.deriveFont(25f));
@@ -349,7 +371,7 @@ public class SceneLongMainScreen extends JPanel{
             buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
 
             g.setColor(Color.black);
-            g.setFont(Game.font.deriveFont(35f));
+            g.setFont(Game.font.deriveFont(30f));
             g.drawString("Would you like to enter", 285, 230);
             g.drawString("the post office?", 285, 260);
             g.setFont(Game.font.deriveFont(25f));
@@ -372,7 +394,7 @@ public class SceneLongMainScreen extends JPanel{
             buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
 
             g.setColor(Color.black);
-            g.setFont(Game.font.deriveFont(35f));
+            g.setFont(Game.font.deriveFont(30f));
             g.drawString("Would you like to enter", 285, 230);
             g.drawString("the office?", 285, 260);
             g.setFont(Game.font.deriveFont(25f));
@@ -395,7 +417,7 @@ public class SceneLongMainScreen extends JPanel{
             buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
 
             g.setColor(Color.black);
-            g.setFont(Game.font.deriveFont(35f));
+            g.setFont(Game.font.deriveFont(30f));
             g.drawString("Would you like to enter", 285, 230);
             g.drawString("the immigration office?", 285, 260);
             g.setFont(Game.font.deriveFont(25f));

@@ -44,16 +44,20 @@ public class ScenePostOfficeWrite extends JPanel {
     private BufferedImage bg;
     /**Button for how many times user has interacted*/
     int nextButton=0;
+    /** Variable that stores what version the scene should use */
+    int stage;
 
     /**
      * Constructor
      */
-    ScenePostOfficeWrite() {
+    ScenePostOfficeWrite(int stage) {
         try {
             bg = ImageIO.read(new File("src/img/letterWriting.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
+        this.stage = stage;
 
         /**
          * This method checks if a user pressed the screen and which button it reacted with
@@ -90,7 +94,7 @@ public class ScenePostOfficeWrite extends JPanel {
                     if (e.getX() > 260 && e.getX() < 560 && e.getY() > 220 && e.getY() < 280)
                     {
                         Game.familyHappiness = Math.max(Game.familyHappiness - 25, 0);
-                        Game.gameState=9;
+                        Game.gameState=12;
                         repaint();
                     }
 
@@ -99,7 +103,7 @@ public class ScenePostOfficeWrite extends JPanel {
                         Game.familyMoneyGiven += Math.max(0, Math.min(100, Game.money/2));
                         Game.money -= Math.max(0, Math.min(100, Game.money/2));
                         Game.familyHappiness = Math.min(100, Game.familyHappiness + 25);
-                        Game.gameState=9;
+                        Game.gameState=12;
                         repaint();
                     }
                     else if (e.getX() > 260 && e.getX() < 560 && e.getY() > 460 && e.getY() < 540)
@@ -107,7 +111,7 @@ public class ScenePostOfficeWrite extends JPanel {
                         Game.familyMoneyGiven += Math.max(0, Math.min(500, Game.money));
                         Game.money -= Math.max(0, Math.min(500, Game.money));
                         Game.familyHappiness = 100;
-                        Game.gameState=9;
+                        Game.gameState=12;
                         repaint();
                     }
                 }
