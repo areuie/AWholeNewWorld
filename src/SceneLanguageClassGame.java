@@ -363,6 +363,16 @@ public class SceneLanguageClassGame extends JPanel {
         }
     }
 
+    private void fillInSimilarLetters(char c) {
+        char cypherChar = cypher[c - 'A'];
+        for (int i = 0; i < userGuess.length; i++) {
+            if ((sentences[0].charAt(i) - 'A') >= 'A' && (sentences[0].charAt(i) - 'A') <= 'Z') {
+                if ((cypher[(int) (sentences[0].charAt(i) - 'A')] == cypherChar)) userGuess[i] = c;
+            }
+        }
+        repaint();
+    }
+
     private void randomizeGivenChars() {
         for (int i = 0; i < sentences[0].length(); i++) {
             int random = (int) (Math.random() * 100);
@@ -441,7 +451,10 @@ public class SceneLanguageClassGame extends JPanel {
 
         g.setColor(Color.black);
 
-        if (letter != ' ') userGuess[idx] = letter;
+        if (letter != ' ') {
+            fillInSimilarLetters(letter);
+            userGuess[idx] = letter;
+        }
         letter = ' ';
 
         int newLine = 0;
