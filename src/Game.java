@@ -52,7 +52,7 @@ public class Game {
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
-    public static int gameState = 11;
+    public static int gameState = 12;
     /** This variable stores the amount of money the player has */
     public static int money = 500;
     /** This variable is the font of the game*/
@@ -64,7 +64,7 @@ public class Game {
     /** This variable stores the family that is sponsored */
     public static String sponsoredFamily="none";
     /** This variable stores the level of the game */
-    public static int level;
+    public static int level = 1;
 
     static {
         try {
