@@ -41,6 +41,7 @@ public class LevelComplete extends JPanel {
                 if (e.getX() > 300 && e.getX() < 500 && e.getY() > 300 && e.getY() < 350)//if they press play button they are taken to the language class dialogue scene
                 {
                     Game.level++;
+                    System.out.println(Game.level);
                     if (Game.level > 3) Game.gameState = 1;
                     else Game.gameState=12;//whichever game state will indicate the map of building
                 }
@@ -73,7 +74,7 @@ public class LevelComplete extends JPanel {
 
         g.setColor(Color.white);
         g.setFont(Game.font.deriveFont(70f));
-        g.drawString("LEVEL "+(Game.level--)+" COMPLETE", 180, 250);
+        g.drawString("LEVEL "+(Game.level)+" COMPLETE", 180, 250);
 
         buttons.setPaint(new Color(98, 193, 199));
         buttons.fillRoundRect(300, 300, 200, 60, 25, 25);

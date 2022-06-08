@@ -359,7 +359,6 @@ public class SceneLanguageClassGame extends JPanel {
         }
         if (same) {
             Game.gameState = 12;
-            Game.level++;
         }
     }
 
