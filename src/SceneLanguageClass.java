@@ -38,18 +38,54 @@ public class SceneLanguageClass extends JPanel {
     static String[] sentences = {
             "Hello Everybody!",
             "Welcome to ESL (English as a Second Language).",
+
             "Since many of you guys have just landed in this new",
             "environment, we're going to be going over adversities",
+
             "adversities that you may face as an child immigrant",
             "so that you're prepared for when they arise.",
+
             "There are 3 main topics",
             "we'll be discussing in this class.",
+
             "1. Preparing to carry the burden of being",
             "the sole translator of the household",
+
             "2. Loneliness due to certain factors",
             "",
+
             "3. Figuring out your place in cultural identity",
-            ""
+            "",
+
+            "Here's a info sheet that will help facilitate",
+            "your learning on being the sole translator.",
+
+            "Here's a info sheet that will help facilitate",
+            "your learning on dealing with loneliness.",
+
+            "Here's a info sheet that will help facilitate",
+            "your learning on figuring out your place in",
+            "cultural identity.",
+            "",
+
+            "The key to maintaining the child's connection,",
+            "to their culture, while allowing them to",
+            "integrate into their new environment, is to",
+            "maintain the existence of said culture in the",
+            "child's daily life, while not imposing it on",
+            "them. Teach them that there is no shame in",
+            "enjoying their culture."
+//            "Children, especially older ones, feel the responsibility",
+//            "to become a 'translator' for their immigrant parents,",
+//
+//            "since their impressionable minds can learn the language",
+//            "more quickly, (especially if they've learned of the new",
+//
+//            "country before immigrating there). As such, the child is",
+//            "shifted away from the role of the protected, forcing them",
+//
+//            "to take responsibility for their parents earlier on and",
+//            "also exposing them to adult struggles."
     };
 
     /**
@@ -116,10 +152,10 @@ public class SceneLanguageClass extends JPanel {
                 g.drawString(sentences[count + 1], xcord, ycord + 40);
             }
             count++;
-        } else if (count == sentences.length) {
-            Game.gameState =6;
-            count++;
+        } else if (count >= sentences.length) {
+            Game.gameState = 2;
         }
         Game.showMoney(g);
+        Game.instructionsState=2;
     }
 }
