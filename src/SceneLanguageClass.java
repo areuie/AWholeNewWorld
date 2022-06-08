@@ -153,8 +153,9 @@ public class SceneLanguageClass extends JPanel {
             }
             count++;
         } else if (count >= sentences.length) {
-            Game.gameState = 6;
+            Game.gameState = 2;
         }
         Game.showMoney(g);
+        Game.instructionsState=2;
     }
 }
