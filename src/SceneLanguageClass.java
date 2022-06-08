@@ -27,14 +27,16 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class SceneLanguageClass extends JPanel {
     private BufferedImage bg;
-    private BufferedImage teacher;
-    int count = 0;
+    private BufferedImage teacher, paper;
+    int count = 0, paperY = -400, countFacts = 0, countSentences = 0;
+    boolean animatePaper = false;
     static String[] sentences = {
             "Hello Everybody!",
             "Welcome to ESL (English as a Second Language).",
@@ -88,6 +90,23 @@ public class SceneLanguageClass extends JPanel {
 //            "also exposing them to adult struggles."
     };
 
+    static String[] facts = {
+            "Children, especially older ones, feel the responsibility",
+            "to become a 'translator' for their immigrant parents.",
+    };
+
+    Timer timer1 = new Timer(50, new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            if(animatePaper && paperY <0) {
+                    paperY +=4 ;
+                    System.out.println("Loading paper");
+            }else{
+                animatePaper = false;
+            }
+            repaint();
+        }
+    });
+
     /**
      * Constructor, initializes graphics
      */
@@ -102,6 +121,13 @@ public class SceneLanguageClass extends JPanel {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        try {
+            paper = ImageIO.read(new File("src/img/factPaper.png"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        timer1.start();
 
         getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "next");
         getActionMap().put("next", new AbstractAction() {
@@ -139,20 +165,31 @@ public class SceneLanguageClass extends JPanel {
             Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
             g.drawImage(teach, -120, 330, this);
         }
+        if (paper != null) {
+            Image factPaper = paper.getScaledInstance(800, 600, Image.SCALE_DEFAULT);
+            g.drawImage(factPaper, 0, paperY, this);
+        }
 
         g.setColor(Color.black);
 
         int xcord = 160;
         int ycord = 470;
 
-        if (count < sentences.length) {
+        if (count < (sentences.length + facts.length)) {
             g.setColor(Color.black);
-            g.drawString(sentences[count], xcord, ycord);
-            if (count + 1 < sentences.length) {
-                g.drawString(sentences[count + 1], xcord, ycord + 40);
+            if(count>=16 && count<=17){
+                animatePaper = true;
+                g.drawString(facts[countFacts], xcord, ycord);
+                countFacts++;
+            }else{
+                g.drawString(sentences[countSentences], xcord, ycord);
+                if (count + 1 < sentences.length) {
+                    g.drawString(sentences[countSentences + 1], xcord, ycord + 40);
+                }
+                countSentences++;
             }
             count++;
-        } else if (count >= sentences.length) {
+        } else if (count >= (sentences.length + facts.length)) {
             Game.gameState = 6;
         }
         Game.showMoney(g);
