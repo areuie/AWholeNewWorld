@@ -88,7 +88,7 @@ public class SceneImmigrationOffice extends JPanel {
                     repaint();
                 } else if (e.getX() > 700 && e.getX() < 790 && e.getY() > 500 && e.getY() < 550 && next==1)//if they press play button they are taken to the language class dialogue scene
                 {
-                    System.exit(0);
+                    Game.gameState=14;
                 }
             }
         });
@@ -159,6 +159,7 @@ public class SceneImmigrationOffice extends JPanel {
             g.drawString("money. Try again in 3 months.", 90, 240);
             g.drawString("NEXT", 380, 310);
             futureStatus=0;
+            Game.sponsoredFamily="nobody";
         }
         else if(Game.sponsoredFamily.equals("one kid") && Game.money>moneyNeeded+100)
         {

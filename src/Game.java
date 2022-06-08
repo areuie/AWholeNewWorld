@@ -52,7 +52,7 @@ public class Game {
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
-    public static int gameState = 12;
+    public static int gameState = 5;
     /** This variable stores the amount of money the player has */
     public static int money = 500;
     /** This variable is the font of the game*/
@@ -236,13 +236,24 @@ public class Game {
             } else if (gameState == 13) {
                 frame.remove(screen);
 
-                LevelComplete longScreen = new LevelComplete();
-                frame.add(longScreen);
+                LevelComplete complete = new LevelComplete();
+                frame.add(complete);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
 
-                screen = longScreen;
+                screen = complete;
+                gameState = 0;
+            } else if (gameState == 14) {
+                frame.remove(screen);
+
+                SceneEnding end = new SceneEnding();
+                frame.add(end);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+
+                screen = end;
                 gameState = 0;
             }
 
