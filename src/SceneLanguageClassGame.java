@@ -364,10 +364,14 @@ public class SceneLanguageClassGame extends JPanel {
     }
 
     private void fillInSimilarLetters(char c) {
-        char cypherChar = cypher[c - 'A'];
         for (int i = 0; i < userGuess.length; i++) {
-            if ((sentences[0].charAt(i) - 'A') >= 'A' && (sentences[0].charAt(i) - 'A') <= 'Z') {
-                if ((cypher[(int) (sentences[0].charAt(i) - 'A')] == cypherChar)) userGuess[i] = c;
+            System.out.println((sentences[0].charAt(idx) - 'A'));
+            if ((sentences[0].charAt(idx) - 'A') >= 0 && (sentences[0].charAt(idx) - 'A') <= 26 &&
+                    (sentences[0].charAt(i) - 'A') >= 0 && (sentences[0].charAt(i) - 'A') <= 26) {
+                System.out.println("---------------------" + (cypher[(int) (sentences[0].charAt(idx) - 'A')]));
+                if (cypher[(int) (sentences[0].charAt(idx) - 'A')] == (cypher[(int) (sentences[0].charAt(i) - 'A')])) {
+                    userGuess[i] = c;
+                }
             }
         }
         repaint();
