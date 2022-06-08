@@ -363,6 +363,20 @@ public class SceneLanguageClassGame extends JPanel {
         }
     }
 
+    private void fillInSimilarLetters(char c) {
+        for (int i = 0; i < userGuess.length; i++) {
+            System.out.println((sentences[0].charAt(idx) - 'A'));
+            if ((sentences[0].charAt(idx) - 'A') >= 0 && (sentences[0].charAt(idx) - 'A') <= 26 &&
+                    (sentences[0].charAt(i) - 'A') >= 0 && (sentences[0].charAt(i) - 'A') <= 26) {
+                System.out.println("---------------------" + (cypher[(int) (sentences[0].charAt(idx) - 'A')]));
+                if (cypher[(int) (sentences[0].charAt(idx) - 'A')] == (cypher[(int) (sentences[0].charAt(i) - 'A')])) {
+                    userGuess[i] = c;
+                }
+            }
+        }
+        repaint();
+    }
+
     private void randomizeGivenChars() {
         for (int i = 0; i < sentences[0].length(); i++) {
             int random = (int) (Math.random() * 100);
@@ -441,7 +455,10 @@ public class SceneLanguageClassGame extends JPanel {
 
         g.setColor(Color.black);
 
-        if (letter != ' ') userGuess[idx] = letter;
+        if (letter != ' ') {
+            fillInSimilarLetters(letter);
+            userGuess[idx] = letter;
+        }
         letter = ' ';
 
         int newLine = 0;

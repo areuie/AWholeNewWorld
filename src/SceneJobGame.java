@@ -46,6 +46,8 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
     private char letter = ' ';
     /** This variable stores the type of image of the sprite*/
     private int spriteImg = 1;
+    /** This variable controls the scrolling speed */
+    private int speed = 1;
     /** This variable stores the words going across the screen*/
     private static String[] words = {
             "IMMIGRANT",
@@ -70,10 +72,10 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
     /** This variable stores the queue of words going across the screen */
     private static Deque<Word> queue = new LinkedList();
     /** This is the timer that moves the background (auto-scroller) */
-    Timer timer1 = new Timer(10, new ActionListener() {
+    Timer timer1 = new Timer(20, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            backgroundX -= 3;
+            backgroundX -= speed;
             repaint();
         }
     });
@@ -101,6 +103,13 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
             else spriteImg++;
         }
     });
+    /** This is the timer that controls the speed of the autoscroller*/
+    Timer timer4 = new Timer(20000, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            speed += 1;
+        }
+    });
 
     /**
      * The constructor of the panel
@@ -119,6 +128,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
             timer1.start();
             timer2.start();
             timer3.start();
+            timer4.start();
         }
 
         im.put(KeyStroke.getKeyStroke("A"), "A");
@@ -378,13 +388,17 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
                 timer1.stop();
                 timer2.stop();
                 timer3.stop();
+                timer4.stop();
                 Game.gameState = 12;
             }
             if (i == 0 && letter == word.charAt(i)) {
                 queue.peekFirst().setWord(word.substring(i + 1));
                 letter = ' ';
             }
-            if (queue.peekFirst().getWord().length() == 0) queue.remove();
+            if (queue.peekFirst().getWord().length() == 0) {
+                Game.money += 10;
+                queue.remove();
+            }
         }
         int counter = 0;
         for (Word i: queue) {
