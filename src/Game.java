@@ -52,7 +52,11 @@ public class Game {
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
+<<<<<<< Updated upstream
     public static int gameState = 12;
+=======
+    public static int gameState = 1;
+>>>>>>> Stashed changes
     /** This variable stores the amount of money the player has */
     public static int money = 300;
     /** This variable is the font of the game*/
@@ -103,8 +107,16 @@ public class Game {
                 gameState = 0;
 
             } else if (gameState == 2) { //Instructions
-                new Instructions();
+                frame.remove(screen);
 
+                Instructions instruct = new Instructions();
+                frame.add(instruct);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+
+                screen = instruct;
+                gameState = 0;
             } else if (gameState == 3) { //high scores
                 frame.remove(screen);
 
