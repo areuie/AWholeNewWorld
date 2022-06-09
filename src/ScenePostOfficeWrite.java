@@ -6,7 +6,7 @@
  * Version 1 - 2h
  * Designed background and buttons
  * -Mona
- *
+ * <p>
  * Version 2 - 5h
  * Created Game and buttons
  * -Mona
@@ -14,10 +14,10 @@
  *
  * <h3> Draft 3 </h3>
  * <p>
- *     Version 3 - 2h
- *     Added feature to send money
- *     Fixed font
- *     - Alisa
+ * Version 3 - 2h
+ * Added feature to send money
+ * Fixed font
+ * - Alisa
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
@@ -26,7 +26,6 @@
  * <h2> Course Info:</h2>
  * ICS4U0
  * Mrs. Krasteva
- *
  */
 
 import javax.imageio.ImageIO;
@@ -43,7 +42,7 @@ public class ScenePostOfficeWrite extends JPanel {
     /**Background Image*/
     private BufferedImage bg;
     /**Button for how many times user has interacted*/
-    int nextButton=0;
+    int nextButton = 0;
     /** Variable that stores what version the scene should use */
     int stage;
 
@@ -64,13 +63,10 @@ public class ScenePostOfficeWrite extends JPanel {
          */
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (nextButton==0 && e.getX() > 335 && e.getX() < 480 && e.getY() > 500 && e.getY() < 555)
-                {
+                if (nextButton == 0 && e.getX() > 335 && e.getX() < 480 && e.getY() > 500 && e.getY() < 555 && Game.level==1) {
                     nextButton = 1;
-                    repaint();
-                }
-
-                else if (nextButton == 1) {
+                    Game.gameState=12;
+                } else if (nextButton == 1) {
                     if (e.getX() > 260 && e.getX() < 560 && e.getY() > 220 && e.getY() < 280) {
                         nextButton = 2;
                         repaint();
@@ -82,36 +78,27 @@ public class ScenePostOfficeWrite extends JPanel {
                         nextButton = 4;
                         repaint();
                     }
-                }
-                else if (nextButton==5 && e.getX() > 335 && e.getX() < 480 && e.getY() > 500 && e.getY() < 555){
+                } else if (nextButton == 5 && e.getX() > 335 && e.getX() < 480 && e.getY() > 500 && e.getY() < 555) {
 
-                    nextButton=6;
+                    nextButton = 6;
                     repaint();
-                }
-                else if (nextButton==6)
-                {
+                } else if (nextButton == 6) {
                     System.out.println("done!!");
-                    if (e.getX() > 260 && e.getX() < 560 && e.getY() > 220 && e.getY() < 280)
-                    {
+                    if (e.getX() > 260 && e.getX() < 560 && e.getY() > 220 && e.getY() < 280) {
                         Game.familyHappiness = Math.max(Game.familyHappiness - 25, 0);
-                        Game.gameState=12;
+                        Game.gameState = 12;
                         repaint();
-                    }
-
-                    else if (e.getX() > 260 && e.getX() < 560 && e.getY() > 340 && e.getY() < 420)
-                    {
-                        Game.familyMoneyGiven += Math.max(0, Math.min(100, Game.money/2));
-                        Game.money -= Math.max(0, Math.min(100, Game.money/2));
+                    } else if (e.getX() > 260 && e.getX() < 560 && e.getY() > 340 && e.getY() < 420) {
+                        Game.familyMoneyGiven += Math.max(0, Math.min(100, Game.money / 2));
+                        Game.money -= Math.max(0, Math.min(100, Game.money / 2));
                         Game.familyHappiness = Math.min(100, Game.familyHappiness + 25);
-                        Game.gameState=12;
+                        Game.gameState = 12;
                         repaint();
-                    }
-                    else if (e.getX() > 260 && e.getX() < 560 && e.getY() > 460 && e.getY() < 540)
-                    {
+                    } else if (e.getX() > 260 && e.getX() < 560 && e.getY() > 460 && e.getY() < 540) {
                         Game.familyMoneyGiven += Math.max(0, Math.min(500, Game.money));
                         Game.money -= Math.max(0, Math.min(500, Game.money));
                         Game.familyHappiness = 100;
-                        Game.gameState=12;
+                        Game.gameState = 12;
                         repaint();
                     }
                 }
@@ -134,21 +121,27 @@ public class ScenePostOfficeWrite extends JPanel {
         }
 
         System.out.println(nextButton);
-        if (nextButton == 0) {
-            FamilyLetter(g);
-        } if (nextButton==1) {
-            LetterOptions(g);
-        } else if(nextButton==2){
-            RacistComment(g);
-            nextButton=5;
-        } else if(nextButton==3){
-            LanguageBarrier(g);
-            nextButton=5;
-        } else if(nextButton==4){
-            FinancialIssues(g);
-            nextButton=5;
-        } else if(nextButton==6){
-            MoneyOptions(g);
+
+        if (Game.level == 1) {
+            if (nextButton == 0) {
+                FamilyLetter(g);
+            }
+        }
+        else if(Game.level==2) {
+            if (nextButton == 1) {
+                LetterOptions(g);
+            } else if (nextButton == 2) {
+                RacistComment(g);
+                nextButton = 5;
+            } else if (nextButton == 3) {
+                LanguageBarrier(g);
+                nextButton = 5;
+            } else if (nextButton == 4) {
+                FinancialIssues(g);
+                nextButton = 5;
+            } else if (nextButton == 6) {
+                MoneyOptions(g);
+            }
         }
         Game.showMoney(g);
     }
@@ -157,7 +150,7 @@ public class ScenePostOfficeWrite extends JPanel {
     /**
      * This method writes the letter from the family
      */
-    public void FamilyLetter(Graphics g){
+    public void FamilyLetter(Graphics g) {
         Graphics2D next = (Graphics2D) g;
 
         g.setFont(Game.font.deriveFont(30f));
@@ -187,13 +180,13 @@ public class ScenePostOfficeWrite extends JPanel {
         next.setColor(new Color(200, 90, 90));
         next.fillRoundRect(335, 480, 150, 60, 25, 25);
         g.setColor(Color.black);
-        g.drawString("NEXT", 375, 520);
+        g.drawString("DONE", 375, 520);
     }
 
     /**
      * This method gives the user buttons for 3 different options on the letter
      */
-    public void LetterOptions(Graphics g){
+    public void LetterOptions(Graphics g) {
         Graphics2D buttons = (Graphics2D) g;
 
         buttons.setPaint(new Color(150, 150, 150));
@@ -363,9 +356,10 @@ public class ScenePostOfficeWrite extends JPanel {
         g.drawString("How much money would you like to send?", 250, 185);
 
         g.drawString("$0", 280, 255);
-        g.drawString("$" + Math.max(0, Math.min(100, Game.money/2)), 280, 375);
-        g.drawString("$"+ Math.max(0, Math.min(500, Game.money)), 280, 495);
+        g.drawString("$" + Math.max(0, Math.min(100, Game.money / 2)), 280, 375);
+        g.drawString("$" + Math.max(0, Math.min(500, Game.money)), 280, 495);
     }
+
     /**
      * This method determines the dimensions of the panel
      * @return The dimensions of the panel

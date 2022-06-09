@@ -179,7 +179,7 @@ public class Game {
             } else if (gameState == 8) { //post office writing
                 frame.remove(screen);
 
-                ScenePostOfficeWrite letter = new ScenePostOfficeWrite(1);
+                ScenePostOffice letter = new ScenePostOffice(1);
                 frame.add(letter);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
