@@ -38,9 +38,9 @@ public class ScenePostOffice extends JPanel {
     String[] sentences;
     int stage;
     /**This variable stores the array for all the dialogue that should be printed on the screen*/
-    static String[] sentences1 = {"Hello little one!", "Would you like to send a letter back", "to your family abroad?"};
+    static String[] sentences1 = {"Hello little one!", "Your family has sent you a letter", "Here you go, you can read it."};
     /**This variable stores the array for all the dialogue that should be printed on the screen*/
-    static String[] sentences2 = {"Hello little one!", "I have received a letter from your family", "Here you go. You can read it then "};
+    static String[] sentences2 = {"Hello little one!", "Would you like to send a letter to your family?", "Once your done you can also send money"};
 
 
     /**
@@ -60,8 +60,8 @@ public class ScenePostOffice extends JPanel {
 
         this.stage = stage;
 
-        if (stage == 1) sentences = sentences1;
-        else if (stage == 2) sentences = sentences2;
+        if (Game.level == 1) sentences = sentences1;
+        else if (Game.level == 2) sentences = sentences2;
 
         getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "next");
         getActionMap().put("next", new AbstractAction() {
@@ -89,6 +89,7 @@ public class ScenePostOffice extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
         g.setFont(Game.font.deriveFont(30f));
         Image back = bg.getScaledInstance(800, 600, Image.SCALE_DEFAULT);
 
@@ -102,7 +103,7 @@ public class ScenePostOffice extends JPanel {
 
         g.setColor(Color.black);
 
-        int xcord = 230;
+        int xcord = 220;
         int ycord = 480;
 
         if (count < sentences.length) {
@@ -113,9 +114,7 @@ public class ScenePostOffice extends JPanel {
                 count++;
             }
         } else if (count == sentences.length) {
-            if (stage == 1) Game.gameState = 8;
-            if (stage == 2) Game.gameState = -8;
-            count++;
+            Game.gameState=-8;
         }
         Game.showMoney(g);
     }
