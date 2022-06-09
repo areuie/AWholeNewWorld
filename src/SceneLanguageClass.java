@@ -34,7 +34,9 @@ import java.io.IOException;
 public class SceneLanguageClass extends JPanel {
     private BufferedImage bg;
     private BufferedImage teacher;
-    int count = 0;
+    int count = 0, count2 = 0;
+    int paper = 0;
+    boolean info = false; //false is teacher, true is paper
     static String[] sentences = {
             "Hello Everybody!",
             "Welcome to ESL (English as a Second Language).",
@@ -42,7 +44,7 @@ public class SceneLanguageClass extends JPanel {
             "Since many of you guys have just landed in this new",
             "environment, we're going to be going over adversities",
 
-            "adversities that you may face as an child immigrant",
+            "that you may face as an child immigrant",
             "so that you're prepared for when they arise.",
 
             "There are 3 main topics",
@@ -65,27 +67,31 @@ public class SceneLanguageClass extends JPanel {
 
             "Here's a info sheet that will help facilitate",
             "your learning on figuring out your place in",
+
             "cultural identity.",
             "",
 
-            "The key to maintaining the child's connection,",
+    };
+
+    static String[][] sentencesPaper = {
+            {"The key to maintaining the child's connection,",
             "to their culture, while allowing them to",
             "integrate into their new environment, is to",
             "maintain the existence of said culture in the",
             "child's daily life, while not imposing it on",
             "them. Teach them that there is no shame in",
-            "enjoying their culture."
-//            "Children, especially older ones, feel the responsibility",
-//            "to become a 'translator' for their immigrant parents,",
-//
-//            "since their impressionable minds can learn the language",
-//            "more quickly, (especially if they've learned of the new",
-//
-//            "country before immigrating there). As such, the child is",
-//            "shifted away from the role of the protected, forcing them",
-//
-//            "to take responsibility for their parents earlier on and",
-//            "also exposing them to adult struggles."
+            "enjoying their culture.",},
+            {"Children, especially older ones, feel the responsibility",
+            "to become a 'translator' for their immigrant parents,",
+
+            "since their impressionable minds can learn the language",
+            "more quickly, (especially if they've learned of the new",
+
+            "country before immigrating there). As such, the child is",
+            "shifted away from the role of the protected, forcing them",
+
+            "to take responsibility for their parents earlier on and",
+            "also exposing them to adult struggles."}
     };
 
     /**
@@ -107,7 +113,15 @@ public class SceneLanguageClass extends JPanel {
         getActionMap().put("next", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                count++;
+                System.out.println(count + "%%%");
+                if (!info) count += 2;
+                else if (info) count2 += 2;
+
+                if (count == 16) {
+                    info = true;
+                } else if (count == 18) {
+                    info = true;
+                }
                 repaint();
             }
         });
@@ -145,16 +159,28 @@ public class SceneLanguageClass extends JPanel {
         int xcord = 160;
         int ycord = 470;
 
-        if (count < sentences.length) {
-            g.setColor(Color.black);
-            g.drawString(sentences[count], xcord, ycord);
-            if (count + 1 < sentences.length) {
-                g.drawString(sentences[count + 1], xcord, ycord + 40);
+        System.out.println(count + " " + info);
+
+        if (!info) {
+            if (count < sentences.length) {
+                g.setColor(Color.black);
+                g.drawString(sentences[count], xcord, ycord);
+                if (count + 1< sentences.length) g.drawString(sentences[count + 1], xcord, ycord + 40);
+            } else if (count >= sentences.length) {
+                Game.gameState = 2;
             }
-            count++;
-        } else if (count >= sentences.length) {
-            Game.gameState = 6;
+        } else {
+            if (count2 < sentencesPaper[paper].length) {
+                g.setColor(Color.red);
+                g.drawString(sentencesPaper[paper][count2], xcord, ycord);
+                if (count2 + 1< sentencesPaper[paper].length) g.drawString(sentencesPaper[paper][count2 + 1], xcord, ycord + 40);
+            } else if (count2 >= sentencesPaper[paper].length) {
+                info = false;
+                count2 = 0;
+                paper++;
+            }
         }
         Game.showMoney(g);
+        Game.instructionsState=2;
     }
 }

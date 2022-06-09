@@ -60,7 +60,16 @@ public class SceneLanguageClassGame extends JPanel {
     /** This variable controls the direction of where the letter selector is going towards (left/right/neither) */
     static char dir = ' ';
     /** This variable stores the answer key for the sentence to be decyphered*/
-    static String[] sentences = {"CAN YOU@TRANSLATE@THIS@SENTENCE?"};
+    static String[] sentences =
+            {       "CAN YOU TRANSLATE @THIS SENTENCE WELL?",
+                    "HELLO@WOW"
+            };
+    /** This variable stores the right sentences */
+    static String[] sentencesRight =
+            {"HELLO@WOW"};
+    /** This variable stores the wrong sentences */
+    static String[] sentencesWrong =
+            {"AMAZING@GRACE"};
     /** This variable stores the random cypher of the string*/
     char[] cypher;
     /** This variable stores the letters that the player guesses */
@@ -399,23 +408,6 @@ public class SceneLanguageClassGame extends JPanel {
         }
     }
 
-//    /**
-//     * This method finds the indexes of characters that start in a new line
-//     */
-//    void findNewLine() {
-//        int idxCount = 0;
-//        int count = 0;
-//        String[] split = sentences[0].split(" ");
-//        for (int i = 0; i < split.length; i++) {
-//            idxCount += split[i].length() - 1;
-//            if (i - 1 >= 0) idxCount++;
-//            if (220 + idxCount * 25 > 450) {
-//                newLine[count] = idxCount;
-//                count++;
-//            }
-//        }
-//    }
-
     /**
      * This method checks where the index should be if the user goes back a line
      * @param str
@@ -444,12 +436,13 @@ public class SceneLanguageClassGame extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setFont(Game.font.deriveFont(28f));
+        g.setFont(Game.font.deriveFont(27f));
 
         if (bg != null) { //prints background
-            int x = (getWidth() - bg.getWidth()) / 2;
-            int y = (getHeight() - bg.getHeight()) / 2;
-            g.drawImage(bg, x, y, this);
+            int x = (getWidth() - bg.getWidth()) / 2 - 100;
+            int y = (getHeight() - bg.getHeight()) / 2 - 50;
+            Image background = bg.getScaledInstance(1040 , 780, Image.SCALE_DEFAULT);
+            g.drawImage(background, x, y, this);
         }
 
         g.setColor(Color.black);
@@ -465,7 +458,7 @@ public class SceneLanguageClassGame extends JPanel {
 
         for (int i = 0, xi = 0; i < sentences[0].length() - 1; i++, xi++) { //prints the sentence
 
-            xCoord = 220 + xi * 25;
+            xCoord = 185 + xi * 25;
             if (sentences[0].charAt(i) == '@') {
                 System.out.println(sentences[0].charAt(idx) );
                 if (sentences[0].charAt(idx) == '@') {
@@ -475,7 +468,7 @@ public class SceneLanguageClassGame extends JPanel {
                         y += 100;
                         idx++;
                     } else if (dir == 'l' ) {
-                        x = 215;
+                        x = xCoord;
                         y -= 100;
                         System.out.println("f" + previousLine(sentences[0].substring(0, idx)));
                         idx = previousLine(sentences[0].substring(0, idx));
