@@ -27,6 +27,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -34,8 +35,11 @@ import java.io.IOException;
 public class SceneLanguageClass extends JPanel {
     private BufferedImage bg;
     private BufferedImage teacher;
-    int count = 0, count2 = 0;
+    private BufferedImage paperBg;
+    int countGlobal = 0, count = 0, count2 = 0;
+    int paperY = 0;
     int paper = 0;
+    boolean animatePaper = false;
     boolean info = false; //false is teacher, true is paper
     static String[] sentences = {
             "Hello Everybody!",
@@ -94,20 +98,32 @@ public class SceneLanguageClass extends JPanel {
             "also exposing them to adult struggles."}
     };
 
+    Timer timer1 = new Timer(50, new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            if(animatePaper && paperY <0) {
+                paperY +=4 ;
+                System.out.println("Loading paper");
+            }else{
+                animatePaper = false;
+            }
+            repaint();
+        }
+    });
+
+
     /**
      * Constructor, initializes graphics
      */
     SceneLanguageClass() {
         try {
             bg = ImageIO.read(new File("src/img/TeacherBG.png"));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        try {
             teacher = ImageIO.read(new File("src/img/pixil-layer-3.png"));
+            paperBg = ImageIO.read(new File("src/img/factPaper.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
+        if (Game.gameState == 9) timer1.start();
 
         getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "next");
         getActionMap().put("next", new AbstractAction() {
@@ -144,17 +160,10 @@ public class SceneLanguageClass extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setFont(Game.font.deriveFont(27f));
-
-        if (bg != null) {
-            Image background = bg.getScaledInstance(800, 600, Image.SCALE_DEFAULT);
-            g.drawImage(background, 0, 0, this);
-        }
-        if (teacher != null) {
-            Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
-            g.drawImage(teach, -120, 330, this);
-        }
-
         g.setColor(Color.black);
+
+        Image background = bg.getScaledInstance(800, 600, Image.SCALE_DEFAULT);
+        g.drawImage(background, 0, 0, this);
 
         int xcord = 160;
         int ycord = 470;
@@ -162,6 +171,10 @@ public class SceneLanguageClass extends JPanel {
         System.out.println(count + " " + info);
 
         if (!info) {
+
+            Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+            g.drawImage(teach, -120, 330, this);
+
             if (count < sentences.length) {
                 g.setColor(Color.black);
                 g.drawString(sentences[count], xcord, ycord);
@@ -170,6 +183,8 @@ public class SceneLanguageClass extends JPanel {
                 Game.gameState = 2;
             }
         } else {
+            Image bg1 = paperBg.getScaledInstance(paperBg.getWidth() * 6, paperBg.getHeight() * 6, Image.SCALE_DEFAULT);
+            g.drawImage(bg1, 0, 0, this);
             if (count2 < sentencesPaper[paper].length) {
                 g.setColor(Color.red);
                 g.drawString(sentencesPaper[paper][count2], xcord, ycord);
