@@ -94,7 +94,7 @@ public class Instructions extends JPanel {
             g.drawString("able to decipher the sentence.", 140, y + 120);
             g.drawString("Use your left and right arrow keys to move through the sentence.", 140, y + 150);
         } else if(Game.instructionsState==3){
-            
+
         }
 
         buttons.setPaint(new Color(98, 193, 199));
