@@ -176,6 +176,7 @@ public class SceneLanguageClass extends JPanel {
                 if (count2 + 1< sentencesPaper[paper].length) g.drawString(sentencesPaper[paper][count2 + 1], xcord, ycord + 40);
             } else if (count2 >= sentencesPaper[paper].length) {
                 info = false;
+                count2 = 0;
                 paper++;
             }
         }
