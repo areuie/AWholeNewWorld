@@ -41,6 +41,7 @@ public class SceneLanguageClass extends JPanel {
     int paper = 0;
     boolean animatePaper = false;
     boolean info = false; //false is teacher, true is paper
+    int version;
     static String[] sentences = {
             "Hello Everybody!",
             "Welcome to ESL (English as a Second Language).",
@@ -98,6 +99,21 @@ public class SceneLanguageClass extends JPanel {
             "also exposing them to adult struggles."}
     };
 
+    static String[] sentences2 = {
+            "Hello Everybody!",
+            "Today we'll be applying the strategies that we learnt",
+
+            "last class! We'll be simulating different scenarios",
+            "that you may encounter in the real world.",
+
+            "You'll write about what you'd do in each scenario,",
+            "and I'll give feedback on your response.",
+
+            "Without further ado, let's get started!",
+            "",
+
+    };
+
     Timer timer1 = new Timer(50, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             if(animatePaper && paperY <0) {
@@ -110,37 +126,57 @@ public class SceneLanguageClass extends JPanel {
         }
     });
 
-
     /**
      * Constructor, initializes graphics
      */
-    SceneLanguageClass() {
-        try {
-            bg = ImageIO.read(new File("src/img/TeacherBG.png"));
-            teacher = ImageIO.read(new File("src/img/pixil-layer-3.png"));
-            paperBg = ImageIO.read(new File("src/img/factPaper.png"));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        if (Game.gameState == 9) timer1.start();
-
-        getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "next");
-        getActionMap().put("next", new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println(count + "%%%");
-                if (!info) count += 2;
-                else if (info) count2 += 2;
-
-                if (count == 16) {
-                    info = true;
-                } else if (count == 18) {
-                    info = true;
-                }
-                repaint();
+    SceneLanguageClass(int i) {
+        version = i;
+        if (version == 1) {
+            try {
+                bg = ImageIO.read(new File("src/img/TeacherBG.png"));
+                teacher = ImageIO.read(new File("src/img/pixil-layer-3.png"));
+                paperBg = ImageIO.read(new File("src/img/factPaper.png"));
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
-        });
+
+            if (Game.gameState == 5) timer1.start();
+
+            getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "next");
+            getActionMap().put("next", new AbstractAction() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println(count + "%%%");
+                    if (!info) count += 2;
+                    else if (info) count2 += 2;
+
+                    if (count == 16) {
+                        info = true;
+                    } else if (count == 18) {
+                        info = true;
+                    }
+                    repaint();
+                }
+            });
+        }
+        else if (version == 2) {
+            try {
+                bg = ImageIO.read(new File("src/img/TeacherBG.png"));
+                teacher = ImageIO.read(new File("src/img/pixil-layer-3.png"));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+            getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "next");
+            getActionMap().put("next", new AbstractAction() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println(count + "%%%");
+                    count += 2;
+                    repaint();
+                }
+            });
+        }
     }
 
     /**
@@ -170,31 +206,44 @@ public class SceneLanguageClass extends JPanel {
 
         System.out.println(count + " " + info);
 
-        if (!info) {
+        if (version == 1) {
+            if (!info) {
+                Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+                g.drawImage(teach, -120, 330, this);
 
+                if (count < sentences.length) {
+                    g.setColor(Color.black);
+                    g.drawString(sentences[count], xcord, ycord);
+                    if (count + 1< sentences.length) g.drawString(sentences[count + 1], xcord, ycord + 40);
+                } else if (count >= sentences.length) {
+                    Game.gameState = 2;
+                }
+            } else {
+                Image bg1 = paperBg.getScaledInstance(paperBg.getWidth() * 6, paperBg.getHeight() * 6, Image.SCALE_DEFAULT);
+                g.drawImage(bg1, 0, 0, this);
+                if (count2 < sentencesPaper[paper].length) {
+                    g.setColor(Color.red);
+                    g.drawString(sentencesPaper[paper][count2], xcord, ycord);
+                    if (count2 + 1< sentencesPaper[paper].length) g.drawString(sentencesPaper[paper][count2 + 1], xcord, ycord + 40);
+                } else if (count2 >= sentencesPaper[paper].length) {
+                    info = false;
+                    count2 = 0;
+                    paper++;
+                }
+            }
+        } else if (version == 2) {
             Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
             g.drawImage(teach, -120, 330, this);
 
-            if (count < sentences.length) {
+            if (count < sentences2.length) {
                 g.setColor(Color.black);
-                g.drawString(sentences[count], xcord, ycord);
-                if (count + 1< sentences.length) g.drawString(sentences[count + 1], xcord, ycord + 40);
-            } else if (count >= sentences.length) {
-                Game.gameState = 2;
-            }
-        } else {
-            Image bg1 = paperBg.getScaledInstance(paperBg.getWidth() * 6, paperBg.getHeight() * 6, Image.SCALE_DEFAULT);
-            g.drawImage(bg1, 0, 0, this);
-            if (count2 < sentencesPaper[paper].length) {
-                g.setColor(Color.red);
-                g.drawString(sentencesPaper[paper][count2], xcord, ycord);
-                if (count2 + 1< sentencesPaper[paper].length) g.drawString(sentencesPaper[paper][count2 + 1], xcord, ycord + 40);
-            } else if (count2 >= sentencesPaper[paper].length) {
-                info = false;
-                count2 = 0;
-                paper++;
+                g.drawString(sentences2[count], xcord, ycord);
+                if (count + 1< sentences2.length) g.drawString(sentences2[count + 1], xcord, ycord + 40);
+            } else if (count >= sentences2.length) {
+                Game.gameState = 6;
             }
         }
+
         Game.showMoney(g);
         Game.instructionsState=2;
     }

@@ -59,6 +59,11 @@ public class SceneLanguageClassGame extends JPanel {
     static int idx = 0;
     /** This variable controls the direction of where the letter selector is going towards (left/right/neither) */
     static char dir = ' ';
+    static String[][] scenarios =
+            {
+                    {"Scenario: You feel stressed because your family requires"},
+                    {}
+            };
     /** This variable stores the answer key for the sentence to be decyphered*/
     static String[] sentences =
             {       "CAN YOU TRANSLATE @THIS SENTENCE WELL?",
