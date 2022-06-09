@@ -36,17 +36,18 @@ public class SceneLanguageClass extends JPanel {
     private BufferedImage bg;
     private BufferedImage teacher;
     private BufferedImage paperBg;
+    //countGlobal for the total dialogue lines, count for teacher's dialogue, count2 for facts
     int countGlobal = 0, count = 0, count2 = 0;
     int paperY = 0;
     int paper = 0;
-    boolean animatePaper = false;
+    boolean animatePaper = false, factsPaperFinished = false;
     boolean info = false; //false is teacher, true is paper
     static String[] sentences = {
             "Hello Everybody!",
             "Welcome to ESL (English as a Second Language).",
 
-            "Since many of you guys have just landed in this new",
-            "environment, we're going to be going over adversities",
+            "Since you guys have just landed in this new",
+            "environment, we're will go over adversities",
 
             "that you may face as an child immigrant",
             "so that you're prepared for when they arise.",
@@ -55,7 +56,7 @@ public class SceneLanguageClass extends JPanel {
             "we'll be discussing in this class.",
 
             "1. Preparing to carry the burden of being",
-            "the sole translator of the household",
+            "the 'sole translator' of the household",
 
             "2. Loneliness due to certain factors",
             "",
@@ -64,38 +65,70 @@ public class SceneLanguageClass extends JPanel {
             "",
 
             "Here's a info sheet that will help facilitate",
-            "your learning on being the sole translator.",
+            "your learning on having too much responsibility.",
+
+            "In order to prevent this, you need to learn to",
+            "rely on your parents, and to trust them enough",
+
+            "to tell them when you feel like there’s too much",
+            "responsibility. Know that you are entitled to",
+
+            "to act your age, especially if your living",
+            "situation allows it.",
 
             "Here's a info sheet that will help facilitate",
             "your learning on dealing with loneliness.",
 
-            "Here's a info sheet that will help facilitate",
-            "your learning on figuring out your place in",
-
-            "cultural identity.",
             "",
+
+            "Here's a info sheet that will help facilitate",
+            "your learning on your cultural identity.",
 
     };
 
     static String[][] sentencesPaper = {
-            {"The key to maintaining the child's connection,",
-            "to their culture, while allowing them to",
-            "integrate into their new environment, is to",
-            "maintain the existence of said culture in the",
-            "child's daily life, while not imposing it on",
-            "them. Teach them that there is no shame in",
-            "enjoying their culture.",},
-            {"Children, especially older ones, feel the responsibility",
-            "to become a 'translator' for their immigrant parents,",
+            {"Children, especially older ones, feel the ",
+                    "responsibility to become a 'translator' for their ",
+                    "immigrant parents, since their impressionable ",
 
-            "since their impressionable minds can learn the language",
-            "more quickly, (especially if they've learned of the new",
+                    "minds can learn the language more quickly, ",
+                    "(especially if  they've learned of the new ",
+                    "country before immigrating there). As such, ",
 
-            "country before immigrating there). As such, the child is",
-            "shifted away from the role of the protected, forcing them",
+                    "the child is shifted away from the role of the",
+                    "protected, forcing them to take responsibility",
+                    "for their parents earlier on also exposing ",
+                    "them to adult struggles. Children who feel ",
+                    "imposed with this responsibility earlier are at ",
 
-            "to take responsibility for their parents earlier on and",
-            "also exposing them to adult struggles."}
+                    "more risk  of developing anxiety, depression, ",
+                    "eating disorders and of abusing substances.",
+            },
+
+            {
+                "Before they've become comfortable with their",
+                "new country, the closest thing a child has ",
+                    "to their familiar environment is their",
+
+                    "immigrant parent. When this figure of ",
+                    "comfort is gone, for long periods of time,",
+                    "the child will feel a sense of loneliness.",
+
+                    "Especially if they aren't able to make friends."
+            },
+
+            {
+                "Many immigrant children face this issue: ",
+                    "they\'re too ‘foreign’ for their homeland, but",
+                    "they're too 'exotic' in the country they've",
+                    "immigrated to. Either way, they can't seem",
+
+                    "to fit in. This manifests itself in low",
+                    "self-confidence, becoming less socially active,",
+                    "and raised anxiety when in an environment",
+                    "where they feel they don't completely belong."
+            }
+
     };
 
     Timer timer1 = new Timer(50, new ActionListener() {
@@ -131,11 +164,13 @@ public class SceneLanguageClass extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 System.out.println(count + "%%%");
                 if (!info) count += 2;
-                else if (info) count2 += 2;
+                else if (info) count2 += 3;
 
-                if (count == 16) {
+                if (count == 14) {
                     info = true;
-                } else if (count == 18) {
+                } else if (count == 22) {
+                    info = true;
+                }else if (count == 24) {
                     info = true;
                 }
                 repaint();
@@ -170,25 +205,29 @@ public class SceneLanguageClass extends JPanel {
 
         System.out.println(count + " " + info);
 
-        if (!info) {
+        Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+        g.drawImage(teach, -120, 330, this);
 
-            Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
-            g.drawImage(teach, -120, 330, this);
+        if (count < sentences.length) {
+            g.setColor(Color.black);
+            g.drawString(sentences[count], xcord, ycord);
+            if (count + 1< sentences.length) g.drawString(sentences[count + 1], xcord, ycord + 40);
+        } else if (count >= sentences.length) {
+            Game.gameState = 2;
+        }
 
-            if (count < sentences.length) {
-                g.setColor(Color.black);
-                g.drawString(sentences[count], xcord, ycord);
-                if (count + 1< sentences.length) g.drawString(sentences[count + 1], xcord, ycord + 40);
-            } else if (count >= sentences.length) {
-                Game.gameState = 2;
-            }
-        } else {
-            Image bg1 = paperBg.getScaledInstance(paperBg.getWidth() * 6, paperBg.getHeight() * 6, Image.SCALE_DEFAULT);
-            g.drawImage(bg1, 0, 0, this);
+        if(info){
+            Image bg1 = paperBg.getScaledInstance(paperBg.getWidth() * 4, paperBg.getHeight() * 2, Image.SCALE_DEFAULT);
+            g.drawImage(bg1, 0, 150, this);
             if (count2 < sentencesPaper[paper].length) {
                 g.setColor(Color.red);
-                g.drawString(sentencesPaper[paper][count2], xcord, ycord);
-                if (count2 + 1< sentencesPaper[paper].length) g.drawString(sentencesPaper[paper][count2 + 1], xcord, ycord + 40);
+                g.drawString(sentencesPaper[paper][count2], xcord, ycord-260);
+                if (count2 + 1< sentencesPaper[paper].length){
+                    g.drawString(sentencesPaper[paper][count2 + 1], xcord, ycord -220);
+                    if (count2 + 2< sentencesPaper[paper].length){
+                        g.drawString(sentencesPaper[paper][count2 + 2], xcord, ycord -180);
+                    }
+                }
             } else if (count2 >= sentencesPaper[paper].length) {
                 info = false;
                 count2 = 0;
