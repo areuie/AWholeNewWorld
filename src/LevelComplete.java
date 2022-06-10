@@ -31,7 +31,7 @@ public class LevelComplete extends JPanel {
     /** The constructor of the screen */
     LevelComplete() {
         try {
-            bg = ImageIO.read(new File("src/img/bg2noButton.png"));
+            bg = ImageIO.read(new File("src/img/bg2.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -69,7 +69,7 @@ public class LevelComplete extends JPanel {
 
         buttons.setRenderingHints(button);
 
-        buttons.setPaint(new Color(96, 96, 96, 223));
+        buttons.setPaint(new Color(96, 96, 96, 208));
         buttons.fillRoundRect(100, 40, 600, 520, 25, 25);
 
         g.setColor(Color.white);

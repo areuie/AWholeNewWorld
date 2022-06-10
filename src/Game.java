@@ -32,12 +32,6 @@
  *     Added variables storing the money given to family, and how happy the family is
  *     - Alisa
  * </p>
- * <h3> Draft 4</h3>
- * <p>
- *     Version 6 - 30 min
- *     Changed program flow for instructions
- *     - Mona
- * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
  * @version 06.03.22
@@ -58,7 +52,7 @@ public class Game {
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
-    public static int gameState = 0;
+    public static int gameState = 5;
     /** This variable stores the amount of money the player has */
     public static int money = 300;
     /** This variable is the font of the game*/
@@ -139,19 +133,7 @@ public class Game {
             } else if (gameState == 5) { //language classroom
                 frame.remove(screen);
 
-                SceneLanguageClass classroom = new SceneLanguageClass(1);
-                frame.add(classroom);
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
-
-                screen = classroom;
-                gameState = 0;
-
-            } else if (gameState == -5) { //language classroom
-                frame.remove(screen);
-
-                SceneLanguageClass classroom = new SceneLanguageClass(2);
+                SceneLanguageClass classroom = new SceneLanguageClass();
                 frame.add(classroom);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
