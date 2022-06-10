@@ -78,7 +78,7 @@ public class SceneLanguageClassGame extends JPanel {
     static String[] sentences = {
             "I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
             "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
-            "I WILL@TAKE INITIATIVE AND@TRY TO MAKE@FRIENDS AT@SCHOOL.",
+            "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
             "I FEEL LIKE@AN OUTSIDER SO@I WILL KEEP@TO MYSELF@AT SCHOOL.",
     };
     static String[][] prompts = {

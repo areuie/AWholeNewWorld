@@ -43,6 +43,7 @@ public class SceneLongMainScreen extends JPanel{
     /** This variable stores the background */
     private BufferedImage bg, spriteStanding,spriteAni1,spriteAni2,spriteAni3,spriteAni4, spriteKidStanding,spriteKidAni1, spriteKidAni2, spriteKidAni3, spriteKidAni4, bSchool, bWork, bPost, bImm;
     private Image[] buildingList = new Image[4];
+    boolean[] buttonHover = new boolean[2];
     private int[][] levelBuildingList =
             {
                     {0, 2},
@@ -117,6 +118,27 @@ public class SceneLongMainScreen extends JPanel{
         buildingList[1] = bWork.getScaledInstance(bWork.getWidth() * 2, bWork.getHeight() * 2, Image.SCALE_DEFAULT);
         buildingList[2] = bPost.getScaledInstance(bPost.getWidth() * 2,bPost.getHeight() * 2, Image.SCALE_DEFAULT);
         buildingList[3] = bImm.getScaledInstance(bImm.getWidth() * 2, bImm.getHeight() * 2, Image.SCALE_DEFAULT);
+
+        addMouseMotionListener(new MouseAdapter() {
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                if (popupType != 0) {
+                    if (e.getX() > 250 && e.getX() < 550 && e.getY() > 300 && e.getY() < 350)//if they press yes they are taken to the scene
+                    {
+                        System.out.println("hover");
+                        buttonHover[0] = true;
+                    } else buttonHover[0] = false;
+                    if (e.getX() > 250 && e.getX() < 550 && e.getY() > 370 && e.getY() < 420)//if they press no, they continue on
+                    {
+                        System.out.println("no hover");
+                        buttonHover[1] = true;
+                    } else buttonHover[1] = false;
+                    repaint();
+                }
+            }
+
+        });
 
         addMouseListener(new MouseAdapter() { //menu
             public void mousePressed(MouseEvent e) {
@@ -249,6 +271,16 @@ public class SceneLongMainScreen extends JPanel{
             g.drawImage(background, backgroundX + 2400, 0, this);
         }
 
+        g.setFont(Game.font.deriveFont(30f));
+        g.setColor(new Color(47, 47, 47));
+        g.drawString("You safely immigrated with your mother.",100 + backgroundX, 205);
+        g.drawString("Your goal is to overcome adversities",100 + backgroundX, 235);
+        g.drawString("and sponsor the rest of your family,",100 + backgroundX, 265);
+        g.drawString("so that your family can start a new life.",100 + backgroundX, 295);
+        g.setFont(Game.font.deriveFont(40f));
+        g.setColor(new Color(0, 0, 0));
+        g.drawString("Use the right arrow to move.",100 + backgroundX, 350);
+
         for (int i = 0; i < levelBuildingList[Game.level - 1].length; i++) {
             g.drawImage(buildingList[levelBuildingList[Game.level - 1][i]], backgroundX + buildingDistBetween * (i + 1), buildingYCoords[levelBuildingList[Game.level - 1][i]], this);
         }
@@ -290,8 +322,12 @@ public class SceneLongMainScreen extends JPanel{
             buttons.setPaint(new Color(255, 255, 255));
             buttons.fillRoundRect(235, 180, 330, 100, 25, 25);
 
-            buttons.setPaint(new Color(150, 150, 150));
+            if (!buttonHover[0]) buttons.setPaint(new Color(150, 150, 150));
+            else if (buttonHover[0]) buttons.setPaint(new Color(100, 100, 100));
             buttons.fillRoundRect(250, 300, 300, 50, 25, 25);
+
+            if (!buttonHover[1]) buttons.setPaint(new Color(150, 150, 150));
+            else if (buttonHover[1]) buttons.setPaint(new Color(100, 100, 100));
             buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
 
             g.setColor(Color.black);
@@ -313,8 +349,12 @@ public class SceneLongMainScreen extends JPanel{
             buttons.setPaint(new Color(255, 255, 255));
             buttons.fillRoundRect(235, 180, 330, 100, 25, 25);
 
-            buttons.setPaint(new Color(150, 150, 150));
+            if (!buttonHover[0]) buttons.setPaint(new Color(150, 150, 150));
+            else if (buttonHover[0]) buttons.setPaint(new Color(100, 100, 100));
             buttons.fillRoundRect(250, 300, 300, 50, 25, 25);
+
+            if (!buttonHover[1]) buttons.setPaint(new Color(150, 150, 150));
+            else if (buttonHover[1]) buttons.setPaint(new Color(100, 100, 100));
             buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
 
             g.setColor(Color.black);
@@ -336,8 +376,12 @@ public class SceneLongMainScreen extends JPanel{
             buttons.setPaint(new Color(255, 255, 255));
             buttons.fillRoundRect(235, 180, 330, 100, 25, 25);
 
-            buttons.setPaint(new Color(150, 150, 150));
+            if (!buttonHover[0]) buttons.setPaint(new Color(150, 150, 150));
+            else if (buttonHover[0]) buttons.setPaint(new Color(100, 100, 100));
             buttons.fillRoundRect(250, 300, 300, 50, 25, 25);
+
+            if (!buttonHover[1]) buttons.setPaint(new Color(150, 150, 150));
+            else if (buttonHover[1]) buttons.setPaint(new Color(100, 100, 100));
             buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
 
             g.setColor(Color.black);
@@ -359,8 +403,12 @@ public class SceneLongMainScreen extends JPanel{
             buttons.setPaint(new Color(255, 255, 255));
             buttons.fillRoundRect(235, 180, 330, 100, 25, 25);
 
-            buttons.setPaint(new Color(150, 150, 150));
+            if (!buttonHover[0]) buttons.setPaint(new Color(150, 150, 150));
+            else if (buttonHover[0]) buttons.setPaint(new Color(100, 100, 100));
             buttons.fillRoundRect(250, 300, 300, 50, 25, 25);
+
+            if (!buttonHover[1]) buttons.setPaint(new Color(150, 150, 150));
+            else if (buttonHover[1]) buttons.setPaint(new Color(100, 100, 100));
             buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
 
             g.setColor(Color.black);
@@ -382,8 +430,12 @@ public class SceneLongMainScreen extends JPanel{
             buttons.setPaint(new Color(255, 255, 255));
             buttons.fillRoundRect(235, 180, 330, 100, 25, 25);
 
-            buttons.setPaint(new Color(150, 150, 150));
+            if (!buttonHover[0]) buttons.setPaint(new Color(150, 150, 150));
+            else if (buttonHover[0]) buttons.setPaint(new Color(100, 100, 100));
             buttons.fillRoundRect(250, 300, 300, 50, 25, 25);
+
+            if (!buttonHover[1]) buttons.setPaint(new Color(150, 150, 150));
+            else if (buttonHover[1]) buttons.setPaint(new Color(100, 100, 100));
             buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
 
             g.setColor(Color.black);
@@ -405,8 +457,12 @@ public class SceneLongMainScreen extends JPanel{
             buttons.setPaint(new Color(255, 255, 255));
             buttons.fillRoundRect(235, 180, 330, 100, 25, 25);
 
-            buttons.setPaint(new Color(150, 150, 150));
+            if (!buttonHover[0]) buttons.setPaint(new Color(150, 150, 150));
+            else if (buttonHover[0]) buttons.setPaint(new Color(100, 100, 100));
             buttons.fillRoundRect(250, 300, 300, 50, 25, 25);
+
+            if (!buttonHover[1]) buttons.setPaint(new Color(150, 150, 150));
+            else if (buttonHover[1]) buttons.setPaint(new Color(100, 100, 100));
             buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
 
             g.setColor(Color.black);
@@ -428,8 +484,12 @@ public class SceneLongMainScreen extends JPanel{
             buttons.setPaint(new Color(255, 255, 255));
             buttons.fillRoundRect(235, 180, 330, 100, 25, 25);
 
-            buttons.setPaint(new Color(150, 150, 150));
+            if (!buttonHover[0]) buttons.setPaint(new Color(150, 150, 150));
+            else if (buttonHover[0]) buttons.setPaint(new Color(100, 100, 100));
             buttons.fillRoundRect(250, 300, 300, 50, 25, 25);
+
+            if (!buttonHover[1]) buttons.setPaint(new Color(150, 150, 150));
+            else if (buttonHover[1]) buttons.setPaint(new Color(100, 100, 100));
             buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
 
             g.setColor(Color.black);

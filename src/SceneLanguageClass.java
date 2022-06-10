@@ -67,14 +67,14 @@ public class SceneLanguageClass extends JPanel {
             "Here's a info sheet that will help facilitate",
             "your learning on having too much responsibility.",
 
-            "In order to prevent this, you need to learn to",
+            "In order to alleviate this, you need to learn to",
             "rely on your parents, and to trust them enough",
 
             "to tell them when you feel like there’s too much",
-            "responsibility. Know that you are entitled to",
+            "responsibility. But still remember to put yourself",
 
-            "to act your age, especially if your living",
-            "situation allows it.",
+            "in your parent's shoes in order to understand",
+            "their own struggles.",
 
             "Here's a info sheet that will help facilitate",
             "your learning on dealing with loneliness.",
@@ -191,7 +191,7 @@ public class SceneLanguageClass extends JPanel {
                     info = true;
                 } else if (count == 22) {
                     info = true;
-                }else if (count == 28) {
+                }else if (count == 30) {
                     info = true;
                 }
                 repaint();
@@ -234,7 +234,7 @@ public class SceneLanguageClass extends JPanel {
             g.drawString(sentences[count], xcord, ycord);
             if (count + 1< sentences.length) g.drawString(sentences[count + 1], xcord, ycord + 40);
         } else if (count >= sentences.length) {
-            Game.gameState = 2;
+            Game.gameState = 12;
         }
 
         if(info){
