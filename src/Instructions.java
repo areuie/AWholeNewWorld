@@ -31,20 +31,17 @@ public class Instructions extends JPanel {
     /** The constructor of the screen */
     Instructions() {
         try {
-            bg = ImageIO.read(new File("src/img/bg2noButton.png"));
+            bg = ImageIO.read(new File("src/img/bg2.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
 
         addMouseListener(new MouseAdapter() { //menu
             public void mousePressed(MouseEvent e) {
-                if (e.getX() > 350 && e.getX() < 450 && e.getY() > 445 && e.getY() < 505 && Game.instructionsState==1 && Game.level==1)//if they press play button they are taken to the language class dialogue scene
+                if (e.getX() > 350 && e.getX() < 450 && e.getY() > 445 && e.getY() < 505 && Game.instructionsState==1)//if they press play button they are taken to the language class dialogue scene
                 {
                     Game.gameState=1;
-                } else if (e.getX() > 350 && e.getX() < 450 && e.getY() > 445 && e.getY() < 505 && Game.level==3)//if they press play button they are taken to the language class dialogue scene
-                {
-                    Game.gameState=10;
-                } else if (e.getX() > 350 && e.getX() < 450 && e.getY() > 445 && e.getY() < 505 && Game.instructionsState==2 )//if they press play button they are taken to the language class dialogue scene
+                } else if (e.getX() > 350 && e.getX() < 450 && e.getY() > 445 && e.getY() < 505 && Game.instructionsState==2)//if they press play button they are taken to the language class dialogue scene
                 {
                     Game.gameState=6;
                 }
@@ -72,12 +69,12 @@ public class Instructions extends JPanel {
 
         buttons.setRenderingHints(button);
 
-        buttons.setPaint(new Color(96, 96, 96, 232));
+        buttons.setPaint(new Color(96, 96, 96, 255));
         buttons.fillRoundRect(100, 40, 600, 520, 25, 25);
 
         g.setColor(Color.white);
         g.setFont(Game.font.deriveFont(70f));
-        g.drawString("Game Instructions", 180, 130);
+        g.drawString("Instructions", 260, 130);
 
         int y=200;
         g.setFont(Game.font.deriveFont(20f));
@@ -89,10 +86,6 @@ public class Instructions extends JPanel {
             g.drawString("move right and left. Walk past buildings and choose the one you want ", 140, y + 120);
             g.drawString("to enter by clicking yes or no. Use your space key to click through ", 140, y + 150);
             g.drawString("the dialogue or use your mouse to press the buttons.", 140, y + 180);
-        } else if(Game.level==3){
-            g.drawString("In this game you will need to do your job at work, which is ", 140, y);
-            g.drawString("typing as many of the words as you see on the screen before", 140, y + 30);
-            g.drawString("they pass the screen. Use your keyboard to type the words", 140, y + 60);
         } else if(Game.instructionsState==2){
             g.drawString("In this game you will need to decipher the sentence using the", 140, y);
             g.drawString("symbols underneath the line. For example the symbol N underneath", 140, y + 30);
@@ -100,6 +93,8 @@ public class Instructions extends JPanel {
             g.drawString("everywhere that the letter N is found. Doing this you will be  ", 140, y + 90);
             g.drawString("able to decipher the sentence.", 140, y + 120);
             g.drawString("Use your left and right arrow keys to move through the sentence.", 140, y + 150);
+        } else if(Game.instructionsState==3){
+
         }
 
         buttons.setPaint(new Color(98, 193, 199));
