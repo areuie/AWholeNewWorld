@@ -168,7 +168,7 @@ public class SceneLanguageClass extends JPanel {
     /**
      * Constructor, initializes graphics
      */
-    SceneLanguageClass() {
+    SceneLanguageClass(int i ) {
         try {
             bg = ImageIO.read(new File("src/img/TeacherBG.png"));
             teacher = ImageIO.read(new File("src/img/pixil-layer-3.png"));
@@ -241,7 +241,7 @@ public class SceneLanguageClass extends JPanel {
             Image bg1 = paperBg.getScaledInstance(paperBg.getWidth() * 4, paperBg.getHeight() * 2, Image.SCALE_DEFAULT);
             g.drawImage(bg1, 0, 150, this);
             if (count2 < sentencesPaper[paper].length) {
-                g.setColor(Color.red);
+                g.setColor(Color.black);
                 g.drawString(sentencesPaper[paper][count2], xcord, ycord-260);
                 if (count2 + 1< sentencesPaper[paper].length){
                     g.drawString(sentencesPaper[paper][count2 + 1], xcord, ycord -220);
