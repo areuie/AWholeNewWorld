@@ -20,6 +20,11 @@
  * - Alisa
  * </p>
  *
+ * Version 4 - 1h
+ * Changed the program output depending on which level the user is on
+ * - Mona
+ * </p>
+ *
  * @author Alisa Wu, Mona Afshar, Lois Zan
  * @version 06.03.22
  *

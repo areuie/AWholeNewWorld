@@ -32,6 +32,12 @@
  *     Added variables storing the money given to family, and how happy the family is
  *     - Alisa
  * </p>
+ * <h3> Draft 4</h3>
+ * <p>
+ *     Version 6 - 30 min
+ *     Changed program flow for instructions
+ *     - Mona
+ * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
  * @version 06.03.22
@@ -52,7 +58,7 @@ public class Game {
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
-    public static int gameState = 6;
+    public static int gameState = 0;
     /** This variable stores the amount of money the player has */
     public static int money = 300;
     /** This variable is the font of the game*/
