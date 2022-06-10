@@ -36,18 +36,18 @@ public class SceneLanguageClass extends JPanel {
     private BufferedImage bg;
     private BufferedImage teacher;
     private BufferedImage paperBg;
+    //countGlobal for the total dialogue lines, count for teacher's dialogue, count2 for facts
     int countGlobal = 0, count = 0, count2 = 0;
     int paperY = 0;
     int paper = 0;
-    boolean animatePaper = false;
+    boolean animatePaper = false, factsPaperFinished = false;
     boolean info = false; //false is teacher, true is paper
-    int version;
     static String[] sentences = {
             "Hello Everybody!",
             "Welcome to ESL (English as a Second Language).",
 
-            "Since many of you guys have just landed in this new",
-            "environment, we're going to be going over adversities",
+            "Since you guys have just landed in this new",
+            "environment, we're will go over adversities",
 
             "that you may face as an child immigrant",
             "so that you're prepared for when they arise.",
@@ -56,7 +56,7 @@ public class SceneLanguageClass extends JPanel {
             "we'll be discussing in this class.",
 
             "1. Preparing to carry the burden of being",
-            "the sole translator of the household",
+            "the 'sole translator' of the household",
 
             "2. Loneliness due to certain factors",
             "",
@@ -65,52 +65,90 @@ public class SceneLanguageClass extends JPanel {
             "",
 
             "Here's a info sheet that will help facilitate",
-            "your learning on being the sole translator.",
+            "your learning on having too much responsibility.",
+
+            "In order to prevent this, you need to learn to",
+            "rely on your parents, and to trust them enough",
+
+            "to tell them when you feel like there’s too much",
+            "responsibility. Know that you are entitled to",
+
+            "to act your age, especially if your living",
+            "situation allows it.",
 
             "Here's a info sheet that will help facilitate",
             "your learning on dealing with loneliness.",
 
-            "Here's a info sheet that will help facilitate",
-            "your learning on figuring out your place in",
+            "A good way to overcome this loneliness is to",
+            "integrate into the social environment of your",
 
-            "cultural identity.",
+            "new country. What do kids your age play with?",
+            "What are the interests of the kids in this new",
+        
+            "country? Introduce yourself to those.",
             "",
-
+        
+            "Here's a info sheet that will help facilitate",
+            "your learning on your cultural identity.",
+        
+            "The key to maintaining your connection to your",
+            "culture, while allowing yourself to integrate",
+        
+            "into your new environment, is to maintain the",
+            "existence of said culture in your daily life.",
+            
+            "However, not to the point of feeling imposed by",
+            "your culture. You must realize that there is no",
+        
+            "shame in enjoying your culture, as long as",
+            "nobody is harmed. If someone makes fun of your",
+        
+            "culture, whether that be by mocking your lunch",
+            "or your clothes, stay firm and stand your ground."
     };
 
     static String[][] sentencesPaper = {
-            {"The key to maintaining the child's connection,",
-            "to their culture, while allowing them to",
-            "integrate into their new environment, is to",
-            "maintain the existence of said culture in the",
-            "child's daily life, while not imposing it on",
-            "them. Teach them that there is no shame in",
-            "enjoying their culture.",},
-            {"Children, especially older ones, feel the responsibility",
-            "to become a 'translator' for their immigrant parents,",
+            {"Children, especially older ones, feel the ",
+                    "responsibility to become a 'translator' for their ",
+                    "immigrant parents, since their impressionable ",
 
-            "since their impressionable minds can learn the language",
-            "more quickly, (especially if they've learned of the new",
+                    "minds can learn the language more quickly, ",
+                    "(especially if  they've learned of the new ",
+                    "country before immigrating there). As such, ",
 
-            "country before immigrating there). As such, the child is",
-            "shifted away from the role of the protected, forcing them",
+                    "the child is shifted away from the role of the",
+                    "protected, forcing them to take responsibility",
+                    "for their parents earlier on also exposing ",
+                    "them to adult struggles. Children who feel ",
+                    "imposed with this responsibility earlier are at ",
 
-            "to take responsibility for their parents earlier on and",
-            "also exposing them to adult struggles."}
-    };
+                    "more risk  of developing anxiety, depression, ",
+                    "eating disorders and of abusing substances.",
+            },
 
-    static String[] sentences2 = {
-            "Hello Everybody!",
-            "Today we'll be applying the strategies that we learnt",
+            {
+                "Before they've become comfortable with their",
+                "new country, the closest thing a child has ",
+                    "to their familiar environment is their",
 
-            "last class! We'll be simulating different scenarios",
-            "that you may encounter in the real world.",
+                    "immigrant parent. When this figure of ",
+                    "comfort is gone, for long periods of time,",
+                    "the child will feel a sense of loneliness.",
 
-            "You'll write about what you'd do in each scenario,",
-            "and I'll give feedback on your response.",
+                    "Especially if they aren't able to make friends."
+            },
 
-            "Without further ado, let's get started!",
-            "",
+            {
+                "Many immigrant children face this issue: ",
+                    "they\'re too ‘foreign’ for their homeland, but",
+                    "they're too 'exotic' in the country they've",
+                    "immigrated to. Either way, they can't seem",
+
+                    "to fit in. This manifests itself in low",
+                    "self-confidence, becoming less socially active,",
+                    "and raised anxiety when in an environment",
+                    "where they feel they don't completely belong."
+            }
 
     };
 
@@ -126,57 +164,39 @@ public class SceneLanguageClass extends JPanel {
         }
     });
 
+
     /**
      * Constructor, initializes graphics
      */
-    SceneLanguageClass(int i) {
-        version = i;
-        if (version == 1) {
-            try {
-                bg = ImageIO.read(new File("src/img/TeacherBG.png"));
-                teacher = ImageIO.read(new File("src/img/pixil-layer-3.png"));
-                paperBg = ImageIO.read(new File("src/img/factPaper.png"));
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-
-            if (Game.gameState == 5) timer1.start();
-
-            getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "next");
-            getActionMap().put("next", new AbstractAction() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    System.out.println(count + "%%%");
-                    if (!info) count += 2;
-                    else if (info) count2 += 2;
-
-                    if (count == 16) {
-                        info = true;
-                    } else if (count == 18) {
-                        info = true;
-                    }
-                    repaint();
-                }
-            });
+    SceneLanguageClass() {
+        try {
+            bg = ImageIO.read(new File("src/img/TeacherBG.png"));
+            teacher = ImageIO.read(new File("src/img/pixil-layer-3.png"));
+            paperBg = ImageIO.read(new File("src/img/factPaper.png"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-        else if (version == 2) {
-            try {
-                bg = ImageIO.read(new File("src/img/TeacherBG.png"));
-                teacher = ImageIO.read(new File("src/img/pixil-layer-3.png"));
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
 
-            getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "next");
-            getActionMap().put("next", new AbstractAction() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    System.out.println(count + "%%%");
-                    count += 2;
-                    repaint();
+        if (Game.gameState == 9) timer1.start();
+
+        getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "next");
+        getActionMap().put("next", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(count + "%%%");
+                if (!info) count += 2;
+                else if (info) count2 += 3;
+
+                if (count == 14) {
+                    info = true;
+                } else if (count == 22) {
+                    info = true;
+                }else if (count == 28) {
+                    info = true;
                 }
-            });
-        }
+                repaint();
+            }
+        });
     }
 
     /**
@@ -206,44 +226,35 @@ public class SceneLanguageClass extends JPanel {
 
         System.out.println(count + " " + info);
 
-        if (version == 1) {
-            if (!info) {
-                Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
-                g.drawImage(teach, -120, 330, this);
+        Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+        g.drawImage(teach, -120, 330, this);
 
-                if (count < sentences.length) {
-                    g.setColor(Color.black);
-                    g.drawString(sentences[count], xcord, ycord);
-                    if (count + 1< sentences.length) g.drawString(sentences[count + 1], xcord, ycord + 40);
-                } else if (count >= sentences.length) {
-                    Game.gameState = 2;
-                }
-            } else {
-                Image bg1 = paperBg.getScaledInstance(paperBg.getWidth() * 6, paperBg.getHeight() * 6, Image.SCALE_DEFAULT);
-                g.drawImage(bg1, 0, 0, this);
-                if (count2 < sentencesPaper[paper].length) {
-                    g.setColor(Color.red);
-                    g.drawString(sentencesPaper[paper][count2], xcord, ycord);
-                    if (count2 + 1< sentencesPaper[paper].length) g.drawString(sentencesPaper[paper][count2 + 1], xcord, ycord + 40);
-                } else if (count2 >= sentencesPaper[paper].length) {
-                    info = false;
-                    count2 = 0;
-                    paper++;
-                }
-            }
-        } else if (version == 2) {
-            Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
-            g.drawImage(teach, -120, 330, this);
-
-            if (count < sentences2.length) {
-                g.setColor(Color.black);
-                g.drawString(sentences2[count], xcord, ycord);
-                if (count + 1< sentences2.length) g.drawString(sentences2[count + 1], xcord, ycord + 40);
-            } else if (count >= sentences2.length) {
-                Game.gameState = 6;
-            }
+        if (count < sentences.length) {
+            g.setColor(Color.black);
+            g.drawString(sentences[count], xcord, ycord);
+            if (count + 1< sentences.length) g.drawString(sentences[count + 1], xcord, ycord + 40);
+        } else if (count >= sentences.length) {
+            Game.gameState = 2;
         }
 
+        if(info){
+            Image bg1 = paperBg.getScaledInstance(paperBg.getWidth() * 4, paperBg.getHeight() * 2, Image.SCALE_DEFAULT);
+            g.drawImage(bg1, 0, 150, this);
+            if (count2 < sentencesPaper[paper].length) {
+                g.setColor(Color.red);
+                g.drawString(sentencesPaper[paper][count2], xcord, ycord-260);
+                if (count2 + 1< sentencesPaper[paper].length){
+                    g.drawString(sentencesPaper[paper][count2 + 1], xcord, ycord -220);
+                    if (count2 + 2< sentencesPaper[paper].length){
+                        g.drawString(sentencesPaper[paper][count2 + 2], xcord, ycord -180);
+                    }
+                }
+            } else if (count2 >= sentencesPaper[paper].length) {
+                info = false;
+                count2 = 0;
+                paper++;
+            }
+        }
         Game.showMoney(g);
         Game.instructionsState=2;
     }
