@@ -50,7 +50,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-
+//took 2 hours
 public class SceneLanguageClassGame extends JPanel {
 
     /**
