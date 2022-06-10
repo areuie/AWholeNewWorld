@@ -61,7 +61,7 @@ public class SceneMenu extends JPanel {
                 if (e.getX() > 120 && e.getX() < 390 && e.getY() > 380 && e.getY() < 460)//if they press play button they are taken to the language class dialogue scene
                 {
                     repaint();
-                    Game.gameState = 12;
+                    Game.gameState = 15;
                     System.out.println("PLAY");
 
                 } else if (e.getX() > 408 && e.getX() < 680 && e.getY() > 380 && e.getY() < 460)//if they press instructions button they are taken to that page

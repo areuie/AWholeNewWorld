@@ -67,23 +67,44 @@ public class SceneLanguageClass extends JPanel {
             "Here's a info sheet that will help facilitate",
             "your learning on having too much responsibility.",
 
-            "In order to prevent this, you need to learn to",
+            "In order to alleviate this, you need to learn to",
             "rely on your parents, and to trust them enough",
 
             "to tell them when you feel like there’s too much",
-            "responsibility. Know that you are entitled to",
+            "responsibility. But still remember to put yourself",
 
-            "to act your age, especially if your living",
-            "situation allows it.",
+            "in your parent's shoes in order to understand",
+            "their own struggles.",
 
             "Here's a info sheet that will help facilitate",
             "your learning on dealing with loneliness.",
 
-            "",
+            "A good way to overcome this loneliness is to",
+            "integrate into the social environment of your",
 
+            "new country. What do kids your age play with?",
+            "What are the interests of the kids in this new",
+        
+            "country? Introduce yourself to those.",
+            "",
+        
             "Here's a info sheet that will help facilitate",
             "your learning on your cultural identity.",
-
+        
+            "The key to maintaining your connection to your",
+            "culture, while allowing yourself to integrate",
+        
+            "into your new environment, is to maintain the",
+            "existence of said culture in your daily life.",
+            
+            "However, not to the point of feeling imposed by",
+            "your culture. You must realize that there is no",
+        
+            "shame in enjoying your culture, as long as",
+            "nobody is harmed. If someone makes fun of your",
+        
+            "culture, whether that be by mocking your lunch",
+            "or your clothes, stay firm and stand your ground."
     };
 
     static String[][] sentencesPaper = {
@@ -147,7 +168,7 @@ public class SceneLanguageClass extends JPanel {
     /**
      * Constructor, initializes graphics
      */
-    SceneLanguageClass() {
+    SceneLanguageClass(int i ) {
         try {
             bg = ImageIO.read(new File("src/img/TeacherBG.png"));
             teacher = ImageIO.read(new File("src/img/pixil-layer-3.png"));
@@ -170,7 +191,7 @@ public class SceneLanguageClass extends JPanel {
                     info = true;
                 } else if (count == 22) {
                     info = true;
-                }else if (count == 24) {
+                }else if (count == 30) {
                     info = true;
                 }
                 repaint();
@@ -213,14 +234,14 @@ public class SceneLanguageClass extends JPanel {
             g.drawString(sentences[count], xcord, ycord);
             if (count + 1< sentences.length) g.drawString(sentences[count + 1], xcord, ycord + 40);
         } else if (count >= sentences.length) {
-            Game.gameState = 2;
+            Game.gameState = 12;
         }
 
         if(info){
             Image bg1 = paperBg.getScaledInstance(paperBg.getWidth() * 4, paperBg.getHeight() * 2, Image.SCALE_DEFAULT);
             g.drawImage(bg1, 0, 150, this);
             if (count2 < sentencesPaper[paper].length) {
-                g.setColor(Color.red);
+                g.setColor(Color.black);
                 g.drawString(sentencesPaper[paper][count2], xcord, ycord-260);
                 if (count2 + 1< sentencesPaper[paper].length){
                     g.drawString(sentencesPaper[paper][count2 + 1], xcord, ycord -220);

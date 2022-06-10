@@ -119,7 +119,7 @@ public class SceneIntroPlane extends JPanel {
             if(count == sentences.length - 2) almostFinished = true;
         }
         if (count >= sentences.length-1 && planeX>=800) {
-            Game.gameState =9;
+            Game.gameState =12;
             count++;
         }
         System.out.println("Current count: " + count + " and current planeX: " + planeX + " Current lenght array is: " + sentences.length);
