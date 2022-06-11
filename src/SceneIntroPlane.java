@@ -30,7 +30,7 @@ import java.io.IOException;
 
 public class SceneIntroPlane extends JPanel {
     private BufferedImage bg;
-    private BufferedImage plane;
+    private BufferedImage plane, textBox;
     int count = 0, planeX = -150, planeY = 50;
     boolean almostFinished = false;
     static String[] sentences = {"Welcome to your new country.", "We hope you'll find everyone wonderful.", "Remember to study English hard,", " make new friends, ", "and enjoy your stay to the fullest." , 
@@ -60,6 +60,7 @@ public class SceneIntroPlane extends JPanel {
     SceneIntroPlane() {
         try {
             bg = ImageIO.read(new File("src/img/SkyBG.png"));
+            textBox = ImageIO.read(new File("src/img/textBox.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -102,10 +103,10 @@ public class SceneIntroPlane extends JPanel {
         if (bg != null) {
             Image background = bg.getScaledInstance(800, 600, Image.SCALE_DEFAULT);
             g.drawImage(background, 0, 0, this);
-        }
-        if (plane != null) {
             Image airPlane = plane.getScaledInstance(600, 600, Image.SCALE_DEFAULT);
             g.drawImage(airPlane, planeX, planeY, this);
+            Image textBox1 = textBox.getScaledInstance(textBox.getWidth() * 2, textBox.getHeight() * 2, Image.SCALE_DEFAULT);
+            g.drawImage(textBox1,0, 0, this);
         }
 
         g.setColor(Color.black);

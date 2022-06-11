@@ -88,7 +88,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
         }
     });
     /** This is the timer that animates the moving sprite */
-    Timer timer3 = new Timer(500, new ActionListener() {
+    Timer timer3 = new Timer(500 - speed, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             String path = "src/img/pixil-frame-Female" + spriteImg + ".png";

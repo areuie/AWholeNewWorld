@@ -52,7 +52,7 @@ public class Game {
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
-    public static int gameState = 12;
+    public static int gameState = 10;
     /** This variable stores the amount of money the player has */
     public static int money = 300;
     /** This variable is the font of the game*/
@@ -191,7 +191,7 @@ public class Game {
             } else if (gameState == 8) { //post office writing
                 frame.remove(screen);
 
-                ScenePostOffice letter = new ScenePostOffice(1);
+                ScenePostOfficeWrite letter = new ScenePostOfficeWrite(1);
                 frame.add(letter);
                 frame.pack();
                 frame.setLocationRelativeTo(null);

@@ -31,7 +31,7 @@ public class LevelComplete extends JPanel {
     /** The constructor of the screen */
     LevelComplete() {
         try {
-            bg = ImageIO.read(new File("src/img/bg2.png"));
+            bg = ImageIO.read(new File("src/img/bg2noButton.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }

@@ -35,7 +35,7 @@ import java.io.IOException;
 public class SceneLanguageClass extends JPanel {
     private BufferedImage bg;
     private BufferedImage teacher;
-    private BufferedImage paperBg;
+    private BufferedImage paperBg,textBox;
     //countGlobal for the total dialogue lines, count for teacher's dialogue, count2 for facts
     int countGlobal = 0, count = 0, count2 = 0;
     int paperY = 0;
@@ -173,6 +173,7 @@ public class SceneLanguageClass extends JPanel {
             bg = ImageIO.read(new File("src/img/TeacherBG.png"));
             teacher = ImageIO.read(new File("src/img/pixil-layer-3.png"));
             paperBg = ImageIO.read(new File("src/img/factPaper.png"));
+            textBox = ImageIO.read(new File("src/img/textBox.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -226,6 +227,8 @@ public class SceneLanguageClass extends JPanel {
 
         System.out.println(count + " " + info);
 
+        Image textBox1 = textBox.getScaledInstance(textBox.getWidth() * 2, textBox.getHeight() * 2, Image.SCALE_DEFAULT);
+        g.drawImage(textBox1,0, 0, this);
         Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
         g.drawImage(teach, -120, 330, this);
 

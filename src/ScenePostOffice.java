@@ -30,7 +30,7 @@ import java.io.IOException;
 public class ScenePostOffice extends JPanel {
 
     /**This variable stores the background image*/
-    private BufferedImage bg;
+    private BufferedImage bg, textBox;
     /**This variable stores the image for the post office person*/
     private BufferedImage person;
     /**This variable counts the number of it runs through the if statements*/
@@ -49,11 +49,8 @@ public class ScenePostOffice extends JPanel {
     ScenePostOffice(int stage) {
         try {
             bg = ImageIO.read(new File("src/img/PostOfficeBGText.png"));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        try {
             person = ImageIO.read(new File("src/img/pixil-layer-1.png"));
+            textBox = ImageIO.read(new File("src/img/textBox.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -94,7 +91,11 @@ public class ScenePostOffice extends JPanel {
 
         if (bg != null) {
             g.drawImage(back, 0, 0, this);
+            g.drawImage(textBox, 200, 500, this);
         }
+        Image textBox1 = textBox.getScaledInstance(textBox.getWidth() * 2, textBox.getHeight() * 2, Image.SCALE_DEFAULT);
+        g.drawImage(textBox1,0, 0, this);
+
         if (person != null) {
             Image teach = person.getScaledInstance(person.getWidth()*12, person.getHeight()*12, Image.SCALE_DEFAULT);
             g.drawImage(teach, -80, 320, this);
@@ -112,10 +113,9 @@ public class ScenePostOffice extends JPanel {
                 g.drawString(sentences[count + 1], xcord, ycord + 40);
                 count++;
             }
-        } else if (count == sentences.length) {
+        } else if (count >= sentences.length) {
             if (stage == 1) Game.gameState = 8;
             if (stage == 2) Game.gameState = -8;
-            count++;
         }
         Game.showMoney(g);
     }

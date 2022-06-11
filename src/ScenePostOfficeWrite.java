@@ -42,7 +42,7 @@ public class ScenePostOfficeWrite extends JPanel {
     /**Background Image*/
     private BufferedImage bg;
     /**Button for how many times user has interacted*/
-    int nextButton = 0;
+    static int nextButton = 0;
     /** Variable that stores what version the scene should use */
     int stage;
 
@@ -115,9 +115,8 @@ public class ScenePostOfficeWrite extends JPanel {
         g.setFont(Game.font.deriveFont(28f));
 
         if (bg != null) {
-            int x = (getWidth() - bg.getWidth()) / 2;
-            int y = (getHeight() - bg.getHeight()) / 2;
-            g.drawImage(bg, x, y, this);
+            Image bg1 = bg.getScaledInstance(800, 600, Image.SCALE_DEFAULT);
+            g.drawImage(bg1, 0, 0, this);
         }
 
         System.out.println(nextButton);
