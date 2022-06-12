@@ -52,7 +52,7 @@ public class Game {
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
-    public static int gameState = 10;
+    public static int gameState = 16;
     /** This variable stores the amount of money the player has */
     public static int money = 300;
     /** This variable is the font of the game*/
@@ -288,6 +288,17 @@ public class Game {
                 frame.setVisible(true);
 
                 screen = plane;
+                gameState = 0;
+            } else if (gameState == 16) {
+                frame.remove(screen);
+
+                ScenePhoneCall phone = new ScenePhoneCall();
+                frame.add(phone);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+
+                screen = phone;
                 gameState = 0;
             }
 
