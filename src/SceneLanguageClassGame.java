@@ -556,8 +556,37 @@ public class SceneLanguageClassGame extends JPanel {
 
                 g.setColor(Color.black);
                 g.setFont(Game.font.deriveFont(25f));
-                g.drawString("Yes", 380, 335);
-                g.drawString("No", 380, 405);
+                switch (prompt) {
+                    case 0:
+                        g.drawString("Communicate with parents", 380, 135);
+                        g.drawString("Keep to self", 380, 205);
+
+                        g.drawString("a", 380, 335);
+                        g.drawString("b", 380, 405);
+                        break;
+                    case 2:
+                        g.drawString("Ask people at school to be friends", 380, 135);
+                        g.drawString("Wait for people to come to you", 380, 205);
+
+                        g.drawString("a", 380, 335);
+                        g.drawString("b", 380, 405);
+                        break;
+                    case 4:
+                        g.drawString("Take deep breaths", 380, 135);
+                        g.drawString("Run away", 380, 205);
+
+                        g.drawString("a", 380, 335);
+                        g.drawString("b", 380, 405);
+                        break;
+
+                    case 6:
+                        g.drawString("Send mail often", 380, 135);
+                        g.drawString("Wait for them to send mail", 380, 205);
+
+                        g.drawString("a", 380, 335);
+                        g.drawString("b", 380, 405);
+                        break;
+                }
             }
             else if (stage) {
                 int newLine = 0;
