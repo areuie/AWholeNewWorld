@@ -11,6 +11,7 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -21,11 +22,15 @@ public class ScenePhoneCall extends JPanel {
     /** This variable stores the background image*/
     private Image bg;
     /** This variable stores the type of job */
-    String job = "none";
     static String[] sentences = {
-            "Hey Mom! Can I get that sweater I wanted to get a couple weeks ago?",
-            "Sorry honey I didn't make enough money this week to buy it.",
-            "Awww", "Maybe sometimes it would be helpful for you to put yourself in my shoes",};
+            "Hey Mom! Can I get that sweater I ", "wanted to get a couple weeks ago?",
+            "Sorry honey I didn't make ", "enough money this week to buy it.",
+            "Awww","But I really wanted it!!",
+            "Maybe it would be helpful for you", "to put yourself in my shoes",
+            "Why?", "", "Maybe you will be able to see", "how hard I work for you.",
+            "Okay I guess I should see how ", "difficult work is.",
+            "In the game you will be working ","in place of me. Use your keyboard","to type the words before", "it exits the screen."};
+    int count;
 
 
 
@@ -36,7 +41,17 @@ public class ScenePhoneCall extends JPanel {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
+        getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "next");
+        getActionMap().put("next", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                count++;
+                repaint();
+            }
+        });
     }
+
 
     /**
      * This method paints graphics on the screen.
@@ -49,26 +64,37 @@ public class ScenePhoneCall extends JPanel {
             g.drawImage(bg, 0, 0, this);
         }
 
-        Mom(g);
-        Kid(g);
+        g.setColor(Color.black);
 
-        if (job.equals("none")) {
-            g.setFont(Game.font.deriveFont(30f));
-            g.drawString("What job would you like?", 360, 240);
-        } else if (job.equals("Engineer")) {
-            g.setFont(Game.font.deriveFont(25f));
-            g.drawString("Sorry! We cannot accept your ", 360, 210);
-            g.drawString("previous engineering degree.", 360, 240);
-            g.setFont(Game.font.deriveFont(15f));
-            g.drawString("Please select another option.", 360, 270);
-        } else if (job.equals("Teacher")) {
-            g.setFont(Game.font.deriveFont(25f));
-            g.drawString("Sorry! We cannot accept your ", 360, 210);
-            g.drawString("previous teaching experience.", 360, 240);
-            g.setFont(Game.font.deriveFont(15f));
-            g.drawString("Please select another option.", 360, 270);
-        } else if (job.equals("Receptionist"))
-            Game.gameState=12;
+        int xcord;
+        int ycord;
+
+        if(count%4==0){
+            xcord = 210;
+            ycord = 450;
+            Kid(g);
+        } else {
+            xcord = 280;
+            ycord = 40;
+            Mom(g);
+        }
+
+        g.setColor(Color.black);
+        g.setFont(Game.font.deriveFont(20f));
+
+        if (count < sentences.length-1) {
+            g.drawString(sentences[count], xcord, ycord);
+            g.drawString(sentences[count+1], xcord, ycord+30);
+            if (count>12){
+                g.drawString(sentences[count+2], xcord, ycord+60);
+                g.drawString(sentences[count+3], xcord, ycord+90);
+                count+=2;
+            }
+            count++;
+        } else if (count >= sentences.length) {
+            Game.gameState = 10;
+        }
+
     }
 
     public void Mom(Graphics g){

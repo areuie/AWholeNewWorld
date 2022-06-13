@@ -38,12 +38,9 @@ public class Instructions extends JPanel {
 
         addMouseListener(new MouseAdapter() { //menu
             public void mousePressed(MouseEvent e) {
-                if (e.getX() > 350 && e.getX() < 450 && e.getY() > 445 && e.getY() < 505 && Game.instructionsState==1)//if they press play button they are taken to the language class dialogue scene
+                if (e.getX() > 350 && e.getX() < 450 && e.getY() > 445 && e.getY() < 505)//if they press play button they are taken to the language class dialogue scene
                 {
                     Game.gameState=1;
-                } else if (e.getX() > 350 && e.getX() < 450 && e.getY() > 445 && e.getY() < 505 && Game.instructionsState==2)//if they press play button they are taken to the language class dialogue scene
-                {
-                    Game.gameState=6;
                 }
             }
         });
@@ -78,24 +75,14 @@ public class Instructions extends JPanel {
 
         int y=200;
         g.setFont(Game.font.deriveFont(20f));
-        if(Game.instructionsState==1) {
+
             g.drawString("You are an immigrant who has just arrived to a new country with your", 140, y);
-            g.drawString("child. This game will help stimulate the challenges that immigrants ", 140, y + 30);
-            g.drawString("and their children face, when arriving in a new country. There will ", 140, y + 60);
+            g.drawString("mom. This game will help stimulate the challenges that immigrants ", 140, y + 30);
+            g.drawString("children face when arriving in a new country. There will ", 140, y + 60);
             g.drawString("be a walking part of the game where you can use your arrow keys to ", 140, y + 90);
             g.drawString("move right and left. Walk past buildings and choose the one you want ", 140, y + 120);
             g.drawString("to enter by clicking yes or no. Use your space key to click through ", 140, y + 150);
             g.drawString("the dialogue or use your mouse to press the buttons.", 140, y + 180);
-        } else if(Game.instructionsState==2){
-            g.drawString("In this game you will need to decipher the sentence using the", 140, y);
-            g.drawString("symbols underneath the line. For example the symbol N underneath", 140, y + 30);
-            g.drawString("the line may correspond to the letter A, so you need to put A", 140, y + 60);
-            g.drawString("everywhere that the letter N is found. Doing this you will be  ", 140, y + 90);
-            g.drawString("able to decipher the sentence.", 140, y + 120);
-            g.drawString("Use your left and right arrow keys to move through the sentence.", 140, y + 150);
-        } else if(Game.instructionsState==3){
-
-        }
 
         buttons.setPaint(new Color(98, 193, 199));
         buttons.fillRoundRect(350, 445, 100, 60, 25, 25);

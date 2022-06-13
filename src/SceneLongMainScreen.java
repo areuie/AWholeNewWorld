@@ -166,7 +166,7 @@ public class SceneLongMainScreen extends JPanel{
                                 Game.gameState = 7;
                                 break;
                             case 6:
-                                Game.gameState = 10;
+                                Game.gameState = 16;
                                 break;
                             case 7:
                                 Game.gameState = 11;
