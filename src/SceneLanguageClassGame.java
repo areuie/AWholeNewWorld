@@ -72,6 +72,41 @@ public class SceneLanguageClassGame extends JPanel {
     int prompt = 0;
     int sentencesIdx = 0;
     boolean stage = false;//false is prompt, true is game
+
+    static String[][] abc = {
+            {
+                    "a) Communicate with your parent(s).",
+                    "Let them know how you're feeling.",
+                    "b) Let it go",
+                    "c) Call the police"
+            },
+            {
+                    "a) Approach those who share your ethnic",
+                    "background",
+                    "b) Join clubs and after-school programs",
+                    "c) Wait for people to come to you"
+            },
+            {
+                    "a) Take deep breaths/meditate",
+                    "b) Ignore and suppress the stress",
+                    "c) Reach out to a loved one"
+            },
+            {
+                    "a) Send mail overseas",
+                    "b) Call family members",
+                    "c) Grow resentment"
+            },
+            {
+                    "a) Understand ",
+                    "",
+                    ""
+            },
+            {
+                    "",
+                    "",
+                    ""
+            }
+    };
     /**
      * This variable stores the answer key for the sentence to be decyphered
      */
@@ -83,11 +118,13 @@ public class SceneLanguageClassGame extends JPanel {
     };
     static String[][] prompts = {
             {       "Scenario: Your parent puts on too",
-                    "much burden on yourself at home."
+                    "much burden on yourself to do good.",
+                    "at school. You're already trying",
+                    "your best."
             },
             {       "Scenario: You feel lonely because",
                     "of your separated family and",
-                    "lack of school friends."
+                    "language barrier at school."
             }
     };
     /**
@@ -131,13 +168,13 @@ public class SceneLanguageClassGame extends JPanel {
 
         addMouseListener(new MouseAdapter() { //menu
             public void mousePressed(MouseEvent e) {
-                if (e.getX() > 250 && e.getX() < 550 && e.getY() > 300 && e.getY() < 350)//if they press yes they are taken to the scene
+                if (e.getX() > 340 && e.getX() < 390 && e.getY() > 510 && e.getY() < 550)//if they press yes they are taken to the scene
                 {
                     System.out.println("yess!");
                     stage = true;
                     reset();
                      repaint();
-                } else if (e.getX() > 250 && e.getX() < 550 && e.getY() > 370 && e.getY() < 420) {//if they press no, they continue on
+                } else if (e.getX() > 400 && e.getX() < 510 && e.getY() > 450 && e.getY() < 550) {//if they press no, they continue on
                     System.out.println("noo!");
                     stage = true;
                     sentencesIdx++;
@@ -521,7 +558,7 @@ public class SceneLanguageClassGame extends JPanel {
         @Override
         protected void paintComponent (Graphics g){
             super.paintComponent(g);
-            g.setFont(Game.font.deriveFont(28f));
+            g.setFont(Game.font.deriveFont(25f));
 
             if (bg != null) { //prints background
                 int x = (getWidth() - bg.getWidth()) / 2 - 30;
@@ -540,7 +577,7 @@ public class SceneLanguageClassGame extends JPanel {
             if (!stage) {
                 g.setColor(Color.black);
                 for (int i = 0; i < prompts[prompt].length; i++) {
-                    g.drawString(prompts[prompt][i], 205, 80 + i * 35);
+                    g.drawString(prompts[prompt][i], 205, 80 + i * 25);
                 }
                 Graphics2D buttons = (Graphics2D) g;
 
@@ -551,42 +588,24 @@ public class SceneLanguageClassGame extends JPanel {
                 buttons.setRenderingHints(button);
 
                 buttons.setPaint(new Color(150, 150, 150));
-                buttons.fillRoundRect(250, 300, 300, 50, 25, 25);
-                buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
+                buttons.fillRoundRect(340, 510, 50, 40, 25, 25);
+                buttons.fillRoundRect(400, 510, 50, 40, 25, 25);
 
                 g.setColor(Color.black);
-                g.setFont(Game.font.deriveFont(25f));
-                switch (prompt) {
-                    case 0:
-                        g.drawString("Communicate with parents", 380, 135);
-                        g.drawString("Keep to self", 380, 205);
+                g.setFont(Game.font.deriveFont(20f));
 
-                        g.drawString("a", 380, 335);
-                        g.drawString("b", 380, 405);
-                        break;
-                    case 2:
-                        g.drawString("Ask people at school to be friends", 380, 135);
-                        g.drawString("Wait for people to come to you", 380, 205);
+                int xp = 205;
+                int yp = 190;
 
-                        g.drawString("a", 380, 335);
-                        g.drawString("b", 380, 405);
-                        break;
-                    case 4:
-                        g.drawString("Take deep breaths", 380, 135);
-                        g.drawString("Run away", 380, 205);
 
-                        g.drawString("a", 380, 335);
-                        g.drawString("b", 380, 405);
-                        break;
-
-                    case 6:
-                        g.drawString("Send mail often", 380, 135);
-                        g.drawString("Wait for them to send mail", 380, 205);
-
-                        g.drawString("a", 380, 335);
-                        g.drawString("b", 380, 405);
-                        break;
+                for (int i = 0; i < abc[prompt].length; i++) {
+                    g.drawString(abc[prompt][i], xp, yp);
+                    yp += 20;
                 }
+
+                g.drawString("a", 360, 540);
+                g.drawString("b", 420, 540);
+
             }
             else if (stage) {
                 int newLine = 0;

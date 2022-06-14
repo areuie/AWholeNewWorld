@@ -43,6 +43,8 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -67,6 +69,7 @@ public class Game {
     public static int level = 1;
     /** This variable stores the current state of instructions */
     public static int instructionsState = 1;
+    static SceneMenu menu = new SceneMenu();
 
     static {
         try {
@@ -78,21 +81,8 @@ public class Game {
         }
     }
 
-    /**
-     * This method is the main method to start the game. It controls the screens of the game.
-     * @param args
-     */
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(Game::initializeFrame);
-        SceneMenu menu = new SceneMenu();
-        frame.add(menu);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-
-        screen = menu;
-
-        while (true) {
+    static Timer timer1 = new Timer(100, new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
             if (gameState == 1) { //menu
                 frame.remove(screen);
                 menu = new SceneMenu();
@@ -289,20 +279,27 @@ public class Game {
 
                 screen = plane;
                 gameState = 0;
-            } else if (gameState == 16) {
-                frame.remove(screen);
-
-                ScenePhoneCall phone = new ScenePhoneCall();
-                frame.add(phone);
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
-
-                screen = phone;
-                gameState = 0;
             }
 
         }
+
+
+    });
+
+    /**
+     * This method is the main method to start the game. It controls the screens of the game.
+     * @param args
+     */
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(Game::initializeFrame);
+        menu = new SceneMenu();
+        frame.add(menu);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        timer1.start();
+
+        screen = menu;
     }
 
     /**
