@@ -166,12 +166,12 @@ public class ScenePostOfficeWrite extends JPanel {
         int x = 260;
         g.drawString("I know it might be difficult right now", x, 170);
         g.drawString("living in this new environment, but ", x, 200);
-        g.drawString("always remember to save your ", x, 230);
-        g.drawString("money and don’t over spend on", x, 260);
-        g.drawString("unnecessary items. Make sure to ", x, 290);
-        g.drawString("make valuable connections in the ", x, 320);
-        g.drawString("workplace, so you can make more ", x, 350);
-        g.drawString("money in the future. ", x, 380);
+        g.drawString("always remember to talk with your parents", x, 230);
+        g.drawString("and communicate your struggles. Make", x, 260);
+        g.drawString("sure to start making friends at school", x, 290);
+        g.drawString("so that you have something to look forward to.", x, 320);
+        g.drawString("Also try to help your mom out in any way and", x, 350);
+        g.drawString("try to stay out of trouble at school.", x, 380);
         g.drawString("Sincerely", x, 430);
         g.drawString("-Your loved ones", x, 460);
 
@@ -210,7 +210,7 @@ public class ScenePostOfficeWrite extends JPanel {
         g.drawString("Write about...", 250, 185);
 
         g.drawString("The racist comment on the street", 280, 255);
-        g.drawString("The co-worker language barrier", 280, 375);
+        g.drawString("The classmate language barrier", 280, 375);
         g.drawString("Financial Issues", 280, 495);
     }
 
@@ -237,7 +237,7 @@ public class ScenePostOfficeWrite extends JPanel {
         g.drawString("Hey Family! I'm really enjoying myself ", x, 170);
         g.drawString("here, but a couple days ago, someone  ", x, 200);
         g.drawString("yelled a racist comment at me, when I ", x, 230);
-        g.drawString("was on my way home from language ", x, 260);
+        g.drawString("was on my way home from school ", x, 260);
         g.drawString("class. I was taken aback, because  ", x, 290);
         g.drawString("everyone has been so kind to me ", x, 320);
         g.drawString("since I've arrived here. Anyways, ", x, 350);
@@ -274,10 +274,10 @@ public class ScenePostOfficeWrite extends JPanel {
         int x = 260;
 
         g.drawString("Hey Family! I'm really enjoying myself ", x, 170);
-        g.drawString("here, but I'm really struggling at work. ", x, 200);
+        g.drawString("here, but I'm really struggling at school. ", x, 200);
         g.drawString("I still have a very thick accent when I ", x, 230);
         g.drawString("speak, so it's been really hard to ", x, 260);
-        g.drawString("communicate with my co-workers.", x, 290);
+        g.drawString("communicate with my classmates.", x, 290);
         g.drawString("Anyways, hope you are doing well  ", x, 320);
         g.drawString("and I can't wait to see you guys soon!", x, 350);
         g.drawString("Sincerely ", x, 380);
@@ -311,12 +311,12 @@ public class ScenePostOfficeWrite extends JPanel {
         int x = 260;
 
         g.drawString("Hey Family! I'm really enjoying myself ", x, 170);
-        g.drawString("here, but I'm really struggling. It's ", x, 200);
+        g.drawString("here, but mom is really struggling. It's ", x, 200);
         g.drawString("been very difficult making money so ", x, 230);
-        g.drawString("far, and rent is getting more expensive.", x, 260);
-        g.drawString("I live in a very small apartment in a ", x, 290);
-        g.drawString("bad area so I'm starting to save up for", x, 320);
-        g.drawString("a new place. Hope to see you all soon!", x, 350);
+        g.drawString("far, and we don't have money to spend.", x, 260);
+        g.drawString("I want to buy this sweater for the past ", x, 290);
+        g.drawString("couple of weeks but mom said we don't ", x, 320);
+        g.drawString("have enough money. See you soon!", x, 350);
         g.drawString("Sincerely ", x, 380);
         g.drawString("-", x, 410);
 
