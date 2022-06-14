@@ -77,7 +77,7 @@ public class SceneLanguageClassGame extends JPanel {
     boolean score = false;
     boolean stage = false;//false is prompt, true is game
     static String[] ansKey = {
-            "a","ab","ac","bc","a","ab","ac","bc"
+            "a","ab","ac","bc","bc","ac","abc","bc"
     };
     static String[][] abc = {
             {
@@ -136,10 +136,6 @@ public class SceneLanguageClassGame extends JPanel {
                     "I WILL JOIN@CLUBS AND AFTER @SCHOOL PROGRAMS@TO MEET NEW@FRIENDS.",
                     "",
             },
-            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
-                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
-                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
-            },
             {"I WILL TAKE @DEEP BREATHS@AND MEDITATE@WHENSTRESSED.",
                     "",
                     "I WILL@REACH OUT@TO LOVED ONES.",
@@ -148,13 +144,18 @@ public class SceneLanguageClassGame extends JPanel {
                     "I WILL@MAKE SURE@TO CALL@FAMILY BACK@HOME.",
                     "I WILL@SEND MAIL@TO FAMILY@BACK HOME.",
             },
-            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
-                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
-                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
+            {"",
+                    "I WILL@STAND UP FOR@MYSELF AND@FEEL PROUD@FOR MY CULTURE.",
+                    "TALK ABOUT@IT WITH A@TRUSTED ADULT.",
             },
-            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
-                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
-                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
+            {
+                    "I WILL TELL A@TEACHER WHO WILL@DEAL WITH IT.",
+                    "",
+                    "I WILL TELL A@PARENT TO@EXPRESS MY@FRUSTRATION.",
+            },
+            {"I WILL@HELP PARENTS@WITH CHORES.",
+                    "I WILL@TRANSLATE@DIFFICULT TEXT@FOR MY@PARENTS.",
+                    "I WILL@STUDY HARD@AND DO WELL@IN SCHOOL.",
             },
             {"",
                     "I WILL IMMERSE@MYSELF IN MY@NEW COUNTRYS@CULTURE AND@MEDIA.",
@@ -251,10 +252,10 @@ public class SceneLanguageClassGame extends JPanel {
                 }
                 else if (answered) {
                     if (!wrong) stage = true;
-                    reset();
                     System.out.println("hi");
                     prompt = Math.min(prompt + 1, prompts.length);
                     if (prompt >= prompts.length) score = true;
+                    reset();
                     repaint();
                 }
                 else if (!stage) {

@@ -165,15 +165,16 @@ public class ScenePostOfficeWrite extends JPanel {
         g.setFont(Game.font.deriveFont(21f));
         int x = 260;
         g.drawString("I know it might be difficult right now", x, 170);
-        g.drawString("living in this new environment, but ", x, 200);
-        g.drawString("always remember to talk with your parents", x, 230);
-        g.drawString("and communicate your struggles. Make", x, 260);
-        g.drawString("sure to start making friends at school", x, 290);
-        g.drawString("so that you have something to look forward to.", x, 320);
-        g.drawString("Also try to help your mom out in any way and", x, 350);
-        g.drawString("try to stay out of trouble at school.", x, 380);
-        g.drawString("Sincerely", x, 430);
-        g.drawString("-Your loved ones", x, 460);
+        g.drawString("living in this new environment, but", x, 200);
+        g.drawString("always remember to talk with your", x, 230);
+        g.drawString("parents and communicate your struggles.", x, 260);
+        g.drawString("Make sure to start making friends at", x, 290);
+        g.drawString("school so that you have something to", x, 320);
+        g.drawString("look forward to. Also try to help your", x, 350);
+        g.drawString("mom out in any way and try to stay out", x, 380);
+        g.drawString("of trouble at school.", x, 410);
+        g.drawString("Sincerely", x, 440);
+        g.drawString("-Your loved ones", x, 470);
 
         g.setFont(Game.font.deriveFont(30f));
         next.setColor(new Color(200, 90, 90));

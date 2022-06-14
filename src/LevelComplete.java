@@ -74,7 +74,14 @@ public class LevelComplete extends JPanel {
 
         g.setColor(Color.white);
         g.setFont(Game.font.deriveFont(70f));
-        g.drawString("LEVEL "+(Game.level)+" COMPLETE", 180, 250);
+        if (Game.level == 1) {
+            g.drawString("DEFICIENCY", 220, 200);
+        } else if(Game.level == 2) {
+            g.drawString("PANIC ROOM", 230, 200);
+        } else if (Game.level == 3) {
+            g.drawString("ESCAPE ROOM", 230, 200);
+        }
+        g.drawString("LEVEL COMPLETE", 200, 250);
 
         buttons.setPaint(new Color(98, 193, 199));
         buttons.fillRoundRect(300, 300, 200, 60, 25, 25);
