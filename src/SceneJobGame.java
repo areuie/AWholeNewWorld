@@ -73,7 +73,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
         }
     });
     /** This is the timer that keeps on adding new words to the queue */
-    Timer timer2 = new Timer(2000, new ActionListener() {
+    Timer timer2 = new Timer(4000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             int random = (int) (Math.random() * 7);
