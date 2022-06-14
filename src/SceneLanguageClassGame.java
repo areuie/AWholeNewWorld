@@ -249,7 +249,7 @@ public class SceneLanguageClassGame extends JPanel {
                     if (!wrong) stage = true;
                     reset();
                     System.out.println("hi");
-                    prompt++;
+                    prompt = Math.min(prompt + 1, prompts.length);
                     if (prompt >= prompts.length) score = true;
                     repaint();
                 }
