@@ -52,14 +52,14 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
     private int chances = 3;
     /** This variable stores the words going across the screen*/
     private static String[] words = {
-            "How to create new friends in a new country:",
-            "How to deal with stress in general:",
-            "What to do when people joke about your accent:",
-            "What should you do if you miss your family overseas?:",
-            "What to do when feeling homesick:",
-            "How to deal with financial issues as a child:",
-            "What to do when people comment on your lunch:",
-            "How to support parent(s) as a kid:",
+            "1. How to create new friends in a new country:",
+            "2. How to deal with stress in general:",
+            "3. What to do when people joke about your accent:",
+            "4. What should you do if you miss your family overseas?:",
+            "5. What to do when feeling homesick:",
+            "6. How to react if parents can't buy things?:",
+            "7. What to do when people comment on your lunch:",
+            "8. How to support parent(s) as a kid:",
 
     };
     /** This variable stores the queue of words going across the screen */
@@ -76,7 +76,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
     Timer timer2 = new Timer(4000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            int random = (int) (Math.random() * 7);
+            int random = (int) (Math.random() * 10);
             if (random > 1) queue.add(new Word('g'));
             else  queue.add(new Word('b'));
             repaint();
@@ -110,10 +110,13 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
             }
             System.out.println();
             if (allTrue) {
-                stage++;
-                timer1.stop();
-                timer2.stop();
-                timer3.stop();
+                if (stage + 1 < Word.good.length) stage++;
+                else {
+                    timer1.stop();
+                    timer2.stop();
+                    timer3.stop();
+                    Game.gameState = 12;
+                }
                 reset();
             }
         }

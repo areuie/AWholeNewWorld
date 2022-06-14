@@ -38,7 +38,7 @@ public class Word {
             { //MAKING FRIENDS
                     "COMMUNICATION",
                     "COMMUNITYCENTRE" ,
-                    "FINDSIMILARBACKGROUND",
+                    "SIMILARBACKGROUND",
                     "TAKEINITATIVE"
             },
             { //GENERAL STRESS
@@ -59,6 +59,7 @@ public class Word {
             { //FEEL LIKE YOU DON'T BELONG
                     "CULTURALMEDIA",
                     "NEWCOUNTRYMEDIA",
+                    "IMMERSECULTURE"
             },
             { //FINANCE
                     "EMPATHETIC",

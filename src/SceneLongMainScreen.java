@@ -63,7 +63,7 @@ public class SceneLongMainScreen extends JPanel{
     /** This variable stores the y coords of the buildings */
     int[] buildingYCoords = {-95, -230, -105, -230};
     /** This variable timer controls the sprite walking animation */
-    Timer timer1 = new Timer(100, new ActionListener() {
+    Timer timer1 = new Timer(133, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             if(isWalking) {
@@ -152,24 +152,38 @@ public class SceneLongMainScreen extends JPanel{
                         switch (popupType) {
                             case 1:
                                 Game.gameState = 5;
+                                timer1.stop();
+                                timer2.stop();
                                 break;
                             case 2:
                                 Game.gameState = 8;
+                                timer1.stop();
+                                timer2.stop();
                                 break;
                             case 3:
                                 Game.gameState = 6;
+                                timer1.stop();
+                                timer2.stop();
                                 break;
                             case 4:
                                 Game.gameState = 9;
+                                timer1.stop();
+                                timer2.stop();
                                 break;
                             case 5:
                                 Game.gameState = 7;
+                                timer1.stop();
+                                timer2.stop();
                                 break;
                             case 6:
                                 Game.gameState = 16;
+                                timer1.stop();
+                                timer2.stop();
                                 break;
                             case 7:
                                 Game.gameState = 11;
+                                timer1.stop();
+                                timer2.stop();
                                 break;
                         }
                         repaint();

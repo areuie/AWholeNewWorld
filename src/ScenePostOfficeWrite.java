@@ -238,8 +238,8 @@ public class ScenePostOfficeWrite extends JPanel {
         g.drawString("Hey Family! I'm really enjoying myself ", x, 170);
         g.drawString("here, but a couple days ago, someone  ", x, 200);
         g.drawString("yelled a racist comment at me, when I ", x, 230);
-        g.drawString("was on my way home from school ", x, 260);
-        g.drawString("class. I was taken aback, because  ", x, 290);
+        g.drawString("was on my way home from school. ", x, 260);
+        g.drawString("I was taken aback, because  ", x, 290);
         g.drawString("everyone has been so kind to me ", x, 320);
         g.drawString("since I've arrived here. Anyways, ", x, 350);
         g.drawString("hope you are doing well and I can't ", x, 380);

@@ -80,9 +80,9 @@ public class Instructions extends JPanel {
             g.drawString("mom. This game will help stimulate the challenges that immigrants ", 140, y + 30);
             g.drawString("children face when arriving in a new country. There will ", 140, y + 60);
             g.drawString("be a walking part of the game where you can use your arrow keys to ", 140, y + 90);
-            g.drawString("move right and left. Walk past buildings and choose the one you want ", 140, y + 120);
-            g.drawString("to enter by clicking yes or no. Use your space key to click through ", 140, y + 150);
-            g.drawString("the dialogue or use your mouse to press the buttons.", 140, y + 180);
+            g.drawString("move right and left. Use your space key to click through the", 140, y + 120);
+            g.drawString("dialogue and use your mouse to press the buttons. Walk past", 140, y + 150);
+            g.drawString("buildings and choose the one you want to enter by clicking yes or no.", 140, y + 180);
 
         buttons.setPaint(new Color(98, 193, 199));
         buttons.fillRoundRect(350, 445, 100, 60, 25, 25);
