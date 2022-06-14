@@ -41,12 +41,16 @@
  * Mrs. Krasteva
  */
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class Game {
     /** This variable is the main window of the game */
@@ -309,8 +313,8 @@ public class Game {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         timer1.start();
-
         screen = menu;
+        play("src/data/music.wav", 86000, 50);
     }
 
     /**
@@ -341,4 +345,29 @@ public class Game {
         frame.setResizable(false);
     }
 
+    /**
+     * This method plays music
+     */
+    public static void play(String path, int delay, int numberOfLoops) {
+        for (int i = 0; i < numberOfLoops; i++) {
+            new Thread(() -> {
+                try {
+                    File file = new File(path);
+                    Clip clip = AudioSystem.getClip();
+                    clip.open(AudioSystem.getAudioInputStream(file));
+                    clip.start();
+                    Thread.sleep(clip.getMicrosecondLength());
+
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }).start();
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
+
