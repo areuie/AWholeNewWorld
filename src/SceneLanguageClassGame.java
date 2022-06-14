@@ -119,8 +119,10 @@ public class SceneLanguageClassGame extends JPanel {
             },
             {
                     "a) Feel disconnected",
-                    "b) Immerse yourself in your new country's media",
-                    "c) Keep enjoying media from your home country"
+                    "b) Immerse yourself in your new country's",
+                    "media",
+                    "c) Keep enjoying media from your home",
+                    "country"
             }
 
     };
@@ -128,7 +130,7 @@ public class SceneLanguageClassGame extends JPanel {
      * This variable stores the answer key for the sentence to be decyphered
      */
     static String[][] sentences = {
-            {"I WILL@COMMUNICATE WITH@MY PARENTS ON@ MY FEELINGS.",
+            {"I WILL@COMMUNICATE WITH@MY PARENTS ON@MY FEELINGS.",
                     "",
                     "",
             },
@@ -136,7 +138,7 @@ public class SceneLanguageClassGame extends JPanel {
                     "I WILL JOIN@CLUBS AND AFTER @SCHOOL PROGRAMS@TO MEET NEW@FRIENDS.",
                     "",
             },
-            {"I WILL TAKE @DEEP BREATHS@AND MEDITATE@WHENSTRESSED.",
+            {"I WILL TAKE @DEEP BREATHS@AND MEDITATE@WHEN STRESSED.",
                     "",
                     "I WILL@REACH OUT@TO LOVED ONES.",
             },
@@ -193,11 +195,10 @@ public class SceneLanguageClassGame extends JPanel {
                     "you for having an accent."
             },
             { //SUPPORT PARENTS
-                "Scenario: Your parent(s) are",
-                    "taking multiple jobs to",
-                    "support the family. What",
-                    "can you do as a kid to",
-                    "support your family?"
+                "Scenario: Your parent(s) are taking",
+                    "multiple jobs to support the",
+                    "family. What can you do as a",
+                    "child to support your family?"
             },
             { //IDENTITY
                 "Scenario: You feel like you can't",
@@ -253,7 +254,7 @@ public class SceneLanguageClassGame extends JPanel {
                 else if (answered) {
                     if (!wrong) stage = true;
                     System.out.println("hi");
-                    prompt = Math.min(prompt + 1, prompts.length);
+                    if(wrong) prompt = Math.min(prompt + 1, prompts.length);
                     if (prompt >= prompts.length) score = true;
                     reset();
                     repaint();
@@ -571,7 +572,11 @@ public class SceneLanguageClassGame extends JPanel {
         }
         if (same) {
             stage = false;
+            prompt = Math.min(prompt + 1, prompts.length);
             if (prompt >= prompts.length) score = true;
+
+            reset();
+            repaint();
         }
     }
 
@@ -580,6 +585,9 @@ public class SceneLanguageClassGame extends JPanel {
         cypher = new char[26];
         wrong = false;
         answered = false;
+        idx = 0;
+        x = 205;
+        y = 55;
         for (int i = 0; i < 26; i++) {
             boolean occupied = true;
             while (occupied) {
@@ -700,10 +708,6 @@ public class SceneLanguageClassGame extends JPanel {
                 g.drawString("Click anywhere to continue", 210, 435);
             }
             else if (!stage) {
-                g.setColor(Color.black);
-                for (int i = 0; i < prompts[prompt].length; i++) {
-                    g.drawString(prompts[prompt][i], 205, 80 + i * 25);
-                }
                 Graphics2D buttons = (Graphics2D) g;
 
                 RenderingHints button = new RenderingHints(
@@ -723,6 +727,11 @@ public class SceneLanguageClassGame extends JPanel {
                     g.drawString(abc[prompt][i], xp, yp);
                     yp += 30;
                 }
+                g.setColor(Color.black);
+                for (int i = 0; i < prompts[prompt].length; i++) {
+                    g.drawString(prompts[prompt][i], 205, 80 + i * 25);
+                }
+
                 buttons.setPaint(new Color(150, 150, 150));
                 if (answered) {
                     if (!wrong) {
