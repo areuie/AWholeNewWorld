@@ -70,9 +70,14 @@ public class SceneLanguageClassGame extends JPanel {
      */
     static char dir = ' ';
     int prompt = 0;
-    int sentencesIdx = 0;
+    int choice = 0;
+    int quizRight = 0;
+    boolean wrong = false;
+    boolean answered = false;
     boolean stage = false;//false is prompt, true is game
-
+    static String[] ansKey = {
+            "a","ab","ac","bc","a","ab","ac","bc"
+    };
     static String[][] abc = {
             {
                     "a) Communicate with your parent(s).",
@@ -92,29 +97,69 @@ public class SceneLanguageClassGame extends JPanel {
                     "c) Reach out to a loved one"
             },
             {
-                    "a) Send mail overseas",
+                    "a) Grow resentment",
                     "b) Call family members",
-                    "c) Grow resentment"
+                    "c) Send mail overseas"
             },
             {
-                    "a) ",
-                    "",
-                    ""
+                    "a) Communicate with your parent(s).",
+                    "Let them know how you're feeling.",
+                    "b) Let it go",
+                    "c) Call the police"
             },
             {
-                    "",
-                    "",
-                    ""
+                    "a) Approach those who share your ethnic",
+                    "background",
+                    "b) Join clubs and after-school programs",
+                    "c) Wait for people to come to you"
+            },
+            {
+                    "a) Take deep breaths/meditate",
+                    "b) Ignore and suppress the stress",
+                    "c) Reach out to a loved one"
+            },
+            {
+                    "a) Grow resentment",
+                    "b) Call family members",
+                    "c) Send mail overseas"
             }
     };
     /**
      * This variable stores the answer key for the sentence to be decyphered
      */
-    static String[] sentences = {
-            "I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
-            "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
-            "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
-            "I FEEL LIKE@AN OUTSIDER SO@I WILL KEEP@TO MYSELF@AT SCHOOL.",
+    static String[][] sentences = {
+            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
+                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
+                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
+            },
+            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
+                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
+                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
+            },
+            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
+                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
+                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
+            },
+            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
+                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
+                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
+            },
+            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
+                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
+                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
+            },
+            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
+                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
+                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
+            },
+            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
+                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
+                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
+            },
+            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
+                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
+                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
+            }
     };
     static String[][] prompts = {
             {       "Scenario: Your parent puts on too",
@@ -176,7 +221,7 @@ public class SceneLanguageClassGame extends JPanel {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        userGuess = new char[sentences[sentencesIdx].length()];
+        userGuess = new char[sentences[prompt][choice].length()];
         cypher = new char[26];
         for (int i = 0; i < 26; i++) {
             boolean occupied = true;
@@ -195,25 +240,55 @@ public class SceneLanguageClassGame extends JPanel {
 
         addMouseListener(new MouseAdapter() { //menu
             public void mousePressed(MouseEvent e) {
-
-                if (e.getX() > 300 && e.getX() < 510 && e.getY() > 350 && e.getY() < 550)//if they press yes they are taken to the scene
-                {
-                    System.out.println("yess!");
-                    stage = true;
+                System.out.println(answered);
+                if (answered) {
+                    if (!wrong) stage = true;
                     reset();
-                     repaint();
-                } else if (e.getX() > 370 && e.getX() < 510 && e.getY() > 420 && e.getY() < 550) {//if they press no, they continue on
-                    System.out.println("noo!");
-                    stage = true;
-                    sentencesIdx++;
-                    reset();
+                    System.out.println("hi");
+                    prompt++;
                     repaint();
-                } else if (e.getX() > 450 && e.getX() < 510 && e.getY() > 500 && e.getY() < 550) {//if they press no, they continue on
-                    System.out.println("noo!");
-                    stage = true;
-                    sentencesIdx += 2;
-                    reset();
-                    repaint();
+                }
+                else if (!stage) {
+                    if (e.getX() > 300 && e.getX() < 350 && e.getY() > 510 && e.getY() < 550)//if they press yes they are taken to the scene
+                    {
+                        choice = 0;
+                        answered = true;
+                        if (ansKey[prompt].contains("a")) {
+                            quizRight++;
+                            System.out.println("yess!");
+                            System.out.println(quizRight);
+                            wrong = false;
+                            repaint();
+                        } else {
+                            wrong = true;
+                            repaint();
+                        }
+                    } else if (e.getX() > 370 && e.getX() < 410 && e.getY() > 510 && e.getY() < 550) {//if they press no, they continue on
+                        choice = 1;
+                        answered = true;
+                        if (ansKey[prompt].contains("b"))  {
+                            quizRight++;
+                            System.out.println("noo!");System.out.println(quizRight);
+                            wrong = false;
+                            repaint();
+                        } else {
+                            wrong = true;
+                            repaint();
+                        }
+                    } else if (e.getX() > 450 && e.getX() < 500 && e.getY() > 510 && e.getY() < 550) {//if they press no, they continue on
+                        choice = 2;
+                        answered = true;
+                        if (ansKey[prompt].contains("c")) {
+                            quizRight++;
+                            System.out.println(quizRight);
+                            System.out.println("noo!");
+                            wrong = false;
+                            repaint();
+                        } else {
+                            wrong = true;
+                            repaint();
+                        }
+                    }
                 }
             }
         });
@@ -260,7 +335,7 @@ public class SceneLanguageClassGame extends JPanel {
                     idx--;
                     x -= 25;
                     System.out.println("i tried wuts the idx?" + idx);
-                    if (idx - 1 >= 0 && sentences[sentencesIdx].charAt(idx) == ' ') {
+                    if (idx - 1 >= 0 && sentences[prompt][choice].charAt(idx) == ' ') {
                         idx--;
                         x -= 25;
                     }
@@ -277,10 +352,10 @@ public class SceneLanguageClassGame extends JPanel {
         am.put("right", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (idx + 1 < sentences[sentencesIdx].length() - 1) {
+                if (idx + 1 < sentences[prompt][choice].length() - 1) {
                     idx++;
                     x += 25;
-                    if (idx + 1 < sentences[sentencesIdx].length() && sentences[sentencesIdx].charAt(idx) == ' ') {
+                    if (idx + 1 < sentences[prompt][choice].length() && sentences[prompt][choice].charAt(idx) == ' ') {
                         idx++;
                         x += 25;
                     }
@@ -481,20 +556,20 @@ public class SceneLanguageClassGame extends JPanel {
 
     private void checkCorrect() {
         boolean same = true;
-        for (int i = 0; i < sentences[sentencesIdx].length(); i++) {
-            if (sentences[sentencesIdx].charAt(i) != userGuess[i]) same = false;
+        for (int i = 0; i < sentences[prompt][choice].length(); i++) {
+            if (sentences[prompt][choice].charAt(i) != userGuess[i]) same = false;
         }
         if (same) {
             stage = false;
-            prompt++;
-            sentencesIdx = prompt * 2;
             if (prompt >= prompts.length) Game.gameState = 12;
         }
     }
 
     private void reset() {
-        userGuess = new char[sentences[sentencesIdx].length()];
+        userGuess = new char[sentences[prompt][choice].length()];
         cypher = new char[26];
+        wrong = false;
+        answered = false;
         for (int i = 0; i < 26; i++) {
             boolean occupied = true;
             while (occupied) {
@@ -513,11 +588,11 @@ public class SceneLanguageClassGame extends JPanel {
 
     private void fillInSimilarLetters(char c) {
         for (int i = 0; i < userGuess.length; i++) {
-            System.out.println((sentences[sentencesIdx].charAt(idx) - 'A'));
-            if ((sentences[sentencesIdx].charAt(idx) - 'A') >= 0 && (sentences[sentencesIdx].charAt(idx) - 'A') <= 26 &&
-                    (sentences[sentencesIdx].charAt(i) - 'A') >= 0 && (sentences[sentencesIdx].charAt(i) - 'A') <= 26) {
-                System.out.println("---------------------" + (cypher[(int) (sentences[sentencesIdx].charAt(idx) - 'A')]));
-                if (cypher[(int) (sentences[sentencesIdx].charAt(idx) - 'A')] == (cypher[(int) (sentences[sentencesIdx].charAt(i) - 'A')])) {
+            System.out.println((sentences[prompt][choice].charAt(idx) - 'A'));
+            if ((sentences[prompt][choice].charAt(idx) - 'A') >= 0 && (sentences[prompt][choice].charAt(idx) - 'A') <= 26 &&
+                    (sentences[prompt][choice].charAt(i) - 'A') >= 0 && (sentences[prompt][choice].charAt(i) - 'A') <= 26) {
+                System.out.println("---------------------" + (cypher[(int) (sentences[prompt][choice].charAt(idx) - 'A')]));
+                if (cypher[(int) (sentences[prompt][choice].charAt(idx) - 'A')] == (cypher[(int) (sentences[prompt][choice].charAt(i) - 'A')])) {
                     userGuess[i] = c;
                 }
             }
@@ -526,23 +601,23 @@ public class SceneLanguageClassGame extends JPanel {
     }
 
         private void randomizeGivenChars () {
-            for (int i = 0; i < sentences[sentencesIdx].length(); i++) {
+            for (int i = 0; i < sentences[prompt][choice].length(); i++) {
                 int random = (int) (Math.random() * 100);
 
-                if (i == 0 || i == sentences[sentencesIdx].length() || i > 1 && (sentences[sentencesIdx].charAt(i - 1) == '@' || sentences[sentencesIdx].charAt(i - 1) == ' ')) {
-                    userGuess[i] = sentences[sentencesIdx].charAt(i);
-                } else if (i < sentences[sentencesIdx].length() - 1 && (sentences[sentencesIdx].charAt(i + 1) == '@' || sentences[sentencesIdx].charAt(i + 1) == ' ')) {
-                    userGuess[i] = sentences[sentencesIdx].charAt(i);
-                } else if (sentences[sentencesIdx].charAt(i) == '@') {
+                if (i == 0 || i == sentences[prompt][choice].length() || i > 1 && (sentences[prompt][choice].charAt(i - 1) == '@' || sentences[prompt][choice].charAt(i - 1) == ' ')) {
+                    userGuess[i] = sentences[prompt][choice].charAt(i);
+                } else if (i < sentences[prompt][choice].length() - 1 && (sentences[prompt][choice].charAt(i + 1) == '@' || sentences[prompt][choice].charAt(i + 1) == ' ')) {
+                    userGuess[i] = sentences[prompt][choice].charAt(i);
+                } else if (sentences[prompt][choice].charAt(i) == '@') {
                     userGuess[i] = '@';
-                } else if (sentences[sentencesIdx].charAt(i) == ' ') {
+                } else if (sentences[prompt][choice].charAt(i) == ' ') {
                     userGuess[i] = ' ';
-                } else if (sentences[sentencesIdx].charAt(i) == '.') {
+                } else if (sentences[prompt][choice].charAt(i) == '.') {
                     userGuess[i] = '.';
-                } else if (sentences[sentencesIdx].charAt(i) == '?') {
+                } else if (sentences[prompt][choice].charAt(i) == '?') {
                     userGuess[i] = '?';
                 } else if (random > 85) {
-                    userGuess[i] = sentences[sentencesIdx].charAt(i);
+                    userGuess[i] = sentences[prompt][choice].charAt(i);
                 } else userGuess[i] = ' ';
             }
         }
@@ -621,11 +696,6 @@ public class SceneLanguageClassGame extends JPanel {
 
                 buttons.setRenderingHints(button);
 
-                buttons.setPaint(new Color(150, 150, 150));
-                buttons.fillRoundRect(300, 510, 50, 40, 25, 25);
-                buttons.fillRoundRect(370, 510, 50, 40, 25, 25);
-                buttons.fillRoundRect(450, 510, 50, 40, 25, 25);
-
                 g.setColor(Color.black);
                 g.setFont(Game.font.deriveFont(25f));
 
@@ -637,7 +707,46 @@ public class SceneLanguageClassGame extends JPanel {
                     g.drawString(abc[prompt][i], xp, yp);
                     yp += 30;
                 }
+                buttons.setPaint(new Color(150, 150, 150));
+                if (answered) {
+                    if (!wrong) {
+                        g.setFont(Game.font.deriveFont(35f));
+                        g.setColor(new Color(80, 177, 69));
+                        g.drawString("Correct!", 260, 40);
+                    }
+                    else {
+                        g.setFont(Game.font.deriveFont(35f));
+                        g.setColor(new Color(189, 57, 57));
+                        g.drawString("Wrong Answer", 260, 40);
+                    }
+                    g.setColor(new Color(189, 57, 57));
+                }
 
+                buttons.fillRoundRect(300, 510, 50, 40, 25, 25);
+                buttons.fillRoundRect(370, 510, 50, 40, 25, 25);
+                buttons.fillRoundRect(450, 510, 50, 40, 25, 25);
+
+                if (answered) {
+                    if (ansKey[prompt].contains("a")) {
+                        g.setColor(new Color(80, 177, 69));
+                        buttons.fillRoundRect(300, 510, 50, 40, 25, 25);
+                    }
+                    if (ansKey[prompt].contains("b")) {
+                        g.setColor(new Color(80, 177, 69));
+                        buttons.fillRoundRect(370, 510, 50, 40, 25, 25);
+                    }
+                    if (ansKey[prompt].contains("c")) {
+                        g.setColor(new Color(80, 177, 69));
+                        buttons.fillRoundRect(450, 510, 50, 40, 25, 25);
+                    }
+
+                    g.setFont(Game.font.deriveFont(30f));
+                    g.setColor(new Color(0, 0, 0));
+                    g.drawString("Click anywhere to continue", 215, 400);
+                }
+
+                g.setFont(Game.font.deriveFont(20f));
+                g.setColor(new Color(0, 0, 0));
                 g.drawString("a", 320, 540);
                 g.drawString("b", 390, 540);
                 g.drawString("c", 470, 540);
@@ -647,12 +756,12 @@ public class SceneLanguageClassGame extends JPanel {
                 int newLine = 0;
                 int xCoord;
 
-                for (int i = 0, xi = 0; i < sentences[sentencesIdx].length() - 1; i++, xi++) { //prints the sentence
+                for (int i = 0, xi = 0; i < sentences[prompt][choice].length() - 1; i++, xi++) { //prints the sentence
 
                     xCoord = 210 + xi * 25;
-                    if (sentences[sentencesIdx].charAt(i) == '@') {
-                        System.out.println(sentences[sentencesIdx].charAt(idx));
-                        if (sentences[sentencesIdx].charAt(idx) == '@') {
+                    if (sentences[prompt][choice].charAt(i) == '@') {
+                        System.out.println(sentences[prompt][choice].charAt(idx));
+                        if (sentences[prompt][choice].charAt(idx) == '@') {
                             //if (x > sentences[sentencesIdx.substring(0, i).length() * 25) {
                             if (dir == 'r') {
                                 x = 205;
@@ -661,8 +770,8 @@ public class SceneLanguageClassGame extends JPanel {
                             } else if (dir == 'l') {
                                 x = 205;
                                 y -= 100;
-                                System.out.println("f" + previousLine(sentences[sentencesIdx].substring(0, idx)));
-                                idx = previousLine(sentences[sentencesIdx].substring(0, idx));
+                                System.out.println("f" + previousLine(sentences[prompt][choice].substring(0, idx)));
+                                idx = previousLine(sentences[prompt][choice].substring(0, idx));
                             }
                             //}
 
@@ -670,15 +779,15 @@ public class SceneLanguageClassGame extends JPanel {
                         }
                         xi = -1;
                         newLine += 100;
-                    } else if (sentences[sentencesIdx].charAt(i) == ' ') {
+                    } else if (sentences[prompt][choice].charAt(i) == ' ') {
 
                     } else { //prints out character and line
                         g.setColor(Color.black);
                         g.drawString(Character.toString(userGuess[i]), xCoord, 80 + newLine);
                         g.drawLine(xCoord, 85 + newLine, xCoord + 20, 85 + newLine);
                         g.setColor(Color.gray);
-                        if ((sentences[sentencesIdx].charAt(i) - 'A') >= 'A' || (sentences[sentencesIdx].charAt(i) - 'A') <= 'Z')
-                            g.drawString((String.valueOf(cypher[(int) (sentences[sentencesIdx].charAt(i) - 'A')])), xCoord, 110 + newLine);
+                        if ((sentences[prompt][choice].charAt(i) - 'A') >= 'A' || (sentences[prompt][choice].charAt(i) - 'A') <= 'Z')
+                            g.drawString((String.valueOf(cypher[(int) (sentences[prompt][choice].charAt(i) - 'A')])), xCoord, 110 + newLine);
                     }
                 }
 
