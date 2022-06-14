@@ -20,17 +20,79 @@
 public class Word {
     /** This variable stores the string value of the word */
     String word;
+    /** This variable stores the original value of the word */
+    String ogWord;
     /** These variables store the x,y coords of the word */
     int x, y;
+    char type;
+    static String[] bad = {
+            "IGNORESTRESS",
+            "LEAVEUNRESOLVED",
+            "KEEPTOSELF" ,
+            "RESENTMENT",
+            "HATRED",
+            "UNGRATEFUL"
+    };
+
+    static String[][] good = {
+            { //MAKING FRIENDS
+                    "COMMUNICATION",
+                    "COMMUNITYCENTRE" ,
+                    "FINDSIMILARBACKGROUND",
+                    "TAKEINITATIVE"
+            },
+            { //GENERAL STRESS
+                    "MEDITATION",
+                    "DEEPBREATHS",
+                    "REACHOUT"
+            },
+            {// ACCENT
+                    "STANDUP",
+                    "TELLTEACHER",
+                    "TELLPARENTS" ,
+                    "BEPROUD",
+            },
+            { // MISS FAMILY
+                    "CALLFAMILY",
+                    "SENDMAIL",
+            },
+            { //FEEL HOMESICK
+                    "CULTURALMEDIA",
+                    "NEWCOUNTRYMEDIA",
+            },
+            { //FINANCE
+                    "EMPATHETIC",
+                    "UNDERSTANDING",
+                    "GRATEFUL"
+            },
+            { //LUNCH
+                    "STANDUP",
+                    "TELLTEACHER",
+                    "TELLPARENTS" ,
+                    "BEPROUD",
+            },
+            {// SUPPORT PARENTS
+                    "HELPCHORES",
+                    "EDUCATION",
+                    "TRANSLATOR"
+            },
+    };
 
     /**
      * The constructor
-     * @param word Word string
+     * @param type Type of word (good/bad)
      */
-    Word (String word) {
-        this.word = word;
-        this.x = (int) (Math.random() * 100) + 1000 - SceneJobGame.backgroundX;
-        this.y = (int) (Math.random() * 150) + 350;
+    Word (char type) {
+        this.type = type;
+        if (type == 'g') {
+            word = good[SceneJobGame.stage][(int) (Math.random() * good[SceneJobGame.stage].length)];
+            ogWord = word;
+        } else {
+            word = bad[(int) (Math.random() * bad.length)];
+            ogWord = word;
+        }
+        this.x = (int) (Math.random() * 100) + 800 - SceneJobGame.backgroundX;
+        this.y = (int) (Math.random() * 280) + 250;
         //System.out.println("initalize " + x + " " + y + " " + SceneJobGame.backgroundX);
     }
 
@@ -51,11 +113,25 @@ public class Word {
     }
 
     /**
+     * This method gets the type of word (good/bad)
+     * @return type Type
+     */
+    public int getType() { return type; }
+
+    /**
      * This method gets the word
      * @return Word
      */
     public String getWord() {
         return word;
+    }
+
+    /**
+     * This method gets the original word
+     * @return Word
+     */
+    public String getOgWord() {
+        return ogWord;
     }
 
     /**

@@ -271,12 +271,15 @@ public class SceneLongMainScreen extends JPanel{
             g.drawImage(background, backgroundX + 2400, 0, this);
         }
 
-        g.setFont(Game.font.deriveFont(30f));
+        g.setFont(Game.font.deriveFont(27f));
         g.setColor(new Color(47, 47, 47));
-        g.drawString("You safely immigrated with your mother.",100 + backgroundX, 205);
-        g.drawString("Your goal is to overcome adversities",100 + backgroundX, 235);
-        g.drawString("and sponsor the rest of your family,",100 + backgroundX, 265);
-        g.drawString("so that your family can start a new life.",100 + backgroundX, 295);
+        g.drawString("You safely immigrated with your mother.",100 + backgroundX, 105);
+        g.drawString("Your goal is to overcome adversities",100 + backgroundX, 135);
+        g.drawString("and sponsor the rest of your family,so",100 + backgroundX, 165);
+        g.drawString("so that your family can start a new life.",100 + backgroundX, 195);
+        g.drawString("",100 + backgroundX, 325);
+        g.drawString("You will play as your mom during some scenes, as",100 + backgroundX, 255);
+        g.drawString("your struggles may also stem from her struggles too.",100 + backgroundX, 285);
         g.setFont(Game.font.deriveFont(40f));
         g.setColor(new Color(0, 0, 0));
         g.drawString("Use the right arrow to move.",100 + backgroundX, 350);

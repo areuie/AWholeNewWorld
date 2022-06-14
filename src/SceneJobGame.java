@@ -36,38 +36,31 @@ import java.util.LinkedList;
 public class SceneJobGame extends JPanel implements ActionListener, Runnable{
     /** This variable stores the background */
     private BufferedImage bg;
+    static int stage = 0;
     /** This variable stores the x coord of the background */
     static int backgroundX = 0;
-    /** This variable checks if the player is walking or not */
-    boolean isWalking = false;
-    /** This variable stores the image of the person*/
-    private BufferedImage person;
+    /** This variable stores the image of the person and icons*/
+    private BufferedImage person, brainIcon;
     /** This variable stores the letter that the user pressed*/
     private char letter = ' ';
     /** This variable stores the type of image of the sprite*/
     private int spriteImg = 1;
-    /** This variable controls the scrolling speed */
-    private int speed = 1;
+    private boolean gameOver = false;
+    /** This variable keeps track of what good words have been typed*/
+    private boolean[] counter;
+    /** This variable stores the number of chances the player has*/
+    private int chances = 3;
     /** This variable stores the words going across the screen*/
     private static String[] words = {
-            "IMMIGRANT",
-            "CITIZENSHIP",
-            "VISA",
-            "SPONSORSHIP",
-            "NATURALIZATION",
-            "SOCIETY",
-            "COUNTRY",
-            "MINORITY",
-            "IDENTITY",
-            "WORKING",
-            "KNOWLEDGE",
-            "RESIDENCE",
-            "RESILIENCE",
-            "EXCITING",
-            "DOCUMENTED",
-            "FAMILY",
-            "STABILITY",
-            "DISCRIMINATION"
+            "How to create new friends in a new country:",
+            "How to deal with stress in general:",
+            "What to do when people joke about your accent:",
+            "What should you do if you miss your family overseas?:",
+            "What to do when feeling homesick:",
+            "How to deal with financial issues as a child:",
+            "What to do when people comment on your lunch:",
+            "How to support parent(s) as a kid:",
+
     };
     /** This variable stores the queue of words going across the screen */
     private static Deque<Word> queue = new LinkedList();
@@ -75,7 +68,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
     Timer timer1 = new Timer(20, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            backgroundX -= speed;
+            backgroundX -= 1;
             repaint();
         }
     });
@@ -83,12 +76,14 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
     Timer timer2 = new Timer(2000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            queue.add(new Word(words[(int) (Math.random() * words.length)]));
+            int random = (int) (Math.random() * 7);
+            if (random > 1) queue.add(new Word('g'));
+            else  queue.add(new Word('b'));
             repaint();
         }
     });
     /** This is the timer that animates the moving sprite */
-    Timer timer3 = new Timer(500 - speed, new ActionListener() {
+    Timer timer3 = new Timer(500, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             String path = "src/img/pixil-frame-Female" + spriteImg + ".png";
@@ -101,13 +96,26 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
 
             if (spriteImg > 3) spriteImg = 1;
             else spriteImg++;
-        }
-    });
-    /** This is the timer that controls the speed of the autoscroller*/
-    Timer timer4 = new Timer(20000, new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            speed += 1;
+
+            if (gameOver) {
+                timer1.stop();
+                timer2.stop();
+                timer3.stop();
+                Game.gameState = 12;
+            }
+            boolean allTrue = true;
+            for (int i = 0; i < counter.length; i++) {
+                System.out.print(counter[i] + " ");
+                if (counter[i] == false) allTrue = false;
+            }
+            System.out.println();
+            if (allTrue) {
+                stage++;
+                timer1.stop();
+                timer2.stop();
+                timer3.stop();
+                reset();
+            }
         }
     });
 
@@ -118,9 +126,12 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
         try {
             bg = ImageIO.read(new File("src/img/workspaceSpan.png"));
             person = ImageIO.read(new File("src/img/pixil-frame-Female1.png"));
+            brainIcon = ImageIO.read(new File("src/img/brainIcon.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        counter = new boolean[Word.good[stage].length];
 
         InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
         ActionMap am = getActionMap();
@@ -128,7 +139,6 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
             timer1.start();
             timer2.start();
             timer3.start();
-            timer4.start();
         }
 
         im.put(KeyStroke.getKeyStroke("A"), "A");
@@ -158,7 +168,26 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
         im.put(KeyStroke.getKeyStroke("Y"), "Y");
         im.put(KeyStroke.getKeyStroke("Z"), "Z");
 
-        //hi!
+        getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "space");
+        getActionMap().put("space", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (queue.peek()!= null) {
+                    if (queue.peek().getType() == 'b') {
+                        Game.money += 10;
+                        queue.remove();
+                    }
+                    else {
+                        chances--;
+                        queue.remove();
+                        if (chances < 0) gameOver = true;
+                    }
+                }
+                System.out.println("hay");
+                repaint();
+            }
+        });
+
         am.put("A", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -347,6 +376,17 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
     }
 
     /**
+     * This method resets the settings for the game
+     */
+    private void reset() {
+        counter = new boolean[Word.good[stage].length];
+        queue = new LinkedList();
+        letter = ' ';
+        backgroundX = 0;
+        chances = 3;
+    }
+
+    /**
      * This method determines the dimensions of the panel
      * @return The dimensions of the panel
      */
@@ -385,19 +425,28 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
         for (int i = 0; i < word.length(); i++) {
             g2d.drawString(String.valueOf(word.charAt(i)), queue.peekFirst().getX()+ i * 15, queue.peekFirst().getY());
             if (queue.peekFirst().getX() + i * 15 < 0) {
-                timer1.stop();
-                timer2.stop();
-                timer3.stop();
-                timer4.stop();
-                Game.gameState = 12;
+                queue.remove();
+                chances--;
+                if (chances < 0) gameOver = true;
             }
             if (i == 0 && letter == word.charAt(i)) {
                 queue.peekFirst().setWord(word.substring(i + 1));
                 letter = ' ';
             }
             if (queue.peekFirst().getWord().length() == 0) {
-                Game.money += 10;
-                queue.remove();
+
+                if (queue.peekFirst().getType() == 'g') {
+                    Game.money += 10;
+                    for (int j=  0; j < Word.good[stage].length; j++) {
+                        System.out.println(Word.good[stage][j] + " " + (queue.peekFirst().getOgWord()));
+                        if (Word.good[stage][j].equals(queue.peekFirst().getOgWord())) counter[j] = true;
+                    }
+                    queue.remove();
+                } else {
+                    chances--;
+                    queue.remove();
+                    if (chances < 0) gameOver = true;
+                }
             }
         }
         int counter = 0;
@@ -408,6 +457,16 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
 
         Image p = person.getScaledInstance(person.getWidth()*7, person.getHeight()*7, Image.SCALE_DEFAULT);
         g2d.drawImage(p, 0, 350, null);
+
+        g2d.setColor(new Color(85, 109, 239, 165));
+        g2d.setFont(Game.font.deriveFont(27f));
+        g2d.fillRoundRect(10, 20, 590, 80, 25, 25);
+        g2d.setColor(new Color(0, 0, 0));
+        g2d.drawString(words[stage], 25, 65);
+
+        for (int i = 0; i < chances; i++) {
+            g2d.drawImage(brainIcon, 0, 100 + i * 55, null);
+        }
 
         Game.showMoney(g2d);
     }

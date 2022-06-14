@@ -74,6 +74,7 @@ public class SceneLanguageClassGame extends JPanel {
     int quizRight = 0;
     boolean wrong = false;
     boolean answered = false;
+    boolean score = false;
     boolean stage = false;//false is prompt, true is game
     static String[] ansKey = {
             "a","ab","ac","bc","a","ab","ac","bc"
@@ -241,11 +242,15 @@ public class SceneLanguageClassGame extends JPanel {
         addMouseListener(new MouseAdapter() { //menu
             public void mousePressed(MouseEvent e) {
                 System.out.println(answered);
-                if (answered) {
+                if (score) {
+                    Game.gameState = 12;
+                }
+                else if (answered) {
                     if (!wrong) stage = true;
                     reset();
                     System.out.println("hi");
                     prompt++;
+                    if (prompt >= prompts.length) score = true;
                     repaint();
                 }
                 else if (!stage) {
@@ -561,7 +566,7 @@ public class SceneLanguageClassGame extends JPanel {
         }
         if (same) {
             stage = false;
-            if (prompt >= prompts.length) Game.gameState = 12;
+            if (prompt >= prompts.length) score = true;
         }
     }
 
@@ -683,7 +688,13 @@ public class SceneLanguageClassGame extends JPanel {
                 userGuess[idx] = letter;
             }
             letter = ' ';
-            if (!stage) {
+            if (score) {
+                g.setFont(Game.font.deriveFont(35f));
+                g.drawString("Your score is " + quizRight + "/8.", 210, 390);
+                g.setFont(Game.font.deriveFont(22f));
+                g.drawString("Click anywhere to continue", 210, 435);
+            }
+            else if (!stage) {
                 g.setColor(Color.black);
                 for (int i = 0; i < prompts[prompt].length; i++) {
                     g.drawString(prompts[prompt][i], 205, 80 + i * 25);
@@ -795,6 +806,7 @@ public class SceneLanguageClassGame extends JPanel {
                 g.fillRoundRect(x, y, 25, 55, 10, 10);
                 checkCorrect(); //checks if the user guess is the same as the answer key
             }
+
             Game.showMoney(g); //shows how much money the player has
 
         }

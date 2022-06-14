@@ -42,7 +42,7 @@ public class ScenePostOfficeWrite extends JPanel {
     /**Background Image*/
     private BufferedImage bg;
     /**Button for how many times user has interacted*/
-    static int nextButton = 0;
+    int nextButton = 1;
     /** Variable that stores what version the scene should use */
     int stage;
 
@@ -63,7 +63,7 @@ public class ScenePostOfficeWrite extends JPanel {
          */
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (nextButton == 0 && e.getX() > 335 && e.getX() < 480 && e.getY() > 500 && e.getY() < 555 && Game.level==1) {
+                if (e.getX() > 335 && e.getX() < 480 && e.getY() > 500 && e.getY() < 555 && Game.level==1) {
                     nextButton = 1;
                     Game.gameState=12;
                 } else if (nextButton == 1) {
@@ -122,7 +122,7 @@ public class ScenePostOfficeWrite extends JPanel {
         System.out.println(nextButton);
 
         if (Game.level == 1) {
-            if (nextButton == 0) {
+            if (nextButton == 1) {
                 FamilyLetter(g);
             }
         }
