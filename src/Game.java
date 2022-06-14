@@ -294,6 +294,17 @@ public class Game {
 
                 screen = phone;
                 gameState = 0;
+            } else if (gameState == 17) {
+                frame.remove(screen);
+
+                FadeIntro phone = new FadeIntro();
+                frame.add(phone);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+
+                screen = phone;
+                gameState = 0;
             }
 
         }

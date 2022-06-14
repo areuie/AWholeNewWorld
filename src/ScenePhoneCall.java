@@ -29,7 +29,10 @@ public class ScenePhoneCall extends JPanel {
             "Maybe it would be helpful for you", "to put yourself in my shoes",
             "Why?", "", "Maybe you will be able to see", "how hard I work for you.",
             "Okay I guess I should see how ", "difficult work is.",
-            "In the game you will be working ","in place of me. Use your keyboard","to type the words before", "it exits the screen."};
+            "In the game you will be working ","in place of me. Use your keyboard",
+            "to type the words before", "it exits the screen.",
+            "The words should be an answer", "to the question if it's not",
+            "press space. You only have", "3 lives so play wisely!"};
     int count;
 
 
