@@ -31,6 +31,7 @@ public class SceneImmigrationOffice extends JPanel {
     private BufferedImage person;
     private BufferedImage family;
     private BufferedImage twoPeople;
+    private BufferedImage badEnd;
     /** This variable stores the money needed to pay for the sponsorship*/
     int moneyNeeded;
     int futureStatus=-1;
@@ -60,6 +61,11 @@ public class SceneImmigrationOffice extends JPanel {
         }
         try {
             twoPeople = ImageIO.read(new File("src/img/twoImmigrantsEnding.png"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        try {
+            badEnd = ImageIO.read(new File("src/img/noImmigrantsEnding.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -221,8 +227,8 @@ public class SceneImmigrationOffice extends JPanel {
             g.setFont(Game.font.deriveFont(35f));
             g.drawString("DONE", 715, 535);
         } else if(futureStatus==0){
-            if (twoPeople != null) {
-                Image teach = twoPeople.getScaledInstance(300, 300, Image.SCALE_DEFAULT);
+            if (badEnd != null) {
+                Image teach = badEnd.getScaledInstance(300, 300, Image.SCALE_DEFAULT);
                 g.drawImage(teach, -20, 300, this);
             }
 
