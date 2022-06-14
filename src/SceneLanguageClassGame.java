@@ -164,7 +164,7 @@ public class SceneLanguageClassGame extends JPanel {
     };
     static String[][] prompts = {
             {       "Scenario: Your parent puts on too",
-                    "much burden on yourself to do good.",
+                    "much burden on yourself to do good",
                     "at school. You're already trying",
                     "your best."
             },
