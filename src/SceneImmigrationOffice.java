@@ -196,26 +196,26 @@ public class SceneImmigrationOffice extends JPanel {
 
         if(futureStatus==2){
             if (family != null) {
-                Image teach = family.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
-                g.drawImage(teach, -100, 250, this);
+                Image teach = family.getScaledInstance(300, 300, Image.SCALE_DEFAULT);
+                g.drawImage(teach, -30, 300, this);
             }
 
-            g.drawString("Congratulations! You’ve brought over your family, and have applied ", 220, 430);
-            g.drawString("for permanent residence. You don’t know what the future will bring,", 220, 460);
-            g.drawString("but at least you and your family will face it together.", 220, 490);
+            g.drawString("Congratulations! You’ve brought over your family, and have applied ", 260, 430);
+            g.drawString("for permanent residence. You don’t know what the future will bring,", 260, 460);
+            g.drawString("but at least you and your family will face it together.", 260, 490);
             buttons.fillRoundRect(700, 500, 90, 50, 25, 25);
             g.setColor(Color.white);
             g.setFont(Game.font.deriveFont(35f));
             g.drawString("DONE", 715, 535);
         } else if(futureStatus==1){
-            if (family != null) {
-                Image teach = family.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
-                g.drawImage(teach, -50, 350, this);
+            if (twoPeople != null) {
+                Image teach = twoPeople.getScaledInstance(300, 300, Image.SCALE_DEFAULT);
+                g.drawImage(teach, -20, 300, this);
             }
 
-            g.drawString("You’ve successfully been able to sponsor one of your children,", 220, 430);
-            g.drawString("and for this, you are extremely grateful. Perhaps in the future,", 220, 460);
-            g.drawString("you will be able to bring over more of your family.", 220, 490);
+            g.drawString("You’ve successfully been able to sponsor one of your children,", 260, 430);
+            g.drawString("and for this, you are extremely grateful. Perhaps in the future,", 260, 460);
+            g.drawString("you will be able to bring over more of your family.", 260, 490);
             buttons.fillRoundRect(700, 500, 90, 50, 25, 25);
             g.setColor(Color.white);
             g.setFont(Game.font.deriveFont(35f));
@@ -223,7 +223,7 @@ public class SceneImmigrationOffice extends JPanel {
         } else if(futureStatus==0){
             if (twoPeople != null) {
                 Image teach = twoPeople.getScaledInstance(300, 300, Image.SCALE_DEFAULT);
-                g.drawImage(teach, 10, 350, this);
+                g.drawImage(teach, -20, 300, this);
             }
 
             g.drawString("Unfortunately you didn’t save enough money to be able to sponsor any ", 220, 430);
