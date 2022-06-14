@@ -251,7 +251,7 @@ public class SceneLanguageClass extends JPanel {
         try {
             bg = ImageIO.read(new File("src/img/TeacherBG.png"));
             teacher = ImageIO.read(new File("src/img/pixil-layer-3.png"));
-            boardBg = ImageIO.read(new File("src/img/SkyBG.png"));
+            boardBg = ImageIO.read(new File("src/img/blackBoardBG.png"));
             textBox = ImageIO.read(new File("src/img/textBox.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
