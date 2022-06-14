@@ -56,19 +56,19 @@ public class Word {
                     "CALLFAMILY",
                     "SENDMAIL",
             },
-            { //FEEL HOMESICK
+            { //FEEL LIKE YOU DON'T BELONG
                     "CULTURALMEDIA",
                     "NEWCOUNTRYMEDIA",
             },
             { //FINANCE
                     "EMPATHETIC",
                     "UNDERSTANDING",
-                    "GRATEFUL"
+                    "GRATEFUL",
             },
             { //LUNCH
                     "STANDUP",
                     "TELLTEACHER",
-                    "TELLPARENTS" ,
+                    "TELLPARENTS",
                     "BEPROUD",
             },
             {// SUPPORT PARENTS

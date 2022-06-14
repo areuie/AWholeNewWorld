@@ -103,35 +103,50 @@ public class SceneLanguageClassGame extends JPanel {
                     "c) Send mail overseas"
             },
             {
-                    "a) Communicate with your parent(s).",
-                    "Let them know how you're feeling.",
-                    "b) Let it go",
-                    "c) Call the police"
+                    "a) Yell at them.",
+                    "b) Stand your ground --be proud",
+                    "c) Tell an adult"
             },
             {
-                    "a) Approach those who share your ethnic",
-                    "background",
-                    "b) Join clubs and after-school programs",
-                    "c) Wait for people to come to you"
+                    "a) Tell the teacher --they'll help",
+                    "b) Keep to yourself",
+                    "c) Tell your parent(s) --it's good to vent"
             },
             {
-                    "a) Take deep breaths/meditate",
-                    "b) Ignore and suppress the stress",
-                    "c) Reach out to a loved one"
+                    "a) Help with chores",
+                    "b) Help translate text",
+                    "c) Continue to focus on education"
             },
             {
-                    "a) Grow resentment",
-                    "b) Call family members",
-                    "c) Send mail overseas"
+                    "a) Feel disconnected",
+                    "b) Immerse yourself in your new country's media",
+                    "c) Keep enjoying media from your home country"
             }
+
     };
     /**
      * This variable stores the answer key for the sentence to be decyphered
      */
     static String[][] sentences = {
+            {"I WILL@COMMUNICATE WITH@MY PARENTS ON@ MY FEELINGS.",
+                    "",
+                    "",
+            },
+            {"I WILL@APPROACH KIDS WHO@SHARE MY ETHNIC@BACKGROUND.",
+                    "I WILL JOIN@CLUBS AND AFTER @SCHOOL PROGRAMS@TO MEET NEW@FRIENDS.",
+                    "",
+            },
             {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
                     "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
                     "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
+            },
+            {"I WILL TAKE @DEEP BREATHS@AND MEDITATE@WHENSTRESSED.",
+                    "",
+                    "I WILL@REACH OUT@TO LOVED ONES.",
+            },
+            {"",
+                    "I WILL@MAKE SURE@TO CALL@FAMILY BACK@HOME.",
+                    "I WILL@SEND MAIL@TO FAMILY@BACK HOME.",
             },
             {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
                     "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
@@ -141,60 +156,49 @@ public class SceneLanguageClassGame extends JPanel {
                     "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
                     "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
             },
-            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
-                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
-                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
-            },
-            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
-                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
-                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
-            },
-            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
-                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
-                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
-            },
-            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
-                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
-                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
-            },
-            {"I WILL@COMMUNICATE WITH@MY PARENTS ABOUT@MY STRESSORS.",
-                    "I WILL AVOID@COMMUNICATING@WITH MY PARENTS@ABOUT MY@STRESSORS.",
-                    "I WILL@TAKE INITIATIVE@AND TRY TO MAKE@FRIENDS AT@SCHOOL.",
+            {"",
+                    "I WILL IMMERSE@MYSELF IN MY@NEW COUNTRYS@CULTURE AND@MEDIA.",
+                    "I WILL PROUDLY@CONTINUE TO ENJOY@MY BACKGROUND@CULTURE AND@MEDIA."
             }
     };
+
     static String[][] prompts = {
+            //ACADEMIC
             {       "Scenario: Your parent puts on too",
                     "much burden on yourself to do good",
                     "at school. You're already trying",
                     "your best."
             },
+            // MAKING FRIENDS
             {       "Scenario: You feel lonely because",
                     "of your separated family and",
                     "language barrier at school."
             },
-            {
+            { //GENERAL STRESS
                 "Scenario: You feel stressed due to",
                     "your situation."
             },
-            {
+            { //MISS FAMILY
                 "Scenario: You deeply miss your",
-                    "family back home/feel homesick."
+                    "family back home."
             },
-            {
+            { //LUNCH
                 "Scenario: People at school plug",
                     "their noses out of disgust",
                     "because of your lunch."
             },
-            {
+            { //ACCENT
                 "Scenario: People at school tease",
                     "you for having an accent."
             },
-            {
-                "Scenario: Your family is having",
-                    "financial issues. How can you",
-                    "support your family as a kid?"
+            { //SUPPORT PARENTS
+                "Scenario: Your parent(s) are",
+                    "taking multiple jobs to",
+                    "support the family. What",
+                    "can you do as a kid to",
+                    "support your family?"
             },
-            {
+            { //IDENTITY
                 "Scenario: You feel like you can't",
                     "identify with either culture/",
                     "don't fit in."
