@@ -53,6 +53,11 @@ public class SceneInterviewDialogue extends JPanel {
 
         addMouseListener(new MouseAdapter() { //menu
             public void mousePressed(MouseEvent e) {
+                if (job.equals("Receptionist")) {
+                    repaint();
+                    Game.gameState = 12;
+                }
+
                 if (e.getX() > 350 && e.getX() < 650 && e.getY() > 300 && e.getY() < 350)//if they press play button they are taken to the language class dialogue scene
                 {
                     repaint();
@@ -66,6 +71,7 @@ public class SceneInterviewDialogue extends JPanel {
                     repaint();
                     job = "Receptionist";
                 }
+
             }
         });
     }
@@ -122,8 +128,20 @@ public class SceneInterviewDialogue extends JPanel {
             g.drawString("previous teaching experience.", 360, 240);
             g.setFont(Game.font.deriveFont(15f));
             g.drawString("Please select another option.", 360, 270);
-        } else if (job.equals("Receptionist"))
-            Game.gameState=12;
+        } else if (job.equals("Receptionist")) {
+            buttons.setPaint(new Color(255, 255, 255));
+            buttons.fillRoundRect(335, 180, 330, 250, 25, 25);
+
+            g.setColor(Color.black);
+            g.setFont(Game.font.deriveFont(25f));
+            g.drawString("Application accepted!", 345, 210);
+            g.drawString("Click to continue.", 345, 340);
+            g.setFont(Game.font.deriveFont(20f));
+            g.drawString("(Sometimes degrees/experience earned in", 345, 260);
+            g.drawString("a different country may not be recognized)", 345, 285);
+
+        }
+
     }
 
     /**

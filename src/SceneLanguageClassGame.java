@@ -97,7 +97,7 @@ public class SceneLanguageClassGame extends JPanel {
                     "c) Grow resentment"
             },
             {
-                    "a) Understand ",
+                    "a) ",
                     "",
                     ""
             },
@@ -125,7 +125,34 @@ public class SceneLanguageClassGame extends JPanel {
             {       "Scenario: You feel lonely because",
                     "of your separated family and",
                     "language barrier at school."
-            }
+            },
+            {
+                "Scenario: You feel stressed due to",
+                    "your situation."
+            },
+            {
+                "Scenario: You deeply miss your",
+                    "family back home/feel homesick."
+            },
+            {
+                "Scenario: People at school plug",
+                    "their noses out of disgust",
+                    "because of your lunch."
+            },
+            {
+                "Scenario: People at school tease",
+                    "you for having an accent."
+            },
+            {
+                "Scenario: Your family is having",
+                    "financial issues. How can you",
+                    "support your family as a kid?"
+            },
+            {
+                "Scenario: You feel like you can't",
+                    "identify with either culture/",
+                    "don't fit in."
+            },
     };
     /**
      * This variable stores the random cypher of the string
@@ -168,16 +195,23 @@ public class SceneLanguageClassGame extends JPanel {
 
         addMouseListener(new MouseAdapter() { //menu
             public void mousePressed(MouseEvent e) {
-                if (e.getX() > 340 && e.getX() < 390 && e.getY() > 510 && e.getY() < 550)//if they press yes they are taken to the scene
+
+                if (e.getX() > 300 && e.getX() < 510 && e.getY() > 350 && e.getY() < 550)//if they press yes they are taken to the scene
                 {
                     System.out.println("yess!");
                     stage = true;
                     reset();
                      repaint();
-                } else if (e.getX() > 400 && e.getX() < 510 && e.getY() > 450 && e.getY() < 550) {//if they press no, they continue on
+                } else if (e.getX() > 370 && e.getX() < 510 && e.getY() > 420 && e.getY() < 550) {//if they press no, they continue on
                     System.out.println("noo!");
                     stage = true;
                     sentencesIdx++;
+                    reset();
+                    repaint();
+                } else if (e.getX() > 450 && e.getX() < 510 && e.getY() > 500 && e.getY() < 550) {//if they press no, they continue on
+                    System.out.println("noo!");
+                    stage = true;
+                    sentencesIdx += 2;
                     reset();
                     repaint();
                 }
@@ -588,11 +622,12 @@ public class SceneLanguageClassGame extends JPanel {
                 buttons.setRenderingHints(button);
 
                 buttons.setPaint(new Color(150, 150, 150));
-                buttons.fillRoundRect(340, 510, 50, 40, 25, 25);
-                buttons.fillRoundRect(400, 510, 50, 40, 25, 25);
+                buttons.fillRoundRect(300, 510, 50, 40, 25, 25);
+                buttons.fillRoundRect(370, 510, 50, 40, 25, 25);
+                buttons.fillRoundRect(450, 510, 50, 40, 25, 25);
 
                 g.setColor(Color.black);
-                g.setFont(Game.font.deriveFont(20f));
+                g.setFont(Game.font.deriveFont(25f));
 
                 int xp = 205;
                 int yp = 190;
@@ -600,11 +635,12 @@ public class SceneLanguageClassGame extends JPanel {
 
                 for (int i = 0; i < abc[prompt].length; i++) {
                     g.drawString(abc[prompt][i], xp, yp);
-                    yp += 20;
+                    yp += 30;
                 }
 
-                g.drawString("a", 360, 540);
-                g.drawString("b", 420, 540);
+                g.drawString("a", 320, 540);
+                g.drawString("b", 390, 540);
+                g.drawString("c", 470, 540);
 
             }
             else if (stage) {
