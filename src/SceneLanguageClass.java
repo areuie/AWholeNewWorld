@@ -35,7 +35,7 @@ import java.io.IOException;
 public class SceneLanguageClass extends JPanel {
     private BufferedImage bg;
     private BufferedImage teacher;
-    private BufferedImage paperBg,textBox;
+    private BufferedImage boardBg,textBox;
     //countGlobal for the total dialogue lines, count for teacher's dialogue, count2 for facts
     int countGlobal = 0, count = 0, count2 = 0;
     int paperY = 0;
@@ -52,20 +52,32 @@ public class SceneLanguageClass extends JPanel {
             "that you may face as an child immigrant",
             "so that you're prepared for when they arise.",
 
-            "There are 3 main topics",
+            "There are 8 main topics",
             "we'll be discussing in this class.",
 
-            "1. Preparing to carry the burden of being",
-            "the 'sole translator' of the household",
+            "1. Being burdened by academic expectations",
+            "from your parents when you're already tired.",
 
-            "2. Loneliness due to certain factors",
+            "2. Loneliness due to language barriers at",
+            "school at separated family.",
+
+            "3. General feelings of stress.",
             "",
 
-            "3. Figuring out your place in cultural identity",
+            "4. Missing your family and feeling homesick.",
             "",
+
+            "5. Being ostracized due to cultural",
+            "differences.",
+
+            "6. Being confused about your family's financial",
+            "situation.",
+
+            "7. Feeling a disconnect between yourself and",
+            "your culture.",
 
             "Here's a info sheet that will help facilitate",
-            "your learning on having too much responsibility.",
+            "your learning on academic over-expectations.",
 
             "In order to alleviate this, you need to learn to",
             "rely on your parents, and to trust them enough",
@@ -84,53 +96,66 @@ public class SceneLanguageClass extends JPanel {
 
             "new country. What do kids your age play with?",
             "What are the interests of the kids in this new",
-        
+
             "country? Introduce yourself to those.",
             "",
-        
+
             "Here's a info sheet that will help facilitate",
-            "your learning on your cultural identity.",
-        
+            "your learning about managing stress.",
+
             "The key to maintaining your connection to your",
             "culture, while allowing yourself to integrate",
-        
+
             "into your new environment, is to maintain the",
             "existence of said culture in your daily life.",
-            
+
             "However, not to the point of feeling imposed by",
             "your culture. You must realize that there is no",
-        
+
             "shame in enjoying your culture, as long as",
             "nobody is harmed. If someone makes fun of your",
-        
+
             "culture, whether that be by mocking your lunch",
-            "or your clothes, stay firm and stand your ground."
+            "or your clothes, stay firm and stand your ground.",
+
+            "Here's a info sheet that will help facilitate",
+            "your learning on managing homesickness.",
+
+            "Here's a info sheet that will help facilitate",
+            "your learning on dealing with ostracization.",
+
+            "Here's a info sheet that will help facilitate",
+            "your learning on being made fun of.",
+
+            "Here's a info sheet that will help you",
+            "understand your family's financial situation.",
+
+            "Here's a info sheet that will help you",
+            "learn to reconnect with your culture."
     };
 
     static String[][] sentencesPaper = {
+            //1
             {"Children, especially older ones, feel the ",
-                    "responsibility to become a 'translator' for their ",
-                    "immigrant parents, since their impressionable ",
+                    "responsibility to become a 'model child' for",
+                    "their immigrant parents, since they can",
+                    "quickly realize how difficult the situation",
+                    "is for their parents. Therefore, they would",
+                    "want to make things easier by giving their",
 
-                    "minds can learn the language more quickly, ",
-                    "(especially if  they've learned of the new ",
-                    "country before immigrating there). As such, ",
-
-                    "the child is shifted away from the role of the",
-                    "protected, forcing them to take responsibility",
-                    "for their parents earlier on also exposing ",
-                    "them to adult struggles. Children who feel ",
-                    "imposed with this responsibility earlier are at ",
-
-                    "more risk  of developing anxiety, depression, ",
-                    "eating disorders and of abusing substances.",
+                    "all, and more, at school. However, this can",
+                    "lead to burnout, and accumulating stress.",
+                    "Some children would want to 'tough it out'",
+                    "to not seem 'weak' in front of their parents.",
+                    "But that would only lead to more negative",
+                    "emotions stacking up, waiting to burst.",
             },
 
+            //2
             {
-                "Before they've become comfortable with their",
-                "new country, the closest thing a child has ",
+                    "Before they've become comfortable with their",
+                    "new country, the closest thing a child has ",
                     "to their familiar environment is their",
-
                     "immigrant parent. When this figure of ",
                     "comfort is gone, for long periods of time,",
                     "the child will feel a sense of loneliness.",
@@ -138,14 +163,68 @@ public class SceneLanguageClass extends JPanel {
                     "Especially if they aren't able to make friends."
             },
 
+            //3
             {
-                "Many immigrant children face this issue: ",
+                    "Moving to an environment where everything",
+                    "is new, and nothing is familiar is a daunting",
+                    "experience, where stress is more easily",
+                    "accumulated. This, added with risks of",
+                    "bullying, ostracization, or racism can lead",
+                    "to a child feeling generally tired or spiritless.",
+            },
+
+            //4
+            {
+                    "A lack of familiar faces in a new environment",
+                    "may prompt the longing for family back in",
+                    "a child's home country. When knowing that",
+                    "they will probably not see said family face",
+                    "to face for a long time, a child may develop",
+                    "symptoms of depression, especially if they",
+
+                    "are unable to successfully integrate into",
+                    "their new environment."
+            },
+
+            //5
+            {
+                    "Children can often be rude and ignorant,",
+                    "making rude comments a common occurance",
+                    "among kids, especailly if there is a",
+                    "'friend' with apparent cultural differences",
+                    "in their midst. A good example is lunch.",
+                    "The smell of other cultures' food may seem",
+
+                    "foregin and strange to kids who don't",
+                    "understand the nuances of different cultures.",
+                    "This can lead to the further ostracization",
+                    "of immigrant children.",
+            },
+
+            //6
+            {
+                    "Children can often be rude and ignorant,",
+                    "making rude comments a common occurance",
+                    "among kids, especailly if there is a",
+                    "'friend' with apparent cultural differences",
+                    "in their midst. A good example is lunch.",
+                    "The smell of other cultures' food may seem",
+
+                    "foregin and strange to kids who don't",
+                    "understand the nuances of different cultures.",
+                    "This can lead to the further ostracization",
+                    "of immigrant children.",
+            },
+
+            //7
+            {
+                    "Many immigrant children face this issue: ",
                     "they\'re too ‘foreign’ for their homeland, but",
                     "they're too 'exotic' in the country they've",
                     "immigrated to. Either way, they can't seem",
-
                     "to fit in. This manifests itself in low",
                     "self-confidence, becoming less socially active,",
+
                     "and raised anxiety when in an environment",
                     "where they feel they don't completely belong."
             }
@@ -172,7 +251,7 @@ public class SceneLanguageClass extends JPanel {
         try {
             bg = ImageIO.read(new File("src/img/TeacherBG.png"));
             teacher = ImageIO.read(new File("src/img/pixil-layer-3.png"));
-            paperBg = ImageIO.read(new File("src/img/factPaper.png"));
+            boardBg = ImageIO.read(new File("src/img/SkyBG.png"));
             textBox = ImageIO.read(new File("src/img/textBox.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -186,13 +265,13 @@ public class SceneLanguageClass extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 System.out.println(count + "%%%");
                 if (!info) count += 2;
-                else if (info) count2 += 3;
+                else if (info) count2 += 6;
 
-                if (count == 14) {
+                if (count == 20) {
                     info = true;
-                } else if (count == 22) {
+                } else if (count == 28) {
                     info = true;
-                }else if (count == 30) {
+                }else if (count == 36) {
                     info = true;
                 }
                 repaint();
@@ -227,6 +306,34 @@ public class SceneLanguageClass extends JPanel {
 
         System.out.println(count + " " + info);
 
+        if(info){
+            Image bg1 = boardBg.getScaledInstance(800, 600, Image.SCALE_DEFAULT);;
+            g.drawImage(bg1, 0, 0, this);
+            if (count2 < sentencesPaper[paper].length) {
+                g.setColor(Color.black);
+                g.drawString(sentencesPaper[paper][count2], xcord, ycord-360);
+                if (count2 + 1< sentencesPaper[paper].length){
+                    g.drawString(sentencesPaper[paper][count2 + 1], xcord, ycord -320);
+                    if (count2 + 2< sentencesPaper[paper].length){
+                        g.drawString(sentencesPaper[paper][count2 + 2], xcord, ycord -280);
+                        if (count2 + 3< sentencesPaper[paper].length){
+                            g.drawString(sentencesPaper[paper][count2 + 3], xcord, ycord -240);
+                            if (count2 + 4< sentencesPaper[paper].length){
+                                g.drawString(sentencesPaper[paper][count2 + 4], xcord, ycord -200);
+                                if (count2 + 5< sentencesPaper[paper].length){
+                                    g.drawString(sentencesPaper[paper][count2 + 5], xcord, ycord -160);
+                                }
+                            }
+                        }
+                    }
+                }
+            } else if (count2 >= sentencesPaper[paper].length) {
+                info = false;
+                count2 = 0;
+                paper++;
+            }
+        }
+
         Image textBox1 = textBox.getScaledInstance(textBox.getWidth() * 2, textBox.getHeight() * 2, Image.SCALE_DEFAULT);
         g.drawImage(textBox1,0, 0, this);
         Image teach = teacher.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
@@ -240,24 +347,7 @@ public class SceneLanguageClass extends JPanel {
             Game.gameState = 12;
         }
 
-        if(info){
-            Image bg1 = paperBg.getScaledInstance(paperBg.getWidth() * 4, paperBg.getHeight() * 2, Image.SCALE_DEFAULT);
-            g.drawImage(bg1, 0, 150, this);
-            if (count2 < sentencesPaper[paper].length) {
-                g.setColor(Color.black);
-                g.drawString(sentencesPaper[paper][count2], xcord, ycord-260);
-                if (count2 + 1< sentencesPaper[paper].length){
-                    g.drawString(sentencesPaper[paper][count2 + 1], xcord, ycord -220);
-                    if (count2 + 2< sentencesPaper[paper].length){
-                        g.drawString(sentencesPaper[paper][count2 + 2], xcord, ycord -180);
-                    }
-                }
-            } else if (count2 >= sentencesPaper[paper].length) {
-                info = false;
-                count2 = 0;
-                paper++;
-            }
-        }
+
         Game.showMoney(g);
         Game.instructionsState=2;
     }

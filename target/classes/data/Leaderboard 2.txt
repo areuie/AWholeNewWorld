@@ -1,0 +1,3 @@
+Alisa 1000
+Mona 900
+Lois 800
