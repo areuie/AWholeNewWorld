@@ -73,6 +73,9 @@ public class Game {
     public static int level = 1;
     /** This variable stores the current state of instructions */
     public static int instructionsState = 1;
+    /** This variable checks if the user has gone to instructions or not*/
+    public static boolean instructions=false;
+
     static SceneMenu menu = new SceneMenu();
 
     static {
@@ -287,17 +290,6 @@ public class Game {
                 frame.remove(screen);
 
                 ScenePhoneCall phone = new ScenePhoneCall();
-                frame.add(phone);
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
-
-                screen = phone;
-                gameState = 0;
-            } else if (gameState == 17) {
-                frame.remove(screen);
-
-                FadeIntro phone = new FadeIntro();
                 frame.add(phone);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
