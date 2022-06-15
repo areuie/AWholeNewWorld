@@ -6,13 +6,8 @@
  * Created the conversation
  * - Mona
  *
- * Version 2 - 2h
- * added buttons
- * fixed bugs
- * - Mona
- *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 06.14.22
+ * @version 06.03.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -31,21 +26,15 @@ import java.io.IOException;
 public class SceneImmigrationOffice extends JPanel {
     /** This variable stores the background image*/
     private Image bg;
-    /** This variable stores the airport background image*/
     private Image airport;
-    /** This variable stores the worker in the scene*/
+    /** This variable stores person that is interviewing*/
     private BufferedImage person;
-    /** This variable stores the whole family image*/
     private BufferedImage family;
-    /** This variable stores the three people image*/
     private BufferedImage twoPeople;
-    /** This variable stores the mom and child image*/
     private BufferedImage badEnd;
     /** This variable stores the money needed to pay for the sponsorship*/
     int moneyNeeded;
-    /** This variable stores the status of the sponsorship*/
     int futureStatus=-1;
-    /** This variable checks how many times next was pressed*/
     int next=0;
 
     /** The constructor of the screen */
@@ -107,6 +96,7 @@ public class SceneImmigrationOffice extends JPanel {
                 {
                     Game.gameState=14;
                 }
+                System.out.println(moneyNeeded);
             }
         });
     }
@@ -118,6 +108,7 @@ public class SceneImmigrationOffice extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Game.money=3000;
         if (bg != null) {
             g.drawImage(bg, 0, 0, this);
         }
@@ -146,18 +137,19 @@ public class SceneImmigrationOffice extends JPanel {
             buttons.fillRoundRect(210, 280, 120, 50, 25, 25);
 
             g.setColor(Color.black);
-            g.setFont(Game.font.deriveFont(19f));
+            g.setFont(Game.font.deriveFont(20f));
             g.drawString("Everybody", 100, 310);
             g.drawString("One child", 235, 310);
             g.drawString("None", 380, 310);
 
             g.setFont(Game.font.deriveFont(22f));
-            g.drawString("You can sponsor everybody (a partner + a child)", 80, 180);
-            g.drawString("for $1,150, or a child from $150. How many family ", 80, 210);
+            g.drawString("You can sponsor everyone (partner + child) for", 90, 180);
+            g.drawString("$1,150, or a child from $150. How many family ", 90, 210);
             g.drawString("members would you like to sponsor?", 90, 240);
         }
-        else if(Game.sponsoredFamily.equals("Everybody") && Game.money>1150)
+        else if(Game.sponsoredFamily.equals("Everybody") && Game.money>moneyNeeded && next!=1)
         {
+            futureStatus=2;
             g.setFont(Game.font.deriveFont(22f));
             g.setColor(Color.black);
             g.drawString("Congratulations! Your request to sponsor ", 90, 180);
@@ -165,7 +157,6 @@ public class SceneImmigrationOffice extends JPanel {
             g.drawString("They are ready to travel here.", 90, 240);
             Game.money-=1150;
             g.drawString("NEXT", 380, 310);
-            futureStatus=2;
         }
         else if(Game.money<=moneyNeeded && next==0)
         {
@@ -178,7 +169,7 @@ public class SceneImmigrationOffice extends JPanel {
             futureStatus=0;
             Game.sponsoredFamily="nobody";
         }
-        else if(Game.sponsoredFamily.equals("one kid") && Game.money>moneyNeeded+100)
+        else if(Game.sponsoredFamily.equals("one kid") && Game.money>moneyNeeded+100 && next!=1)
         {
             g.setFont(Game.font.deriveFont(22f));
             g.setColor(Color.black);
@@ -193,10 +184,6 @@ public class SceneImmigrationOffice extends JPanel {
         Game.showMoney(g);
     }
 
-    /**
-     * This method creates the airport part of the scene
-     * @param g Graphic
-     */
     public void Airport(Graphics g){
         if (airport != null) {
             g.drawImage(airport, 0, 0, this);
