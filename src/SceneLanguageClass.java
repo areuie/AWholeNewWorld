@@ -80,6 +80,7 @@ public class SceneLanguageClass extends JPanel {
             "7. Feeling a disconnect between yourself and",
             "your culture.",
 
+            //1
             "Here's a info sheet that will help facilitate",
             "your learning on academic over-expectations.",
 
@@ -92,6 +93,7 @@ public class SceneLanguageClass extends JPanel {
             "in your parent's shoes in order to understand",
             "why they have such expectations.",
 
+            //2
             "Here's a info sheet that will help facilitate",
             "your learning on dealing with loneliness.",
 
@@ -104,6 +106,7 @@ public class SceneLanguageClass extends JPanel {
             "country? Introduce yourself to those. Don't",
             "forget to also call your family back at home.",
 
+            //3
             "Here's a info sheet that will help facilitate",
             "your learning about managing stress.",
 
@@ -119,6 +122,7 @@ public class SceneLanguageClass extends JPanel {
             "try your best to controll your emotions.",
             "",
 
+            //4
             "Here's a info sheet that will help facilitate",
             "your learning on managing homesickness.",
         
@@ -131,15 +135,42 @@ public class SceneLanguageClass extends JPanel {
             "mind off thoughts of your old home by playing,",
             "doing homework, or talking with people you trust.",
 
+            //5
             "Here's a info sheet that will help facilitate",
             "your learning on dealing with ostracization.",
 
-            "Here's a info sheet that will help facilitate",
-            "your learning on being made fun of.",
+            "Even if classmates may single you out, know that",
+            "you're not the first one to experience such",
+        
+            "treatment. This is why you should go to a teacher",
+            "or a trusted adult, and report how you've been",
+        
+            "treated. At the end of the day, kids only do this",
+            "because of their ignorance and lack of appreciation",
+                
+            "for cultures different than theirs."
+            "",
 
+            //6
             "Here's a info sheet that will help you",
             "understand your family's financial situation.",
+        
+            "Most children are too young to legally earn",
+            "money through work, but you can try and focus",
+            
+            "on what you can do. Help around your house by",
+            "doing more chores, translating documents for",
+        
+            "your parents (or help them with translating)",
+            "technology like Google Translate), or continue",
+        
+            "focusing on bettering your grades to alleviate",
+            "some of their worries. Remember still to take",
+        
+            "care of yourself though, and not to burn out.",
+            "",
 
+            //7
             "Here's a info sheet that will help you",
             "learn to reconnect with your culture.",
                 
