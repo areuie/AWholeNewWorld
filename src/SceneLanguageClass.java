@@ -20,7 +20,7 @@
  *  </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 06.10.22
+ * @version 06.14.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -37,15 +37,23 @@ import java.io.File;
 import java.io.IOException;
 
 public class SceneLanguageClass extends JPanel {
+    /**Background image variable*/
     private BufferedImage bg;
+    /**teacher image variable*/
     private BufferedImage teacher;
+    /**board and textbox image variable*/
     private BufferedImage boardBg,textBox;
-    //countGlobal for the total dialogue lines, count for teacher's dialogue, count2 for facts
+    /**countGlobal for the total dialogue lines, count for teacher's dialogue, count2 for facts*/
     int countGlobal = 0, count = 0, count2 = 0;
+    /**The paper y location*/
     int paperY = 0;
+    /**The paper x location*/
     int paper = 0;
+    /**The boolean to animate the paper*/
     boolean animatePaper = false, factsPaperFinished = false;
+    /**The information if its true or false*/
     boolean info = false; //false is teacher, true is paper
+    /**All the conversation pieces*/
     static String[] sentences = {
             "Hello Everybody!",
             "Welcome to ESL (English as a Second Language).",
@@ -148,7 +156,7 @@ public class SceneLanguageClass extends JPanel {
             "treated. At the end of the day, kids only do this",
             "because of their ignorance and lack of appreciation",
                 
-            "for cultures different than theirs."
+            "for cultures different than theirs.",
             "",
 
             //6
@@ -285,6 +293,7 @@ public class SceneLanguageClass extends JPanel {
 
     };
 
+    /**Timer for animating paper*/
     Timer timer1 = new Timer(50, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             if(animatePaper && paperY <0) {
