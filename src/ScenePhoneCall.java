@@ -1,11 +1,20 @@
 /**
- * The ScenePhoneCall class for phone call with mom
- * <h3> Draft 1 </h3>
+ * The ScenePhoneCall is the screen for calling mom when shes at work
+ *
  * <p>
- * Version 1 - 5h
- * Designed the background
- * Created the conversation
- * - Mona
+ *     Version 1 - 4h (Including drawing graphics)
+ *     Created convo
+ *     Made layout of texts
+ *     added space bar
+ *     - Mona
+ * </p>
+ *
+ * @author Alisa Wu, Mona Afshar, Lois Zan
+ * @version 06.14.22
+ *
+ * <h2> Course Info:</h2>
+ * ICS4U0
+ * Mrs. Krasteva
  */
 
 import javax.imageio.ImageIO;
@@ -100,6 +109,10 @@ public class ScenePhoneCall extends JPanel {
 
     }
 
+    /**
+     * This method creates the convo location for mom
+     * @param g Graphic
+     */
     public void Mom(Graphics g){
         Graphics2D buttons = (Graphics2D) g;
 
@@ -113,6 +126,10 @@ public class ScenePhoneCall extends JPanel {
         buttons.fillRoundRect(270, 10, 270, 130, 25, 25);
     }
 
+    /**
+     * This method creates the convo location for the kid
+     * @param g Graphic
+     */
     public void Kid(Graphics g){
         Graphics2D buttons = (Graphics2D) g;
 

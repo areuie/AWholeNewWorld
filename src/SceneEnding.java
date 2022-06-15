@@ -1,13 +1,18 @@
 /**
  * The Ending class is the screen for everytime someone finishes the game
- * <h3> Draft 3 </h3>
  * <p>
  * Version 1 - 2h
  * Designed background
+ * printed messages
+ * - Mona
+ *
+ * Version 2 - 2h
+ * Created different cases
+ * added pictures
  * - Mona
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 06.03.22
+ * @version 06.14.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
