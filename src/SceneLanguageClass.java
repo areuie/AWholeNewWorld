@@ -114,7 +114,7 @@ public class SceneLanguageClass extends JPanel {
             "at designated times, and communicate with a trusted",
         
             "adult about your experiences. Also realize that",
-            "when you're stressed, you're more irratable, so"
+            "when you're stressed, you're more irratable, so",
                 
             "try your best to controll your emotions.",
             "",
@@ -141,7 +141,7 @@ public class SceneLanguageClass extends JPanel {
             "understand your family's financial situation.",
 
             "Here's a info sheet that will help you",
-            "learn to reconnect with your culture."
+            "learn to reconnect with your culture.",
                 
             "The key to maintaining your connection to your",
             "culture, while allowing yourself to integrate",
