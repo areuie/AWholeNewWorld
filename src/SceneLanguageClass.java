@@ -234,7 +234,7 @@ public class SceneLanguageClass extends JPanel {
                     "experience, where stress is more easily",
                     "accumulated. This, added with risks of",
                     "bullying, ostracization, or racism can lead",
-                    "to a child feeling generally tired or spiritless.",
+                    "to a child feeling generally tired or spiritless."
             },
 
             //4
@@ -262,7 +262,7 @@ public class SceneLanguageClass extends JPanel {
                     "foregin and strange to kids who don't",
                     "understand the nuances of different cultures.",
                     "This can lead to the further ostracization",
-                    "of immigrant children.",
+                    "of immigrant children."
             },
 
             //6
@@ -275,7 +275,7 @@ public class SceneLanguageClass extends JPanel {
                     "on their family. This way, they will be more",
 
                     "understanding of family's descisions to save",
-                    "money by, say, not buying them new clothes.",
+                    "money by, say, not buying them new clothes."
             },
 
             //7
