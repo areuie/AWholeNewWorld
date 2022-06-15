@@ -20,7 +20,7 @@
  *  </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 06.10.22
+ * @version 06.14.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -37,15 +37,23 @@ import java.io.File;
 import java.io.IOException;
 
 public class SceneLanguageClass extends JPanel {
+    /**Background image variable*/
     private BufferedImage bg;
+    /**teacher image variable*/
     private BufferedImage teacher;
+    /**board and textbox image variable*/
     private BufferedImage boardBg,textBox;
-    //countGlobal for the total dialogue lines, count for teacher's dialogue, count2 for facts
+    /**countGlobal for the total dialogue lines, count for teacher's dialogue, count2 for facts*/
     int countGlobal = 0, count = 0, count2 = 0;
+    /**The paper y location*/
     int paperY = 0;
+    /**The paper x location*/
     int paper = 0;
+    /**The boolean to animate the paper*/
     boolean animatePaper = false, factsPaperFinished = false;
+    /**The information if its true or false*/
     boolean info = false; //false is teacher, true is paper
+    /**All the conversation pieces*/
     static String[] sentences = {
             "Hello Everybody!",
             "Welcome to ESL (English as a Second Language).",
@@ -226,7 +234,7 @@ public class SceneLanguageClass extends JPanel {
                     "experience, where stress is more easily",
                     "accumulated. This, added with risks of",
                     "bullying, ostracization, or racism can lead",
-                    "to a child feeling generally tired or spiritless.",
+                    "to a child feeling generally tired or spiritless."
             },
 
             //4
@@ -254,7 +262,7 @@ public class SceneLanguageClass extends JPanel {
                     "foregin and strange to kids who don't",
                     "understand the nuances of different cultures.",
                     "This can lead to the further ostracization",
-                    "of immigrant children.",
+                    "of immigrant children."
             },
 
             //6
@@ -267,7 +275,7 @@ public class SceneLanguageClass extends JPanel {
                     "on their family. This way, they will be more",
 
                     "understanding of family's descisions to save",
-                    "money by, say, not buying them new clothes.",
+                    "money by, say, not buying them new clothes."
             },
 
             //7
@@ -285,6 +293,7 @@ public class SceneLanguageClass extends JPanel {
 
     };
 
+    /**Timer for animating paper*/
     Timer timer1 = new Timer(50, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             if(animatePaper && paperY <0) {
@@ -327,7 +336,16 @@ public class SceneLanguageClass extends JPanel {
                     info = true;
                 }else if (count == 36) {
                     info = true;
+                }else if (count == 46) {
+                    info = true;
+                }else if (count == 52) {
+                    info = true;
+                }else if (count == 62) {
+                    info = true;
+                }else if (count == 74) {
+                    info = true;
                 }
+                
                 repaint();
             }
         });
