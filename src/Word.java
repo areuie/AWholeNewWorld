@@ -25,6 +25,7 @@ public class Word {
     /** These variables store the x,y coords of the word */
     int x, y;
     char type;
+    static int count = 0;
     static String[] bad = {
             "IGNORESTRESS",
             "LEAVEUNRESOLVED",
@@ -86,7 +87,9 @@ public class Word {
     Word (char type) {
         this.type = type;
         if (type == 'g') {
-            word = good[SceneJobGame.stage][(int) (Math.random() * good[SceneJobGame.stage].length)];
+            System.out.println(SceneJobGame.stage + " " + count);
+            word = good[SceneJobGame.stage][count];
+            count = Math.min(count+1, good[SceneJobGame.stage].length - 1);
             ogWord = word;
         } else {
             word = bad[(int) (Math.random() * bad.length)];

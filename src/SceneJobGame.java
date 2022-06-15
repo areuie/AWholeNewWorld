@@ -36,7 +36,7 @@ import java.util.LinkedList;
 public class SceneJobGame extends JPanel implements ActionListener, Runnable{
     /** This variable stores the background */
     private BufferedImage bg;
-    static int stage = 0;
+    static int stage = 6;
     /** This variable stores the x coord of the background */
     static int backgroundX = 0;
     /** This variable stores the image of the person and icons*/
@@ -73,7 +73,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
         }
     });
     /** This is the timer that keeps on adding new words to the queue */
-    Timer timer2 = new Timer(4000, new ActionListener() {
+    Timer timer2 = new Timer(2000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             int random = (int) (Math.random() * 6);
@@ -110,7 +110,10 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
             }
             System.out.println();
             if (allTrue) {
-                if (stage + 1 < Word.good.length) stage++;
+                if (stage + 1 < Word.good.length) {
+                    Word.count=0;
+                    stage++;
+                }
                 else {
                     timer1.stop();
                     timer2.stop();
@@ -182,6 +185,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
                     }
                     else {
                         chances--;
+                        if (Word.count - 1 >= 0) Word.count--;
                         queue.remove();
                         if (chances < 0) gameOver = true;
                     }
@@ -428,6 +432,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
         for (int i = 0; i < word.length(); i++) {
             g2d.drawString(String.valueOf(word.charAt(i)), queue.peekFirst().getX()+ i * 15, queue.peekFirst().getY());
             if (queue.peekFirst().getX() + i * 15 < 0) {
+                if (queue.peekFirst().getType() == 'g') {if (Word.count - 1 >= 0) Word.count--;}
                 queue.remove();
                 chances--;
                 if (chances < 0) gameOver = true;

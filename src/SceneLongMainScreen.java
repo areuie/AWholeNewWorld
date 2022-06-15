@@ -187,7 +187,7 @@ public class SceneLongMainScreen extends JPanel{
                                 break;
                         }
                         repaint();
-                    } else if (e.getX() > 250 && e.getX() < 550 && e.getY() > 370 && e.getY() < 420)//if they press no, they continue on
+                    } else if (e.getX() > 250 && e.getX() < 550 && e.getY() > 370 && e.getY() < 420 && popupType != 7)//if they press no, they continue on
                     {
                         System.out.println("noo!");
                         popupType = 0;
@@ -505,17 +505,12 @@ public class SceneLongMainScreen extends JPanel{
             else if (buttonHover[0]) buttons.setPaint(new Color(100, 100, 100));
             buttons.fillRoundRect(250, 300, 300, 50, 25, 25);
 
-            if (!buttonHover[1]) buttons.setPaint(new Color(150, 150, 150));
-            else if (buttonHover[1]) buttons.setPaint(new Color(100, 100, 100));
-            buttons.fillRoundRect(250, 370, 300, 50, 25, 25);
-
             g.setColor(Color.black);
             g.setFont(Game.font.deriveFont(30f));
             g.drawString("Would you like to enter", 285, 230);
             g.drawString("the immigration office?", 285, 260);
             g.setFont(Game.font.deriveFont(25f));
             g.drawString("Yes", 380, 335);
-            g.drawString("No", 380, 405);
         }
 
         Game.showMoney(g);
