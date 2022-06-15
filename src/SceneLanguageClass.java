@@ -148,7 +148,7 @@ public class SceneLanguageClass extends JPanel {
             "treated. At the end of the day, kids only do this",
             "because of their ignorance and lack of appreciation",
                 
-            "for cultures different than theirs."
+            "for cultures different than theirs.",
             "",
 
             //6
