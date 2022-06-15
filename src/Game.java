@@ -58,9 +58,9 @@ public class Game {
     /** This variable stores the current screen*/
     public static JPanel screen;
     /** This variable stores the game state */
-    public static int gameState = 16;
+    public static int gameState = 11;
     /** This variable stores the amount of money the player has */
-    public static int money = 300;
+    public static int money = 1300;
     /** This variable is the font of the game*/
     public static Font font;
     /** This variable stores the family happiness */

@@ -135,17 +135,17 @@ public class SceneImmigrationOffice extends JPanel {
             buttons.fillRoundRect(210, 280, 120, 50, 25, 25);
 
             g.setColor(Color.black);
-            g.setFont(Game.font.deriveFont(20f));
+            g.setFont(Game.font.deriveFont(19f));
             g.drawString("Everybody", 100, 310);
             g.drawString("One child", 235, 310);
             g.drawString("None", 380, 310);
 
             g.setFont(Game.font.deriveFont(22f));
-            g.drawString("You can sponsor a spouse, or a partner from ", 90, 180);
-            g.drawString("$1,000, or a child from $150. How many family ", 90, 210);
+            g.drawString("You can sponsor everybody (a partner + a child)", 80, 180);
+            g.drawString("for $1,150, or a child from $150. How many family ", 80, 210);
             g.drawString("members would you like to sponsor?", 90, 240);
         }
-        else if(Game.sponsoredFamily.equals("Everybody") && Game.money>moneyNeeded+100)
+        else if(Game.sponsoredFamily.equals("Everybody") && Game.money>1150)
         {
             g.setFont(Game.font.deriveFont(22f));
             g.setColor(Color.black);

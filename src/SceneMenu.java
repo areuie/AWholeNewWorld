@@ -49,10 +49,10 @@ public class SceneMenu extends JPanel implements ActionListener, Runnable{
     /**
      * This variable stores the background image
      */
-    private BufferedImage bg;
+    private BufferedImage bg, bg1;
     private BufferedImage icon;
     int state = 0;
-    int transparency=0;
+    int transparency=249;
 
     /**
      * The constructor of the screen
@@ -60,6 +60,7 @@ public class SceneMenu extends JPanel implements ActionListener, Runnable{
     SceneMenu() {
         try {
             bg = ImageIO.read(new File("src/img/bg2.png"));
+            bg1 = ImageIO.read(new File("src/img/bg2noButton.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -107,10 +108,13 @@ public class SceneMenu extends JPanel implements ActionListener, Runnable{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        int x = (getWidth() - bg1.getWidth()) / 2;
+        int y = (getHeight() - bg1.getHeight()) / 2;
+        g.drawImage(bg1, x, y, this);
         if (state == 0 && !Game.instructions) {
             if (icon != null) {
-                Image teach = icon.getScaledInstance(756, 525, Image.SCALE_DEFAULT);
-                g.drawImage(teach, 130, 70, this);
+                Image teach = icon.getScaledInstance(656, 425, Image.SCALE_DEFAULT);
+                g.drawImage(teach, 180, 70, this);
             }
             Graphics2D buttons = (Graphics2D) g;
 
@@ -121,11 +125,13 @@ public class SceneMenu extends JPanel implements ActionListener, Runnable{
             buttons.setRenderingHints(button);
 
             buttons.setPaint(new Color(0, 0, 0, transparency));
+            g.setFont(Game.font.deriveFont(70f));
+            buttons.drawString("MALLOW STUDIOS", 210, 530);
             buttons.fillRect(0, 0, 800, 600);
         } else {
             if (bg != null) {
-                int x = (getWidth() - bg.getWidth()) / 2;
-                int y = (getHeight() - bg.getHeight()) / 2;
+                x = (getWidth() - bg.getWidth()) / 2;
+                y = (getHeight() - bg.getHeight()) / 2;
                 g.drawImage(bg, x, y, this);
             }
         }
@@ -144,12 +150,12 @@ public class SceneMenu extends JPanel implements ActionListener, Runnable{
     Timer timer1 = new Timer(5, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(transparency>249){
+            if(transparency<5){
                 state=1;
                 repaint();
             }
             else {
-                transparency++;
+                transparency--;
                 repaint();
             }
         }

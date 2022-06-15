@@ -68,7 +68,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
     Timer timer1 = new Timer(20, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            backgroundX -= 1;
+            backgroundX -= 2;
             repaint();
         }
     });
@@ -76,7 +76,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
     Timer timer2 = new Timer(4000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            int random = (int) (Math.random() * 10);
+            int random = (int) (Math.random() * 6);
             if (random > 1) queue.add(new Word('g'));
             else  queue.add(new Word('b'));
             repaint();
@@ -177,7 +177,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
             public void actionPerformed(ActionEvent e) {
                 if (queue.peek()!= null) {
                     if (queue.peek().getType() == 'b') {
-                        Game.money += 10;
+                        Game.money += 50;
                         queue.remove();
                     }
                     else {
@@ -439,7 +439,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
             if (queue.peekFirst().getWord().length() == 0) {
 
                 if (queue.peekFirst().getType() == 'g') {
-                    Game.money += 10;
+                    Game.money += 50;
                     for (int j=  0; j < Word.good[stage].length; j++) {
                         System.out.println(Word.good[stage][j] + " " + (queue.peekFirst().getOgWord()));
                         if (Word.good[stage][j].equals(queue.peekFirst().getOgWord())) counter[j] = true;
@@ -461,7 +461,7 @@ public class SceneJobGame extends JPanel implements ActionListener, Runnable{
         Image p = person.getScaledInstance(person.getWidth()*7, person.getHeight()*7, Image.SCALE_DEFAULT);
         g2d.drawImage(p, 0, 350, null);
 
-        g2d.setColor(new Color(85, 109, 239, 165));
+        g2d.setColor(new Color(234, 238, 255, 182));
         g2d.setFont(Game.font.deriveFont(27f));
         g2d.fillRoundRect(10, 20, 590, 80, 25, 25);
         g2d.setColor(new Color(0, 0, 0));
