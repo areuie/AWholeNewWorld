@@ -336,7 +336,16 @@ public class SceneLanguageClass extends JPanel {
                     info = true;
                 }else if (count == 36) {
                     info = true;
+                }else if (count == 46) {
+                    info = true;
+                }else if (count == 52) {
+                    info = true;
+                }else if (count == 62) {
+                    info = true;
+                }else if (count == 74) {
+                    info = true;
                 }
+                
                 repaint();
             }
         });
