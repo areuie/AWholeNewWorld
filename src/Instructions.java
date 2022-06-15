@@ -84,6 +84,8 @@ public class Instructions extends JPanel {
             g.drawString("dialogue and use your mouse to press the buttons. Walk past", 140, y + 150);
             g.drawString("buildings and choose the one you want to enter by clicking yes or no.", 140, y + 180);
 
+            Game.instructions=true;
+
         buttons.setPaint(new Color(98, 193, 199));
         buttons.fillRoundRect(350, 445, 100, 60, 25, 25);
         g.setColor(Color.white);
