@@ -75,7 +75,7 @@ public class SceneImmigrationOffice extends JPanel {
                 if (e.getX() > 80 && e.getX() < 200 && e.getY() > 280 && e.getY() < 330 && next==0)//if they press play button they are taken to the language class dialogue scene
                 {
                     moneyNeeded=300;
-                    Game.sponsoredFamily="two kids";
+                    Game.sponsoredFamily="Everybody";
                     repaint();
                 } else if (e.getX() > 210 && e.getX() < 330 && e.getY() > 280 && e.getY() < 330 && next==0)//if they press play button they are taken to the language class dialogue scene
                 {

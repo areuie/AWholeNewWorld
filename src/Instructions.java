@@ -1,13 +1,17 @@
 /**
- * The Level Complete class is the screen for everytime someone completes a level
- * <h3> Draft 3 </h3>
+ * The Instructions class is the screen for displaying how to play the game
  * <p>
  * Version 1 - 2h
  * Designed background
  * - Mona
  *
+ * Version 2 - 2h
+ * Typed texts
+ * added buttons
+ * - Mona
+ *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 06.03.22
+ * @version 06.14.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -47,7 +51,7 @@ public class Instructions extends JPanel {
     }
 
     /**
-     * This method paints graphics on the screen.
+     * This method paints graphics on the screen like the background and buttons and texts
      * @param g Graphic
      */
     @Override

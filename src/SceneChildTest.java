@@ -1,5 +1,10 @@
-/**
- *
+/**The Scene child test is the screen for everytime someone completes a level
+ * <p>
+ * Version 1 - 2h
+ * Designed background
+ * Added buttons
+ * Added text
+ * - Mona
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
  * @version 06.03.22

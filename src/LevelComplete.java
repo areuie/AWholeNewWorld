@@ -1,13 +1,14 @@
 /**
  * The Level Complete class is the screen for everytime someone completes a level
- * <h3> Draft 3 </h3>
  * <p>
  * Version 1 - 2h
  * Designed background
+ * Added buttons
+ * Added text
  * - Mona
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 06.03.22
+ * @version 06.10.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
