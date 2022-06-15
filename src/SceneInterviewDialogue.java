@@ -1,6 +1,5 @@
 /**
  * The SceneInterviewDialogue class for the job interview
- * <h3> Draft 1 </h3>
  * <p>
  * Version 1 - 5h
  * Designed the background
@@ -14,7 +13,7 @@
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 06.03.22
+ * @version 06.14.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0

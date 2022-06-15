@@ -26,8 +26,15 @@
  * - Alisa
  * </p>
  *
+ * <h3> Final </h3>
+ * <p>
+ * Version 5 - 2h
+ * Added fade in icon before game start
+ * - Mona
+ * </p>
+ *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 06.03.22
+ * @version 06.14.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -102,7 +109,6 @@ public class SceneMenu extends JPanel implements ActionListener, Runnable{
 
     /**
      * This method paints graphics on the screen.
-     *
      * @param g Graphic
      */
     @Override
@@ -139,7 +145,6 @@ public class SceneMenu extends JPanel implements ActionListener, Runnable{
 
     /**
      * This method determines the dimensions of the panel
-     *
      * @return The dimensions of the panel
      */
     @Override
@@ -147,6 +152,10 @@ public class SceneMenu extends JPanel implements ActionListener, Runnable{
         return new Dimension(800, 600);
     }
 
+    /**
+     * This method fades the image out
+     * @param e ActionEvent
+     */
     Timer timer1 = new Timer(5, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {

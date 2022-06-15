@@ -6,8 +6,13 @@
  * Created the conversation
  * - Mona
  *
+ * Version 2 - 2h
+ * added buttons
+ * fixed bugs
+ * - Mona
+ *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 06.03.22
+ * @version 06.14.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -26,15 +31,21 @@ import java.io.IOException;
 public class SceneImmigrationOffice extends JPanel {
     /** This variable stores the background image*/
     private Image bg;
+    /** This variable stores the airport background image*/
     private Image airport;
-    /** This variable stores person that is interviewing*/
+    /** This variable stores the worker in the scene*/
     private BufferedImage person;
+    /** This variable stores the whole family image*/
     private BufferedImage family;
+    /** This variable stores the three people image*/
     private BufferedImage twoPeople;
+    /** This variable stores the mom and child image*/
     private BufferedImage badEnd;
     /** This variable stores the money needed to pay for the sponsorship*/
     int moneyNeeded;
+    /** This variable stores the status of the sponsorship*/
     int futureStatus=-1;
+    /** This variable checks how many times next was pressed*/
     int next=0;
 
     /** The constructor of the screen */
@@ -182,6 +193,10 @@ public class SceneImmigrationOffice extends JPanel {
         Game.showMoney(g);
     }
 
+    /**
+     * This method creates the airport part of the scene
+     * @param g Graphic
+     */
     public void Airport(Graphics g){
         if (airport != null) {
             g.drawImage(airport, 0, 0, this);

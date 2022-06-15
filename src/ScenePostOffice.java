@@ -1,6 +1,5 @@
 /**
  * The ScenePostOffice is the screen for the post office
- * <h3> Draft 2 </h3>
  * <p>
  * Version 1 - 3h
  * Added BufferedImage, created dialogue image, added graphics to screen
@@ -9,10 +8,14 @@
  *  Version 2 - 5h
  *  Added interactive conversation where user presses space to continue reading
  *  - Mona
+ *
+ *  Version 2 - 2h
+ *  Edited messages to tailor it to the child
+ *  - Mona
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 06.03.22
+ * @version 06.12.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -35,7 +38,9 @@ public class ScenePostOffice extends JPanel {
     private BufferedImage person;
     /**This variable counts the number of it runs through the if statements*/
     int count = 0;
+    /**This array stores all the sentences in the convo*/
     String[] sentences;
+    /**This array stores the stage at which the user is at so it displays the correct post office*/
     int stage;
     /**This variable stores the array for all the dialogue that should be printed on the screen*/
     static String[] sentences1 = {"Hello little one!", "Would you like to send a letter back", "to your family abroad?"};

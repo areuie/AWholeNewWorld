@@ -20,7 +20,7 @@
  * </p>
  *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 06.03.22
+ * @version 06.14.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
@@ -42,8 +42,11 @@ import java.io.IOException;
 public class SceneLongMainScreen extends JPanel{
     /** This variable stores the background */
     private BufferedImage bg, spriteStanding,spriteAni1,spriteAni2,spriteAni3,spriteAni4, spriteKidStanding,spriteKidAni1, spriteKidAni2, spriteKidAni3, spriteKidAni4, bSchool, bWork, bPost, bImm;
+    /** This variable stores the buildings*/
     private Image[] buildingList = new Image[4];
+    /** This variable is for the cool button function */
     boolean[] buttonHover = new boolean[2];
+    /** This variable stores the buildings and correspondent levels */
     private int[][] levelBuildingList =
             {
                     {0, 2},

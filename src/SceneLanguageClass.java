@@ -1,22 +1,26 @@
 /**
  * The SceneLanguageClass is the screen for the language class.
  *
- * <h3>Draft 1</h3>
  * <p>
  * Version 1 - 3h
  * Added BufferedImage, created dialogue image, added graphics to screen
  * - Mona
  * </p>
  *
- * <h3>Draft 2</h3>
  *  <p>
  *  Version 2 - 5h
  *  Added interactive conversation where user presses space to continue reading
  *  - Mona
  *  </p>
  *
+ *  <p>
+ *  Version 3 - 5h
+ *  Make the conversation more educational
+ *  - Lois
+ *  </p>
+ *
  * @author Alisa Wu, Mona Afshar, Lois Zan
- * @version 06.03.22
+ * @version 06.10.22
  *
  * <h2> Course Info:</h2>
  * ICS4U0
