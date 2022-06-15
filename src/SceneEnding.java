@@ -72,7 +72,7 @@ public class SceneEnding extends JPanel {
         g.setColor(Color.white);
         g.setFont(Game.font.deriveFont(70f));
 
-        if(Game.sponsoredFamily.equals("two kids")){
+        if(Game.sponsoredFamily.equals("Everybody")){
             g.drawString("Best Ending!", 260, 430);
             g.setFont(Game.font.deriveFont(40f));
             g.drawString("This is the best outcome of the game!", 130, 480);

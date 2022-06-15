@@ -79,14 +79,14 @@ public class SceneLanguageClass extends JPanel {
             "Here's a info sheet that will help facilitate",
             "your learning on academic over-expectations.",
 
-            "In order to alleviate this, you need to learn to",
-            "rely on your parents, and to trust them enough",
+            "In order to alleviate this type of stress, you",
+            "need to learn to trust your parents enough to",
 
-            "to tell them when you feel like there’s too much",
+            "tell them when you feel like there’s too much",
             "responsibility. But still remember to put yourself",
 
             "in your parent's shoes in order to understand",
-            "their own struggles.",
+            "why they have such expectations.",
 
             "Here's a info sheet that will help facilitate",
             "your learning on dealing with loneliness.",
@@ -97,12 +97,48 @@ public class SceneLanguageClass extends JPanel {
             "new country. What do kids your age play with?",
             "What are the interests of the kids in this new",
 
-            "country? Introduce yourself to those.",
-            "",
+            "country? Introduce yourself to those. Don't",
+            "forget to also call your family back at home.",
 
             "Here's a info sheet that will help facilitate",
             "your learning about managing stress.",
 
+            "The first step to managing general stress is to",
+            "take care of yourself. Sleep at least eight or",
+        
+            "more hours a day, eat breakfast, lunch and dinner",
+            "at designated times, and communicate with a trusted",
+        
+            "adult about your experiences. Also realize that",
+            "when you're stressed, you're more irratable, so",
+                
+            "try your best to controll your emotions.",
+            "",
+
+            "Here's a info sheet that will help facilitate",
+            "your learning on managing homesickness.",
+        
+            "Homesickness comes from both a desire to go",
+            "back home, and a desire to escape the current",
+        
+            "'home' that you have found yourself in. Try to",
+            "get comfortable in your new home, and take your",
+            
+            "mind off thoughts of your old home by playing,",
+            "doing homework, or talking with people you trust.",
+
+            "Here's a info sheet that will help facilitate",
+            "your learning on dealing with ostracization.",
+
+            "Here's a info sheet that will help facilitate",
+            "your learning on being made fun of.",
+
+            "Here's a info sheet that will help you",
+            "understand your family's financial situation.",
+
+            "Here's a info sheet that will help you",
+            "learn to reconnect with your culture.",
+                
             "The key to maintaining your connection to your",
             "culture, while allowing yourself to integrate",
 
@@ -117,21 +153,6 @@ public class SceneLanguageClass extends JPanel {
 
             "culture, whether that be by mocking your lunch",
             "or your clothes, stay firm and stand your ground.",
-
-            "Here's a info sheet that will help facilitate",
-            "your learning on managing homesickness.",
-
-            "Here's a info sheet that will help facilitate",
-            "your learning on dealing with ostracization.",
-
-            "Here's a info sheet that will help facilitate",
-            "your learning on being made fun of.",
-
-            "Here's a info sheet that will help you",
-            "understand your family's financial situation.",
-
-            "Here's a info sheet that will help you",
-            "learn to reconnect with your culture."
     };
 
     static String[][] sentencesPaper = {
@@ -203,17 +224,15 @@ public class SceneLanguageClass extends JPanel {
 
             //6
             {
-                    "Children can often be rude and ignorant,",
-                    "making rude comments a common occurance",
-                    "among kids, especailly if there is a",
-                    "'friend' with apparent cultural differences",
-                    "in their midst. A good example is lunch.",
-                    "The smell of other cultures' food may seem",
+                    "Finances to children are often an seen as",
+                    "far-off, handled by the adults. However, at",
+                    "times, its good for both the child and the",
+                    "family if said child is able to understand",
+                    "the financial strain that immigrating puts.",
+                    "on their family. This way, they will be more",
 
-                    "foregin and strange to kids who don't",
-                    "understand the nuances of different cultures.",
-                    "This can lead to the further ostracization",
-                    "of immigrant children.",
+                    "understanding of family's descisions to save",
+                    "money by, say, not buying them new clothes.",
             },
 
             //7
