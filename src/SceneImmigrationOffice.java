@@ -96,6 +96,7 @@ public class SceneImmigrationOffice extends JPanel {
                 {
                     Game.gameState=14;
                 }
+                System.out.println(moneyNeeded);
             }
         });
     }
@@ -107,6 +108,7 @@ public class SceneImmigrationOffice extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Game.money=3000;
         if (bg != null) {
             g.drawImage(bg, 0, 0, this);
         }
@@ -145,8 +147,9 @@ public class SceneImmigrationOffice extends JPanel {
             g.drawString("$1,000, or a child from $150. How many family ", 90, 210);
             g.drawString("members would you like to sponsor?", 90, 240);
         }
-        else if(Game.sponsoredFamily.equals("Everybody") && Game.money>moneyNeeded+100)
+        else if(Game.sponsoredFamily.equals("Everybody") && Game.money>moneyNeeded && next!=1)
         {
+            futureStatus=2;
             g.setFont(Game.font.deriveFont(22f));
             g.setColor(Color.black);
             g.drawString("Congratulations! Your request to sponsor ", 90, 180);
@@ -154,7 +157,6 @@ public class SceneImmigrationOffice extends JPanel {
             g.drawString("They are ready to travel here.", 90, 240);
             Game.money-=1150;
             g.drawString("NEXT", 380, 310);
-            futureStatus=2;
         }
         else if(Game.money<=moneyNeeded && next==0)
         {
@@ -167,7 +169,7 @@ public class SceneImmigrationOffice extends JPanel {
             futureStatus=0;
             Game.sponsoredFamily="nobody";
         }
-        else if(Game.sponsoredFamily.equals("one kid") && Game.money>moneyNeeded+100)
+        else if(Game.sponsoredFamily.equals("one kid") && Game.money>moneyNeeded+100 && next!=1)
         {
             g.setFont(Game.font.deriveFont(22f));
             g.setColor(Color.black);
