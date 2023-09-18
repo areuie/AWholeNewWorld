@@ -1,5 +1,4 @@
 # A Whole New World
-ICS4U0 Final ISP,
 
 An interactive storyline game that will assist immigrant families in their challenges of moving to a new country.
 
